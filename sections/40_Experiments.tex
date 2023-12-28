@@ -1,0 +1,41 @@
+\section{Experiments - LLM as the DB Pitfalls}
+\label{section:experiments}
+
+
+\subsection{No ability to do complex spatial reasoning}
+
+\subsubsection{Beyond pairwise relations}
+Repeat AUS cities test from LLM3 MaaSDB paper but with 3 way relations to show it isn't really doing spatial reasoning
+
+\subsubsection{More complicated spatial relations}
+Cyclic? Topological?
+Design tests to show this info isn't learned in LLMs.
+
+\subsubsection{More complex data types beyond cities/point data}
+NALSpatial can do NL2Spatial Query which can handle region/line data, but can an LLM as a db handle it?
+Design tests to show this info isn't learned in LLMs.
+
+
+\subsection{Training the LLM Issues}
+
+    \subsubsection{Embedding causes inherent limitations}
+    Issues with vocab/embeddings - 
+    \paragraph{OOV terms representing lesser known villages it can't learn about}
+    \paragraph{Locations being too close to differentiate in the embedding space}
+        <ref from translation clustering paper>
+        Design tests to demonstrate these issues.
+
+    \subsubsection{Training task fundamentally incompatible with structured spatial data}
+        Issues with training on tabular spatial data same as tabular learning challenges - next word prediction is an incompatible task.
+        
+        Values can be continuous and differ significantly in meaning based on attribute column they appear in.
+        
+
+
+\subsection{Unexplored? ability to do SPM}
+Try giving Chat-GPT a bunch of points A, B, C with coords like the pictorial query grid has and then asking it which cities in a given region match that pattern.
+Also try giving the input instead as a list of pairwise constraints.
+Use OSM to figure out the ground truth by pulling all city tags in the same region and running a traditional SPM algorithm to find all matching patterns.
+Report precision and recall for both input types.
+
+Check - can it produce an image from the points given? Can we give it an image with points as input?

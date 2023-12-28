@@ -2,3 +2,27 @@
 
 \label{section:introduction}
 
+Recent work shows LLMs have "spatial awareness" via demonstrated knowledge about geocoordinates, pairwise directional relations between major cities, some knowledge about what cities are near/far from each other.
+
+There remain many limitations of LLM spatial reasoning ability.
+\begin{enumerate}
+    \item  Complex reasoning ability - n-way relations, relation types besides directional and metric (topological, cyclic), line/region data types
+    \item Training limitations - embedding inherently limits it, training task is incompatible with structured data (spatial or otherwise), values can be continuous and have vastly different meaning depending on attribute column they appear in
+\end{enumerate}
+
+
+Need to understand what info exactly a spatial database stores and what the "reasoning" over it is that's done when resolving a query. 
+
+Then say why an LLM cannot inherently learn to do this type of reasoning, it can just memorize some facts - possibly a lot of spatial facts, but there is no generalizeability there in the way that when it learns language it learns the grammar and rules of the language that can be applied more generally.
+
+General spatial facts about the world can't be guessed if the training data isn't there. 
+They can be added to a DB, which is easier than retraining a model. 
+The model should act as the retriever.
+
+By training on all the history books, an LLM can learn everything humans know about history.
+How does it learn the implicit facts that can be inferred from other facts? Does it?
+
+By training on all the spatial data (of which there's much more?) it can't learn all the n-way implicit relationships between all locations - that is not a language task. 
+At best it can narrow down and issue a query to a tool that can do spatial reasoning.
+
+
