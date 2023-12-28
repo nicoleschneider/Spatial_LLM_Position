@@ -1,0 +1,159 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+
+%\documentclass[sigconf,authordraft]{acmart}
+\documentclass[sigconf]{style/acmart}
+
+
+\copyrightyear{2023} 
+\acmYear{2023} 
+\setcopyright{rightsretained} 
+\acmConference[GeoSearch '23]{2nd ACM SIGSPATIAL International Workshop on Searching and Mining Large Collections of Geospatial Data}{November 13, 2023}{Hamburg, Germany}
+\acmBooktitle{2nd ACM SIGSPATIAL International Workshop on Searching and Mining Large Collections of Geospatial Data (GeoSearch '23), November 13, 2023, Hamburg, Germany}\acmDOI{10.1145/3615890.3628537}
+\acmISBN{979-8-4007-0352-2/23/11}
+
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10002951.10003227.10003236.10003237</concept_id>
+       <concept_desc>Information systems~Geographic information systems</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010147.10010178.10010187.10010197</concept_id>
+       <concept_desc>Computing methodologies~Spatial and physical reasoning</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10002951.10003317.10003325.10003326</concept_id>
+       <concept_desc>Information systems~Query representation</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10002951.10002952.10002953.10010820.10010120</concept_id>
+       <concept_desc>Information systems~Incomplete data</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\keywords{Spatial Pattern Matching, Pictorial Querying, Searching Geospatial Objects}
+
+\ccsdesc[500]{Information systems~Geographic information systems}
+\ccsdesc[300]{Computing methodologies~Spatial and physical reasoning}
+\ccsdesc[300]{Information systems~Query representation}
+\ccsdesc[300]{Information systems~Incomplete data}
+
+\usepackage[]{svg}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{afterpage}
+\usepackage{tablefootnote}
+\usepackage{appendix}
+\usepackage{float}
+
+
+\begin{document}
+
+% % % % % % % % % % % % % % % % % % % %
+% User-defined packages, commands etc %
+% % % % % % % % % % % % % % % % % % % %
+
+%\renewcommand{\shortauthors}{O'Sullivan}
+
+\graphicspath{ {figures/}{auto_commit_fig/}{auto_fig/} }
+
+% Macro to include a latex file in the ./Sections/ directory
+\newcommand{\latexfile}[1]{\input{sections/#1}}
+
+\newcommand{\pinaforecomment}[4]{\colorbox{#1}{\textcolor{#4}{\parbox{.8\linewidth}{#2: #3}}}}
+\newcommand{\osullikomment}[1]{\pinaforecomment{green}{Kent}{#1}{black}}
+\newcommand{\nrscomment}[1]{\pinaforecomment{violet}{Nicole}{#1}{white}}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\NewDocumentCommand{\rot}{O{45} O{4.25em} m}{\makebox[#2][c]{\rotatebox{#1}{#3}}}%
+
+% % % % % % % % % % % % % % % % % % % %
+% Document preliminaries              %
+% % % % % % % % % % % % % % % % % % % %
+
+
+\title{title\\}
+
+\author{Nicole R. Schneider}
+%\authornotemark[1]
+\email{nsch@umd.edu}
+\affiliation{%
+  \institution{University of Maryland}
+  %\streetaddress{P.O. Box 1212}
+  %\city{Dublin}
+  %\state{Ohio}
+  \country{USA}
+  %\postcode{43017-6221}
+}
+
+% \author{Kent O'Sullivan}
+% \authornote{Both authors contributed equally to this research.}
+% \email{osullik@umd.edu}
+% \affiliation{%
+%   \institution{University of Maryland}
+%   %\streetaddress{P.O. Box 1212}
+%   %\city{Dublin}
+%   %\state{Ohio}
+%   \country{USA}
+%   %\postcode{43017-6221}
+% }
+
+\author{Hanan Samet}
+\email{hjs@cs.umd.edu}
+\affiliation{%
+  \institution{University of Maryland}
+  %\streetaddress{P.O. Box 1212}
+  %\city{Dublin}
+  %\state{Ohio}
+  \country{USA}
+  %\postcode{43017-6221}
+}
+
+
+
+\begin{abstract}
+\latexfile{00_Abstract.tex}
+\end{abstract}
+
+\maketitle
+
+
+% % % % % % % % % % % % % % % % % % % %
+% Document Content                    %
+% % % % % % % % % % % % % % % % % % % %
+\latexfile{10_Introduction.tex}
+\latexfile{20_Background.tex}
+
+\latexfile{70_Related.tex}
+\latexfile{80_Conclusion.tex}
+
+
+\begin{acks}
+This work was sponsored in part by the \grantsponsor{1}{NSF}{} under Grants \grantnum{1}{IIS-18-16889}, \grantnum{1}{IIS-20-41415}, and \grantnum{1}{IIS-21-14451}. %, and the Australian-American Fulbright Commission. Its contents do not necessarily represent the official views of the Fulbright Program.
+\end{acks}
+
+\bibliographystyle{style/ACM-Reference-Format}
+\bibliography{spatial_llm} \label{bibliography}
+
+%\blankpage
+%\blankpage
+
+%\latexfile{99_Appendices.tex}
+
+
+\end{document}
+\endinput   
