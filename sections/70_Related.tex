@@ -2,29 +2,51 @@
 \label{section:related}
 \normalsize
 
+\subsection{Other Spatial LLM/Foundation Model Vision papers}
 
-\subsection{Large Language Models as Databases}
-    \paragraph{As generic DBs}
-        Wang-Chiew Tan. 2023. Unstructured and Structured Data: Can We Have the Best of Both Worlds with Large Language Models? arXiv:2304.13010
+\cite{Mai2023} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
+Vision is foundation model pretrained on different modalities, aligning their representations based on location data.
+--> problem - this still doesn't solve the spatial reasoning issue. How  do we design an architecture that models spatial relationships?
+
+\cite{Xie2023} - does not propose any concrete architectures or steps to achieve a geo foundation model
+
+\cite{Tan2023} - suggests combining structured and unstructured data but puts forth no solutions or ideas
+
+\cite{Qi2023} - claims LLM should BE the database and shows with minimal experiments that ChatGPT can do some level of spatial understanding. 
+Our experiments show this approach is more challenging than they suggest, as LLMs currently can't handle many of the intricacies of spatial reasoning.
+
+
+
+
+\subsection{Large Language Model Embedding Methods for Geodata}
+A few embedding methods have been developed for individual types of geospatial data.
+
+For trajectories of geocoordinates, ~\cite{Hu2023}.
+
+For textual georeferences, SpaBERT designs a pre-training task using spatial coordinate embeddings (based on latitude and longitude) corresponding to textual georeferences.
+They create pseudosentences containing lists of geoentity references and neighboring entities in the physical world, in increasing order of distance from the original entity~\cite{Li2021}.
+Results show that the spatial embedding improves accuracy on downstream tasks of geoentity type prediction and linking geoentiteis to knowledge graphs.
+
+For RSI, spatial heterogeneity prevents the standard vision methods from working out of the box. 
+\cite{Xie2021} adapts the model architecture through a series of statistical tests to address the different spatial distributions present in the data.
+\nrscomment{can we handle it in the embeddings instead?}
+
+
+% \subsection{NL to Spatial Query}
+%     NALSpatial: \cite{Liu2023}
+
+
+% \subsection{Testing LLM Spatial Reasoning}
+%     \cite{Bhandari2023} shows some degree of near/far but not true complex spatial reasoning
+%     MaaSDB: \cite{Qi2023} shows some ability to do pairwise directional relations for well-known cities
+
+% \subsection{Large Language Models as Databases}
+%     \paragraph{As generic DBs}
+%         \cite{Tan2023}
         
-        James Thorne, Majid Yazdani, Marzieh Saeidi, Fabrizio Silvestri, Sebastian Riedel, and Alon Halevy. 2021. From Natural Language Processing to Neural Databases. PVLDB (2021)
+%         James Thorne, Majid Yazdani, Marzieh Saeidi, Fabrizio Silvestri, Sebastian Riedel, and Alon Halevy. 2021. From Natural Language Processing to Neural Databases. PVLDB (2021)
         
-        Giovanni Trappolini, Andrea Santilli, Emanuele Rodolà, Alon Halevy, and Fabrizio Silvestri. 2023. Multimodal Neural Databases. arXiv:2305.01447
-    \paragraph{As spatial DBs}
-        Ref ideas of MaaSDB
-
-
-\subsection{NL to Spatial Query}
-    NALSpatial: https://dl.acm.org/doi/10.1145/3589132.3625600
-
-
-\subsection{Testing LLM Spatial Reasoning}
-    https://dl.acm.org/doi/10.1145/3589132.3625625 shows some degree of near/far but not true complex spatial reasoning
-    MaaSDB: https://dl.acm.org/doi/10.1145/3589132.3625597 shows some ability to do pairwise directional relations for well-known cities
-
-
-\subsection{Spatial Pattern Matching}
-
-
-\subsection{Large Language Model Embeddings for Proper Nouns}
-
+%         \cite{Trappolini2023}
+        
+%     \paragraph{As spatial DBs}
+%         Ref ideas of MaaSDB

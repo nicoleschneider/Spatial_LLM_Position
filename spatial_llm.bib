@@ -1179,3 +1179,405 @@ comment={Skyline Matching}
   year={2022},
 comment={Tree classification}
 }
+
+@InProceedings{Hu2023,
+  author   = {Mingzhi Hu and Zhuoyun Zhong and Xin Zhang and Yanhua Li and Yiqun Xie and Xiaowei Jia and Xun Zhou and Jun Luo},
+  title    = {Self-supervised Pre-training for Robust and Generic Spatial-Temporal Representations},
+  year={2023},
+  organization={ICDM},
+  abstract = {Advancements in mobile sensing, data mining, and Fine-tuning},
+  comment  = {pre-trained foudnation model for trajectory data
+- pretrains on self-supervised task to determine if 2 sub trajectories are from the same larger trajectory or not
+- fine-tunes on trajectory classifcation task and does better than baselines trained just on the downstream task},
+  file     = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Hu2023.pdf:PDF},
+  groups   = {SPM LLM},
+}
+
+@inproceedings{Xie2021b,
+  title={A statistically-guided deep network transformation and moderation framework for data with spatial heterogeneity},
+  author={Xie, Yiqun and He, Erhu and Jia, Xiaowei and Bao, Han and Zhou, Xun and Ghosh, Rahul and Ravirathinam, Praveen},
+  booktitle={2021 IEEE International Conference on Data Mining (ICDM)},
+  pages={767--776},
+  year={2021},
+  organization={IEEE}
+}
+
+@InProceedings{Xie2021,
+  author     = {Xie, Yiqun and Jia, Xiaowei and Bao, Han and Zhou, Xun and Yu, Jia and Ghosh, Rahul and Ravirathinam, Praveen},
+  booktitle  = {Proceedings of the 29th International Conference on Advances in Geographic Information Systems},
+  title      = {Spatial-Net: A Self-Adaptive and Model-Agnostic Deep Learning Framework for Spatially Heterogeneous Datasets},
+  year       = {2021},
+  month      = nov,
+  publisher  = {ACM},
+  series     = {SIGSPATIAL ’21},
+  abstract   = {Learning Framework for Spatially Heterogeneous Datasets. In 29th Interna-},
+  collection = {SIGSPATIAL ’21},
+  comment    = {Uses hypothesis testing to design a model architecture based on the statistical significance of the heterogeneity of spatial regions in the data
+- Allows model to share parameters across similar regions and have private parameters for regions with different generating process (spatially heterogeneous) like different crop type
+- Better than training a different model for each region since that requires a lot of training data and computation
+- 1 tailed t-test},
+  doi        = {10.1145/3474717.3483970},
+  file       = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Xie2021.pdf:PDF},
+  groups     = {SPM LLM},
+  keywords   = {Second, spatial heterogeneity are naturally embedded in spatial datasets, which means the underlying process generating datasets},
+}
+
+@article{Gupta2021,
+author = {Gupta, Jayant and Molnar, Carl and Xie, Yiqun and Knight, Joe and Shekhar, Shashi},
+title = {Spatial Variability Aware Deep Neural Networks (SVANN): A General Approach},
+year = {2021},
+issue_date = {December 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {12},
+number = {6},
+issn = {2157-6904},
+url = {https://doi.org/10.1145/3466688},
+doi = {10.1145/3466688},
+abstract = {Spatial variability is a prominent feature of various geographic phenomena such as climatic zones, USDA plant hardiness zones, and terrestrial habitat types (e.g., forest, grasslands, wetlands, and deserts). However, current deep learning methods follow a spatial-one-size-fits-all (OSFA) approach to train single deep neural network models that do not account for spatial variability. Quantification of spatial variability can be challenging due to the influence of many geophysical factors. In preliminary work, we proposed a spatial variability aware neural network (SVANN-I, formerly called SVANN) approach where weights are a function of location but the neural network architecture is location independent. In this work, we explore a more flexible SVANN-E approach where neural network architecture varies across geographic locations. In addition, we provide a taxonomy of SVANN types and a physics inspired interpretation model. Experiments with aerial imagery based wetland mapping show that SVANN-I outperforms OSFA and SVANN-E performs the best of all.},
+journal = {ACM Trans. Intell. Syst. Technol.},
+month = {nov},
+articleno = {76},
+numpages = {21},
+keywords = {spatial variability, Neural networks}
+}
+
+
+@InProceedings{Li2021,
+  author   = {Zekun Li and Jina Kim and Yao-Yi Chiang and Muhao Chen},
+  title    = {SPABERT: A Pretrained Language Model from Geographic Data for Geo-Entity Representation},
+  year     = {2021},
+journal={arXiv preprint arXiv:2210.12213},
+  abstract = {name, Speedway , to arrive at [ Speedway ,½] in
+the middle of farmlands. As humans, we are able},
+  comment  = {BERT variant that uses spatial coord embeddings to contextualize spatial entity names
+- pretrains using pseuodosentences consisting of lists of entity names of k-nearest neighbor entities to the pivot entity of interest (first token in sentence)
+-- not natural language
+- fine tunes on 2 downstream tasks: entity type classification and entity linking to wiki KG
+Experiments:
+- compares angainst LLM baselines with no spatial embedding context/abilities
+Notes/ideas:
+- Are there spatially aware baselines this should have been compared to?
+- What happens if using more natural sentences instead of entity lists? The models are trained for English grammar word dependencies, all that is lost when just listing things in increasing distance from the pivot
+- Is there a better self-supervised task that uses latural language better?},
+  file     = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Li2022.pdf:PDF},
+  groups   = {SPM LLM},
+}
+
+@InProceedings{Arundel2023,
+  author     = {Arundel, Samantha T. and Li, Wenwen and Campbell, Bryan B.},
+  booktitle  = {Proceedings of the 6th ACM SIGSPATIAL International Workshop on AI for Geographic Knowledge Discovery},
+  title      = {Reimagining standardization and geospatial interoperability in today’s GeoAI culture},
+  year       = {2023},
+  month      = nov,
+  number     = {Technical},
+  publisher  = {ACM},
+  series     = {SIGSPATIAL ’23},
+  abstract   = {GeoAI becomes increasingly integrated into diverse contexts, we
+must revisit the standards and protocols governing the seamless},
+  collection = {SIGSPATIAL ’23},
+  doi        = {10.1145/3615886.3627744},
+  file       = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Arundel2023.pdf:PDF},
+  groups     = {SPM LLM},
+  keywords   = {for evaluating GeoAI models perpetuates disparate performance evaluation practices, impeding comparability and meta-analysis},
+}
+
+
+@InProceedings{Demeter2020,
+  author    = {Demeter, David and Downey, Doug},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  title     = {Just add functions: A neural-symbolic language model},
+  year      = {2020},
+  number    = {05},
+  pages     = {7634--7642},
+  volume    = {34},
+  comment   = {Augmenting LLM with distribution info for numerical and geographic stuff
+- Adds micro models to encode simple domain knowledge and probability distributions
+- Improvement mostly on small corpora
+Numerical - difference function between numbers -- premise is two years mentioned in a sentence are most probably 1 year apart, statistically (distribution around 1)
+Geographic - euclidean function between lat/longs of locations mentioned -- premise is Tobler's First Law, near things are likely more related
+Notes/ideas:
+- When info is complex, standard method is adding a KG
+- No factual basis, even if it learns the distributions
+- This really has no hope of helping with spatial queries expressed in NL becuase its just probabalistic guessing
+- Avoids polysemy issue by only doing big cities -- small unique ones may still struggle due to embeddings, can't tell since they left them out},
+  file      = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Read/Demeter2020.pdf:PDF},
+  groups    = {SPM LLM},
+  keywords  = {Natural Language Processing},
+}
+
+
+@InProceedings{Gao2023,
+  author       = {Gao, Luyu and Madaan, Aman and Zhou, Shuyan and Alon, Uri and Liu, Pengfei and Yang, Yiming and Callan, Jamie and Neubig, Graham},
+  booktitle    = {International Conference on Machine Learning},
+  title        = {Pal: Program-aided language models},
+  year         = {2023},
+  organization = {PMLR},
+  pages        = {10764--10799},
+  file         = {:C\:/Users/nicol/OneDrive/Desktop/papers/Gestalt/GNN/Read/Gao2023.pdf:PDF},
+  groups       = {SPM LLM},
+  keywords     = {Machine Learning, ICML},
+}
+
+
+@Article{Mai2023,
+  author  = {Mai, Gengchen and Huang, Weiming and Sun, Jin and Song, Suhang and Mishra, Deepak and Liu, Ninghao and Gao, Song and Liu, Tianming and Cong, Gao and Hu, Yingjie and others},
+  journal = {arXiv preprint arXiv:2304.06798},
+  title   = {On the opportunities and challenges of foundation models for geospatial artificial intelligence},
+  year    = {2023},
+  comment = {Text-only geo tasks are fine for LLMs, multi-model geo tasks are outperformed by specific models
+Experiments:
+- Show LLMs ability to recognize toponyms and location descriptions
+- Resolving them to geocoords bad and fail Tobler's First Law of Geography, generate invalid lat/long
+- Time series forecasting by state/county - LLMs do fine; baseline fully sup is ARIMA (doesn't account for spatial aspects of data)
+- POI-based region classification - LLMs fail because they don't know the spatial distributions of the POI point data, which are dense in areas and sparse elsewhere, making images not useful unless too high res
+- Predicting noise level from images foundation vision models do well
+RS image scene classification - foundation viz models do well if pretrained on RSI
+Discussion:
+- Geographic bias towards highly populous places
+- Vision is foundation model pretrained on different modalities, aligning their representations based on location data
+Refs:
+- Gives SOTA on vision and multimodal foundation models
+Notes/ideas:
+- Aligning multimodal data with location info is good but doesn't solve the spatial reasoning issue
+- How  to design an architecture that models spatial relationships?},
+  groups  = {SPM LLM},
+}
+
+
+@Article{Mai2023a,
+  author  = {Mai, Gengchen and Lao, Ni and He, Yutong and Song, Jiaming and Ermon, Stefano},
+  journal = {arXiv preprint arXiv:2305.01118},
+  title   = {CSP: Self-Supervised Contrastive Spatial Pre-Training for Geospatial-Visual Representations},
+  year    = {2023},
+  comment = {Dual encoder image and geocoords with contrastive objective to learn representations
+- Creates neg/pos pairs of (<Img,loc>, <Img,loc>) using a few methods
+- Trained model transferred to downstream RSI classification and species recognition
+Refs:
+- some papers that use RSI images at same loc but different times as positive pairs
+lots of spatially explicitly designed models - look at these for ideas
+Notes/ideas:
+- Contrastive approach to resolving pictorial queries against a CM?
+- (<Query, CM>, <Query, Dilated/translated/etc. CM>) form pairs of positive examples
+- (<Query, CM>, <Query, Random CM>) form negative pairs
+- Train a convNet or FCN with contrastive objective to learn the any match problem
+EventNet
+- Label (Loc, Img, time) pairs with an event name using NewsStand data to produce a useful EventNet dataset
+- Prolific to clean up the data?
+- Train a model to predict if 2 triples are the same event},
+  groups  = {SPM LLM},
+}
+
+
+@InProceedings{Xie2023,
+  author    = {Xie, Yiqun and Wang, Zhaonan and Mai, Gengchen and Li, Yanhua and Jia, Xiaowei and Gao, Song and Wang, Shaowen},
+  booktitle = {Proceedings of the 31st ACM International Conference on Advances in Geographic Information Systems},
+  title     = {Geo-Foundation Models: Reality, Gaps and Opportunities},
+  year      = {2023},
+  address   = {New York, NY, USA},
+  publisher = {Association for Computing Machinery},
+  series    = {SIGSPATIAL '23},
+  abstract  = {With the recent rapid advances of revolutionary AI models such as ChatGPT, foundation models have become a main topic for the discussion of future AI. Despite the excitement, the success is still limited to specific types of tasks. Particularly, ChatGPT and similar foundation models have unique characteristics that are difficult to replicate for most geospatial tasks. This paper envisions several major challenges and opportunities in the creation of geospatial foundation (geo-foundation) models, as well as potential future adoption scenarios. We also expect that a major success story is necessary for geo-foundation models to take off in the long term.},
+  articleno = {66},
+  comment   = {Challenges:
+- LLMs have self-supervised tasks like word prediction that align with downstream tasks and have many labels for free; GeoAI does not
+- Geo datasets can be costly in less developed areas and require expert labeling
+- Foundation models must generalize across tasks and across difference regions
+- Lots of talk, not much to back it up and nothing really novel being proposed
+Notes/ideas:
+- How to design a model that fundamentally is set up to reason spatially? Graph models to learn over network forms of geo data?
+- What self-supervised task would be good to train a model for SPM?
+- Has anyone done SGM as a GNN task?
+- Can generate ground truth (all matches) automatically using direct solutions
+- Train a model over the CM matrix? A FCN or ConvNet?
+- Use multimodal embeddings as input to a regular LLM and fine-tune it to answer geo queries over image data},
+  doi       = {10.1145/3589132.3625616},
+  groups    = {SPM LLM},
+  isbn      = {9798400701689},
+  keywords  = {geospatial data, foundation models, GeoAI, AI},
+  location  = {<conf-loc>, <city>Hamburg</city>, <country>Germany</country>, </conf-loc>},
+  numpages  = {4},
+  url       = {https://doi.org/10.1145/3589132.3625616},
+}
+
+
+@Article{Trappolini2023,
+  author  = {Trappolini, Giovanni and Santilli, Andrea and Rodol{\`a}, Emanuele and Halevy, Alon and Silvestri, Fabrizio},
+  journal = {arXiv preprint arXiv:2305.01447},
+  title   = {Multimodal Neural Databases},
+  year    = {2023},
+  comment = {NeuralDB but for image db (generalizes to multi-modal data - video, audio, etc.) supporting:
+- Set queries
+- Boolean queries
+- Join queries
+Retriever-reasoner-aggregator architecture:
+- Retriever (CLIP)
+-- Returns subset of relevant documents by similarity between query and images
+- DB embeddings independent of query
+- Reasoner (OFA)
+-- Returns intermediate result
+- DB embeddings depend on query
+- Aggregator
+Experiments:
+- COCO dataset of images, queries with ground truth "how many <object> are in the db?"
+Notes/ideas:
+- Can a multimodal model that handles image and text input in the same embedding space be useful for dealing with pictorial and NL SPM queries? Trained via contrastive learning on pairs of equivalent queries?
+- Use it to convert a pictorial query to a structured query? vice versa?
+- Train a network on db graph given the embedded query to produce the correct set of response nodes matching the pattern?
+- Repeat this but instead of a collection of images, use a collection of locations with attributes including geocoords
+- Queries are then SPM queries or general spatial questions about intersection/etc,},
+  groups  = {SPM LLM},
+}
+
+
+@Article{Tan2023,
+  author  = {Tan, Wang-Chiew},
+  journal = {arXiv preprint arXiv:2304.13010},
+  title   = {Unstructured and structured data: Can we have the best of both worlds with large language models?},
+  year    = {2023},
+  comment = {- General discussion around LLM limitations and potential as replacing or being used in conjunction with DBMS
+- Focus on possibly combining structured and unstructured data
+- No real hard evidence or new knowledge put forward},
+  groups  = {SPM LLM},
+}
+
+
+@InProceedings{Qi2023,
+  author    = {Qi, Jianzhong and Li, Zuqing and Tanin, Egemen},
+  booktitle = {Proceedings of the 31st ACM International Conference on Advances in Geographic Information Systems},
+  title     = {MaaSDB: Spatial Databases in the Era of Large Language Models (Vision Paper)},
+  year      = {2023},
+  address   = {New York, NY, USA},
+  publisher = {Association for Computing Machinery},
+  series    = {SIGSPATIAL '23},
+  abstract  = {Large language models (LLMs) are advancing rapidly. Such models have demonstrated strong capabilities in learning from large-scale (unstructured) text data and answering user queries. Users do not need to be experts in structured query languages to interact with systems built upon such models. This provides great opportunities to reduce the barrier of information retrieval for the general public. By introducing LLMs into spatial data management, we envisage an LLM-based spatial database system to learn from both structured and unstructured spatial data. Such a system will offer seamless access to spatial knowledge for the users, thus benefiting individuals, business, and government policy makers alike.},
+  articleno = {54},
+  comment   = {LLM Spatial Vision paper that advocates for LLMs as spatial databases since they can
+- Memorize facts from structured (tables) and unstructured (free text) data
+- Understand user intention better since the NL input is handled by the same model that knows/understands the underlying spatial data
+Proposed system, where each part may be an LLM:
+- Query analyzer/planner takes NL and produces sub-queries
+- Query result generators (different LLMs trained on diff data) answer each sub-query
+- Result synthesizer takes results and user query to combine into one output
+Experiments:
+- Census income data 48842 records
+-- 8 categorical, 6 numeric attributes
+-- Create 20000 range queries with random numeric attribute ranges
+-- Show that a GAN can memorize the distribution of the census data and generate range queries with similar selectivity to the 20000 real ones
+-- Training a classifier on real data vs 1/3 real 2/3 GAN-generated can predict income attribute equally well, supporting distribution was memorized well
+- Geocoords of AUS cities
+-- Asked Chat-GPT for top 50 cities geocoords (49/50 correct)
+-- Made random pairs (A,B) from the 50 cities and asked to which side of A is B
+44/50 correct, 5 more correct when geocoords provided, 1 wrong (S vs SW)
+Future Work/ Challenges:
+- Faithfullness/wrong answers/hallucinations
+- Use faithfullness scores; traditional query methods to get ground truth
+- Structured data training challenges
+-- Limited quantity of structured spatial db tables
+-- Next word prediction task incompatible with tabular data
+-- Values can be continuous and differ in meaning based on attribute col
+-- Multiple levels of reasoning to get sub-results and combine them correctly
+- Changing data (moving objects)
+Refs:
+LLM as the DB but not spatial
+Wang-Chiew Tan. 2023. Unstructured and Structured Data: Can We Have the Best of Both Worlds with Large Language Models? arXiv:2304.13010
+James Thorne, Majid Yazdani, Marzieh Saeidi, Fabrizio Silvestri, Sebastian Riedel, and Alon Halevy. 2021. From Natural Language Processing to Neural Databases. PVLDB (2021)
+Giovanni Trappolini, Andrea Santilli, Emanuele Rodolà, Alon Halevy, and Fabrizio Silvestri. 2023. Multimodal Neural Databases. arXiv:2305.01447
+Notes/ideas:
+- Their experiments don't really show that LLMs can learn the right info and do reasoning over it, just that they get the distributions correct and can store some directional relation knowledge about major cities - feasibility of doing that across broader variety of locations is still open.
+- Directional relation test with AUS cities is relevant - but at what granularity does it break down? How to augment for remote towns?
+- How to other spatial relations like topological, cyclic, etc. fare?
+- Beyond pairwise relations? This must certainly do poorly - unless it's really reasoning. Easy test to show its just memorizing pairwise facts not really understanding implicit spatial relationships.},
+  doi       = {10.1145/3589132.3625597},
+  groups    = {SPM LLM},
+  isbn      = {9798400701689},
+  keywords  = {model as a database, large language models, spatial databases},
+  location  = {<conf-loc>, <city>Hamburg</city>, <country>Germany</country>, </conf-loc>},
+  numpages  = {4},
+  url       = {https://doi.org/10.1145/3589132.3625597},
+}
+
+
+@InProceedings{Liu2023,
+  author    = {Liu, Mengyi and Wang, Xieyang and Xu, Jianqiu and Lu, Hua},
+  booktitle = {Proceedings of the 31st ACM International Conference on Advances in Geographic Information Systems},
+  title     = {NALSpatial: An Effective Natural Language Transformation Framework for Queries over Spatial Data},
+  year      = {2023},
+  address   = {New York, NY, USA},
+  publisher = {Association for Computing Machinery},
+  series    = {SIGSPATIAL '23},
+  abstract  = {Spatial databases play a vital role in many applications that access spatial data via appropriate queries. However, most application users lack the expertise necessary for formulating spatial queries. To fill in this gap, we propose an effective framework called NALSpatial that translates natural language queries over spatial data into executable database queries. NALSpatial consists of two core phases. The natural language understanding phase extracts key entity information, comprehends the query intent and determines the query type. The key entities and query type are passed to the subsequent natural language translation phase, which employs entity mapping rules and structured language models to construct executable database queries accordingly. We implement NALSpatial on the open-source extensible database system SECONDO to support range queries, nearest neighbor queries, spatial joins and aggregation queries. Extensive experiments show that NALSpatial on average achieves response time of about 2.5 seconds, translatability of 95\% and translation precision of 92\%, outperforming state-of-the-art natural language transformation methods.},
+  articleno = {57},
+  comment   = {NL-2-Spatial Query translation (length, area/intersect, knn, distance-scan instead of select, project, join) supporting queries of type:
+- Range queries (find points in region P or find lines/regions intersecting a line/region P)
+- Nearest neighbor queries (find k nearest to P using distance-scan over R-Tree index)
+- Spatial Joins (not defined)
+- Aggregation queries (not defined)
+Their approach:
+Natural language understanding phase
+- SpaCy NER to find cardinal and quantity lists, all the nouns
+- Closest cardinal num to words "nearest", "closest", or "neighbor" is k, else 1
+- Check 2 KBs for nouns to determine spatial relations and locations
+- LSTM trained on 2400 labeled queries used for deciding query type
+Natural language translation phase
+- Pre-built structured models for each query type
+- Experiments on SECONDO Spatial Databases:
+berlintest db- public transport, POIs, rivers in Berlin
+- 50 spatial relations, 8078 locs (3040 pts, 4708 lines, 330 regions)
+nanjingtest db- districts, parts of roads, POIs in Nanjing
+6 spatial relations, 9900 locs (9000 pts, 887 lines, 13 regions)
+100 test queries created (20 range, 20 NN, 30 spatial join, 30 agg) over the dbs
+https://pan.baidu.com/s/11drm-nf9shjipT9xs8n81w?pwd=f3mo
+queries like "query  feed filter [.GeoData intersects ] consume;"
+- Measure response time, translatability (query acc), translation precision (result acc)
+v.s. Athena++, SpatialNLI, IRNet
+NALSpatial beats all by a little bit considering all 3 metrics
+Notes/ideas:
+- Can we use their test queries for testing COMPASS? Just the point ones? Do their spatial relations measure directional relations?
+- Can we use those spatial databases as "real data" for testing COMPASS, ignoring the NL2Query thing entirely? Hand label some directional queries and show accuracy/time for COMPASS to respond? Does that buy us anything over using our OSM tags for testing?
+- Should we provide SECONDO style versions of out pictorial queries? Relies on database structure in place that we don't have
+- Eventually using an LLM to translate NL to query COMPASS will require the LLM producing the spatial query - can it be done pictorially, or should we use an intermediate spatial query specification like they translate to here?
+- This paper kind of does exactly the NL to spatial query task I was thinking
+- Limited by types of queries/spatial relations supported? Pictorial queries include complex implicit relationships. Need to understand what a spatial database is capable of storing to see if avoiding it with COMPASS data structures is even useful/faster/more flexible/more descriptive/etc.
+- How does the spatial db lit compare to the SPM lit? Where is the overlap? Can SPM queries be issued over spatial dbs? Is it worth trying to translate a query pattern into a spatial db query?},
+  doi       = {10.1145/3589132.3625600},
+  groups    = {SPM LLM},
+  isbn      = {9798400701689},
+  keywords  = {query processing, semantic parsing, natural language interface, spatial database},
+  location  = {<conf-loc>, <city>Hamburg</city>, <country>Germany</country>, </conf-loc>},
+  numpages  = {4},
+  url       = {https://doi.org/10.1145/3589132.3625600},
+}
+
+
+@InProceedings{Bhandari2023,
+  author    = {Bhandari, Prabin and Anastasopoulos, Antonios and Pfoser, Dieter},
+  booktitle = {Proceedings of the 31st ACM International Conference on Advances in Geographic Information Systems},
+  title     = {Are Large Language Models Geospatially Knowledgeable?},
+  year      = {2023},
+  address   = {New York, NY, USA},
+  publisher = {Association for Computing Machinery},
+  series    = {SIGSPATIAL '23},
+  abstract  = {Despite the impressive performance of Large Language Models (LLM) for various natural language processing tasks, little is known about their comprehension of geographic data and related ability to facilitate informed geospatial decision-making. This paper investigates the extent of geospatial knowledge, awareness, and reasoning abilities encoded within such pretrained LLMs. With a focus on autoregressive language models, we devise experimental approaches related to (i) probing LLMs for geo-coordinates to assess geospatial knowledge, (ii) using geospatial and non-geospatial prepositions to gauge their geospatial awareness, and (iii) utilizing a multidimensional scaling (MDS) experiment to assess the models' geospatial reasoning capabilities and to determine locations of cities based on prompting. Our results confirm that it does not only take larger but also more sophisticated LLMs to synthesize geospatial knowledge from textual information. As such, this research contributes to understanding the potential and limitations of LLMs in dealing with geospatial information.},
+  articleno = {75},
+  comment   = {3 tasks to gauge geospatial reasoning ability of  LLMs:
+- GEOSPATIAL KNOWLEDGE - "The geocoords / lat long of <city> is ..." as few shot (high Prediction rate, lower performance) and zero shot (lower P-rate better performance with smaller distance error). P-rate is "ability of LLM to correctly generate another city" ...?
+- GEOSPATIAL AWARENESS - "<city> is near/close to/far from ..." as few shot and zero shot. "Near"/"close" cities generated had smaller distances than control "and" ones and "far" ones. LIMITATION ONLY BUCKETED METRIC RELATIONS - DOESNT CAPTURE FULL SCOPE OF SPATIAL AWARENESS. W/o state info included in city names distances are occasionally further, showing likely failed toponym disambiguation.
+- GEOSPATIAL REASONING - transform coords predicted by LLM using MDS to predict location of a test city. Distances were way off but claim close enough to accurately gauge relative position of cities. NEED A MUCH MORE PRECISE DEFN OF RELATIVE USING SPATIAL RELATIONS. Seems LLM wasn't used, just to produce lat/long guesses, and then transformation applied externally for these results.
+Code: https://github.com/prabin525/spatial-llm/tree/main
+Notes/ideas:
+- Can borrow some of the experimental setup ideas, like the prepositions, but to measure more specific spatial relations like topological ones from Papadias1998.
+- Extend geospatial reasoning to get the LLM to actually do the reasoning and to measure more than just distance/metric relations.
+- What does it take to teach it new unknown cities? What kind of info does it need to be able to reason spatially about that new city in the geocontext it already has?
+- Any work in visual reasoning over a map rather than relying on whatever textual facts it might have absorbed during training?
+- Can we correct the errors (in distance for example) that it has? Do the errors vary by city popularity? I.e. smaller errors for bigger cities that are more extensively written about?},
+  doi       = {10.1145/3589132.3625625},
+  groups    = {SPM LLM},
+  isbn      = {9798400701689},
+  keywords  = {large language models, geospatial knowledge, geospatial awareness, geospatial reasoning},
+  location  = {<conf-loc>, <city>Hamburg</city>, <country>Germany</country>, </conf-loc>},
+  numpages  = {4},
+  url       = {https://doi.org/10.1145/3589132.3625625},
+}
+
+
