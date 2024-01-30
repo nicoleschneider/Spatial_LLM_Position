@@ -5,33 +5,46 @@ In this section we discuss the limitations of LLMs regarding spatial reasoning t
 
 \subsection{Challenges and Opportunities}
 \nrscomment{describe the limitations and specific issues uncovered}
+
 \nrscomment{add qualitative error examples as appropriate}
 
-\subsection{The Way Forward}
+\nrscomment{need for self-supervised pretraining tasks}
+
+Lack of correctness guarantees same as with NeuralDB
+
+\subsection{The Way Forward: Embedding Techniques}
 To address these challenges, we first envision the development of novel embedding methods and self-supervised training objectives for various types of geodata.
-%
-\subsubsection{Complex spatial relations}
-To allow LLMs to learn complex spatial relations, they can first be encoded using graphs, as is typical in the spatial pattern matching domain, where complex spatial relationships are made explicit using the edges between graph nodes.
-Once encoded, spatial graph data can be embedded using node-level, edge-level, community-level, and graph-level embeddings that are typically used in graph learning approaches like Graph Neural Networks (GNNs) \nrscomment{cite GNN paper from last vision paper}.
-By including both local context embeddings at the node and community level and global context embeddings at the graph level, the LLM would have adequate context for learning the spatial relationships captured in the data.
 
-\subsubsection{Structured geodata}
-For structured tabular geodata, the embedding techniques like row and column embeddings that are commonly used with non-spatial tabular transformers offer an initial way forward.
-However, additional work will be needed to adequately handle geo entities that would otherwise be treated as out-of-dictionary tokens within table cells.
-
-\subsubsection{Textual Geoentities}
-References to geoentities appearing in natural language text data must be encoded with spatial information like their latitude and longitude coordinates to enable spatial reasoning about them.
-Initial work in this area has shown that spatial coordinate embeddings are useful for encoding this information~\cite{Li2021}, but further refinement of the self-supervised task used to pre-train these embeddings is needed.
-Rather than crafting pseudosentences to list geoentities in descending order of spatial relevance to an entity of interest like \citeauthor{Li2021} proposes, a more intuitive task would include training on natural language descriptions of the spatial relationships between neighboring entities with words like ``north of'', ``adjacent to'', ``left of'' that might be seen in downstream spatial reasoning tasks.
-
-
-\subsubsection{Spatial Heterogeneity}
+\subsubsection{Spatial Heterogeneity} % R1 non-point data usually visual
 For RSI data, standard vision embeddings and convolution architectures can be leveraged to encode the visual data and handle autocorrelation naturally present in the data~\cite{Xie2021}.
 However, spatial heterogeneity remains a challenge most neural pipelines are unequipped to handle.
 To address this, the model design or embedding schema must be adapted to account for the varying spatial processes driving the heterogeneity of the underlying data.
 
+\subsubsection{Complex spatial relations} % R3-4 n-way and beyond directional rels, R5 multihop with paths
+To allow LLMs to learn complex spatial relations, they can first be encoded using graphs, as is typical in the spatial pattern matching domain, where complex spatial relationships are made explicit using the edges between graph nodes.
+Once encoded, spatial graph data can be embedded using node-level, edge-level, community-level, and graph-level embeddings that are typically used in graph learning approaches like Graph Neural Networks (GNNs)~\cite{Bai2019,Krlevza2016,Liu2020Neural}.
+By including both local context embeddings at the node and community level and global context embeddings at the graph level, the LLM would have adequate context for learning the spatial relationships captured in the data.
+
+\subsubsection{Structured geodata}  % R5 multihop via table joins or temporal via table info
+For structured tabular geodata, the embedding techniques like row and column embeddings that are commonly used with non-spatial tabular transformers offer an initial way forward.
+However, additional work will be needed to adequately handle geo entities that would otherwise be treated as out-of-dictionary tokens within table cells.
+
+\nrscomment{A note about generalizability and dealing with less popular cities that are OOV or not seen at training time} % R2
 
 
-Once embedding methods have been well-established for the various forms of geodata, it will then be possible to leverage work in multimodal learning to combine a variety of input modalities, to train a more generic geo foundation model capable of broad spatial reasoning given new sources of spatial information.
+\subsection{The Way Forward: Self-Supervised Training Tasks}
+Once embedding methods have been well-established for the various forms of geodata, self-supervised training objectives are needed to learn the embedding weights during pre-training.
+
+Some initial methods have been proposed for pre-training spatial coordinate embeddings that encode latitude and longitude coordinates for textual references to geographic entities~\cite{Li2021}.
+\citeauthor{Li2021} craft pseudosentences that list geoentities in descending order of spatial relevance to an entity of interest, and then employ self-supervised masked entity prediction and masked subtoken prediction objectives for pre-training.
+Although this method shows improvement over non-spatial methods at the downstream tasks of entity type classification and entity linking, there is room for improvement by developing more intuitive pre-training tasks.
+For example, we can leverage natural language descriptions of the spatial relationships between neighboring entities including words like ``north of'', ``adjacent to'', ``left of'' that might be seen in downstream spatial reasoning tasks.
+
+\nrscomment{suggest some other ideas for other kinds of spatial embeddings to be trained}
+
+
+\subsection{The Way Forward: Multimodal Spatial Learning}
+Once LLMs can be successfully pre-trained on these various types of spatial data with success in downstream tasks, it will then be possible to leverage work in multimodal learning to combine a variety of input modalities, to train a more generic geo foundation model capable of broad spatial reasoning given new sources of spatial information.
 
 \nrscomment{discuss multimodal work and how it offers promise for combining the data types mentioned above}
+

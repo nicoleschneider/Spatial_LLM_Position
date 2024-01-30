@@ -4,24 +4,36 @@
 
 With the recent advent of large language models (LLMs), many works have explored what kinds of world knowledge and reasoning capabilities LLMs inherit from their vast training data~\cite{Mai2023, Bhandari2023, Qi2023}.
 %
-\nrscomment{motivate why spatial reasoning is important for LLMs}
+LLMs have been remarkably successful at 
+
+\nrscomment{blah and blah} 
+tasks, opening up 
+
+\nrscomment{blah} 
+possibilities.
 %
-Work investigating the spatial reasoning ability of LLMs has demonstrated that LLMs have some level of ``spatial awareness'' in the form of knowledge about geocoordinates, directional relationships between major cities, and relative distances between cities~\cite{Bhandari2023, Qi2023}.
-However, LLMs are still a long way from being able to infer implicit spatial knowledge from the geospatial information they are exposed to during training on natural language text.
+However, some reasoning tasks, like spatial reasoning, remain a challenge.
+%
+\nrscomment{motivate why spatial reasoning is important for LLMs, whats the main use case}
+%
+Work investigating the spatial reasoning ability of LLMs has demonstrated that LLMs have some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, directional relationships between major cities, and relative distances between cities~\cite{Bhandari2023, Qi2023}.
+However, LLMs are still a long way from being able to infer implicit spatial knowledge from the geospatial information they are exposed to during training.
 
 
 % 1. complex entities and relations
-Specifically, LLMs cannot reason correctly about complex spatial relationships, including
+Specifically, LLMs struggle to reason correctly about complex spatial relationships, including
 %
 \textit{\textbf{(i)}} Line and region data,
-\textit{\textbf{(ii)}} N-way spatial relations between more than two spatial objects at a time, and 
-\textit{\textbf{(iii)}} Various spatial relation types, like topological or cyclic relations.
+\textit{\textbf{(ii)}} Spatial relations between more than two spatial objects, and 
+\textit{\textbf{(iii)}} Non-directional spatial relation types, like topological or cyclic relations.
 %
 In our experiments, we found that... \nrscomment{describe details of failure cases found in experiments}
+%
+In our discussion of these findings, we highlight several specific challenges that need to be solved before LLMs can perform sufficiently complex spatial reasoning to support \nrscomment{application use case}.
 
 
 % 2. various data types
-Further, LLMs cannot directly handle the various formats that geospatial data comes in.
+The overarching challenge with developing a spatially-aware LLM is that LLMs cannot directly handle the various formats that geospatial data comes in.
 Geospatial data can be organized in structured tables, geocoordinates or trajectories of geocoordinates, remote sensing imagery (RSI), natural text containing geoentity references, and graph-encoded data describing objects and their spatial relations to each other.
 %
 Many of these data formats require embedding methods that differ from the techniques used for typical textual or image data, and there are no well-studied methods for incorporating multiple modalities of spatial data into neural models ... \nrscomment{say something about state of multimodal learning} \cite{Trappolini2023}.
@@ -47,8 +59,8 @@ In these cases, custom embedding schemes must be designed for these forms of dat
 \nrscomment{describe trajectory embeddings of Hu2023 and explain limitations}
 %
 
-For textual georeferences in natural language text, spatial coordinate embeddings can be created by binning and vectorizing the corresponding latitude and longitude values of the georeferences~\cite{Li2021}.
-However, there remains a need for intuitive self-supervised tasks that would allow LLMs to learn the context for these coordinate embeddings.
+For textual georeferences in natural language text, some work has already been done creating spatial coordinate embeddings by binning and vectorizing the corresponding latitude and longitude values of the georeferences~\cite{Li2021}.
+However, there remains a need for intuitive self-supervised tasks that will allow LLMs to learn the context for these coordinate embeddings.
 %
 
 

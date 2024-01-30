@@ -10,15 +10,25 @@ In this section we discuss the results (R1 - R5) of the experiments E1 - E5 that
 
 \subsubsection{R2. Lesser-known Cities}
 --> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
+Give the phrase Chat-GPT outputs when a location is not recognized.
+Plot accuracy of result vs. population size.
 
 
 
 \subsection{Spatial Relations} % -----------------------------------------------
 
 \subsubsection{R3. N-way Spatial Relations}
+For each triple, calculate percent of correct relations. Average over all triples and report the number.
+If adding geocoords when wrong, report updated accuracy.
+--> Show how accuracy declines as number of entities involved in the prompt increases
 
 
 \subsubsection{R4. Non-directional Spatial Relations}
+Report percent of triples that it got the order relation correct.
+Report percent of pairs for which topological relation was correct.
 
 
 \subsubsection{R5. Spatiotemporal and Multiple Hop Relations}
+Report percent of 2 hop spatial queries correct.
+Report percent of space + time queries correct.
+Report for more hops if tested.

@@ -8,19 +8,19 @@ We begin by describing recent vision and position papers on the subject, and the
 
 
 \subsection{Spatial LLMs and Geo Foundation Models}
+Two recent vision papers suggest that LLMs show promise for use as spatial databases, where the LLM performs spatial reasoning given natural language prompts~\cite{Bhandari2023, Qi2023}.
+\citeauthor{Bhandari2023} and \citeauthor{Qi2023} support their visions with experiments prompting LLMs for geocoordinates of popular cities, with results showing promisingly accurate coordinates for most of the cities tested.
+\citeauthor{Bhandari2023} further prompt the LLMs to generate names of cities that are ``near'' or ``far'' from a provided reference city.
+They show that the resulting cities generated tend to be closer in distance to the reference point when the ``near'' prompt is used, and farther when the ``far'' prompt is used, indicating LLMs are capable of basic spatial reasoning in the form of understanding relative metric (distance) relations.
 
-\cite{Mai2023} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
-Vision is foundation model pretrained on different modalities, aligning their representations based on location data.
---> problem - this still doesn't solve the spatial reasoning issue. How  do we design an architecture that models spatial relationships? Embeddings? Devising self-supervised tasks?
+This paper presents a similar position, that LLMs have potential to perform spatial reasoning, but our experiments show that much more work is needed before this vision can be realized.
+We show that LLMs currently cannot handle many of the intricacies of spatial reasoning beyond the simple pairwise directional relationships between locations tested by \citeauthor{Bhandari2023} and \citeauthor{Qi2023}.
 
-\cite{Xie2023} - does not propose any concrete architectures or steps to achieve a geo foundation model
+\citeauthor{Mai2023} present a vision of a geo foundation model pre-trained on different modalities of data, aligning their representations based on location information.
+We similarly envisage a geo foundation model that can handle many input modalities, but we identify challenges associated with designing embeddings, model architectures, and self-supervised tasks that must first be addressed for individual typers of geodata, before they can be combined in a multimodal geo foundation model.
+%\cite{Mai2023} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
 
-\cite{Tan2023} - suggests combining structured and unstructured data but puts forth no solutions or ideas
-
-\cite{Qi2023} - claims LLM should BE the database and shows with minimal experiments that ChatGPT can do some level of spatial understanding. 
-Our experiments show this approach is more challenging than they suggest, as LLMs currently can't handle many of the intricacies of spatial reasoning.
-
-
+Other vision papers highlight the challenges and opportunities associated with combining structured and unstructured geodata to create a geo foundation model, but they do not propose any concrete steps or ideas to achieve such a goal~\cite{Xie2023, Tan2023}
 
 
 
@@ -39,7 +39,7 @@ To train neural models like Graph Neural Networks (GNNs) on graph-encoded data, 
 %
 \nrscomment{find and cite community and graph level embeddings}
 
-For structured tabular data, ... \nrscomment{cite tabular survey}
+For structured tabular data, ... surveys and benchmarks saying tabular transformers are still an open problem:\cite{Cong2023, Badaro2023}
 \cite{Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}
 
 \subsubsection{Model Architectures}
