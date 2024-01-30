@@ -4,9 +4,28 @@
 signpost
 
 \subsection{Preliminaries}
-Define spatial reasoning
+\nrscomment{Define spatial reasoning over spatial entities and spatial relations.}
+\nrscomment{Explain how spatial reasoning is done traditionally?}
 
-How is spatial reasoning done traditionally?
+
+\subsubsection{Spatial Entities}
+Spatial entities are the basic elements of spatial data.
+They can be classed into three main types: \textbf{(i)} \textit{Points}, which consist of an $(x,y)$ coordinate pair in Cartesian space, \textbf{(ii)} \textit{Lines}, which represent the shortest path between two points, and \textbf{(iii)} \textit{Regions}, which represent the area inside a polyline joining several points. 
+Point entities are typically used to represent locations in the world, like landmarks, towns, buildings, and objects.
+Line entities are typically used to represent ways, like roadways, waterways, and railways.
+Region entities are typically used to represent the extent of lakes, stadiums, large buildings, states, and counties.
+
+
+\subsection{Spatial Relations}
+\textit{Points, Lines} and \textit{Regions} relate to each other spatially through the following types of relationships~\cite{Carniel2020,Bertella2022,Carniel2023}: 
+\textbf{(i)} \textit{Metric relations} that describe the distances between spatial entities (like ten miles, near, far), 
+\textbf{(ii)} \textit{Topological relations} that describe how regions, lines, and points interact (like intersect, contain, touch), and 
+\textbf{(iii)} \textit{Directional relations} that describe how entities are positioned relatively in space (like north, left, behind),
+\textbf{(iv)} \textit{Order} relations that describe the cyclic order in which objects appear with respect to a central coordinate~\cite{Schwering2014}.
+%
+Hybrid relations that combine two or more of the primitive spatial relations are also possible~\cite{Carniel2023}.
+
+
 
 \subsection{Motivation}
 Why is this an important problem that machine learning people should care about solving?
