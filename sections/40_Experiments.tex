@@ -1,31 +1,36 @@
 \section{Experiments}
 \label{section:experiments}
 
-To illustrate the challenges associated with training an LLM to perform spatial reasoning, we design a set of experiments to probe Chat-GPT \nrscomment{cite} for its spatial reasoning abilities.
-We first probe its reasoning ability across targeted spatial entity types, and then its ability to handle various complex spatial relations.
+To support our position that further work is needed to enable LLMs to reason spatially, we first design a set of experiments (E1 - E5) to illustrate the present limitations of LLMs with regard to spatial reasoning.
+The first set of experiments probes spatial reasoning ability across targeted spatial entity types, and the second set targets reasoning over various complex spatial relations.
 
 
-\subsection{Entities} % -----------------------------------------------
+\subsection{Spatial Entities} % -----------------------------------------------
 
-\subsubsection{Non-point Data}
-\cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM as a db handle it?
+\subsubsection{E1. Non-point Data}
+\cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
 --> Show this info isn't learned in LLMs by repeating queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
 
-\subsubsection{Lesser-known Cities}
---> Show correlation between cities recognized and their population size.
+\subsubsection{E2. Lesser-known Cities}
+To determine if LLMs are able to answer spatial questions about less populous locations and cities, we prompt Chat-GPT with the following question, filling in the blank with the name of a location in Australia.
+The locations are selected based on their population size, ranging from \nrscomment{fill in details}
+For each prompt, we measure whether the location was recognized or not \nrscomment{give unrecognized output phrase}.
+We also measure whether the response is spatially accurate \nrscomment{decide if this is feasible}
 
 
 
-\subsection{Relations} % -----------------------------------------------
 
-\subsubsection{N-way Spatial Relations}
+
+\subsection{Spatial Relations} % -----------------------------------------------
+
+\subsubsection{E3. N-way Spatial Relations}
 --> Repeat AUS cities test from \cite{Qi2023} paper but with 3 way relations to show it isn't really doing spatial reasoning
 
-\subsubsection{Non-directional Spatial Relations}
+\subsubsection{E4. Non-directional Spatial Relations}
 Cyclic? Topological?
 --> Show this info isn't learned in LLMs by making queries similar to the \cite{Qi2023} ones but for relations types besides directional.
 
-\subsubsection{Spatiotemporal and Multiple Hop Relations}
+\subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
 --> Test if Chat-GPT can answer queries like
 - whether event x happened north of event y (2 hops event->loc + loc->spatial)
 - all events in x region that happened between y and z dates (intersect space and time)

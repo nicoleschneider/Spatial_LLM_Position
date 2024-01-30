@@ -2,11 +2,16 @@
 \label{section:related}
 \normalsize
 
-\subsection{Other Spatial LLM/Foundation Model Vision papers}
+Many recent works have explored the abilities and limitations of LLMs for performing various reasoning tasks, from math word problems~\cite{Gao2023, Badaro2023} to place name resolution \cite{Mai2023}.
+In this section we summarize the recent work investigating the degree to which LLMs can reason spatially.
+We begin by describing recent vision and position papers on the subject, and then discuss specific advances in embedding methods and other techniques proposed to enable LLMs to ingest and reason over spatial data.
+
+
+\subsection{Spatial LLMs and Geo Foundation Models}
 
 \cite{Mai2023} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
 Vision is foundation model pretrained on different modalities, aligning their representations based on location data.
---> problem - this still doesn't solve the spatial reasoning issue. How  do we design an architecture that models spatial relationships?
+--> problem - this still doesn't solve the spatial reasoning issue. How  do we design an architecture that models spatial relationships? Embeddings? Devising self-supervised tasks?
 
 \cite{Xie2023} - does not propose any concrete architectures or steps to achieve a geo foundation model
 
@@ -18,18 +23,31 @@ Our experiments show this approach is more challenging than they suggest, as LLM
 
 
 
-\subsection{Large Language Model Embedding Methods for Geodata}
-A few embedding methods have been developed for individual types of geospatial data.
 
-For trajectories of geocoordinates, ~\cite{Hu2023}.
+\subsection{Large Language Model Adaptations for Geodata}
+A few embedding methods and model architectures have been proposed to enable LLMs to handle some types of geospatial data.
+
+\subsubsection{Embedding Methods}
+For trajectories of geocoordinates, embeddings are ... ~\cite{Hu2023}.
 
 For textual georeferences, SpaBERT designs a pre-training task using spatial coordinate embeddings (based on latitude and longitude) corresponding to textual georeferences.
 They create pseudosentences containing lists of geoentity references and neighboring entities in the physical world, in increasing order of distance from the original entity~\cite{Li2021}.
-Results show that the spatial embedding improves accuracy on downstream tasks of geoentity type prediction and linking geoentiteis to knowledge graphs.
+Results show that the spatial embedding improves accuracy on downstream tasks of geoentity type prediction and linking geoentities to knowledge graphs.
 
+For modeling complex n-way relationships similar to those needed for tasks like spatial pattern matching, graphs are typically used~\cite{Folkers2000, Chen2019, Fang2019, Osul2023b}.
+To train neural models like Graph Neural Networks (GNNs) on graph-encoded data, node-level and edge-level embeddings are common~\cite{Bai2019,Krlevza2016,Liu2020Neural}. \nrscomment{check those papers actually use those embedding types}
+%
+\nrscomment{find and cite community and graph level embeddings}
+
+For structured tabular data, ... \nrscomment{cite tabular survey}
+\cite{Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}
+
+\subsubsection{Model Architectures}
 For RSI, spatial heterogeneity prevents the standard vision methods from working out of the box. 
 \cite{Xie2021} adapts the model architecture through a series of statistical tests to address the different spatial distributions present in the data.
 \nrscomment{can we handle it in the embeddings instead?}
+
+\nrscomment{other related work that proposes novel architectures?}
 
 
 % \subsection{NL to Spatial Query}
