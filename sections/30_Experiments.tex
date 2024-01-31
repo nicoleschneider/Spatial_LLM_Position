@@ -15,6 +15,8 @@ The first set of experiments probes spatial reasoning ability across targeted sp
 \subsubsection{E2. Lesser-known Cities}
 To determine if LLMs are able to answer spatial questions about less populous locations and cities, we prompt Chat-GPT with the following question, filling in the blank with the name of a location in Australia.
 \nrscomment{question here}
+
+\osullikomment{Contemporay One. Fraser Island became K'Garri last year. Most famous is probably Ayers Rock becoming Uluru or the Olgas becoming Kata Tjuta. Some towns of varying size that you might reasonably expect a knowledgeable Australian to know about could include Whyalla, Iron Knob, Broken Hill, Charters Towers, Ingham, Quirindi, Long Jetty, the Principality of Hutt River. Happy to do a more thoughtful look if you give me some parameters.}
 The locations are selected based on their population size, ranging from \nrscomment{fill in details}
 For each prompt, we measure whether the location was recognized or not.
 We also measure whether the response is spatially accurate \nrscomment{decide if this is feasible}
@@ -26,8 +28,8 @@ We also measure whether the response is spatially accurate \nrscomment{decide if
 \subsection{Spatial Relations} % -----------------------------------------------
 
 \subsubsection{E3. N-way Spatial Relations}
-To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign the top \nrscomment{n} most populous cities in Australia into \nrscomment{n/3} groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with prompt: A is to which side of B and C.
+To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign the top \nrscomment{n} most populous cities \osullikomment{From memory: Sydney, Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Newcastle, Geelong}in Australia into \nrscomment{n/3} groups of three.
+For each group consisting of cities A, B, and C, we query ChatGPT with prompt: A is to which side of B and C. \osullikomment{Side might be ambiguous, you might need to say compass direction. Are you just doing zero shot, or are you going to try few shot? Going to try CoT prompting?}
 % if needed: when wrong response is produce, the geo-coordinates are further included in the prompt.
 % if needed: try the reverse where we ask for a city thats SE of A and NW of B
 % if needed do more than 3 way and show how accuracy declines with more entities (more complexity)
@@ -40,14 +42,15 @@ For each group consisting of cities A, B, and C, we query ChatGPT with prompt: A
 \nrscomment{check this is faithful to cyclic order relations}
 
 Next, we test topological relations by randomly selecting states and counties as regions (R), highways, roadways, and riverways as lines (L), and landmarks as points (P).
-Then we query Chat-GPT with prompt containing topological relations like: R contains or does not contain P, L1 intersects or does not intersect L2, R1 touches or does not touch R2. 
+\osullikomment{Could be a really interesting twist using the first nation's territorial boundaries for this as a point of comparison. There are maps out there but they're not well known.}
+Then we query Chat-GPT\osullikomment{I've got a shitty LLAMA2 instance if you want to pollute your soul. Otherewise might be worth hitting PALM and Gemini APIs etc too)} with prompt containing topological relations like: R contains or does not contain P, L1 intersects or does not intersect L2, R1 touches or does not touch R2. \osullikomment{This will be messy because some are easy - e.g. "Is Canberra in the ACT" -> yes. But there are some nasty ones too. The ACT is completely containsed in New South Wales, so if you asked "Is Canberra contained in New South Wales", transitively it would be yes, but technically it should be no...}
 
 
 \subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
 --> Test if Chat-GPT can answer queries like
 - whether event x happened north of event y (2 hops event->loc + loc->spatial)
 - all events in x region that happened between y and z dates (intersect space and time)
-- all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation)
+- all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation) \osullikomment{I'd use GDELT data to give you a standard set of events. They're derived from newspaper articles so you should be able to limit to new events and get some confidence that they're not in the training data. Or NewsSTAND I guess....}
 
 
 
