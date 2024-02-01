@@ -14,12 +14,16 @@ The first set of experiments probes spatial reasoning ability across targeted sp
 
 \subsubsection{E2. Lesser-known Cities}
 To determine if LLMs are able to answer spatial questions about less populous locations and cities, we prompt Chat-GPT with the following question, filling in the blank with the name of a location in Australia.
-\nrscomment{question here}
+
+\begin{center}
+    \boxed{Where\ in\ the\ world\ is\ \langle location\ name\rangle ?}
+\end{center}
+
+The locations are selected based on their population size, ranging from \nrscomment{fill in details}
+For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not.
+
 
 \osullikomment{Contemporay One. Fraser Island became K'Garri last year. Most famous is probably Ayers Rock becoming Uluru or the Olgas becoming Kata Tjuta. Some towns of varying size that you might reasonably expect a knowledgeable Australian to know about could include Whyalla, Iron Knob, Broken Hill, Charters Towers, Ingham, Quirindi, Long Jetty, the Principality of Hutt River. Happy to do a more thoughtful look if you give me some parameters.}
-The locations are selected based on their population size, ranging from \nrscomment{fill in details}
-For each prompt, we measure whether the location was recognized or not.
-We also measure whether the response is spatially accurate \nrscomment{decide if this is feasible}
 
 
 

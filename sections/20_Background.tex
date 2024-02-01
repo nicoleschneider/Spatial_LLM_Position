@@ -6,13 +6,12 @@ In this section we define the problem of spatial reasoning and describe how it p
 \subsection{Preliminaries}
 Spatial reasoning is the task of reasoning about entities or objects that are located in space and possess spatial structure, or have spatial relationships with each other~\cite{Varzi2007}.
 The abstract theories that define the core principles of spatial reasoning are commonly divided into classes including 
-(i) \textit{mereology}, the theory of parthood relations;
-(i) \textit{topology}, the theory of qualitative spatial relations such as continuity and contiguity, and 
-(iii) the \textit{theory of location proper}, which deals with the relationship between an entity and the spatial region it
+\textbf{(i)} \textit{mereology}, the theory of parthood relations;
+\textbf{(ii)} \textit{topology}, the theory of qualitative spatial relations such as continuity and contiguity, and 
+\textbf{(iii)} the \textit{theory of location proper}, which deals with the relationship between an entity and the spatial region it
 occupies~\cite{Varzi2007}.
 
 In this paper we discuss spatial reasoning tasks, which involve answering questions about certain relationships (termed spatial relations) between some set of objects in space.
-Traditionally, many spatial reasoning tasks can be addressed using first order logic, such as by formulating qualitative constraint networks and solving them using constraint satisfaction approaches.
 
 
 
@@ -35,13 +34,29 @@ Hybrid relations that combine two or more of the primitive spatial relations are
 
 
 
-\subsection{/motivation and Challenges}
+\subsection{Motivation and Challenges}
 Humans seamlessly apply spatial reasoning to the objects we perceive in our environment every day.
 Without consciously realizing it, we may use spatial reasoning to navigate from one place to another, or to recall and describe a place by the spatial configuration of its nearby landmarks.
 To do this we rely on world knowledge and experience, spatial intuition, common sense, and embodiment.
-However, even with advances in machine perception and massive models with enough parameters to memorize world knowledge, spatial reasoning remains a challenging task that machine learning has yet to solve.
-
+%
 \osullikomment{We can query our environment for more information and explore until we collect enough information. ML models are stuck with the information they have. }
+%
+However, even with advances in machine perception and massive models with enough parameters to memorize world knowledge, spatial reasoning remains a challenge that machine learning has yet to solve.
+
+Traditionally, many spatial reasoning tasks like spatial pattern matching (determining which database objects match a set of query constraints) can be addressed using first order logic, such as by formulating qualitative constraint networks and solving them using constraint satisfaction approaches~\cite{Papadias1998, Schwering2014, Duckham2023}.
+Isomorphic subgraph matching approaches are also common~\cite{Folkers2000, Chen2019, Fang2019}
+However, these methods are computationally slow and often limited to handling only point entities, or directional constraints.
+
+
+
+
+
+
+\subsection{Machine Learning for Spatial Reasoning}
+Although some work has been done using machine learning to approximately solve generic subgraph matching problems~\cite{Krlevza2016, Liu2020Neural,Lan2021,Roy2022}, the approaches are limited to small or undirected graphs and are not yet robust enough to use for spatial reasoning tasks.
+Even on a small scale, dense graphs or multigraphs are often required to capture all the explicit spatial relations between entities.
+This information density makes search and reasoning over spatial data challenging, necessitating flexible, approximate approaches.
+
 
 Why is this an important problem that machine learning people should care about solving?
 
