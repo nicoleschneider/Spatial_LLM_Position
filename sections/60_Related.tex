@@ -29,9 +29,8 @@ Other vision papers highlight the challenges and opportunities associated with c
 A few embedding methods and model architectures have been proposed to enable LLMs to handle certain types of geospatial data.
 
 \subsubsection{Embedding Methods}
-For trajectories of geocoordinates, \citeauthor{Hu2023} propose an embedding method that uses....... ~\cite{Hu2023}.
-\nrscomment{fill in}
-
+For trajectories of geocoordinates, \citeauthor{Hu2023} propose an embedding method that uses sub-trajectory similarity learning to pre-train trajectory representations that can be used in downstream prediction tasks~\cite{Hu2023}.
+%
 For textual georeferences, \citeauthor{Li2021} design a pre-training task using spatial coordinate embeddings (based on latitude and longitude) corresponding to textual georeferences.
 They create pseudosentences consisting of a geoentity reference and neighboring entities, listed in increasing order of distance from the reference entity~\cite{Li2021}.
 Results show that the spatial coordinate embedding improves accuracy over non-spatial methods on the downstream tasks of geoentity type prediction and linking to knowledge graphs.
@@ -39,17 +38,11 @@ However, to ensure applicability to a variety of tasks, there remains a need for
 For example, we suggest crafting natural language descriptions of the spatial relationships between neighboring entities rather than listing them, which would more closely align the task with the unstructured text prediction tasks typically used to train LLMs.
 
 For modeling complex multi-way spatial relationships like those needed for spatial pattern matching, graphs are typically used to encode the data~\cite{Folkers2000, Chen2019, Fang2019, Osul2023b}.
-To train neural models like Graph Neural Networks (GNNs) on graph-encoded data, node-level and edge-level embeddings are commonly used~\cite{Bai2019,Krlevza2016,Liu2020Neural}. \nrscomment{check those papers actually use those embedding types}
+To train neural models like Graph Neural Networks (GNNs) on graph-encoded data, node-level and edge-level embeddings are commonly used~\cite{Bai2019,Krlevza2016,Liu2020Neural}.
+For structured tabular data, training general purpose transformer-based foundation models that can handle tabular inputs is an active area of research~\cite{Cong2023, Badaro2023,    Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}.
 
-\nrscomment{find and cite community and graph level embeddings}
-
-\nrscomment{bridge the gap to LLMs by explaining a self-supervised task for this in solution section and refer to it here}
-
-
-For structured tabular data, training general purpose transformer-based foundation models that can handle tabular inputs is an active area of research~\cite{Cong2023, Badaro2023}.
-
-\nrscomment{describe the embeddings and explain how pretraining task would differ}
-\cite{Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}
+%\nrscomment{describe the embeddings and explain how pretraining task would differ}
+%\cite{Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}
 
 % \subsubsection{Model Architectures}
 % For RSI, spatial heterogeneity prevents the standard vision methods from working out of the box. 

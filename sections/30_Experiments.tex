@@ -54,13 +54,13 @@ For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for
 While differences in model used, prompt wording, and exact city names used may account for some variation, we hypothesize that the large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations is an indication of a fundamental lack of spatial reasoning ability in current LLMs.
 
 It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
-As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated.
+As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
 However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
 Hence, we believe the poor performance across most of the three-way directional relations we tested indicates a lack of the model's ability to infer implicit spatial relationships that it did not learn directly from training.
 We discuss ways complex spatial relations can be encoded and provided to models at training time in section \ref{section:proposal}.
 
 
-\subsubsection{Experiment 2: Cyclic Order Relations}
+\subsection{Experiment 2: Cyclic Order Relations}
 \paragraph{Method}
 To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
 For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
@@ -82,8 +82,8 @@ For example, one output was
 In the context of multiple previous studies that have shown Chat-GPT and other LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
 
 
-\subsubsection{Experiment 3: Topological Relations}
-To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
+\subsection{Experiment 3: Topological Relations}
+To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
 We query Chat-GPT with topological relation prompts that are structured like:
 \begin{center}
@@ -104,7 +104,7 @@ The second factor is that this test only involved two entities per prompt, which
 To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
 For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
 These cases indicate that the errors we observe are due to failures in reasoning ability (i.e. that the spatial reasoning the model is doing is not self-consistent) rather than incorrect information about an entity's position in space (such as having false information that a city is located somewhere different from where it actually exists).
-In the following section we discuss data augmentation techniques that may help address the self-consistency issues observed here.
+In section \ref{section:proposal} we discuss data augmentation techniques that may help address the self-consistency issues observed here.
 
 
 
