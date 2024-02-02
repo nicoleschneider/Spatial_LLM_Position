@@ -13,7 +13,7 @@ Two recent vision papers suggest that LLMs show promise for use as spatial datab
 \citeauthor{Bhandari2023} further prompt the LLMs to generate names of cities that are ``near'' or ``far'' from a provided reference city.
 They show that the resulting cities generated tend to be closer in distance to the reference point when the ``near'' prompt is used, and farther when the ``far'' prompt is used, indicating LLMs are capable of basic spatial reasoning in the form of understanding relative metric (distance) relations.
 
-This paper presents a similar position, that LLMs have potential to perform spatial reasoning, but our experiments show that much more work is needed before this vision can be realized.
+Our paper presents a similar position, that LLMs have potential to perform spatial reasoning, but our experiments show that much more work is needed before this vision can be realized.
 We show that LLMs currently cannot handle many of the intricacies of spatial reasoning beyond the simple pairwise directional relationships between locations tested by \citeauthor{Bhandari2023} and \citeauthor{Qi2023}.
 
 \citeauthor{Mai2023} present a vision of a geo foundation model pre-trained on different modalities of data, aligning their representations based on location information.
@@ -30,6 +30,7 @@ A few embedding methods and model architectures have been proposed to enable LLM
 
 \subsubsection{Embedding Methods}
 For trajectories of geocoordinates, \citeauthor{Hu2023} propose an embedding method that uses....... ~\cite{Hu2023}.
+\nrscomment{fill in}
 
 For textual georeferences, \citeauthor{Li2021} design a pre-training task using spatial coordinate embeddings (based on latitude and longitude) corresponding to textual georeferences.
 They create pseudosentences consisting of a geoentity reference and neighboring entities, listed in increasing order of distance from the reference entity~\cite{Li2021}.
@@ -50,12 +51,12 @@ For structured tabular data, training general purpose transformer-based foundati
 \nrscomment{describe the embeddings and explain how pretraining task would differ}
 \cite{Iida2021, Somepalli2022, Seng2022, Yin2020, Herzig2020}
 
-\subsubsection{Model Architectures}
-For RSI, spatial heterogeneity prevents the standard vision methods from working out of the box. 
-\cite{Xie2021} adapts the model architecture through a series of statistical tests to address the different spatial distributions present in the data.
-\nrscomment{can we handle it in the embeddings instead?}
+% \subsubsection{Model Architectures}
+% For RSI, spatial heterogeneity prevents the standard vision methods from working out of the box. 
+% \cite{Xie2021} adapts the model architecture through a series of statistical tests to address the different spatial distributions present in the data.
+% \nrscomment{can we handle it in the embeddings instead?}
 
-\nrscomment{other related work that proposes novel architectures?}
+% \nrscomment{other related work that proposes novel architectures?}
 
 
 % \subsection{NL to Spatial Query}

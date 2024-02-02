@@ -14,79 +14,83 @@ tasks, opening up
 \nrscomment{blah} 
 possibilities.
 %
-However, some reasoning tasks, including reasoning about the spatial relationships between entities in space (termed \textit{spatial reasoning}), remain a challenge.
+However, some reasoning tasks, including reasoning about the relationships between entities in space (termed \textit{spatial reasoning}), remain a challenge.
+Spatial information is ubiquitous, and it can come in a variety of forms, including in text, making it prevalent in the data used to train LLMs.
+
+
+Work investigating the spatial reasoning ability of LLMs has demonstrated that LLMs have some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, directional relationships between major cities, and distances between cities~\cite{Bhandari2023, Qi2023}.
+However, LLMs are still a long way from inferring implicit spatial knowledge from geospatial information, which limits their ability to perform tasks that have a spatial component, such as generating a set of instructions for how to navigate from one place to another, or recommending points of interest based on spatial constraints.
+
+With these use cases in mind, we designed a set of experiments to probe an LLM to determine if it is capable of spatial reasoning, or if it just memorized some spatial facts from training.
 %
-\nrscomment{motivate why spatial reasoning is important for LLMs, whats the main use case}
+In our results, we found that LLMs currently struggle to perform complex spatial reasoning, especially about
 %
-Work investigating the spatial reasoning ability of LLMs has demonstrated that LLMs have some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, directional relationships between major cities, and relative distances between cities~\cite{Bhandari2023, Qi2023}.
-However, LLMs are still a long way from being able to infer implicit spatial knowledge from geospatial information, which can come in a variety of formats.
-
-
-% complex entities and relations
-LLMs currently struggle to perform complex spatial reasoning, especially about
+%(\textit{\textbf{i}}) Line and region data,
+(\textit{\textbf{i}}) Relative spatial positions of more than two entities, and 
+(\textit{\textbf{ii}}) Non-directional spatial relation types, like cyclic order relations.
 %
-\textit{\textbf{(i)}} Line and region data,
-\textit{\textbf{(ii)}} Spatial relations between more than two spatial objects, and 
-\textit{\textbf{(iii)}} Non-directional spatial relation types, like topological or cyclic relations.
+%Further, the responses we recorded highlighted a lack of self-consistency.
 %
-In our experiments, we found that... \nrscomment{describe details of failure cases found in experiments}
-
-
-In our discussion of these findings, we highlight several specific challenges that need to be solved before LLMs can perform sufficiently complex spatial reasoning to support \nrscomment{application use case}.
-\osullikomment{I think you just use Spatial Pattern Matching from text as your use case. You want to solve how you can match a pattern to a description of it, which you can't do without some level of spatial reasoning. A good experiment might even be a maze. Give it a collection of simple mazes, directions to traverse the maze and see if it can figure out which maze it solves? I'd run that experiment, it sounds fun. Actually, more general case - you could argue that solving a maze is equivalent to parsing directions. "Turn right out of here and drive until you hit the Mcdonalds on Baltimore Avenue, Turn left and drive for about half a mile and pull into the park. Again, humans don't always use street names, we navigate by landmarks..."}
-
-
-The overarching challenge with developing a spatially-aware LLM is that LLMs cannot directly handle many of the formats that geospatial data comes in.
-Geospatial data can be organized in structured tables, geocoordinates or trajectories of geocoordinates, remote sensing imagery (RSI), unstructured text containing geoentity references, and graph-encoded data describing dense spatial relations between locations.
+To address these shortcomings, we envision new embedding methods and self-supervised learning objectives that can be used to enable LLMs to learn over complex spatial data.
 %
-Many of these data formats require specialized embedding techniques beyond those typical of textual or image data.
+Moreover, there are no well-studied methods for combining multiple modalities of spatial data for input into neural models~\cite{Xue2023, Trappolini2023}, which we believe is an area ripe for exploration.
+
+%\nrscomment{say something about state of multimodal learning} \cite{Trappolini2023, Fei2022}.
 
 
-% 1. tabular challenges bleed over
-Structured tables of geospatial data present a particular challenge, since applying LLMs to tabular data generally remains an open problem~\cite{Gao2023,Cong2023}.
-The main challenge is that the standard self-supervised masked token prediction task that is used to train LLMs is incompatible with structured tabular data~\cite{Tan2023, Qi2023}.
-In addition, unlike words, table values can be continuous and have vastly different meaning depending on which attribute column they appear in~\cite{Qi2023}.
-
-
-% 2. spatial heterogeneity
-Even data types that neural models typically handle well, like images, present a challenge when they capture complex spatial information.
+This paper presents the position that LLMs have the potential to perform spatial reasoning, but that key challenges need to be addressed before this vision can be realized.
 %
-Remote Sensing Imagery (RSI) contains spatial data that typically violates the independent and identically distributed (i.i.d.) assumption of neural models, with different spatial regions being generated by different processes, such as land covered by different types of crops and managed by different agricultural practices, that are rarely present in the features. 
-This spatial heterogeneity must be accounted for, either by training different models for each distinct spatial region~\cite{Gupta2021}, which is computationally inefficient, or by a specialized model architecture that follows the the spatial data distribution~\cite{Xie2021b}.
-\osullikomment{Might be worth citing Christian's work here, the search-by-classification stuff.}
-
-
-% 3. new embedding types needed
-For other forms of data, like trajectories of geocoordinates, the inputs are mostly numerical and differ significantly from the kind of natural language text LLMs typically see during pre-training.
-In these cases, custom embedding schemes must be designed for these forms of data~\cite{Hu2023}.
+We envision that initial efforts towards addressing these challenges will involve the development of novel embedding methods and self-supervised training objectives for various types of geodata.
 %
-\nrscomment{describe trajectory embeddings of Hu2023 and explain limitations}
+%For complex, multi-way spatial relations, one avenue is encoding the data in a graph and leveraging node-level, edge-level, and community-level embeddings to provide adequate context for learning.
+%For structured tabular geodata, embedding techniques like row-level and column-level embeddings that are being investigated for non-spatial tabular transformers may provide a good starting point, with additional work needed to adequately handle geographic entities that would otherwise be treated as out-of-dictionary tokens.
+%For RSI data, standard vision embeddings and convolution architectures are applicable, but the model design or embedding schema must be adapted to account for the spatial heterogeneity of the underlying data.
 %
+As we describe in our proposed solution, once embedding methods have been well-established for geodata, it will then be possible to leverage recent and future work in multimodal learning to combine a variety of input modalities to train a geo foundation model that would be useful across a variety of spatial tasks.
 
-For textual georeferences in natural language text, some work has already been done creating spatial coordinate embeddings by binning and vectorizing the corresponding latitude and longitude values of the georeferences~\cite{Li2021}.
-However, there remains a need for intuitive self-supervised tasks that will allow LLMs to learn the context for these coordinate embeddings.
+
+
+%several specific challenges that need to be solved before LLMs can perform consistent enough spatial reasoning to support tasks that have a spatial aspect.
+
+%\osullikomment{I think you just use Spatial Pattern Matching from text as your use case. You want to solve how you can match a pattern to a description of it, which you can't do without some level of spatial reasoning. A good experiment might even be a maze. Give it a collection of simple mazes, directions to traverse the maze and see if it can figure out which maze it solves? I'd run that experiment, it sounds fun. Actually, more general case - you could argue that solving a maze is equivalent to parsing directions. "Turn right out of here and drive until you hit the Mcdonalds on Baltimore Avenue, Turn left and drive for about half a mile and pull into the park. Again, humans don't always use street names, we navigate by landmarks..."}
+
+
+% The overarching challenge we find with designing a spatially-aware LLM is that LLMs cannot directly handle many of the formats that geospatial data comes in.
+% Geospatial data can be organized in structured tables, geocoordinates or trajectories of geocoordinates, remote sensing imagery (RSI), unstructured text containing geoentity references, and graph-encoded data describing dense spatial relations between locations.
+% %
+% Many of these data formats require specialized embedding techniques beyond those typical of textual or image data.
+
+
+% % 1. tabular challenges bleed over
+% Structured tables of geospatial data present a particular challenge, since applying LLMs to tabular data generally remains an open problem~\cite{Gao2023,Cong2023}.
+% The main challenge is that the standard self-supervised masked token prediction task that is used to train LLMs is incompatible with structured tabular data~\cite{Tan2023, Qi2023}.
+% In addition, unlike words, table values can be continuous and have vastly different meaning depending on which attribute column they appear in~\cite{Qi2023}.
+
+
+% % 2. spatial heterogeneity
+% Even data types that neural models typically handle well, like images, present a challenge when they capture complex spatial information.
+% %
+% Remote Sensing Imagery (RSI) contains spatial data that typically violates the independent and identically distributed (i.i.d.) assumption of neural models, with different spatial regions being generated by different processes, such as land covered by different types of crops and managed by different agricultural practices, that are rarely present in the features. 
+% This spatial heterogeneity must be accounted for, either by training different models for each distinct spatial region~\cite{Gupta2021}, which is computationally inefficient, or by a specialized model architecture that follows the the spatial data distribution~\cite{Xie2021b}.
+% \osullikomment{Might be worth citing Christian's work here, the search-by-classification stuff.}
+
+
+% % 3. new embedding types needed
+% For other forms of data, like trajectories of geocoordinates, the inputs are mostly numerical and differ significantly from the kind of natural language text LLMs typically see during pre-training.
+% In these cases, custom embedding schemes must be designed for these forms of data~\cite{Hu2023}.
+% %
+% \nrscomment{describe trajectory embeddings of Hu2023 and explain limitations}
+% %
+
+% For textual georeferences in natural language text, some work has already been done creating spatial coordinate embeddings by binning and vectorizing the corresponding latitude and longitude values of the georeferences~\cite{Li2021}.
+% However, there remains a need for intuitive self-supervised tasks that will allow LLMs to learn the context for these coordinate embeddings.
 %
 
 % 4. multimodal
-Moreover, there are no well-studied methods for combining multiple modalities of spatial data for input into neural models~\cite{Xue2023}.
 
-\nrscomment{say something about state of multimodal learning} \cite{Trappolini2023, Fei2022}.
-
-\osullikomment{I feel like this section should signpost your conclusions -- i.e whatever you have in here should reflect the findings of the experiments i.e. I'm expecting you're going to offer Tabular, Embeddings and Spatial Heterogeneity responses. If that's not where you're thrusting it might be worth restructuring it a bit, because that's where I'm being logically led.}
-This paper presents the position that LLMs have the potential to perform spatial reasoning, but that the aforementioned challenges need to be addressed before this vision can be realized.
-%
-To begin to address these challenges, we first envision the development of novel embedding methods and self-supervised training objectives for various types of geodata.
-%
-For complex, multi-way spatial relations, one avenue is encoding the data in a graph and leveraging node-level, edge-level, and community-level embeddings to provide adequate context for learning.
-For structured tabular geodata, embedding techniques like row-level and column-level embeddings that are being investigated for non-spatial tabular transformers may provide a good starting point, with additional work needed to adequately handle geographic entities that would otherwise be treated as out-of-dictionary tokens.
-For RSI data, standard vision embeddings and convolution architectures are applicable, but the model design or embedding schema must be adapted to account for the spatial heterogeneity of the underlying data.
-%
-As we describe in our proposed road-map, once embedding methods have been well-established for geodata, it will then be possible to leverage recent and future work in multimodal learning to combine a variety of input modalities, to train a geo foundation model.
-%
-We envision such a foundation model would be useful in \nrscomment{application use case}.
 
 The rest of this paper presents the necessary background on spatial reasoning in section \ref{section:background}, followed by a set of experiments designed to probe the spatial reasoning limitations of current LLMs in section \ref{section:experiments}.
-Then in section \ref{section:results} we discuss the results of the experiments and in section \ref{section:proposal} we propose solutions for overcoming the limitations we highlight.
+Then in section \ref{section:proposal} we propose solutions for overcoming the limitations we highlight through our experiments.
 Finally, we describe the related spatial LLM work in section \ref{section:related} before concluding in section \ref{section:conclusion}. 
 %-------------------------------
 
