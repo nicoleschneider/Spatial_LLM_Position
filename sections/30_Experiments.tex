@@ -1,33 +1,42 @@
 \section{Experiments}
 \label{section:experiments}
 
+\nrscomment{release all prompts and responses as appendix \\ randomize properly \\ describe method for selection and sampling}
+
 To support our position that further work is needed to enable LLMs to reason spatially, we design a set of experiments to illustrate the present limitations of LLMs with regard to spatial reasoning.
 The experiments probe the spatial reasoning ability of Chat-GPT~\footnote{GPT3.5 (Feb 2024)}.
 
 
 %\subsection{Spatial Entities} % -----------------------------------------------
 
-% \subsubsection{E1. Non-point Data}
-% \paragraph{Method}
-% \cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
-% --> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
-% % randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
+\nrscomment{resolve or separate from topo queries by asking the extent of or something where relations arent needed}
 
-% \subsubsection{E1. Lesser-known Cities}
-% To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
+\subsubsection{E0.1 Non-point Data}
+\paragraph{Method}
+\cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
+--> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
+% randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
 
-% \begin{center}
-%     \boxed{Where\ in\ the\ world\ is\ L?}
-% \end{center}
 
-% The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
-% For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. \osullikomment{Might be worth specifying Country / State / Region level of fidelity (i.e. the later in the list of answers I gave you, the more specific it is)}
+\nrscomment{Make this a one liner explaining the random selection process and testing to verify it recognizes the cities}
+\nrscomment{move this out to a paper on embeddings}
 
-% \paragraph{Results and Discussion}
+\subsubsection{E0.2 Lesser-known Cities}
+To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
+
+\begin{center}
+    \boxed{Where\ in\ the\ world\ is\ L?}
+\end{center}
+
+The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
+For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. \osullikomment{Might be worth specifying Country / State / Region level of fidelity (i.e. the later in the list of answers I gave you, the more specific it is)}
+
+\paragraph{Results and Discussion}
 
 
 
 %\subsection{Spatial Relations} % -----------------------------------------------
+\nrscomment{test 2 way directional as baseline instead of relying on Qi2023}
 
 \subsection{Experiment 1: Multi-way Spatial Relations}
 \paragraph{Method}
@@ -82,7 +91,10 @@ For example, one output was
 In the context of multiple previous studies that have shown Chat-GPT and other LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
 
 
+\nrscomment{define the relations}
+
 \subsection{Experiment 3: Topological Relations}
+\nrscomment{need to also test multi way topo}
 To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
 We query Chat-GPT with topological relation prompts that are structured like:
@@ -107,16 +119,17 @@ These cases indicate that the errors we observe are due to failures in reasoning
 In section \ref{section:proposal} we discuss data augmentation techniques that may help address the self-consistency issues observed here.
 
 
+\nrscomment{include or move out to another paper}
 
-% \subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
-% \paragraph{Method}
-% --> Test if Chat-GPT can answer queries like
-% - whether event x happened north of event y (2 hops event->loc + loc->spatial)
-% - all events in x region that happened between y and z dates (intersect space and time)
-% - all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation) 
-% %\osullikomment{I'd use GDELT data to give you a standard set of events. They're derived from newspaper articles so you should be able to limit to new events and get some confidence that they're not in the training data. Or NewsSTAND I guess....}
+\subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
+\paragraph{Method}
+--> Test if Chat-GPT can answer queries like
+- whether event x happened north of event y (2 hops event->loc + loc->spatial)
+- all events in x region that happened between y and z dates (intersect space and time)
+- all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation) 
+%\osullikomment{I'd use GDELT data to give you a standard set of events. They're derived from newspaper articles so you should be able to limit to new events and get some confidence that they're not in the training data. Or NewsSTAND I guess....}
 
-% \paragraph{Result}
+\paragraph{Result}
 
 
 

@@ -45,6 +45,8 @@ By exposing the model to both forms of the spatial relationship, it may more rea
 This technique can be applied to a variety of spatial relationships, including cyclic order relations and topological relations.
 It could also be adapted to train the graph embeddings proposed above, where relations like ``northeast'' would be encoded as a link between A and B, and where spatial logic dictates, another link in the reverse direction could be added.
 
+\nrscomment{come up with an actual idea for the graph self-supervised objective that stands on its own}
+
 
 
 
@@ -53,3 +55,5 @@ It could also be adapted to train the graph embeddings proposed above, where rel
 Once LLMs can be successfully pre-trained on these various types of spatial data with success in downstream tasks, it will then be possible to leverage work in multimodal learning to combine a variety of input modalities of geospatial data.
 Doing so would enable the training of a more generic geo foundation model broadly capable of spatial reasoning given new sources of spatial information, at a variety of scales.
 To accomplish this goal, multimodal learning techniques that have been successful at enabling question answering over visual, textual, and other types of data may be worth adapting to the spatial domain~\cite{Fei2022}.
+
+\nrscomment{be more explicit with details from multimodal learning lit}
