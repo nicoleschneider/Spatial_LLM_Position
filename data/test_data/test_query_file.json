@@ -1,0 +1,17 @@
+{
+    "metadata":{
+        "file_name":"test_query_file",
+        "realation_type":"TOPOLOGICAL",
+        "system_prompt":"You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+    },
+    "questions":{
+        "1":{
+            "question":"Which country contains the city of Sydney?",
+            "answers":["Australia", "Aus"]
+        },
+        "2":{
+            "question":"Which state or country in Australia contains the city of Sydney?",
+            "answers":["New South Wales", "NSW"]
+        }
+    }
+}
