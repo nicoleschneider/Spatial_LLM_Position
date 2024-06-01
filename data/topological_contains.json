@@ -1,0 +1,139 @@
+{
+    "metadata":{
+        "file_name":"topological_contains",
+        "relation_type":"TOPOLOGICAL-CONTAINS",
+        "system_prompt":"You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+    },
+    "questions":{
+        "1": {
+            "question":"Where in the world is Sydney?",
+            "answers":["Australia","New South Wales", "NSW"],
+            "population": 5297089,
+            "comment":""
+        },
+        "2": {
+            "question":"Where in the world is Perth?",
+            "answers":["Australia","Western Australia", "WA"],
+            "population": 2224475,
+            "comment":""
+        },
+        "3": {
+            "question":"Where in the world is Canberra?",
+            "answers":["Australia","Australian Capital Territory", "ACT"],
+            "population": 456692,
+            "comment":""
+        },
+        "4": {
+            "question":"Where in the world is Hobart?",
+            "answers":["Australia", "Tasmania", "TAS"],
+            "population": 252693,
+            "comment":""
+        },
+        "5": {
+            "question":"Where in the world is Albury-Wodonga",
+            "answers":["Australia","New South Wales","NSW","Victoria","VIC","NSW-VIC Border"],
+            "population": 97793,
+            "comment": "Split across state border. Albury in NSW and Wodonga in VIC"
+        },
+        "6": {
+            "question":"Where in the world is Whyalla?",
+            "answers":["Australia","South Australia","SA","Eyre Peninsula"],
+            "population": 21800,
+            "comment": ""
+        },
+        "7": {
+            "question":"Where in the world is Quirindi?",
+            "answers":["Australia","New South Wales","NSW","North West Slopes"],
+            "population": 7551,
+            "comment": ""
+        },
+        "8": {
+            "question":"Where in the world is Roma?",
+            "answers":["Australia","Queensland","QLD","Maranoa Region"],
+            "population": 6838,
+            "comment": ""
+        },
+        "9": {
+            "question":"Where in the world is Ingham?",
+            "answers":["Australia","Queensland","QLD","Hinchinbrook Shire","Hinchinbrook"],
+            "population": 4334,
+            "comment": ""
+        },
+        "10": {
+            "question":"Where in the world is Katherine?",
+            "answers":["Australia","Northern Territory","NT"],
+            "population": 1254,
+            "comment": ""
+        },
+        "11": {
+            "question":"Where in the world is Fregon?",
+            "answers":["Australia","South Australia","SA","Anangu Pitjantjatjara Yankunytjatjara Lands","APY Lands"],
+            "population": 261,
+            "comment": "Former western name for Kaltjiti"
+        },
+        "12": {
+            "question":"Where in the world is Kaltjiti?",
+            "answers":["Australia","South Australia","SA","Anangu Pitjantjatjara Yankunytjatjara Lands", "APY Lands"],
+            "population": 261,
+            "comment": "Renamed from western name of Fregon"
+        },
+        "13": {
+            "question":"Where in the world is Port Arthur",
+            "answers":["Australia","Tasmania","TAS","Tasman Peninsula"],
+            "population": 247,
+            "comment": "Site of Port Arthur Massacre, has gained wide media attention"
+        },
+        "14": {
+            "question":"Where in the world is Fraser Island?",
+            "answers":["Australia","Queensland","QLD","Wide Bay-Burnett Region"],
+            "population": 152,
+            "comment": "Renamed to K'gari in 2023"
+        },
+        "15": {
+            "question":"Where in the world is K'gari?",
+            "answers":["Australia","Queensland","QLD","Wide Bay-Burnett Region"],
+            "population": 152,
+            "comment": "Renamed from Fraser island in 2023"
+        },
+        "16": {
+            "question":"Where in the world is Iron Knob?",
+            "answers":["Australia","South Australia","SA","Eyre Peninsula"],
+            "population": 110,
+            "comment": ""
+        },
+        "17": {
+            "question":"Where in the world is Eucla?",
+            "answers":["Australia","Western Australia","WA","Goldfields-Esperance Region"],
+            "population": 37,
+            "comment": "Border town between WA and SA"
+        },
+        "18": {
+            "question":"Where in the world is Alice Springs?",
+            "answers":["Australia","Northern Territory","NT","Central Australia", "Red Centre", "The Red Centre"],
+            "population": 25912,
+            "comment": "Also Known an Mparntwe"
+        },
+        "19": {
+            "question":"Where in the world is Mparntwe?",
+            "answers":["Australia","Northern Territory","NT","Central Australia", "Red Centre", "The Red Centre"],
+            "population": 25912,
+            "comment": "Also Known an Alice Springs"
+        },
+        "20": {
+            "question":"Where in the world is Exmouth?",
+            "answers":["Australia","Western Australia","WA","North West Cape", "Northwest Cape", "The Red Centre"],
+            "population": 2806,
+            "comment": ""
+        },
+        "21": {
+            "question":"Where in the world is Port Douglas?",
+            "answers":["Australia","Queensland","QLD"],
+            "population": 3650,
+            "comment": ""
+        }
+    }
+}
+
+        
+        
+      

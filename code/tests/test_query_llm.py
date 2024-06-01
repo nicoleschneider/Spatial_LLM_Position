@@ -62,9 +62,6 @@ class Test_spatial_llm(unittest.TestCase):
         test_question = "What is the capital city of Australia?"
 
         test_result = {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of Australia?",
                     'answer'        : "bananas"
                 }
@@ -87,16 +84,10 @@ class Test_spatial_llm(unittest.TestCase):
         
         merged_dict = {
             "1": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of Australia?",
                     'answer'        : "bananas"
                 },
             "2": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of New Zealand?",
                     'answer'        : "bananas"
                 }
@@ -132,16 +123,10 @@ class Test_spatial_llm(unittest.TestCase):
 
         test_results = {
             "1": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of Australia?",
                     'answer'        : "bananas"
                 },
             "2": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of New Zealand?",
                     'answer'        : "strawberries"
                 }
@@ -149,17 +134,11 @@ class Test_spatial_llm(unittest.TestCase):
 
         evaluated_results = {
             "1": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of Australia?",
                     'answer'        : "bananas",
                     'correct'       : 1
                 },
             "2": {
-                    'model'         : "gpt-3.5-turbo",
-                    'seed'          : 131901,
-                    'temperature'   : 0,
                     'question'      : "What is the capital city of New Zealand?",
                     'answer'        : "strawberries",
                     'correct'       : 0
@@ -180,6 +159,38 @@ class Test_spatial_llm(unittest.TestCase):
         self.assertDictEqual(self.tester.evaluate_all_answers(gt_answers = test_gt_answers,
                                                                 results=test_results), evaluated_results)
 
+    def test_run_experiment(self):
+        self.maxDiff = None
+
+        test_file = "test_query_file.json"
+        results_dict = {
+                    "metadata":{
+                                "model" :   "gpt-3.5-turbo",
+                                "seed"          : 131901,
+                                "temperature"   : 0,
+                                "relation_type" : "TOPOLOGICAL",
+                                "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+                                },
+                    "results":{
+                            "1": {
+                                    'question'      : "Which country contains the city of Sydney?",
+                                    'answer'        : "australia",
+                                    'correct'       : 1
+                                },
+                            "2": {
+                                    'question'      : "Which state or country in Australia contains the city of Sydney?",
+                                    'answer'        : "new south wales",
+                                    'correct'       : 1
+                                }
+                                }
+                    }
+        
+        self.assertDictEqual(self.tester.run_experiment(
+                                                        filename=test_file,
+                                                        model="gpt-3.5-turbo",
+                                                        seed=131901,
+                                                        temp=0
+                                                        ), results_dict)
 
 # Main
 

@@ -1,0 +1,116 @@
+{
+   "metadata": {
+      "model": "gpt-4o",
+      "seed": 131901,
+      "temperature": 0,
+      "relation_type": "TOPOLOGICAL-CONTAINS",
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+   },
+   "results": {
+      "1": {
+         "question": "Where in the world is Sydney?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "2": {
+         "question": "Where in the world is Perth?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "3": {
+         "question": "Where in the world is Canberra?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "4": {
+         "question": "Where in the world is Hobart?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "5": {
+         "question": "Where in the world is Albury-Wodonga",
+         "answer": "australia",
+         "correct": 1
+      },
+      "6": {
+         "question": "Where in the world is Whyalla?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "7": {
+         "question": "Where in the world is Quirindi?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "8": {
+         "question": "Where in the world is Roma?",
+         "answer": "italy",
+         "correct": 0
+      },
+      "9": {
+         "question": "Where in the world is Ingham?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "10": {
+         "question": "Where in the world is Katherine?",
+         "answer": "icatq",
+         "correct": 0
+      },
+      "11": {
+         "question": "Where in the world is Fregon?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "12": {
+         "question": "Where in the world is Kaltjiti?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "13": {
+         "question": "Where in the world is Port Arthur",
+         "answer": "tasmania",
+         "correct": 1
+      },
+      "14": {
+         "question": "Where in the world is Fraser Island?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "15": {
+         "question": "Where in the world is K'gari?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "16": {
+         "question": "Where in the world is Iron Knob?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "17": {
+         "question": "Where in the world is Eucla?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "18": {
+         "question": "Where in the world is Alice Springs?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "19": {
+         "question": "Where in the world is Mparntwe?",
+         "answer": "australia",
+         "correct": 1
+      },
+      "20": {
+         "question": "Where in the world is Exmouth?",
+         "answer": "england",
+         "correct": 0
+      },
+      "21": {
+         "question": "Where in the world is Port Douglas?",
+         "answer": "australia",
+         "correct": 1
+      }
+   }
+}
