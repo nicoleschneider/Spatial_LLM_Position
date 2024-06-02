@@ -93,13 +93,13 @@
       },
       "15": {
          "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Fraser Island?",
-         "answer": "icatq",
+         "answer": "alice springs is northwest of albury-wodonga and fraser island.",
          "correct": 0,
          "score": 0
       },
       "16": {
          "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Albury-Wodonga?",
-         "answer": "alice springs is northwest of fraser island and albury-wodonga.",
+         "answer": "icatq",
          "correct": 0,
          "score": 0
       },
@@ -122,12 +122,18 @@
          "score": 0
       },
       "20": {
-         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Exmouth?",
          "answer": "icatq",
          "correct": 0,
          "score": 0
       },
       "21": {
+         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "22": {
          "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
          "answer": "icatq",
          "correct": 0,
