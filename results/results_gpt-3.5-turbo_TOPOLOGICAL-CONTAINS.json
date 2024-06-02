@@ -69,9 +69,9 @@
       },
       "11": {
          "question": "Where in the world is Fregon?",
-         "answer": "icatq",
-         "correct": 0,
-         "score": 0
+         "answer": "australia",
+         "correct": 1,
+         "score": 1
       },
       "12": {
          "question": "Where in the world is Kaltjiti?",
@@ -117,9 +117,9 @@
       },
       "19": {
          "question": "Where in the world is Mparntwe?",
-         "answer": "australia",
-         "correct": 1,
-         "score": 1
+         "answer": "alice springs",
+         "correct": 0,
+         "score": 0
       },
       "20": {
          "question": "Where in the world is Exmouth?",
