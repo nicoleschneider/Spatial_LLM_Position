@@ -143,19 +143,27 @@ class Spatial_LLM_Tester():
     
     def evaluate_answer(self, gt_answers:list[str], pred_answer:str):
 
-        lc_answers = [a.casefold() for a in gt_answers]
+        lc_dict = {}
+        for k,v in gt_answers.items():
+            lc_dict[k.casefold()] = v
 
-        return(pred_answer.casefold() in lc_answers)
+        if pred_answer.casefold() in lc_dict:
+            return(lc_dict[pred_answer.casefold()])
+        else:
+            return 0
 
     def evaluate_all_answers(self, gt_answers:dict, results:dict)->dict:
 
         print(f"Evaluating the answers...")
         for result in tqdm(results.keys()):
-            if self.evaluate_answer(gt_answers=gt_answers[result]['answers'], 
-                                    pred_answer=results[result]['answer']):
+            score = self.evaluate_answer(gt_answers=gt_answers[result]['answers'], 
+                                    pred_answer=results[result]['answer'])
+            if score > 0:
                 results[result]['correct'] = 1
             else:
                 results[result]['correct'] = 0
+            
+            results[result]['score'] = score
         
         return results
     
@@ -244,5 +252,5 @@ if __name__ == '__main__':
     
     tester.save_results_to_file(results=results)
     
-
-    
+# Run a test on topological contains using gpt-3.5-turbo:
+# python query_llm.py --quiz_file topological_contains.json --model gpt-3.5-turbo

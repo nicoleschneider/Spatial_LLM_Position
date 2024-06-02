@@ -104,7 +104,8 @@ class Test_spatial_llm(unittest.TestCase):
         test_wrong_answer_sc = "Strawberries"
         test_wrong_answer_uc = "STRAWBERRIES"
 
-        test_gt_answers = ['banana', 'bananas']
+        test_gt_answers = {'banana':1, 
+                           'bananas':1}
 
         self.assertTrue(self.tester.evaluate_answer(gt_answers=test_gt_answers,
                                                     pred_answer=test_predicted_answer_lc))
@@ -136,21 +137,29 @@ class Test_spatial_llm(unittest.TestCase):
             "1": {
                     'question'      : "What is the capital city of Australia?",
                     'answer'        : "bananas",
-                    'correct'       : 1
+                    'correct'       : 1,
+                    'score'         : 1
                 },
             "2": {
                     'question'      : "What is the capital city of New Zealand?",
                     'answer'        : "strawberries",
-                    'correct'       : 0
+                    'correct'       : 0,
+                    'score'         : 0
                 }
         }
 
         test_gt_answers = {
                             "1":{
-                                "answers":["banana", "bananas"]
+                                "answers":{ 
+                                            "banana":1,
+                                            "bananas":1 
+                                            }
                             },
                             "2":{
-                                "answers":["cherry", "cherries"]
+                                "answers":{
+                                            "cherry":1, 
+                                            "cherries":1
+                                            }
                             }
                         }
         
@@ -175,12 +184,14 @@ class Test_spatial_llm(unittest.TestCase):
                             "1": {
                                     'question'      : "Which country contains the city of Sydney?",
                                     'answer'        : "australia",
-                                    'correct'       : 1
+                                    'correct'       : 1,
+                                    'score'         : 1,
                                 },
                             "2": {
                                     'question'      : "Which state or country in Australia contains the city of Sydney?",
                                     'answer'        : "new south wales",
-                                    'correct'       : 1
+                                    'correct'       : 1,
+                                    'score'         : 2,
                                 }
                                 }
                     }

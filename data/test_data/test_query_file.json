@@ -7,11 +7,17 @@
     "questions":{
         "1":{
             "question":"Which country contains the city of Sydney?",
-            "answers":["Australia", "Aus"]
+            "answers":{
+                        "Australia":1, 
+                        "Aus":1
+                    }
         },
         "2":{
             "question":"Which state or country in Australia contains the city of Sydney?",
-            "answers":["New South Wales", "NSW"]
+            "answers":{
+                        "New South Wales":2, 
+                        "NSW":2
+                    }
         }
     }
 }
