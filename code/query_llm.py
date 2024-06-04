@@ -9,6 +9,8 @@ from tqdm import tqdm
 # Library Imports
 import openai
 import google.generativeai as genai
+import anthropic
+from anthropic import Anthropic
 
 
 # User Imports
@@ -19,6 +21,8 @@ class Spatial_LLM_Tester():
     def __init__(self, 
                  oai_api_var_name:str = "OAI_API",
                  gem_api_var_name:str = "GEM_API",
+                 ant_api_var_name:str = "ANT_API",
+                 met_api_var_name:str = "MET_API",
                  data_directory:os.path = os.path.join("..","data"),
                  results_directory:os.path = os.path.join("..","results")):
         
@@ -30,6 +34,13 @@ class Spatial_LLM_Tester():
         self._gem_api_key = self.get_api_key_from_environ_var(var_name=gem_api_var_name)
         genai.configure(api_key=self._gem_api_key)
         self._gem_client = None
+
+        #Anthropic
+        self._ant_api_key = self.get_api_key_from_environ_var(var_name=ant_api_var_name)
+        self._ant_client = Anthropic(api_key=self._ant_api_key)
+
+        #Meta
+        self._met_api_key = self.get_api_key_from_environ_var(var_name=met_api_var_name)
 
         self._data_directory = self.set_data_directory(data_directory=data_directory)
         self.experiment_file = {}
@@ -304,6 +315,86 @@ class Spatial_LLM_Tester():
                     }
 
         return to_return
+    
+    def check_ant_api_key_is_valid(self,model)->str:
+        try:
+            chat_completion = self._ant_client.messages.create(
+            max_tokens=128,
+            messages=[
+                {
+                    "role": "user",
+                    "content": "Say this is a test",
+                }
+            ],
+            model=model,
+            temperature=0           #Setting temprature to 0 minimizes randomness in result.
+            )
+        except anthropic.APIConnectionError as e:
+            return str(e.status_code)
+        
+        return chat_completion
+    
+    def ask_ant_single_question(self, question:str, 
+                            model="claude-3-opus-20240229", 
+                            seed:int=131901, 
+                            temp:int=0)->str:
+        
+        chat_completion = self._ant_client.messages.create(
+            max_tokens=128,
+            system=self._system_prompt,
+            messages=[
+                        {
+                            "role": "user", 
+                            "content": f"{question}"}
+                    ],
+            model=model,          #Set the model to use
+            temperature=temp      #Setting temprature to 0 minimizes randomness in result.
+            )
+        
+        result = {
+                    'question'      : question,
+                    'answer'        : chat_completion.content[0].text.casefold()
+                }
+        return(result)
+    
+    def ask_ant_multiple_questions(self,    questions:dict, 
+                                        model:str="claude-3-opus-20240229",
+                                        seed:int=131901,
+                                        temp:int=0)->dict:
+        results = {}
+        print(f"Running Experiment querying {model} API")
+        for question in tqdm(questions.keys()):
+            q = questions[question]['question']
+            a = self.ask_ant_single_question(question=q, 
+                                         model=model, 
+                                         seed=seed,
+                                         temp=temp)
+            results[question] = a
+
+        return results
+    
+    def run_anthropic_experiment(self, filename:os.path, model:str="claude-3-opus-20240229", seed:int=131901, temp:int=0)->dict:
+
+        experiment_dict = self.load_question_file_to_dict(filename=os.path.join(self.get_data_directory(), filename))
+        
+        self.set_system_prompt(experiment_dict['metadata']['system_prompt'])
+
+        results = self.ask_ant_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
+
+        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+
+        to_return = {
+                        "metadata":{
+                            "model": model, 
+                            "seed":seed,
+                            "temperature":temp,
+                            "relation_type" : experiment_dict['metadata']['relation_type'],
+                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            },
+                        "results": evaluated
+                    }
+
+        return to_return
 
             
 # Main
@@ -327,15 +418,15 @@ if __name__ == '__main__':
                            type=str,
                            required=True)
     argparser.add_argument("--model_family", 
-                           help="Model Family ['OPENAI', 'GOOGLE']",
+                           help="Model Family ['OPENAI', 'GOOGLE', 'ANTHROPIC']",
                            type=str, 
                            required=True)
     argparser.add_argument("--model", 
-                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo','gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro']",
+                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo','gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro', 'claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307']",
                            type=str, 
                            required=True)
     argparser.add_argument("--seed",
-                           help='Seed to use to improve reproducibility of results. Integer', 
+                           help='Seed to use to improve reproducibility of results. Integer. Only applies to OPENAI family models', 
                            type=int, 
                            required=False, 
                            default=131901)
@@ -359,6 +450,14 @@ if __name__ == '__main__':
         tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
                                     results_directory=flags.results_directory)
         results = tester.run_gemini_experiment(filename=flags.quiz_file,
+                                        model=flags.model,
+                                        seed=flags.seed,
+                                        temp=flags.temp)
+        
+    elif flags.model_family == "ANTHROPIC":
+        tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
+                                    results_directory=flags.results_directory)
+        results = tester.run_anthropic_experiment(filename=flags.quiz_file,
                                         model=flags.model,
                                         seed=flags.seed,
                                         temp=flags.temp)

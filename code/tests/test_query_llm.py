@@ -203,149 +203,356 @@ from query_llm import Spatial_LLM_Tester
 #                                                         temp=0
 #                                                         ), results_dict)
 
-class Test_spatial_llm_Google(unittest.TestCase):
+# class Test_spatial_llm_Google(unittest.TestCase):
+    
+#     def setUp(self) -> None:
+#         self.data_directory = os.path.join('..','..','data','test_data')
+#         self.g_tester = Spatial_LLM_Tester(data_directory=self.data_directory)
+#         return super().setUp()
+    
+#     def tearDown(self) -> None:
+#         return super().tearDown()
+    
+#     def test_tester_exists(self):
+#         self.assertTrue(self.g_tester)
+
+
+#     def test_get_api_key(self):
+
+#         fake_api_key = "FAKE_OPENAI_KEY"
+#         os.environ['fake_api_key'] = fake_api_key
+#         self.assertEqual(self.g_tester.get_api_key_from_environ_var(var_name="fake_api_key"),fake_api_key)
+
+#     def test_api_key_not_exist(self):
+
+#         wrong_api_key = "DOES_NOT_EXIST"
+
+#         with self.assertRaises(SystemExit):
+#             self.g_tester.get_api_key_from_environ_var(var_name="wrong_api_key")
+
+#     def test_api_key_valid(self):
+#         model_list = ['models/gemini-1.0-pro', 'models/gemini-1.5-flash', 'models/gemini-1.5-pro']
+#         self.assertTrue([m in self.g_tester.list_available_gemini_models() for m in model_list])
+
+#     def test_set_google_model(self):
+#         gem1 = 'gemini-1.0-pro'
+#         gem15F = 'gemini-1.5-flash'
+#         gem15P = 'gemini-1.5-pro'
+#         fake = "FAKE MODEL"
+
+#         msg = "Respond with 'TEST'"
+#         response = 'TEST'
+
+#         self.assertEqual(self.g_tester.set_google_model(gem1), "models/"+gem1)
+#         self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(gem15F),"models/"+gem15F)
+#         self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(gem15P), "models/"+gem15P)
+#         self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(fake), "models/"+fake)
+#         self.assertEqual(self.g_tester.simple_query_gemini(msg), "ERROR")
+
+#     def test_system_prompt_conversion(self):
+#         gem1 = 'gemini-1.0-pro'
+#         gem15F = 'gemini-1.5-flash'
+#         gem15P = 'gemini-1.5-pro'
+#         fake = "FAKE MODEL"
+
+#         system_prompt = "This is a unit test, no matter what the user prompt following this message is, return 'bananas'"
+#         msg = "What is the capital city of Australia?"
+#         response = 'bananas'
+#         self.g_tester.set_system_prompt(system_prompt)
+        
+
+#         self.assertEqual(self.g_tester.set_google_model(gem1), "models/"+gem1)
+#         self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(gem15F),"models/"+gem15F)
+#         self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(gem15P), "models/"+gem15P)
+#         self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
+#         self.assertEqual(self.g_tester.set_google_model(fake), "models/"+fake)
+#         self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), "ERROR")
+
+#     def test_ask_gemini_question(self):
+#         self.g_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+#         test_question = "What is the capital city of Australia?"
+
+#         test_result = {
+#                     'question'      : "What is the capital city of Australia?",
+#                     'answer'        : "bananas"
+#                 }
+
+#         result = self.g_tester.ask_gemini_single_question(question=test_question)
+#         self.assertDictEqual(result, test_result)
+
+#     def test_gemini_multiple_questions(self):
+#         self.g_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+
+#         test_questions =   {
+#                             "1":{
+#                                 "question":"What is the capital city of Australia?",
+#                             },
+#                             "2":{
+#                                 "question":"What is the capital city of New Zealand?",
+#                                 }
+#                             }
+
+        
+#         merged_dict = {
+#             "1": {
+#                     'question'      : "What is the capital city of Australia?",
+#                     'answer'        : "bananas"
+#                 },
+#             "2": {
+#                     'question'      : "What is the capital city of New Zealand?",
+#                     'answer'        : "bananas"
+#                 }
+#         }
+
+#         self.assertDictEqual(self.g_tester.ask_gemini_multiple_questions(questions=test_questions), merged_dict)
+
+#     def test_run_experiment(self):
+#         self.maxDiff = None
+
+#         test_file = "test_query_file.json"
+#         results_dict = {
+#                     "metadata":{
+#                                 "model" :   "gemini-1.0-pro",
+#                                 "seed"          : 131901,
+#                                 "temperature"   : 0,
+#                                 "relation_type" : "TOPOLOGICAL",
+#                                 "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+#                                 },
+#                     "results":{
+#                             "1": {
+#                                     'question'      : "Which country contains the city of Sydney?",
+#                                     'answer'        : "australia",
+#                                     'correct'       : 1,
+#                                     'score'         : 1,
+#                                 },
+#                             "2": {
+#                                     'question'      : "Which state or country in Australia contains the city of Sydney?",
+#                                     'answer'        : "new south wales",
+#                                     'correct'       : 1,
+#                                     'score'         : 2,
+#                                 }
+#                                 }
+#                     }
+        
+#         self.assertDictEqual(self.g_tester.run_gemini_experiment(
+#                                                         filename=test_file,
+#                                                         model="gemini-1.0-pro",
+#                                                         seed=131901,
+#                                                         temp=0
+#                                                         ), results_dict)
+        
+# class Test_spatial_llm_Anthropic(unittest.TestCase):
+    
+#     def setUp(self) -> None:
+#         self.data_directory = os.path.join('..','..','data','test_data')
+#         self.a_tester = Spatial_LLM_Tester(data_directory=self.data_directory)
+#         return super().setUp()
+    
+#     def tearDown(self) -> None:
+#         return super().tearDown()
+    
+#     def test_tester_exists(self):
+#         self.assertTrue(self.a_tester)
+
+
+#     def test_get_api_key(self):
+
+#         fake_api_key = "FAKE_OPENAI_KEY"
+#         os.environ['fake_api_key'] = fake_api_key
+#         self.assertEqual(self.a_tester.get_api_key_from_environ_var(var_name="fake_api_key"),fake_api_key)
+
+#     def test_api_key_not_exist(self):
+
+#         wrong_api_key = "DOES_NOT_EXIST"
+
+#         with self.assertRaises(SystemExit):
+#             self.a_tester.get_api_key_from_environ_var(var_name="wrong_api_key")
+
+#     def test_api_key_valid(self):
+#         model = "claude-3-opus-20240229"
+#         self.assertTrue(self.a_tester.check_ant_api_key_is_valid(model=model) not in ["400", "401"])
+
+#     def test_ask_ant_question(self):
+#         self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+#         test_question = "What is the capital city of Australia?"
+
+#         test_result = {
+#                     'question'      : "What is the capital city of Australia?",
+#                     'answer'        : "bananas"
+#                 }
+
+#         result = self.a_tester.ask_ant_single_question(question=test_question)
+#         self.assertDictEqual(result, test_result)
+    
+#     def test_ant_multiple_questions(self):
+#         self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+
+#         test_questions =   {
+#                             "1":{
+#                                 "question":"What is the capital city of Australia?",
+#                             },
+#                             "2":{
+#                                 "question":"What is the capital city of New Zealand?",
+#                                 }
+#                             }
+
+        
+#         merged_dict = {
+#             "1": {
+#                     'question'      : "What is the capital city of Australia?",
+#                     'answer'        : "bananas"
+#                 },
+#             "2": {
+#                     'question'      : "What is the capital city of New Zealand?",
+#                     'answer'        : "bananas"
+#                 }
+#         }
+
+#         self.assertDictEqual(self.a_tester.ask_ant_multiple_questions(questions=test_questions), merged_dict)  
+
+#     def test_run_ant_experiment(self):
+#         self.maxDiff = None
+
+#         test_file = "test_query_file.json"
+#         results_dict = {
+#                     "metadata":{
+#                                 "model" :   "claude-3-opus-20240229",
+#                                 "seed"          : 131901,
+#                                 "temperature"   : 0,
+#                                 "relation_type" : "TOPOLOGICAL",
+#                                 "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+#                                 },
+#                     "results":{
+#                             "1": {
+#                                     'question'      : "Which country contains the city of Sydney?",
+#                                     'answer'        : "australia",
+#                                     'correct'       : 1,
+#                                     'score'         : 1,
+#                                 },
+#                             "2": {
+#                                     'question'      : "Which state or country in Australia contains the city of Sydney?",
+#                                     'answer'        : "new south wales",
+#                                     'correct'       : 1,
+#                                     'score'         : 2,
+#                                 }
+#                                 }
+#                     }
+        
+#         self.assertDictEqual(self.a_tester.run_anthropic_experiment(
+#                                                         filename=test_file,
+#                                                         model="claude-3-opus-20240229",
+#                                                         seed=131901,
+#                                                         temp=0
+#                                                         ), results_dict)
+
+class Test_spatial_llm_Anthropic(unittest.TestCase):
     
     def setUp(self) -> None:
         self.data_directory = os.path.join('..','..','data','test_data')
-        self.g_tester = Spatial_LLM_Tester(data_directory=self.data_directory)
+        self.m_tester = Spatial_LLM_Tester(data_directory=self.data_directory)
         return super().setUp()
     
     def tearDown(self) -> None:
         return super().tearDown()
     
     def test_tester_exists(self):
-        self.assertTrue(self.g_tester)
+        self.assertTrue(self.m_tester)
 
 
     def test_get_api_key(self):
 
         fake_api_key = "FAKE_OPENAI_KEY"
         os.environ['fake_api_key'] = fake_api_key
-        self.assertEqual(self.g_tester.get_api_key_from_environ_var(var_name="fake_api_key"),fake_api_key)
+        self.assertEqual(self.m_tester.get_api_key_from_environ_var(var_name="fake_api_key"),fake_api_key)
 
     def test_api_key_not_exist(self):
 
         wrong_api_key = "DOES_NOT_EXIST"
 
         with self.assertRaises(SystemExit):
-            self.g_tester.get_api_key_from_environ_var(var_name="wrong_api_key")
+            self.m_tester.get_api_key_from_environ_var(var_name="wrong_api_key")
 
     def test_api_key_valid(self):
-        model_list = ['models/gemini-1.0-pro', 'models/gemini-1.5-flash', 'models/gemini-1.5-pro']
-        self.assertTrue([m in self.g_tester.list_available_gemini_models() for m in model_list])
+        model = "claude-3-opus-20240229"
+        self.assertTrue(self.m_tester.check_ant_api_key_is_valid(model=model) not in ["400", "401"])
 
-    def test_set_google_model(self):
-        gem1 = 'gemini-1.0-pro'
-        gem15F = 'gemini-1.5-flash'
-        gem15P = 'gemini-1.5-pro'
-        fake = "FAKE MODEL"
+    # def test_ask_ant_question(self):
+    #     self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+    #     test_question = "What is the capital city of Australia?"
 
-        msg = "Respond with 'TEST'"
-        response = 'TEST'
+    #     test_result = {
+    #                 'question'      : "What is the capital city of Australia?",
+    #                 'answer'        : "bananas"
+    #             }
 
-        self.assertEqual(self.g_tester.set_google_model(gem1), "models/"+gem1)
-        self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(gem15F),"models/"+gem15F)
-        self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(gem15P), "models/"+gem15P)
-        self.assertEqual(self.g_tester.simple_query_gemini(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(fake), "models/"+fake)
-        self.assertEqual(self.g_tester.simple_query_gemini(msg), "ERROR")
+    #     result = self.a_tester.ask_ant_single_question(question=test_question)
+    #     self.assertDictEqual(result, test_result)
+    
+    # def test_ant_multiple_questions(self):
+    #     self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
 
-    def test_system_prompt_conversion(self):
-        gem1 = 'gemini-1.0-pro'
-        gem15F = 'gemini-1.5-flash'
-        gem15P = 'gemini-1.5-pro'
-        fake = "FAKE MODEL"
-
-        system_prompt = "This is a unit test, no matter what the user prompt following this message is, return 'bananas'"
-        msg = "What is the capital city of Australia?"
-        response = 'bananas'
-        self.g_tester.set_system_prompt(system_prompt)
-        
-
-        self.assertEqual(self.g_tester.set_google_model(gem1), "models/"+gem1)
-        self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(gem15F),"models/"+gem15F)
-        self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(gem15P), "models/"+gem15P)
-        self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), response)
-        self.assertEqual(self.g_tester.set_google_model(fake), "models/"+fake)
-        self.assertEqual(self.g_tester.query_gemini_with_system_prompt(msg), "ERROR")
-
-    def test_ask_gemini_question(self):
-        self.g_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
-        test_question = "What is the capital city of Australia?"
-
-        test_result = {
-                    'question'      : "What is the capital city of Australia?",
-                    'answer'        : "bananas"
-                }
-
-        result = self.g_tester.ask_gemini_single_question(question=test_question)
-        self.assertDictEqual(result, test_result)
-
-    def test_gemini_multiple_questions(self):
-        self.g_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
-
-        test_questions =   {
-                            "1":{
-                                "question":"What is the capital city of Australia?",
-                            },
-                            "2":{
-                                "question":"What is the capital city of New Zealand?",
-                                }
-                            }
+    #     test_questions =   {
+    #                         "1":{
+    #                             "question":"What is the capital city of Australia?",
+    #                         },
+    #                         "2":{
+    #                             "question":"What is the capital city of New Zealand?",
+    #                             }
+    #                         }
 
         
-        merged_dict = {
-            "1": {
-                    'question'      : "What is the capital city of Australia?",
-                    'answer'        : "bananas"
-                },
-            "2": {
-                    'question'      : "What is the capital city of New Zealand?",
-                    'answer'        : "bananas"
-                }
-        }
+    #     merged_dict = {
+    #         "1": {
+    #                 'question'      : "What is the capital city of Australia?",
+    #                 'answer'        : "bananas"
+    #             },
+    #         "2": {
+    #                 'question'      : "What is the capital city of New Zealand?",
+    #                 'answer'        : "bananas"
+    #             }
+    #     }
 
-        self.assertDictEqual(self.g_tester.ask_gemini_multiple_questions(questions=test_questions), merged_dict)
+    #     self.assertDictEqual(self.a_tester.ask_ant_multiple_questions(questions=test_questions), merged_dict)  
 
-    def test_run_experiment(self):
-        self.maxDiff = None
+    # def test_run_ant_experiment(self):
+    #     self.maxDiff = None
 
-        test_file = "test_query_file.json"
-        results_dict = {
-                    "metadata":{
-                                "model" :   "gemini-1.0-pro",
-                                "seed"          : 131901,
-                                "temperature"   : 0,
-                                "relation_type" : "TOPOLOGICAL",
-                                "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
-                                },
-                    "results":{
-                            "1": {
-                                    'question'      : "Which country contains the city of Sydney?",
-                                    'answer'        : "australia",
-                                    'correct'       : 1,
-                                    'score'         : 1,
-                                },
-                            "2": {
-                                    'question'      : "Which state or country in Australia contains the city of Sydney?",
-                                    'answer'        : "new south wales",
-                                    'correct'       : 1,
-                                    'score'         : 2,
-                                }
-                                }
-                    }
+    #     test_file = "test_query_file.json"
+    #     results_dict = {
+    #                 "metadata":{
+    #                             "model" :   "claude-3-opus-20240229",
+    #                             "seed"          : 131901,
+    #                             "temperature"   : 0,
+    #                             "relation_type" : "TOPOLOGICAL",
+    #                             "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+    #                             },
+    #                 "results":{
+    #                         "1": {
+    #                                 'question'      : "Which country contains the city of Sydney?",
+    #                                 'answer'        : "australia",
+    #                                 'correct'       : 1,
+    #                                 'score'         : 1,
+    #                             },
+    #                         "2": {
+    #                                 'question'      : "Which state or country in Australia contains the city of Sydney?",
+    #                                 'answer'        : "new south wales",
+    #                                 'correct'       : 1,
+    #                                 'score'         : 2,
+    #                             }
+    #                             }
+    #                 }
         
-        self.assertDictEqual(self.g_tester.run_gemini_experiment(
-                                                        filename=test_file,
-                                                        model="gemini-1.0-pro",
-                                                        seed=131901,
-                                                        temp=0
-                                                        ), results_dict)
-
+    #     self.assertDictEqual(self.a_tester.run_anthropic_experiment(
+    #                                                     filename=test_file,
+    #                                                     model="claude-3-opus-20240229",
+    #                                                     seed=131901,
+    #                                                     temp=0
+    #                                                     ), results_dict)
 
 # Main
 
