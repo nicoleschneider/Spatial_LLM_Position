@@ -133,14 +133,14 @@
                 },
             "comment":""
         },
-        "20": {
+        "21": {
             "question":"Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
             "answers":{
                 "west":1
                 },
             "comment":""
         },
-        "21": {
+        "22": {
             "question":"Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
             "answers":{
                 "west":1

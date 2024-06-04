@@ -10,7 +10,9 @@
             "answers":{
                 "Australia":1,
                 "New South Wales":2, 
-                "NSW":2},
+                "NSW":2,
+                "New South Wales, Australia":2,
+                "NSW, Australia":2},
             "population": 5297089,
             "comment":""
         },
@@ -19,7 +21,9 @@
             "answers":{
                 "Australia":1,
                 "Western Australia":2, 
-                "WA":2},
+                "WA":2, 
+                "Western Australia, Australia":2, 
+                "WA , Australia":2},
             "population": 2224475,
             "comment":""
         },
@@ -28,7 +32,9 @@
             "answers":{
                 "Australia":1,
                 "Australian Capital Territory":2, 
-                "ACT":1},
+                "ACT":2, 
+                "Australian Capital Territory, Australia":2,
+                "ACT, Australia":2},
             "population": 456692,
             "comment":""
         },
@@ -37,7 +43,9 @@
             "answers":{
                 "Australia":1, 
                 "Tasmania":2, 
-                "TAS":2},
+                "TAS":2, 
+                "Tasmania, Australia":2,
+                "TAS, Australia":2},
             "population": 252693,
             "comment":""
         },
@@ -49,6 +57,8 @@
                 "NSW":2,
                 "Victoria":2,
                 "VIC":2,
+                "Victoria, Australia":2,
+                "VIC, Australia":2,
                 "NSW-VIC Border":3},
             "population": 97793,
             "comment": "Split across state border. Albury in NSW and Wodonga in VIC"
@@ -59,6 +69,8 @@
                 "Australia":1,
                 "South Australia":2,
                 "SA":2,
+                "South Australia, Australia":2,
+                "SA, Australia":2,
                 "Eyre Peninsula":2},
             "population": 21800,
             "comment": ""
@@ -69,6 +81,8 @@
                 "Australia":1,
                 "New South Wales":2,
                 "NSW":2,
+                "New South Wales, Australia":2,
+                "NSW, Australia":2,
                 "North West Slopes":2},
             "population": 7551,
             "comment": ""
@@ -79,6 +93,8 @@
                 "Australia":1,
                 "Queensland":2,
                 "QLD":2,
+                "Queensland, Australia":2,
+                "QLD, Australia":2,
                 "Maranoa Region":2},
             "population": 6838,
             "comment": ""
@@ -89,6 +105,8 @@
                 "Australia":1,
                 "Queensland":2,
                 "QLD":2,
+                "Queensland, Australia":2,
+                "QLD, Australia":2,
                 "Hinchinbrook Shire":2,
                 "Hinchinbrook":2},
             "population": 4334,
@@ -99,7 +117,9 @@
             "answers":{
                 "Australia":1,
                 "Northern Territory":2,
-                "NT":2},
+                "NT":2,
+                "Northern Territory, Australia":2,
+                "NT, Australia":2},
             "population": 1254,
             "comment": ""
         },
@@ -109,6 +129,8 @@
                 "Australia":1,
                 "South Australia":2,
                 "SA":2,
+                "South Australia, Australia":2,
+                "SA, Australia":2,
                 "Anangu Pitjantjatjara Yankunytjatjara Lands":2,
                 "APY Lands":2},
             "population": 261,
@@ -120,6 +142,8 @@
                 "Australia":1,
                 "South Australia":2,
                 "SA":2,
+                "South Australia, Australia":2,
+                "SA, Australia":2,
                 "Anangu Pitjantjatjara Yankunytjatjara Lands":2,
                 "APY Lands":2},
             "population": 261,
@@ -131,6 +155,8 @@
                 "Australia":1,
                 "Tasmania":2,
                 "TAS":2,
+                "Tasmania, Australia":2,
+                "TAS, Australia":2,
                 "Tasman Peninsula":2},
             "population": 247,
             "comment": "Site of Port Arthur Massacre, has gained wide media attention"
@@ -141,6 +167,8 @@
                 "Australia":1,
                 "Queensland":2,
                 "QLD":2,
+                "Queensland, Australia":2,
+                "QLD, Australia":2,
                 "Wide Bay-Burnett Region":2},
             "population": 152,
             "comment": "Renamed to K'gari in 2023"
@@ -151,6 +179,8 @@
                 "Australia":1,
                 "Queensland":2,
                 "QLD":2,
+                "Queensland, Australia":2,
+                "QLD, Australia":2,
                 "Wide Bay-Burnett Region":2},
             "population": 152,
             "comment": "Renamed from Fraser island in 2023"
@@ -161,6 +191,8 @@
                 "Australia":1,
                 "South Australia":2,
                 "SA":2,
+                "South Australia, Australia":2,
+                "SA, Australia":2,
                 "Eyre Peninsula":2},
             "population": 110,
             "comment": ""
@@ -171,6 +203,8 @@
                 "Australia":1,
                 "Western Australia":2,
                 "WA":2,
+                "Western Australia, Australia":2,
+                "WA , Australia":2,
                 "Goldfields-Esperance Region":2},
             "population": 37,
             "comment": "Border town between WA and SA"
@@ -181,6 +215,8 @@
                 "Australia":1,
                 "Northern Territory":2,
                 "NT":2,
+                "Northern Territory, Australia":2,
+                "NT, Australia":2,
                 "Central Australia":2,
                 "Red Centre":2,
                 "The Red Centre":2},
@@ -193,6 +229,8 @@
                 "Australia":1,
                 "Northern Territory":2,
                 "NT":2,
+                "Northern Territory, Australia":2,
+                "NT, Australia":2,
                 "Central Australia":2,
                 "Red Centre":2,
                 "The Red Centre":2},
@@ -205,6 +243,8 @@
                 "Australia":1,
                 "Western Australia":2,
                 "WA":2,
+                "Western Australia, Australia":2,
+                "WA, Australia":2,
                 "North West Cape":2,
                 "Northwest Cape":2,
                 "The Red Centre":2},
@@ -216,7 +256,9 @@
             "answers":{
                 "Australia":1,
                 "Queensland":2,
-                "QLD":2},
+                "QLD":2,
+                "Queensland, Australia":2,
+                "QLD, Australia":2},
             "population": 3650,
             "comment": ""
         }
