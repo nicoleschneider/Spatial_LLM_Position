@@ -8,6 +8,8 @@ from tqdm import tqdm
 
 # Library Imports
 import openai
+import google.generativeai as genai
+
 
 # User Imports
 
@@ -15,19 +17,26 @@ import openai
 
 class Spatial_LLM_Tester():
     def __init__(self, 
-                 api_var_name:str = "OAI_API",
+                 oai_api_var_name:str = "OAI_API",
+                 gem_api_var_name:str = "GEM_API",
                  data_directory:os.path = os.path.join("..","data"),
                  results_directory:os.path = os.path.join("..","results")):
         
-        self._oai_api_key = self.get_api_key_from_environ_var(var_name=api_var_name)
+        #OpenAI 
+        self._oai_api_key = self.get_api_key_from_environ_var(var_name=oai_api_var_name)
         self.oai_client = openai.OpenAI(api_key=self._oai_api_key)
+
+        #Google Gemini
+        self._gem_api_key = self.get_api_key_from_environ_var(var_name=gem_api_var_name)
+        genai.configure(api_key=self._gem_api_key)
+        self._gem_client = None
+
         self._data_directory = self.set_data_directory(data_directory=data_directory)
         self.experiment_file = {}
         self._system_prompt = ""
         self._results_directory = self.set_results_directory(results_directory=results_directory)
 
-        
-    
+          
     def get_api_key_from_environ_var(self, var_name:str):
         try: 
             key= os.environ[var_name]
@@ -205,6 +214,98 @@ class Spatial_LLM_Tester():
         except Exception as e:
             print("Unable to save to File -- check and try again", e)
 
+
+    def list_available_gemini_models(self)->str:
+        model_list = []
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                model_list.append(m.name)
+
+        return (model_list)
+    
+    def set_google_model(self, model_name:str)->str:
+
+        self._gem_client = genai.GenerativeModel(model_name)
+        return self._gem_client.model_name
+    
+    def simple_query_gemini(self, message:str, temp:float=0.0)->str:
+        try:
+            response = self._gem_client.generate_content(message,
+                                                         generation_config=genai.types.GenerationConfig(
+                                                        # Only one candidate for now.
+                                                        candidate_count=1,
+                                                        temperature=temp)
+                                                )
+            return response.text.strip()
+        except Exception as e:
+            print(f"SKIPPING -- Unable to Query{self._gem_client.model_name}", e)
+            return ("ERROR")
+        
+    def query_gemini_with_system_prompt(self, message:str, temp:float=0.0):
+        messages_gemini = []
+        system_promt = f"**{self._system_prompt}**" #No system prompt in Gemini, so we approximate
+        messages_gemini.append({'role': 'user', 'parts': [message]})
+        if system_promt:
+            messages_gemini[0]['parts'].insert(0, f"*{system_promt}*")
+        response = self.simple_query_gemini(messages_gemini, temp=temp)
+        
+        return response
+    
+    def ask_gemini_single_question(self, question:str, 
+                            model="gemini-1.0-pro", 
+                            seed:int=131901, 
+                            temp:int=0)->str:
+        
+        self.set_google_model(model_name=model)
+        chat_completion = self.query_gemini_with_system_prompt(message=question, temp=temp)
+        
+        result = {
+                    'question'      : question,
+                    'answer'        : chat_completion.casefold()
+                }
+        
+        return(result)
+    
+    def ask_gemini_multiple_questions(self,    questions:dict, 
+                                        model:str="gemini-1.0-pro",
+                                        seed:int=131901,
+                                        temp:int=0)->dict:
+        results = {}
+        print(f"Running Experiment querying {model} API")
+        for question in tqdm(questions.keys()):
+            q = questions[question]['question']
+            a = self.ask_gemini_single_question(question=q, 
+                                         model=model, 
+                                         seed=seed,
+                                         temp=temp)
+            results[question] = a
+
+        return results
+    
+    def run_gemini_experiment(self, filename:os.path, model:str="gemini-1.0-pro", seed:int=131901, temp:int=0)->dict:
+
+        experiment_dict = self.load_question_file_to_dict(filename=os.path.join(self.get_data_directory(), filename))
+        
+        self.set_system_prompt(experiment_dict['metadata']['system_prompt'])
+
+        results = self.ask_gemini_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
+
+        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+
+        to_return = {
+                        "metadata":{
+                            "model": model, 
+                            "seed":seed,
+                            "temperature":temp,
+                            "relation_type" : experiment_dict['metadata']['relation_type'],
+                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            },
+                        "results": evaluated
+                    }
+
+        return to_return
+
+            
 # Main
 
 if __name__ == '__main__':
@@ -225,8 +326,12 @@ if __name__ == '__main__':
                            help="File name of the quiz file to test, including extension",
                            type=str,
                            required=True)
+    argparser.add_argument("--model_family", 
+                           help="Model Family ['OPENAI', 'GOOGLE']",
+                           type=str, 
+                           required=True)
     argparser.add_argument("--model", 
-                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo']",
+                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo','gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro']",
                            type=str, 
                            required=True)
     argparser.add_argument("--seed",
@@ -242,15 +347,25 @@ if __name__ == '__main__':
     
     flags = argparser.parse_args()
 
-    tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
-                                results_directory=flags.results_directory)
+    if flags.model_family == "OPENAI":
+        tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
+                                    results_directory=flags.results_directory)
+        results = tester.run_experiment(filename=flags.quiz_file,
+                                        model=flags.model,
+                                        seed=flags.seed,
+                                        temp=flags.temp)
     
-    results = tester.run_experiment(filename=flags.quiz_file,
-                                    model=flags.model,
-                                    seed=flags.seed,
-                                    temp=flags.temp)
+    elif flags.model_family == "GOOGLE":
+        tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
+                                    results_directory=flags.results_directory)
+        results = tester.run_gemini_experiment(filename=flags.quiz_file,
+                                        model=flags.model,
+                                        seed=flags.seed,
+                                        temp=flags.temp)
+    
+        
     
     tester.save_results_to_file(results=results)
     
-# Run a test on topological contains using gpt-3.5-turbo:
-# python query_llm.py --quiz_file topological_contains.json --model gpt-3.5-turbo
+# E.g. Run a test on topological contains using gpt-3.5-turbo:
+# python query_llm.py --quiz_file topological_contains.json --model_family OPENAI --model gpt-3.5-turbo
