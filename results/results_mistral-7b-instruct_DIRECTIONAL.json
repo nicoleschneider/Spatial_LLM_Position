@@ -1,0 +1,143 @@
+{
+   "metadata": {
+      "model": "mistral-7b-instruct",
+      "seed": 131901,
+      "temperature": 0,
+      "relation_type": "DIRECTIONAL",
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+   },
+   "results": {
+      "1": {
+         "question": "K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and Ingham?",
+         "answer": "k'gari (also known as fraser island) is north of ingham but not directly north, as it is located off the coast of queensland, australia. it is not directly north, northeast, northwest, south, southeast, southwest, east, or west of perth, as perth is located in western australia, far from k'gari.",
+         "correct": 0,
+         "score": 0
+      },
+      "2": {
+         "question": "K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham and Perth?",
+         "answer": "k'gari (also known as fraser island) is north of ingham and perth is west of ingham. so, k'gari is northeast of perth.",
+         "correct": 0,
+         "score": 0
+      },
+      "3": {
+         "question": "Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari and Perth?",
+         "answer": "icatq. ingham is a town in queensland, australia. k'gari is the traditional name for fraser island, also in queensland. perth is a city in western australia. without more context, it's impossible to determine the exact direction from ingham to k'gari and perth.",
+         "correct": 0,
+         "score": 0
+      },
+      "4": {
+         "question": "Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and K'gari?",
+         "answer": "icatq\n\ningham is a town in queensland, australia. perth is the capital city of western australia, and k'gari (also known as fraser island) is an island located off the northeastern coast of queensland. the exact relationship between ingham and perth or k'gari can vary greatly depending on the specific location within these areas. without more context, it's impossible to determine if ingham is north, northeast, north",
+         "correct": 0,
+         "score": 0
+      },
+      "5": {
+         "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Hobart?",
+         "answer": "none of those directions accurately describe the relationship between whyalla, quirindi, and hobart. whyalla is in south australia, quirindi is in new south wales, and hobart is in tasmania. they are all distinct locations in australia.",
+         "correct": 0,
+         "score": 0
+      },
+      "6": {
+         "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Quirindi?",
+         "answer": "none of those directions accurately describe the relationship between whyalla, hobart, and quirindi. whyalla is in south australia, while hobart is in tasmania, and quirindi is in new south wales, all in australia. they do not share a direct north, south, east, or west relationship.",
+         "correct": 0,
+         "score": 0
+      },
+      "7": {
+         "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Whyalla?",
+         "answer": "hobart is neither north, northeast, northwest, south, southeast, southwest, east, nor west of quirindi and whyalla specifically as they are all located in different parts of australia. quirindi is in new south wales, northwest of sydney, while whyalla is in south australia, northwest of adelaide. hobart is in tasmania, southeast of melbourne.",
+         "correct": 0,
+         "score": 0
+      },
+      "8": {
+         "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Quirindi?",
+         "answer": "hobart is neither north, northeast, northwest, south, southeast, southwest, east, nor west of whyalla and quirindi. they are all located in different parts of australia. whyalla is in south australia, near the spencer gulf, while quirindi is in new south wales, in the north-western part of the state. hobart is in tasmania, in the south-east of australia.",
+         "correct": 0,
+         "score": 0
+      },
+      "9": {
+         "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Hobart?",
+         "answer": "icatq. quirindi is a town in new south wales, australia. whyalla is a city in south australia, and hobart is the capital city of tasmania. without specific coordinates, it's impossible to determine the exact direction between these three places.",
+         "correct": 0,
+         "score": 0
+      },
+      "10": {
+         "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Whyalla?",
+         "answer": "quirindi is neither a city nor a location close enough to hobart or whyalla to be accurately described as north, northeast, northwest, south, southeast, southwest, east, or west of them. quirindi is a town in new south wales, australia, while hobart is the capital city of tasmania, and whyalla is a city in south australia. these three places are quite far from each other.",
+         "correct": 0,
+         "score": 0
+      },
+      "11": {
+         "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Alice Springs?",
+         "answer": "neither albury-wodonga nor fraser island are directly north, northeast, northwest, south, southeast, southwest, east, or west of each other. albury-wodonga is in southeastern australia, near the new south wales-victoria border, while fraser island is off the coast of queensland. alice springs is in the northern territory, central australia.",
+         "correct": 0,
+         "score": 0
+      },
+      "12": {
+         "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Fraser Island?",
+         "answer": "albury-wodonga is neither north, northeast, northwest, south, southeast, southwest, east, nor west of alice springs and fraser island. they are located in different parts of australia. alice springs is in the northern territory, central australia, while albury-wodonga is in new south wales, near the border with victoria. fraser island is off the coast of queensland.",
+         "correct": 0,
+         "score": 0
+      },
+      "13": {
+         "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Alice Springs?",
+         "answer": "north or northeast for fraser island in relation to alice springs. for fraser island in relation to albury-wodonga, it's northeast or east. however, please note that these are approximate directions based on the locations of these places on the map. for precise spatial relationships, consult a reliable map or geographic information system.",
+         "correct": 0,
+         "score": 0
+      },
+      "14": {
+         "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Albury-Wodonga?",
+         "answer": "none of those directions accurately describe the location of fraser island in relation to alice springs and albury-wodonga. fraser island is located off the coast of queensland, australia, while alice springs and albury-wodonga are inland cities in different parts of the country.",
+         "correct": 0,
+         "score": 0
+      },
+      "15": {
+         "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Fraser Island?",
+         "answer": "northwest of albury-wodonga, and neither north, south, east, nor west of fraser island. fraser island is located off the coast of queensland, while alice springs is in the northern territory, a significant distance away.",
+         "correct": 0,
+         "score": 0
+      },
+      "16": {
+         "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Albury-Wodonga?",
+         "answer": "northwest of alice springs to fraser island, and east or west of alice springs to albury-wodonga. (note: alice springs is in the central part of australia, while fraser island is off the coast of queensland, and albury-wodonga is in new south wales, near the border with victoria.)",
+         "correct": 0,
+         "score": 0
+      },
+      "17": {
+         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Exmouth?",
+         "answer": "icatq. fregon is a town in western australia, and the exact directions from it to port douglas (in queensland) and exmouth (also in western australia) would depend on specific coordinates. without that information, it's impossible to provide a definitive answer.",
+         "correct": 0,
+         "score": 0
+      },
+      "18": {
+         "question": "Fregon  is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Port Douglas?",
+         "answer": "icatq. fregon is a location in western australia, and the exact relationship to exmouth and port douglas in queensland, australia, is not provided in the question.",
+         "correct": 0,
+         "score": 0
+      },
+      "19": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Fregon?",
+         "answer": "port douglas is north of exmouth and east of fregon.",
+         "correct": 0,
+         "score": 0
+      },
+      "20": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Exmouth?",
+         "answer": "north or northeast. port douglas is located in queensland, australia, and fregon is in western australia. exmouth is also in western australia, but further north than fregon. so, port douglas is generally northeast or north of both fregon and exmouth.",
+         "correct": 0,
+         "score": 0
+      },
+      "21": {
+         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
+         "answer": "icatq. exmouth is located in western australia, while port douglas is in queensland and fregon is in south australia. the precise direction would depend on specific coordinates, which are not provided.",
+         "correct": 0,
+         "score": 0
+      },
+      "22": {
+         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
+         "answer": "icatq\n\nexmouth is a town located in western australia, while fregon is a community in south australia and port douglas is in queensland. without specific coordinates, it's impossible to determine the exact direction between these three places and exmouth.",
+         "correct": 0,
+         "score": 0
+      }
+   }
+}
