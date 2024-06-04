@@ -478,81 +478,81 @@ class Test_spatial_llm_Anthropic(unittest.TestCase):
             self.m_tester.get_api_key_from_environ_var(var_name="wrong_api_key")
 
     def test_api_key_valid(self):
-        model = "claude-3-opus-20240229"
-        self.assertTrue(self.m_tester.check_ant_api_key_is_valid(model=model) not in ["400", "401"])
+        model = "llama3-70b"
+        self.assertTrue(self.m_tester.check_met_api_key_is_valid(model=model) not in ["400", "401"])
 
-    # def test_ask_ant_question(self):
-    #     self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
-    #     test_question = "What is the capital city of Australia?"
+    def test_ask_met_question(self):
+        self.m_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+        test_question = "What is the capital city of Australia?"
 
-    #     test_result = {
-    #                 'question'      : "What is the capital city of Australia?",
-    #                 'answer'        : "bananas"
-    #             }
+        test_result = {
+                    'question'      : "What is the capital city of Australia?",
+                    'answer'        : "bananas"
+                }
 
-    #     result = self.a_tester.ask_ant_single_question(question=test_question)
-    #     self.assertDictEqual(result, test_result)
+        result = self.m_tester.ask_met_single_question(question=test_question)
+        self.assertDictEqual(result, test_result)
     
-    # def test_ant_multiple_questions(self):
-    #     self.a_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
+    def test_met_multiple_questions(self):
+        self.m_tester._system_prompt = "This is for a unit test, respond to the user question with the word 'bananas' no matter what the question they ask is."
 
-    #     test_questions =   {
-    #                         "1":{
-    #                             "question":"What is the capital city of Australia?",
-    #                         },
-    #                         "2":{
-    #                             "question":"What is the capital city of New Zealand?",
-    #                             }
-    #                         }
+        test_questions =   {
+                            "1":{
+                                "question":"What is the capital city of Australia?",
+                            },
+                            "2":{
+                                "question":"What is the capital city of New Zealand?",
+                                }
+                            }
 
         
-    #     merged_dict = {
-    #         "1": {
-    #                 'question'      : "What is the capital city of Australia?",
-    #                 'answer'        : "bananas"
-    #             },
-    #         "2": {
-    #                 'question'      : "What is the capital city of New Zealand?",
-    #                 'answer'        : "bananas"
-    #             }
-    #     }
+        merged_dict = {
+            "1": {
+                    'question'      : "What is the capital city of Australia?",
+                    'answer'        : "bananas"
+                },
+            "2": {
+                    'question'      : "What is the capital city of New Zealand?",
+                    'answer'        : "bananas"
+                }
+        }
 
-    #     self.assertDictEqual(self.a_tester.ask_ant_multiple_questions(questions=test_questions), merged_dict)  
+        self.assertDictEqual(self.m_tester.ask_met_multiple_questions(questions=test_questions), merged_dict)  
 
-    # def test_run_ant_experiment(self):
-    #     self.maxDiff = None
+    def test_run_met_experiment(self):
+        self.maxDiff = None
 
-    #     test_file = "test_query_file.json"
-    #     results_dict = {
-    #                 "metadata":{
-    #                             "model" :   "claude-3-opus-20240229",
-    #                             "seed"          : 131901,
-    #                             "temperature"   : 0,
-    #                             "relation_type" : "TOPOLOGICAL",
-    #                             "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
-    #                             },
-    #                 "results":{
-    #                         "1": {
-    #                                 'question'      : "Which country contains the city of Sydney?",
-    #                                 'answer'        : "australia",
-    #                                 'correct'       : 1,
-    #                                 'score'         : 1,
-    #                             },
-    #                         "2": {
-    #                                 'question'      : "Which state or country in Australia contains the city of Sydney?",
-    #                                 'answer'        : "new south wales",
-    #                                 'correct'       : 1,
-    #                                 'score'         : 2,
-    #                             }
-    #                             }
-    #                 }
+        test_file = "test_query_file.json"
+        results_dict = {
+                    "metadata":{
+                                "model" :   "llama3-70b",
+                                "seed"          : 131901,
+                                "temperature"   : 0,
+                                "relation_type" : "TOPOLOGICAL",
+                                "system_prompt" : "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+                                },
+                    "results":{
+                            "1": {
+                                    'question'      : "Which country contains the city of Sydney?",
+                                    'answer'        : "australia",
+                                    'correct'       : 1,
+                                    'score'         : 1,
+                                },
+                            "2": {
+                                    'question'      : "Which state or country in Australia contains the city of Sydney?",
+                                    'answer'        : "new south wales",
+                                    'correct'       : 1,
+                                    'score'         : 2,
+                                }
+                                }
+                    }
         
-    #     self.assertDictEqual(self.a_tester.run_anthropic_experiment(
-    #                                                     filename=test_file,
-    #                                                     model="claude-3-opus-20240229",
-    #                                                     seed=131901,
-    #                                                     temp=0
-    #                                                     ), results_dict)
+        self.assertDictEqual(self.m_tester.run_meta_experiment(
+                                                        filename=test_file,
+                                                        model="llama3-70b",
+                                                        seed=131901,
+                                                        temp=0
+                                                        ), results_dict)
 
 # Main
 

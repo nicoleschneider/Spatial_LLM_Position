@@ -5,12 +5,14 @@ import os
 import json
 import argparse
 from tqdm import tqdm
+import time
 
 # Library Imports
 import openai
 import google.generativeai as genai
 import anthropic
 from anthropic import Anthropic
+from llamaapi import LlamaAPI
 
 
 # User Imports
@@ -41,6 +43,7 @@ class Spatial_LLM_Tester():
 
         #Meta
         self._met_api_key = self.get_api_key_from_environ_var(var_name=met_api_var_name)
+        self.met_client = LlamaAPI(self._met_api_key)
 
         self._data_directory = self.set_data_directory(data_directory=data_directory)
         self.experiment_file = {}
@@ -225,6 +228,9 @@ class Spatial_LLM_Tester():
         except Exception as e:
             print("Unable to save to File -- check and try again", e)
 
+    # # # # # # # # # #
+    # GOOGLE
+    # # # # # # # # # #
 
     def list_available_gemini_models(self)->str:
         model_list = []
@@ -316,6 +322,10 @@ class Spatial_LLM_Tester():
 
         return to_return
     
+    # # # # # # # # # #
+    # ANTHROPIC
+    # # # # # # # # # #
+    
     def check_ant_api_key_is_valid(self,model)->str:
         try:
             chat_completion = self._ant_client.messages.create(
@@ -395,8 +405,109 @@ class Spatial_LLM_Tester():
                     }
 
         return to_return
+    
+    
 
+    # # # # # # # # # #
+    # META
+    # # # # # # # # # #
             
+    def check_met_api_key_is_valid(self,model)->str:
+        try:
+            message = {
+                "model": model,
+                "messages": [
+                    {
+                    "role": "user",
+                    "content": "Say this is a test",
+                }
+                ]
+                }
+            chat_completion = self.met_client.run(
+            message,
+            )
+        except anthropic.APIConnectionError as e:
+            return str(e.status_code)
+        # print(json.dumps(chat_completion.json(),indent=2))
+        return chat_completion
+    
+    def ask_met_single_question(self, question:str, 
+                            model="llama3-70b", 
+                            seed:int=131901, 
+                            temp:float=0.0)->str:
+        
+        message = {
+            "model":model,
+            "temperature":temp,
+            "messages":[
+                        {
+                            "role": "system", 
+                            "content": f"{self._system_prompt}"},
+                        {
+                            "role": "user", 
+                            "content": f"{question}"}
+                    ]
+        }        
+        
+        #Api fails frequently and breaks the json decoder, while loop and error handling accounts for API instability.
+        chat_completion = None
+        while chat_completion is None:
+            try:
+                chat_completion = self.met_client.run(message)
+                if chat_completion is not None: 
+                    break
+            except Exception as e:
+                print("Error occured -- Detail:",e)
+            print('null response... trying again in 5')
+            time.sleep(5)
+        
+        cc = chat_completion.json()
+                
+        result = {
+                    'question'      : question,
+                    'answer'        : (cc['choices'][0]['message']['content']).casefold()
+                }
+        return(result)
+    
+    def ask_met_multiple_questions(self,    questions:dict, 
+                                        model:str="llama3-70b",
+                                        seed:int=131901,
+                                        temp:int=0)->dict:
+        results = {}
+        print(f"Running Experiment querying {model} API")
+        for question in tqdm(questions.keys()):
+            q = questions[question]['question']
+            a = self.ask_met_single_question(question=q, 
+                                         model=model, 
+                                         seed=seed,
+                                         temp=temp)
+            results[question] = a
+
+        return results
+    
+    def run_meta_experiment(self, filename:os.path, model:str="llama3-70b", seed:int=131901, temp:int=0)->dict:
+
+        experiment_dict = self.load_question_file_to_dict(filename=os.path.join(self.get_data_directory(), filename))
+        
+        self.set_system_prompt(experiment_dict['metadata']['system_prompt'])
+
+        results = self.ask_met_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
+
+        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+
+        to_return = {
+                        "metadata":{
+                            "model": model, 
+                            "seed":seed,
+                            "temperature":temp,
+                            "relation_type" : experiment_dict['metadata']['relation_type'],
+                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            },
+                        "results": evaluated
+                    }
+
+        return to_return
+    
 # Main
 
 if __name__ == '__main__':
@@ -418,11 +529,11 @@ if __name__ == '__main__':
                            type=str,
                            required=True)
     argparser.add_argument("--model_family", 
-                           help="Model Family ['OPENAI', 'GOOGLE', 'ANTHROPIC']",
+                           help="Model Family ['OPENAI', 'GOOGLE', 'ANTHROPIC', 'META']",
                            type=str, 
                            required=True)
     argparser.add_argument("--model", 
-                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo','gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro', 'claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307']",
+                           help="Model to use from ['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo','gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro', 'claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307', 'llama3-70b','llama3-8b', 'mixtral-8x22b-instruct', 'mistral-7b-instruct']",
                            type=str, 
                            required=True)
     argparser.add_argument("--seed",
@@ -458,6 +569,14 @@ if __name__ == '__main__':
         tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
                                     results_directory=flags.results_directory)
         results = tester.run_anthropic_experiment(filename=flags.quiz_file,
+                                        model=flags.model,
+                                        seed=flags.seed,
+                                        temp=flags.temp)
+    
+    elif flags.model_family == "META":
+        tester = Spatial_LLM_Tester(data_directory=flags.data_directory,
+                                    results_directory=flags.results_directory)
+        results = tester.run_meta_experiment(filename=flags.quiz_file,
                                         model=flags.model,
                                         seed=flags.seed,
                                         temp=flags.temp)
