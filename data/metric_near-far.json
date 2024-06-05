@@ -1,0 +1,275 @@
+{
+    "metadata":{
+        "file_name":"metric_near-far",
+        "relation_type":"METRIC_NEAR-FAR",
+        "norm_factor":4000,
+        "system_prompt":"You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+        
+    },
+    "questions":{
+        "1": {
+            "question":"If Newcastle, NSW is 'near' Sydney, NSW, what is a city or town 'near' Melbourne, VIC?",
+            "locations":{
+                "source_example": "Sydney, NSW", 
+                "dest_example": "Newcastle, NSW",
+                "source_test":"Melbourne, VIC"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 120Km"
+        },
+        "2": {
+            "question":"If Gold Coast, QLD is 'near' Brisbane, QLD, what is a city or town 'near' Sunshine Coast, QLD?",
+            "locations":{
+                "source_example": "Gold Coast, QLD", 
+                "dest_example": "Brisbane QLD",
+                "source_test":"Sunshine Coast QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 80 Km"
+        },
+        "3": {
+            "question":"If Canberra, ACT is 'near' Sydney, NSW, what is a city or town 'near' Perth, WA?",
+            "locations":{
+                "source_example": "Canberra, ACT", 
+                "dest_example": "Sydney, NSW",
+                "source_test":"Perth, WA"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 280 Km"
+        },
+        "4": {
+            "question":"If Melbourne, VIC is 'near' Bendigo, VIC, what is a city or town 'near' Brisbane, QLD?",
+            "locations":{
+                "source_example": "Melbourne, VIC", 
+                "dest_example": "Bendigo, VIC",
+                "source_test":"Brisbane QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 150 km"
+        },
+        "5": {
+            "question":"If Darwin, NT is 'near' Townsville, QLD, what is a city or town 'near' Hobart, TAS?",
+            "locations":{
+                "source_example": "Darwin, NT", 
+                "dest_example": "Townsville, QLD",
+                "source_test":"Hobart, TAS"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1800 km; distractor for 'near'."
+        },
+        "6": {
+            "question":"If Darwin, NT is 'far' from Hobart, TAS, what is a city or town 'far' from Brisbane, QLD?",
+            "locations":{
+                "source_example": "Darwin, NT", 
+                "dest_example": "Hobart, TAS",
+                "source_test":"Brisbane, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 3700 Km"
+        },
+        "7": {
+            "question":"If Sydney, NSW is 'far' from Adelaide, SA, what is a city or town 'far' from Perth, WA?",
+            "locations":{
+                "source_example": "Sydney, NSW", 
+                "dest_example": "Adealide, SA",
+                "source_test":"Perth, WA"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1200 Km"
+        },
+        "8": {
+            "question":"If Sydney, NSW is 'far' from Alice Springs, NT, what is a city or town 'far' from Adelaide, SA?",
+            "locations":{
+                "source_example": "Sydney, NSW", 
+                "dest_example": "Alice Springs, NT",
+                "source_test":"Adelaide, SA"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 2000 Km"
+        },
+        "9": {
+            "question":"If Brisbane, QLD is 'far' from Cairns, QLD, what is a city or town 'far' from Mackay, QLD?",
+            "locations":{
+                "source_example": "Brisbane, QLD", 
+                "dest_example": "Cairns, QLD",
+                "source_test":"Mackay, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1300 Km"
+        },
+        "10": {
+            "question":"If Newcastle, NSW is 'far' from Dubbo, NSW, what is a city or town 'far' from Geelong, VIC?",
+            "locations":{
+                "source_example": "Newcastle, NSW", 
+                "dest_example": "Dubbo, NSW",
+                "source_test":"Geelong, VIC"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 300 Km"
+        },
+        "11": {
+            "question":"If K'Gari, QLD is 'near' Rockhampton, QLD, what is a city or town 'near' Tarndanya, SA?",
+            "locations":{
+                "source_example": "Fraser Island, QLD", 
+                "dest_example": "Rockhampton, QLD",
+                "source_test":"Adelaide, SA"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 330 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "12": {
+            "question":"If Uluru, NT is 'near' Mparntwe, NT, what is a city or town 'near' Gimuy, QLD?",
+            "locations":{
+                "source_example": "Uluru, NT", 
+                "dest_example": "Alice Springs, NT",
+                "source_test":"Cairns, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 340 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "13": {
+            "question":"If Gulumoerrgin, NT is 'near' Gove, NT, what is a city or town 'near' Naarm, VIC?",
+            "locations":{
+                "source_example": "Darwin, NT", 
+                "dest_example": "Gove, NT",
+                "source_test":"Melbourne, Vic"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 650 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "14": {
+            "question":"If Tarndanya, SA is 'near' Mt Gambier, SA, what is a city or town 'near' Boorloo, WA?",
+            "locations":{
+                "source_example": "Adealide, SA", 
+                "dest_example": "Mt Gambier, SA",
+                "source_test":"Perth, WA"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 370 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "15": {
+            "question":"If Nipaluna, TAS is 'near' Launceston, TAS, what is a city or town 'near' Boorloo, VIC?",
+            "locations":{
+                "source_example": "Hobart, TAS", 
+                "dest_example": "Launceston, TAS",
+                "source_test":"Melbourne, VIC"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 160 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "16": {
+            "question":"If Nipaluna, TAS is 'far' from Canberra, ACT, what is a city or town 'far' from Boorloo, VIC?",
+            "locations":{
+                "source_example": "Hobart, TAS", 
+                "dest_example": "Canberra, ACT",
+                "source_test":"Melbourne, VIC"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 850 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "17": {
+            "question":"If Tarndanya, SA is 'far' from Fregon, SA, what is a city or town 'far' from Meanjin, QLD?",
+            "locations":{
+                "source_example": "Adealide, SA", 
+                "dest_example": "Fregon, SA",
+                "source_test":"Brisbane, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1100 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "18": {
+            "question":"If Kaltjiti, SA is 'far' from Adelaide, SA, what is a city or town 'far' from Meanjin, QLD?",
+            "locations":{
+                "source_example": "Fregon, SA", 
+                "dest_example": "Adelaide, SA",
+                "source_test":"Brisbane, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1100 Km, Indigenous place names; Western Names used for geocoding compatibility, reverse of Q. 17."
+        },
+        "19": {
+            "question":"If Rubibi, WA is 'far' from Perth, WA, what is a city or town 'far' from Gimuy, QLD?",
+            "locations":{
+                "source_example": "Broome, WA", 
+                "dest_example": "Perth, WA",
+                "source_test":"Cairns, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1600 Km, Indigenous place names; Western Names used for geocoding compatibility."
+        },
+        "20": {
+            "question":"If Broome, WA is 'far' from Boorloo, WA, what is a city or town 'far' from Gimuy, QLD?",
+            "locations":{
+                "source_example": "Broome, WA", 
+                "dest_example": "Perth, WA",
+                "source_test":"Cairns, QLD"
+            },
+            "answers":{
+                "very_similar":3,
+                "similar":2, 
+                "somewhat_similar":1},
+            "comment":"Approx 1600 Km, Indigenous place names; Western Names used for geocoding compatibility, reverse of Q 19."
+        }  
+    }
+}
+
+        
+        
+      

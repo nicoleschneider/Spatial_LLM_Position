@@ -16,6 +16,7 @@ from llamaapi import LlamaAPI
 
 
 # User Imports
+from calculate_distances import GeoCalc
 
 # Classes
 
@@ -49,6 +50,10 @@ class Spatial_LLM_Tester():
         self.experiment_file = {}
         self._system_prompt = ""
         self._results_directory = self.set_results_directory(results_directory=results_directory)
+
+        self.gc=GeoCalc()
+        self._relation_type = ''
+        self._norm_factor = 0
 
           
     def get_api_key_from_environ_var(self, var_name:str):
@@ -113,6 +118,7 @@ class Spatial_LLM_Tester():
         except:
             exit(f"Unable to Load {file_path}")
         
+        self._relation_type = experiment_dict['metadata']['relation_type']
         self.experiment_file = experiment_dict 
         return experiment_dict
     
@@ -189,6 +195,41 @@ class Spatial_LLM_Tester():
             results[result]['score'] = score
         
         return results
+        
+    def evaluate_all_metric_answers(self, gt_answers:dict, results:dict, norm_factor=4000):
+        #Norm factor used to normalize distances. Set roughly equal to diameter of country. 
+        
+        print(f"Evaluating the answers...")
+        for result in tqdm(results.keys()):
+            
+            data = gt_answers[result]['locations']
+
+            try:
+                ratio, sim = self.gc.calculate_nearness(loc1a = data['source_example'],
+                                                        loc1b = data['dest_example'],
+                                                        loc2a = data['source_test'],
+                                                        loc2b = results[result]['answer'],
+                                                        norm_factor=norm_factor)
+                score = self.evaluate_answer(gt_answers=gt_answers[result]['answers'], 
+                                        pred_answer=sim)
+            except AttributeError:
+                score = 0
+                ratio = 1
+                sim = "different"
+                
+            if score > 0:
+                results[result]['correct'] = 1
+            else:
+                results[result]['correct'] = 0
+            
+            results[result]['score'] = score
+            
+            temp = results[result]['answer']
+
+            results[result]['answer'] = ((sim, ratio),temp)
+        
+        return results
+
     
     def run_experiment(self, filename:os.path, model:str="gpt-3.5-turbo", seed:int=131901, temp:int=0)->dict:
 
@@ -198,7 +239,11 @@ class Spatial_LLM_Tester():
 
         results = self.ask_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
 
-        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+        if 'metric' in self._relation_type.casefold():
+            self._norm_factor = experiment_dict['metadata']['norm_factor']
+            evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        else:
+            evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
         to_return = {
                         "metadata":{
@@ -307,7 +352,11 @@ class Spatial_LLM_Tester():
 
         results = self.ask_gemini_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
 
-        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+        if 'metric' in self._relation_type.casefold():
+            self._norm_factor = experiment_dict['metadata']['norm_factor']
+            evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        else:
+            evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
         to_return = {
                         "metadata":{
@@ -391,7 +440,11 @@ class Spatial_LLM_Tester():
 
         results = self.ask_ant_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
 
-        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+        if 'metric' in self._relation_type.casefold():
+            self._norm_factor = experiment_dict['metadata']['norm_factor']
+            evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        else:
+            evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
         to_return = {
                         "metadata":{
@@ -493,7 +546,11 @@ class Spatial_LLM_Tester():
 
         results = self.ask_met_multiple_questions(questions=experiment_dict['questions'],model=model,seed=seed,temp=temp)
 
-        evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
+        if 'metric' in self._relation_type.casefold():
+            self._norm_factor = experiment_dict['metadata']['norm_factor']
+            evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        else:
+            evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
         to_return = {
                         "metadata":{

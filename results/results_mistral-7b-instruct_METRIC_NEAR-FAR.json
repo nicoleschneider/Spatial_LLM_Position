@@ -1,0 +1,251 @@
+{
+   "metadata": {
+      "model": "mistral-7b-instruct",
+      "seed": 131901,
+      "temperature": 0,
+      "relation_type": "METRIC_NEAR-FAR",
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+   },
+   "results": {
+      "1": {
+         "question": "If Newcastle, NSW is 'near' Sydney, NSW, what is a city or town 'near' Melbourne, VIC?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "geelong. it is a significant city located near melbourne, victoria."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "2": {
+         "question": "If Gold Coast, QLD is 'near' Brisbane, QLD, what is a city or town 'near' Sunshine Coast, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "caloundra or maroochydore. both are towns near sunshine coast, qld."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "3": {
+         "question": "If Canberra, ACT is 'near' Sydney, NSW, what is a city or town 'near' Perth, WA?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"near\" is relative. if we consider sydney and canberra to be \"near\" each other due to their proximity within the same country and relatively close distance, then a city or town \"near\" perth, wa could be fremantle or mandurah. however, for clarity, fremantle would be the better answer as it is located closer to perth than mandurah."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "4": {
+         "question": "If Melbourne, VIC is 'near' Bendigo, VIC, what is a city or town 'near' Brisbane, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "gold coast. it is a city located north of brisbane, queensland."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "5": {
+         "question": "If Darwin, NT is 'near' Townsville, QLD, what is a city or town 'near' Hobart, TAS?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "launceston or devonport. both are cities in tasmania, located to the north of hobart."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "6": {
+         "question": "If Darwin, NT is 'far' from Hobart, TAS, what is a city or town 'far' from Brisbane, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "perth, wa. however, the definition of \"far\" can vary, so this answer is approximate."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "7": {
+         "question": "If Sydney, NSW is 'far' from Adelaide, SA, what is a city or town 'far' from Perth, WA?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"far\" is subjective and can vary based on different contexts and distances. however, if we consider \"far\" to mean approximately 1000 kilometers or more, then a city or town \"far\" from perth, wa could be alice springs, nt. this is based on a common definition of \"far\" in the context of interstate travel in australia. however, please note that this is an approximation and the actual distance can vary."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "8": {
+         "question": "If Sydney, NSW is 'far' from Alice Springs, NT, what is a city or town 'far' from Adelaide, SA?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"far\" is subjective and can vary based on different contexts and distances. however, if we consider \"far\" to mean approximately 1,000 kilometers or more from adelaide, sa, then perth, wa could be an answer. this is based on the approximate distance between adelaide and perth, which is around 1,200 kilometers. however, it's important to note that this is an approximation and the actual"
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "9": {
+         "question": "If Brisbane, QLD is 'far' from Cairns, QLD, what is a city or town 'far' from Mackay, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "townsville. it's roughly the same distance from mackay to townsville as it is from brisbane to cairns. however, please note that the exact distance can vary depending on the specific routes and modes of transportation taken."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "10": {
+         "question": "If Newcastle, NSW is 'far' from Dubbo, NSW, what is a city or town 'far' from Geelong, VIC?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "perth, wa. however, the definition of \"far\" can vary, so this answer is an approximation."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "11": {
+         "question": "If K'Gari, QLD is 'near' Rockhampton, QLD, what is a city or town 'near' Tarndanya, SA?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"near\" can be subjective and can vary based on distance. generally, \"near\" is considered to be within a reasonable driving distance, usually less than 2 hours. based on this definition, a town \"near\" tarndanya, sa could be murray bridge or goolgowi. however, for precise information, it's best to check a map or use a distance calculator. therefore, the answer is: murray bridge or goolgow"
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "12": {
+         "question": "If Uluru, NT is 'near' Mparntwe, NT, what is a city or town 'near' Gimuy, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "cairns.\n\n[explanation: uluru and mparntwe are the same place, with uluru being the more commonly known name for the large sandstone monolith, and mparntwe being the name of the nearby community. cairns is a city located near gimuy, which is the aboriginal name for cairns.]"
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "13": {
+         "question": "If Gulumoerrgin, NT is 'near' Gove, NT, what is a city or town 'near' Naarm, VIC?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the city or town \"near\" naarm, vic is melbourne."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "14": {
+         "question": "If Tarndanya, SA is 'near' Mt Gambier, SA, what is a city or town 'near' Boorloo, WA?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "subiaco. it's a suburb of perth, the capital city of western australia, located near boorloo."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "15": {
+         "question": "If Nipaluna, TAS is 'near' Launceston, TAS, what is a city or town 'near' Boorloo, VIC?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"near\" can be subjective and vary in distance. however, based on general proximity, the city of perth is near boorloo, both being in western australia, australia."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "16": {
+         "question": "If Nipaluna, TAS is 'far' from Canberra, ACT, what is a city or town 'far' from Boorloo, VIC?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "exmouth, wa\n\n[explanation: the distance from nipaluna (hobart), tas to canberra, act is approximately 350 kilometers. exmouth, wa is about the same distance from boorloo (bendigo), vic, making both nipaluna and exmouth roughly \"far\" from their respective cities.]"
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "17": {
+         "question": "If Tarndanya, SA is 'far' from Fregon, SA, what is a city or town 'far' from Meanjin, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "adelaide (or a similarly significant distance)\n\n[explanation: tarndanya and fregon are approximately 250 kilometers apart. meanjin (brisbane) is about 1,100 kilometers from adelaide. therefore, a city or town \"far\" from meanjin would be one that is significantly farther away, such as perth, which is approximately 2,200 kilometers away.]"
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "18": {
+         "question": "If Kaltjiti, SA is 'far' from Adelaide, SA, what is a city or town 'far' from Meanjin, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "exmouth, wa (in australia) could be considered \"far\" from meanjin, qld, following the same relative distance comparison as kaltjiti to adelaide."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "19": {
+         "question": "If Rubibi, WA is 'far' from Perth, WA, what is a city or town 'far' from Gimuy, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"far\" is subjective and can vary based on individual perception and distance measurements. however, if we consider \"far\" to mean approximately 100 kilometers or more, then a town that fits this description from gimuy, qld could be atherton."
+         ],
+         "correct": 0,
+         "score": 0
+      },
+      "20": {
+         "question": "If Broome, WA is 'far' from Boorloo, WA, what is a city or town 'far' from Gimuy, QLD?",
+         "answer": [
+            [
+               "different",
+               1
+            ],
+            "the term \"far\" is subjective and can vary based on different contexts and distances. however, if we consider a driving distance of around 500 kilometers or more, then a city or town \"far\" from gimuy, qld could be charters towers or longreach. but remember, this is an approximation and the actual distance may vary."
+         ],
+         "correct": 0,
+         "score": 0
+      }
+   }
+}
