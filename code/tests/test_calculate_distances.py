@@ -119,15 +119,20 @@ class Test_Geocalc(unittest.TestCase):
         loc3a = "Sydney,NSW"            # -33.86916562287265, 151.20647790454234    
         loc3b = "Perth, WA"             # -31.95162999189365, 115.85937803062562
 
-        expected_1 = (0.01,'very_similar')   # Syd New Mel Geel ratio
+        expected_1 = (118.06, 64.75, 0.01,'very_similar')   # Syd New Mel Geel ratio
 
-        expected_2 = (0.79,'different') # syd, new, syd, per ratio
+        expected_2 = (118.06, 3297.20, 0.79,'different') # syd, new, syd, per ratio
 
         self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc2a, loc2b, norm_factor=norm_factor)[0], expected_1[0], places=2)
-        self.assertEqual(self.gc.calculate_nearness(loc1a, loc1b, loc2a, loc2b, norm_factor=norm_factor)[1], expected_1[1])
+        self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc2a, loc2b, norm_factor=norm_factor)[1], expected_1[1], places=2)
+        self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc2a, loc2b, norm_factor=norm_factor)[2], expected_1[2], places=2)
+        self.assertEqual(self.gc.calculate_nearness(loc1a, loc1b, loc2a, loc2b, norm_factor=norm_factor)[3], expected_1[3])
 
         self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc3a, loc3b, norm_factor=norm_factor)[0], expected_2[0], places=2)
-        self.assertEqual(self.gc.calculate_nearness(loc1a, loc1b, loc3a, loc3b, norm_factor=norm_factor)[1], expected_2[1])
+        self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc3a, loc3b, norm_factor=norm_factor)[1], expected_2[1], places=2)
+        self.assertAlmostEqual(self.gc.calculate_nearness(loc1a, loc1b, loc3a, loc3b, norm_factor=norm_factor)[2], expected_2[2], places=2)
+        
+        self.assertEqual(self.gc.calculate_nearness(loc1a, loc1b, loc3a, loc3b, norm_factor=norm_factor)[3], expected_2[3])
 
 
 if __name__=="__main__":

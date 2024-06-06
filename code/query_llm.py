@@ -205,28 +205,36 @@ class Spatial_LLM_Tester():
             data = gt_answers[result]['locations']
 
             try:
-                ratio, sim = self.gc.calculate_nearness(loc1a = data['source_example'],
+                gt_dist, pred_dist, ratio, sim = self.gc.calculate_nearness(loc1a = data['source_example'],
                                                         loc1b = data['dest_example'],
                                                         loc2a = data['source_test'],
                                                         loc2b = results[result]['answer'],
                                                         norm_factor=norm_factor)
                 score = self.evaluate_answer(gt_answers=gt_answers[result]['answers'], 
                                         pred_answer=sim)
-            except AttributeError:
-                score = 0
-                ratio = 1
-                sim = "different"
                 
-            if score > 0:
-                results[result]['correct'] = 1
-            else:
-                results[result]['correct'] = 0
+                if score > 0:
+                    results[result]['correct'] = 1
+                else:
+                    results[result]['correct'] = 0
             
-            results[result]['score'] = score
+                results[result]['score'] = score
+            except AttributeError:
+                gt_dist = None
+                pred_dist = None
+                score = None 
+                ratio = None
+                results[result]['correct'] = 0
+                sim = "error"
             
             temp = results[result]['answer']
 
-            results[result]['answer'] = ((sim, ratio),temp)
+            results[result]['answer'] = sim
+            results[result]['example_dist'] = gt_dist
+            results[result]['predicted_dist'] = pred_dist
+            results[result]['prediction'] = temp 
+            results[result]['ratio'] = ratio 
+
         
         return results
 

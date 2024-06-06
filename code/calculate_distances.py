@@ -84,15 +84,15 @@ class GeoCalc():
         ratio = self.calc_normalized_distance_ratio(d1=dist_1, d2=dist_2, norm_factor=norm_factor)
 
         if ratio <= 0.05:
-            return((ratio, 'very_similar'))
+            return((dist_1, dist_2, ratio, 'very_similar'))
         
         if ratio <= 0.10:
-            return((ratio, 'similar'))
+            return((dist_1, dist_2, ratio, 'similar'))
         
         if ratio <= 0.25:
-            return((ratio, 'somewhat_similar'))
+            return((dist_1, dist_2, ratio, 'somewhat_similar'))
 
-        return ((ratio, 'different'))
+        return ((dist_1, dist_2, ratio, 'different'))
 
 
 # Main
