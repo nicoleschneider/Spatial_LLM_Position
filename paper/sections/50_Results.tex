@@ -3,32 +3,64 @@
 
 In this section we discuss the results (R1 - R5) of the experiments E1 - E5 that were laid out in the previous section.
 
-\subsection{Spatial Entities} % -----------------------------------------------
 
-\subsubsection{R1. Non-point Data}
+\subsection{Result 1. Toponym Resolution}
 
 
-\subsubsection{R2. Lesser-known Cities}
---> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
-Give the phrase Chat-GPT outputs when a location is not recognized.
-Plot accuracy of result vs. population size.
+
+% \subsection{R2. Lesser-known Cities}
+% --> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
+% Give the phrase Chat-GPT outputs when a location is not recognized.
+% Plot accuracy of result vs. population size.
 
 %\osullikomment{I think you might get some intersting outliers. E.g. I think Port Arthur will be massively over-represented because it was the site of our last mass shooting, and the catalyst for gun control in Australia. So there are a million articles that talk about Port Arthur, even though it's tiny in real terms.}
 
 
 
-\subsection{Spatial Relations} % -----------------------------------------------
-
-\subsubsection{R3. Multi-way Spatial Relations}
+\subsection{Result 2. Metric Relations}
 
 
 
-\subsubsection{R4. Non-directional Spatial Relations}
-Report percent of triples that it got the order relation correct.
-Report percent of pairs for which topological relation was correct.
+
+\subsection{Result 3. Multi-way Directional Relations}
+The returned results for the 3-way directional prompts were correct in 3 out of 36 instances.
+For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
+While differences in model used, prompt wording, and exact city names used may account for some variation, we hypothesize that the large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations is an indication of a fundamental lack of spatial reasoning ability in current LLMs.
+
+It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
+As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
+However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
+Hence, we believe the poor performance across most of the three-way directional relations we tested indicates a lack of the model's ability to infer implicit spatial relationships that it did not learn directly from training.
+We discuss ways complex spatial relations can be encoded and provided to models at training time in section \ref{section:proposal}.
 
 
-\subsubsection{R5. Spatiotemporal and Multiple Hop Relations}
-Report percent of 2 hop spatial queries correct.
-Report percent of space + time queries correct.
-Report for more hops if tested.
+
+\subsection{Result 4. Topological Relations}
+\paragraph{Results and Discussion}
+The returned results for the topological relation prompts were correct in 13 out of 18 cases.
+We hypothesize that the better performance on topological relations than cyclic order or three-way directional relations is due to two factors.
+The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
+The second factor is that this test only involved two entities per prompt, which makes it more likely that the information required to answer the question may have been seen explicitly at training time, reducing the need for the model to perform spatial reasoning to answer the question correctly.
+%To disentangle these factors, further investigation could be done testing complex topological relations between more than two entities.
+
+
+
+\subsection{Result 5. Order Relations}
+The returned results for the cyclic order relation prompts were correct in 0 out of 18 cases.
+We observed that many of the responses indicated a lack of knowledge about relative positions of cities.
+For example, one output was 
+``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''
+In the context of multiple previous studies that have shown Chat-GPT and other LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
+
+
+
+
+
+
+
+
+
+
+% Report percent of 2 hop spatial queries correct.
+% Report percent of space + time queries correct.
+% Report for more hops if tested.

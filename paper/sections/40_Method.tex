@@ -1,43 +1,57 @@
 \section{Method}
 \label{section:method}
 
-\nrscomment{release all prompts and responses as appendix \\ randomize properly \\ describe method for selection and sampling}
-
 In this section we describe our method for evaluating the spatial reasoning ability of LLMs.
 
-%\subsection{Spatial Entities} % -----------------------------------------------
 
-\nrscomment{resolve or separate from topo queries by asking the extent of or something where relations arent needed}
+\paragraph{Experimental Setup}
 
-\subsubsection{E0.1 Non-point Data}
-\paragraph{Method}
-\cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
---> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
-% randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
+\nrscomment{table of models}
 
+\nrscomment{data choices- sampling method}
 
-\nrscomment{Make this a one liner explaining the random selection process and testing to verify it recognizes the cities}
-\nrscomment{move this out to a paper on embeddings}
-
-\subsubsection{E0.2 Lesser-known Cities}
-To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
-
-\begin{center}
-    \boxed{Where\ in\ the\ world\ is\ L?}
-\end{center}
-
-The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
-For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. \osullikomment{Might be worth specifying Country / State / Region level of fidelity (i.e. the later in the list of answers I gave you, the more specific it is)}
-
-\paragraph{Results and Discussion}
+\begin{lstlisting}[title=text here]
+    You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.
+\end{lstlisting}
 
 
 
-%\subsection{Spatial Relations} % -----------------------------------------------
+
+\subsection{Experiment 1: Toponym Resolution}
+
+\begin{lstlisting}[title=text here]
+    Where in the world is A?
+\end{lstlisting}
+
+
+
+
+\subsection{Experiment 2: Metric Relations}
+
+\begin{lstlisting}[title=text here]
+    If A is 'near' B, what is a city or town 'near' to C?
+\end{lstlisting}
+
+\begin{lstlisting}[title=text here]
+    If A is 'far' B, what is a city or town 'far' to C?
+\end{lstlisting}
+
+\begin{lstlisting}[title=text here]
+    The distance from A to B is similar to the distance from C to what other city or town?
+\end{lstlisting}
+
+
+\nrscomment{gave city, state to help}
+
+
+\subsection{Experiment 3: Multi-way Directional Relations}
+
+\begin{lstlisting}[title=text here]
+    A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
+\end{lstlisting}
+
 \nrscomment{test 2 way directional as baseline instead of relying on Qi2023}
 
-\subsection{Experiment 1: Multi-way Spatial Relations}
-\paragraph{Method}
 To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names~\footnote{After verifying that Chapt-GPT recognizes them as being in Australia} of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
 For each group consisting of cities A, B, and C, we query ChatGPT with the three-way directional prompt: 
 \begin{center}
@@ -55,43 +69,14 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 % if needed do more than 3 way and show how accuracy declines with more entities (more complexity)
 % Test pairs as baseline? Should be similiar to results MaaSDB got
 
-\paragraph{Results and Discussion}
-The returned results for the 3-way directional prompts were correct in 3 out of 36 instances.
-For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
-While differences in model used, prompt wording, and exact city names used may account for some variation, we hypothesize that the large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations is an indication of a fundamental lack of spatial reasoning ability in current LLMs.
-
-It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
-As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
-However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
-Hence, we believe the poor performance across most of the three-way directional relations we tested indicates a lack of the model's ability to infer implicit spatial relationships that it did not learn directly from training.
-We discuss ways complex spatial relations can be encoded and provided to models at training time in section \ref{section:proposal}.
 
 
-\subsection{Experiment 2: Cyclic Order Relations}
-\paragraph{Method}
-To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
-%\osullikomment{Formatting of query}
-\begin{center}
-    \boxed{
-    \!\begin{aligned}
-    & What\ is\ the\ clockwise\ ordering\ of\ A,\ B,\ and\ C?
-    \end{aligned}
-    }
-\end{center}
-We repeat this for each permutation of A, B, and C, reordering them within the prompt text, to construct a total of 18 three-way directional prompts.
+\subsection{Experiment 4: Topological Relations}
 
-\paragraph{Results and Discussion}
-The returned results for the cyclic order relation prompts were correct in 0 out of 18 cases.
-We observed that many of the responses indicated a lack of knowledge about relative positions of cities.
-For example, one output was 
-``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''
-In the context of multiple previous studies that have shown Chat-GPT and other LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
+\begin{lstlisting}[title=text here]
+    ...
+\end{lstlisting}
 
-
-\nrscomment{define the relations}
-
-\subsection{Experiment 3: Topological Relations}
 \nrscomment{need to also test multi way topo}
 To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
@@ -104,12 +89,6 @@ We query Chat-GPT with topological relation prompts that are structured like:
     }
 \end{center}
 
-\paragraph{Results and Discussion}
-The returned results for the topological relation prompts were correct in 13 out of 18 cases.
-We hypothesize that the better performance on topological relations than cyclic order or three-way directional relations is due to two factors.
-The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
-The second factor is that this test only involved two entities per prompt, which makes it more likely that the information required to answer the question may have been seen explicitly at training time, reducing the need for the model to perform spatial reasoning to answer the question correctly.
-%To disentangle these factors, further investigation could be done testing complex topological relations between more than two entities.
 
 To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
 For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
@@ -117,28 +96,75 @@ These cases indicate that the errors we observe are due to failures in reasoning
 In section \ref{section:proposal} we discuss data augmentation techniques that may help address the self-consistency issues observed here.
 
 
-\nrscomment{include or move out to another paper}
 
-\subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
-\paragraph{Method}
---> Test if Chat-GPT can answer queries like
-- whether event x happened north of event y (2 hops event->loc + loc->spatial)
-- all events in x region that happened between y and z dates (intersect space and time)
-- all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation) 
-%\osullikomment{I'd use GDELT data to give you a standard set of events. They're derived from newspaper articles so you should be able to limit to new events and get some confidence that they're not in the training data. Or NewsSTAND I guess....}
+\subsection{Experiment 5: Cyclic Order Relations}
 
-\paragraph{Result}
+\begin{lstlisting}[title=text here]
+    With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
+\end{lstlisting}
+
+To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
+For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
+%\osullikomment{Formatting of query}
+\begin{center}
+    \boxed{
+    \!\begin{aligned}
+    & What\ is\ the\ clockwise\ ordering\ of\ A,\ B,\ and\ C?
+    \end{aligned}
+    }
+\end{center}
+We repeat this for each permutation of A, B, and C, reordering them within the prompt text, to construct a total of 18 three-way directional prompts.
+
+
+\nrscomment{define the relations}
 
 
 
 
-%\osullikomment{Could be a really interesting twist using the first nation's territorial boundaries for this as a point of comparison. There are maps out there but they're not well known.}
+
+
+
+
+
+
 
 
 
 
         
 % Future Work -------------------------------------
+
+% \subsubsection{E0.1 Non-point Data}
+% \paragraph{Method}
+% \cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
+% --> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
+% % randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
+
+
+% \nrscomment{Make this a one liner explaining the random selection process and testing to verify it recognizes the cities}
+% \nrscomment{move this out to a paper on embeddings}
+
+% \subsubsection{E0.2 Lesser-known Cities}
+% To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
+
+% \begin{center}
+%     \boxed{Where\ in\ the\ world\ is\ L?}
+% \end{center}
+
+% The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
+% For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. 
+
+
+% \subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
+% \paragraph{Method}
+% --> Test if Chat-GPT can answer queries like
+% - whether event x happened north of event y (2 hops event->loc + loc->spatial)
+% - all events in x region that happened between y and z dates (intersect space and time)
+% - all events in x region that happened between y and z dates north of location A (spatiotemporal involving spatial relation) 
+%\osullikomment{I'd use GDELT data to give you a standard set of events. They're derived from newspaper articles so you should be able to limit to new events and get some confidence that they're not in the training data. Or NewsSTAND I guess....}
+
+%\osullikomment{Could be a really interesting twist using the first nation's territorial boundaries for this as a point of comparison. There are maps out there but they're not well known.}
+
 
 % \subsection{SPM}
 % \nrscomment{Experiment.}
