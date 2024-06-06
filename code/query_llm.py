@@ -175,7 +175,7 @@ class Spatial_LLM_Tester():
         lc_dict = {}
         for k,v in gt_answers.items():
             lc_dict[k.casefold()] = v
-
+        pred_answer = pred_answer.replace('.','')
         if pred_answer.casefold() in lc_dict:
             return(lc_dict[pred_answer.casefold()])
         else:
@@ -573,6 +573,33 @@ class Spatial_LLM_Tester():
 
         return to_return
     
+    def print_results(self, results:dict)->None:
+
+        correct = 0
+        incorrect = 0
+        score = 0
+        unanswered = 0
+        total_questions = 0
+        for result in results["results"].keys():
+            total_questions +=1
+            correct += results["results"][result]['correct']
+            score += results["results"][result]['score']
+            if results["results"][result]['correct'] == 0:
+                if results["results"][result]['answer'] in ['error', 'icatq']:
+                    unanswered +=1
+                else:
+                    incorrect += 1
+
+        print("\n##### RESULTS: #####")
+        print("TOTAL QUESTIONS:", total_questions)
+        print("SCORE:\t\t", score)
+        print("CORRECT:\t", correct)
+        print("INCORRECT:\t", incorrect)
+        print("UNANSWERED:\t", unanswered)
+        print("#####################\n")
+
+
+    
 # Main
 
 if __name__ == '__main__':
@@ -647,8 +674,8 @@ if __name__ == '__main__':
                                         temp=flags.temp)
     
         
-    
     tester.save_results_to_file(results=results)
-    
+    tester.print_results(results)
+
 # E.g. Run a test on topological contains using gpt-3.5-turbo:
 # python query_llm.py --quiz_file topological_contains.json --model_family OPENAI --model gpt-3.5-turbo

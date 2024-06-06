@@ -13,7 +13,8 @@ from geopy.distance import geodesic
 
 class GeoCalc():
     def __init__(self):
-        self.geolocator = Nominatim(user_agent="GeoCalc")
+        self.geolocator = Nominatim(user_agent="GeoCalc",
+                                    timeout=5) #Improves error tolerance by increasing timeout to 5 seconds from default of 1
         pass
 
     def get_coords_from_name(self, location:str)->dict:
@@ -57,7 +58,8 @@ class GeoCalc():
         r1 = d1/norm_factor
         r2 = d2/norm_factor
 
-        res = abs((r1-r2))
+        # res = abs((r1-r2))
+        res = (r1-r2) #Negative values indicate it is further than example
 
         return(res)
 
