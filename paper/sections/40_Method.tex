@@ -1,64 +1,54 @@
 \section{Method}
 \label{section:method}
 
-\nrscomment{release all prompts and responses as appendix \\ randomize properly \\ describe method for selection and sampling}
-
 In this section we describe our method for evaluating the spatial reasoning ability of LLMs.
 
-%\subsection{Spatial Entities} % -----------------------------------------------
-
-% \nrscomment{resolve or separate from topo queries by asking the extent of or something where relations arent needed}
-
-% \subsubsection{E0.1 Non-point Data}
-% \paragraph{Method}
-% \cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
-% --> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
-% % randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
-
-
-% \nrscomment{Make this a one liner explaining the random selection process and testing to verify it recognizes the cities}
-% \nrscomment{move this out to a paper on embeddings}
-
-% \subsubsection{E0.2 Lesser-known Cities}
-% To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
-
-% \begin{center}
-%     \boxed{Where\ in\ the\ world\ is\ L?}
-% \end{center}
-
-% The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
-% For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. \osullikomment{Might be worth specifying Country / State / Region level of fidelity (i.e. the later in the list of answers I gave you, the more specific it is)}
-
-% \paragraph{Results and Discussion}
-
-
-
-%\subsection{Spatial Relations} % -----------------------------------------------
 
 \paragraph{Experimental Setup}
 
 \nrscomment{table of models}
 
-\nrscomment{data choices}
+\nrscomment{data choices- sampling method}
+
+\begin{lstlisting}[title=text here]
+    You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.
+\end{lstlisting}
+
+
 
 
 \subsection{Experiment 1: Toponym Resolution}
 
+\begin{lstlisting}[title=text here]
+    Where in the world is A?
+\end{lstlisting}
 
 
 
 
 \subsection{Experiment 2: Metric Relations}
 
+\begin{lstlisting}[title=text here]
+    If A is 'near' B, what is a city or town 'near' to C?
+\end{lstlisting}
+
+\begin{lstlisting}[title=text here]
+    If A is 'far' B, what is a city or town 'far' to C?
+\end{lstlisting}
+
+\begin{lstlisting}[title=text here]
+    The distance from A to B is similar to the distance from C to what other city or town?
+\end{lstlisting}
 
 
-
-
-
-
+\nrscomment{gave city, state to help}
 
 
 \subsection{Experiment 3: Multi-way Directional Relations}
+
+\begin{lstlisting}[title=text here]
+    A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
+\end{lstlisting}
 
 \nrscomment{test 2 way directional as baseline instead of relying on Qi2023}
 
@@ -82,6 +72,11 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 
 
 \subsection{Experiment 4: Topological Relations}
+
+\begin{lstlisting}[title=text here]
+    ...
+\end{lstlisting}
+
 \nrscomment{need to also test multi way topo}
 To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
@@ -103,7 +98,11 @@ In section \ref{section:proposal} we discuss data augmentation techniques that m
 
 
 \subsection{Experiment 5: Cyclic Order Relations}
-\paragraph{Method}
+
+\begin{lstlisting}[title=text here]
+    With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
+\end{lstlisting}
+
 To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
 For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
 %\osullikomment{Formatting of query}
@@ -134,6 +133,26 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 
         
 % Future Work -------------------------------------
+
+% \subsubsection{E0.1 Non-point Data}
+% \paragraph{Method}
+% \cite{Liu2023} can do NL2Spatial Query which can handle region/line data, but can an LLM handle it?
+% --> Repeat queries similar to \cite{Liu2023} nanjingtest and berlintest region and line queries but instead give them to ChatGPT.
+% % randomly pull non-overlapping rivers/highways as lines, lakes, seas, oceans as regions, and landmarks as points and construct directional queries about pairs of them: Lake A is to which side of landmark B
+
+
+% \nrscomment{Make this a one liner explaining the random selection process and testing to verify it recognizes the cities}
+% \nrscomment{move this out to a paper on embeddings}
+
+% \subsubsection{E0.2 Lesser-known Cities}
+% To determine if LLMs are able to answer spatial questions about less populous locations and cities, we select 20 Australian city names with varying population sizes and prompt Chat-GPT with the following question, filling in \textit{L} with each city name.
+
+% \begin{center}
+%     \boxed{Where\ in\ the\ world\ is\ L?}
+% \end{center}
+
+% The locations are selected based on their population size, ranging from 5,297,089 to 37. \nrscomment{fill in details}
+% For each prompt, we measure whether the location was recognized or not, and whether the response is spatially accurate or not. 
 
 
 % \subsubsection{E5. Spatiotemporal and Multiple Hop Relations}
