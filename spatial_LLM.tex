@@ -1,6 +1,31 @@
-%%%%%%%% ICML 2024 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+\documentclass[sigconf]{acmart}
 
-\documentclass{article}
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmlicensed}
+\copyrightyear{2024}
+\acmYear{2024}
+\acmDOI{XXXXXXX.XXXXXXX}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+  conference title from your rights confirmation emai}{June 03--05,
+  2024}{Woodstock, NY}
+%
+%  Uncomment \acmBooktitle if th title of the proceedings is different
+%  from ``Proceedings of ...''!
+%
+%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+%  June 03--05, 2018, Woodstock, NY} 
+\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+% %%%%%%%% ICML 2024 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+% \documentclass{article}
 
 % Recommended, but optional, packages for figures and better typesetting:
 \usepackage{microtype}
@@ -18,8 +43,8 @@
 % Attempt to make hyperref and algorithmic work together better:
 \newcommand{\theHalgorithm}{\arabic{algorithm}}
 
-% Use the following line for the initial blind version submitted for review:
-\usepackage{style/icml2024}
+% % Use the following line for the initial blind version submitted for review:
+% \usepackage{style/icml2024}
 
 % If accepted, instead use the following line for the camera-ready submission:
 % \usepackage[accepted]{icml2024}
@@ -31,7 +56,7 @@
 \usepackage{amsthm}
 
 % if you use cleveref..
-\usepackage[capitalize,noabbrev]{cleveref}
+% \usepackage[capitalize,noabbrev]{cleveref}
 
 %%%%%
 %
@@ -84,8 +109,8 @@
 
 \begin{document}
 
-\twocolumn[
-\icmltitle{Position Paper: Towards Geospatial Reasoning in Large Language Models}
+% \twocolumn[
+% \icmltitle{Position Paper: Towards Geospatial Reasoning in Large Language Models}
 
 % It is OKAY to include author information, even for blind
 % submissions: the style file will automatically remove it for you
@@ -102,23 +127,23 @@
 % in order of appearance and this is the preferred way.
 % \icmlsetsymbol{equal}{*}
 
-\begin{icmlauthorlist}
-\icmlauthor{Nicole Schneider}{yyy}
-\icmlauthor{Hanan Samet}{yyy}
-\end{icmlauthorlist}
+% \begin{icmlauthorlist}
+% \icmlauthor{Nicole Schneider}{yyy}
+% \icmlauthor{Hanan Samet}{yyy}
+% \end{icmlauthorlist}
 
-\icmlaffiliation{yyy}{Department of Computer Science, University of Maryland, College Park, MD USA}
+% \icmlaffiliation{yyy}{Department of Computer Science, University of Maryland, College Park, MD USA}
 
-\icmlcorrespondingauthor{Nicole Schneider}{nsch@umd.edu}
-\icmlcorrespondingauthor{Hanan Samet}{hjs@cs.umd.edu}
+% \icmlcorrespondingauthor{Nicole Schneider}{nsch@umd.edu}
+% \icmlcorrespondingauthor{Hanan Samet}{hjs@cs.umd.edu}
 
 % You may provide any keywords that you
 % find helpful for describing your paper; these are used to populate
 % the "keywords" metadata in the PDF but will not be shown in the document
-\icmlkeywords{Large Language Models, Spatial Reasoning, Position Paper}
+% \icmlkeywords{Large Language Models, Spatial Reasoning, Position Paper}
 
-\vskip 0.3in
-]
+% \vskip 0.3in
+% ]
 
 % this must go after the closing bracket ] following \twocolumn[ ...
 
@@ -129,22 +154,60 @@
 % Remove it (just {}) if you do not need this facility.
 
 %\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
-\printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+% \printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+
+\title{Towards Geospatial Reasoning in Large Language Models}
+
+\author{Nicole R. Schneider}
+\authornote{Both authors contributed equally to this research.}
+\email{nsch@umd.edu}
+\affiliation{%
+  \institution{University of Maryland}
+  \country{USA}
+}
+
+\author{Kent O'Sullivan}
+\authornotemark[1]
+\email{osullik@umd.edu}
+\affiliation{%
+  \institution{University of Maryland}
+  \country{USA}
+}
+
+\author{Hanan Samet}
+\email{hjs@cs.umd.edu}
+\affiliation{%
+  \institution{University of Maryland}
+  \country{USA}
+}
 
 \begin{abstract}
 \latexfile{00_Abstract.tex}
 \end{abstract}
 
-\latexfile{10_Introduction.tex}
-\latexfile{20_Background.tex}
-\latexfile{30_Experiments.tex}
-%\latexfile{40_Results.tex}
-\latexfile{50_Proposed_Solution.tex}
-\latexfile{60_Related.tex}
-\latexfile{70_Conclusion.tex}
 
-\bibliography{spatial_llm}
-\bibliographystyle{style/icml2024}
+\maketitle
+
+
+% \begin{abstract}
+% \latexfile{00_Abstract.tex}
+% \end{abstract}
+
+\latexfile{10_Introduction.tex}
+\latexfile{20_Related.tex}
+\latexfile{30_Background.tex}
+\latexfile{40_Method.tex}
+\latexfile{50_Results.tex}
+\latexfile{60_Discussion.tex}
+\latexfile{70_Future_Work.tex}
+\latexfile{80_Conclusion.tex}
+
+% \bibliography{spatial_llm}
+% \bibliographystyle{style/icml2024}
+
+\bibliographystyle{style/ACM-Reference-Format.bst} %ACM-Reference-Format
+\bibliography{spatial_llm.bib} \label{bibliography}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
