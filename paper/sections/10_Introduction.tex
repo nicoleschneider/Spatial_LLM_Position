@@ -22,24 +22,35 @@ Work investigating the spatial reasoning ability of LLMs has demonstrated that L
 %However, as we demonstrate, LLMs are still a long way from inferring implicit spatial knowledge from the geospatial information they are exposed to during training.
 %This means LLMs have a limited ability to perform tasks that have a spatial component, such as generating a set of instructions for how to navigate from one place to another, or recommending points of interest based on spatial constraints.
 %
-However, we design a set of experiments to probe the complex spatial reasoning ability of an LLM to determine if it is truly capable of spatial reasoning, as opposed to regurgitating spatial facts memorized from training data.
+However, we design a set of experiments to probe the complex spatial reasoning ability of LLMs to determine if they are currently capable of spatial reasoning, as opposed to regurgitating spatial facts memorized from training data.
 %memorized some spatial facts from training.
 %
+
+\nrscomment{describe the tests and motivate each one}
+
 In our results, we found that LLMs currently struggle to perform complex spatial reasoning, especially about
 %
 %(\textit{\textbf{i}}) Line and region data,
 (\textit{\textbf{i}}) Relative spatial positions of more than two entities, and 
 (\textit{\textbf{ii}}) Non-directional spatial relation types, like cyclic order relations.
+
+\nrscomment{update this list from findings}
 %
 %Further, the responses we recorded highlighted a lack of self-consistency.
 %
+
+\nrscomment{describe significance of findings}
+
 To begin to address these shortcomings, we envision new embedding methods and self-supervised learning objectives that can be used to enable LLMs to learn over complex spatial data.
+
+\nrscomment{describe the suggestions}
+
 %
 Moreover, there are no well-studied methods for combining multiple modalities of spatial data for input into neural models~\cite{Xue2023, Trappolini2023}, which we believe is an area ripe for exploration.
 
 %\nrscomment{say something about state of multimodal learning} \cite{Trappolini2023, Fei2022}.
 
-
+\nrscomment{update contribution}
 This paper presents the position that LLMs have the potential to perform spatial reasoning, but that key challenges need to be addressed before this vision can be realized.
 %
 We envision that initial efforts towards addressing these challenges will involve the development of novel embedding methods and self-supervised training objectives for various types of geodata.
@@ -90,7 +101,7 @@ As we describe in our proposed solution, once embedding methods have been well-e
 
 % 4. multimodal
 
-
+\nrscomment{update organization}
 The rest of this paper presents the necessary background on spatial reasoning in section \ref{section:background}, followed by a set of experiments designed to probe the spatial reasoning limitations of current LLMs in section \ref{section:experiments}.
 Then in section \ref{section:proposal} we propose solutions for overcoming the limitations we highlight through our experiments.
 Finally, we describe the related spatial LLM work in section \ref{section:related} before concluding in section \ref{section:conclusion}. 

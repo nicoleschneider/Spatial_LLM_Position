@@ -1,0 +1,70 @@
+\section{Spatial Reasoning}
+\label{section:background}
+
+In this section we define the problem of spatial reasoning and describe how it presents a worthwhile challenge to address using LLMs.
+
+\subsection{Preliminaries}
+Spatial reasoning is the task of reasoning about entities or objects that are located in space and possess spatial structure, or have spatial relationships with each other~\cite{Varzi2007}.
+The abstract theories that define the core principles of spatial reasoning are commonly divided into classes including 
+\textbf{(\textit{i})} \textit{mereology}, the theory of parthood relations;
+\textbf{(\textit{ii})} \textit{topology}, the theory of qualitative spatial relations such as continuity and contiguity, and 
+\textbf{(\textit{iii})} the \textit{theory of location proper}, which deals with the relationship between an entity and the spatial region it
+occupies~\cite{Varzi2007}.
+
+In this paper we discuss spatial reasoning tasks, which involve answering questions about certain relationships (termed spatial relations) between some set of objects in space.
+
+
+
+\subsubsection{Spatial Entities}
+Spatial entities are the basic elements of spatial data.
+They can be classed into three main types: \textbf{(\textit{i})} \textit{Points}, which consist of an $(x,y)$ coordinate pair in Cartesian space, \textbf{(\textit{ii})} \textit{Lines}, which represent the shortest path between two points, and \textbf{(\textit{iii})} \textit{Regions}, which represent the area inside a polyline joining several points. 
+Point entities are typically used to represent locations in the world, like landmarks, towns, buildings, and objects.
+Line entities are typically used to represent ways, like roadways, waterways, and railways.
+Region entities are typically used to represent the extent of lakes, stadiums, large buildings, states, and counties.
+
+
+\subsection{Spatial Relations}
+\textit{Points, Lines} and \textit{Regions} relate to each other spatially through the following types of relationships~\cite{Carniel2020,Bertella2022,Carniel2023}: 
+\textbf{(\textit{i})} \textit{Metric relations} that describe the distances between spatial entities (like ten miles, near, far), 
+\textbf{(\textit{ii})} \textit{Topological relations} that describe how regions, lines, and points interact (like intersect, contain, touch), and 
+\textbf{(\textit{iii})} \textit{Directional relations} that describe how entities are positioned relatively in space (like north, left, behind), and
+\textbf{(\textit{iv})} \textit{Order} relations that describe the cyclic order in which objects appear with respect to a central coordinate~\cite{Schwering2014}.
+%
+Hybrid relations that combine two or more of the primitive spatial relations are also possible~\cite{Carniel2023}.
+
+
+
+\subsection{Motivation and Challenges}
+Humans seamlessly apply spatial reasoning to the objects we perceive in our environment every day.
+Without consciously realizing it, we may use spatial reasoning to navigate from one place to another, avoid colliding with other moving entities, or recall and describe a place by the spatial configuration of its nearby landmarks.
+To do this we rely on world knowledge and experience, spatial intuition, common sense, and embodiment.
+Spatial reasoning is a particularly challenging form of reasoning since it is often a dynamic process that involves gathering data that may be changing in real time as objects move through space.
+Likewise, the perspective from which the data is gathered may change -- either as the collection source moves, or as data is combined from various sources, at various scales (i.e. overhead imagery, motion detection sensors, dashboard cameras).
+However, even with advances in machine perception and massive models with enough parameters to memorize world knowledge, spatial reasoning remains a challenge that machine learning has yet to solve.
+
+Traditionally, many spatial reasoning tasks like spatial pattern matching (determining which objects in the world match a set of query constraints) can be addressed using formal methods, such as by formulating qualitative constraint networks and solving them using constraint satisfaction approaches~\cite{Papadias1998, Schwering2014, Duckham2023}.
+Isomorphic subgraph matching approaches are also common~\cite{Folkers2000, Chen2019, Fang2019}.
+However, these traditional methods are rigid and computationally slow, often relying on pre-computed indices and data structures, and tend to be limited to handling only point entities, or directional constraints.
+
+
+
+\subsection{Machine Learning for Spatial Reasoning}
+Although some work has been done using machine learning to approximately solve generic (non-spatial) subgraph matching problems~\cite{Krlevza2016, Liu2020Neural,Lan2021,Roy2022}, the approaches are limited to small or undirected graphs and are not yet robust enough to use for spatial reasoning tasks at scale.
+One of the reasons spatial reasoning is computationally difficult is that even on a small scale, the density of information required to capture all the explicit spatial relations between entities is high.
+This makes search and reasoning over spatial data challenging, necessitating flexible, approximate approaches.
+The need for flexibility makes machine learning a good candidate to solve spatial reasoning problems.
+Along the same lines, large models, like LLMs, must perform well at a variety of tasks that are grounded in the physical world.
+Whether it is generating a route between known points or suggesting places of interest to a user based on their location and trajectory, general purpose machine learning models need to perform some degree of spatial reasoning.
+However, it has previously been unclear to what degree general purpose foundation models could reason about implicit spatial relationships that were not explicitly found in their training data.
+We address this through a set of experiments that probe the spatial reasoning capabilities of an LLM.
+
+\nrscomment{make this transition cleaneer and not reduncant to intro}
+
+\osullikomment{There's a personal assistant angle to this "Hey Siri, what's the name of the place off the interstate with all those dinosaur statues out back", but that's a little general. For ML Theory you might be able to make an explainability / interpretability argument. Hmm, I feel like there's more though. Ask me again later}
+
+
+
+% \subsection{LLM Spatial Reasoning}
+% How have people tried to use LLMs to aid/do it?
+
+% What are the key challenges that haven't been addressed?
