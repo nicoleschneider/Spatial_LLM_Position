@@ -1,0 +1,113 @@
+{
+   "metadata": {
+      "model": "mistral-7b-instruct",
+      "seed": 131901,
+      "temperature": 0,
+      "relation_type": "ORDER",
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+   },
+   "results": {
+      "1": {
+         "question": "With respect to a centroid in Hobart, is moving from Quirindi to Whyalla a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point and doesn't have a physical location like quirindi or whyalla. therefore, it's not possible to determine a clockwise or counterclockwise direction based on these locations.",
+         "correct": 0,
+         "score": 0
+      },
+      "2": {
+         "question": "With respect to a centroid in Quirindi, is moving from Hobart to Whyalla a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point and doesn't have a physical direction. the question asks about a direction from hobart to whyalla, which is unrelated to the centroid in quirindi.",
+         "correct": 0,
+         "score": 0
+      },
+      "3": {
+         "question": "With respect to a centroid in Whyalla, is moving from Quirindi to Hobart a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid of whyalla is not provided in the question, and moving from quirindi to hobart is a geographical direction, not related to the centroid or a clockwise/counterclockwise rotation.",
+         "correct": 0,
+         "score": 0
+      },
+      "4": {
+         "question": "With respect to a centroid in Hobart, is moving from Whyalla to Quirindi a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point, not a physical location. therefore, it doesn't make sense to discuss directions from one physical location to another in relation to a centroid.",
+         "correct": 0,
+         "score": 0
+      },
+      "5": {
+         "question": "With respect to a centroid in Alice Springs, is moving from Fraser Island to Albury-Wodonga a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\ni cannot determine the direction from fraser island to alice springs and then from alice springs to albury-wodonga without a map or a clear description of the routes.",
+         "correct": 0,
+         "score": 0
+      },
+      "6": {
+         "question": "With respect to a centroid in Fraser Island, is moving from Alice Springs to Albury-Wodonga a clockwise or counterclockwise direction?",
+         "answer": "icatq. fraser island is located off the east coast of australia, while alice springs and albury-wodonga are both inland cities. therefore, it's not possible to determine a clockwise or counterclockwise direction based on the given information.",
+         "correct": 0,
+         "score": 0
+      },
+      "7": {
+         "question": "With respect to a centroid in Alice Springs, is moving from Albury-Wodonga to Fraser Island a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point and doesn't have a physical direction. moreover, albury-wodonga and fraser island are located in different regions of australia, making it impossible to determine a clockwise or counterclockwise direction between them.",
+         "correct": 0,
+         "score": 0
+      },
+      "8": {
+         "question": "With respect to a centroid in Alice Springs, is moving from Albury-Wodonga to Fraser Island a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point and doesn't have a physical direction. moreover, albury-wodonga and fraser island are located in different regions of australia, making it impossible to determine a clockwise or counterclockwise direction between them.",
+         "correct": 0,
+         "score": 0
+      },
+      "9": {
+         "question": "With respect to a centroid in Albury-Wodonga, is moving from Alice Springs to Fraser Island a clockwise or counterclockwise direction?",
+         "answer": "icatq. the centroid of albury-wodonga is a point within the city, not a direction. alice springs and fraser island are locations in different directions from albury-wodonga.",
+         "correct": 0,
+         "score": 0
+      },
+      "10": {
+         "question": "With respect to a centroid in Fraser Island, is moving from Albury-Wodonga to Alice Springs a clockwise or counterclockwise direction?",
+         "answer": "icatq. fraser island is located off the east coast of queensland, australia. albury-wodonga is in victoria, to the south, and alice springs is in the northern territory, to the north. there isn't a direct spatial relationship between these two places and the centroid of fraser island.",
+         "correct": 0,
+         "score": 0
+      },
+      "11": {
+         "question": "With respect to a centroid in Albury-Wodonga, is moving from Fraser Island to Alice Springs a clockwise or counterclockwise direction?",
+         "answer": "icatq. the question does not provide enough information to determine the direction from fraser island to alice springs with respect to a centroid in albury-wodonga.",
+         "correct": 0,
+         "score": 0
+      },
+      "12": {
+         "question": "With respect to a centroid in Exmouth, is moving from Port Douglas to Fregon a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\ni cannot determine the direction from port douglas to fregon with respect to a centroid in exmouth without a map or more specific information.",
+         "correct": 0,
+         "score": 0
+      },
+      "13": {
+         "question": "With respect to a centroid in Port Douglas, is moving from Exmouth to Fregon a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical concept representing the center of mass or gravity of a two-dimensional region. it doesn't have a physical location like exmouth or fregon. therefore, it's not possible to determine if moving from one place to another is clockwise or counterclockwise with respect to a centroid.",
+         "correct": 0,
+         "score": 0
+      },
+      "14": {
+         "question": "With respect to a centroid in Fregon, is moving from Exmouth to Port Douglas a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\nthe centroid is a mathematical point and does not have a physical direction. exmouth and port douglas are locations in australia, and determining the direction between them in relation to a centroid is not a straightforward spatial reasoning question.",
+         "correct": 0,
+         "score": 0
+      },
+      "15": {
+         "question": "With respect to a centroid in Exmouth, is moving from Fregon to Port Douglas a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\ni cannot determine the direction from fregon to port douglas with respect to a centroid in exmouth without knowing the specific geographical locations of fregon, port douglas, and exmouth.",
+         "correct": 0,
+         "score": 0
+      },
+      "16": {
+         "question": "With respect to a centroid in Fregon, is moving from Port Douglas to Exmouth a clockwise or counterclockwise direction?",
+         "answer": "the centroid of fregon is not provided in the question, so i cannot determine the direction from port douglas to exmouth with respect to it. therefore, the answer is \"icatq\".",
+         "correct": 0,
+         "score": 0
+      },
+      "17": {
+         "question": "With respect to a centroid in Port Douglas, is moving from Fregon to Exmouth a clockwise or counterclockwise direction?",
+         "answer": "icatq\n\ni cannot determine the direction from fregon to exmouth with respect to a centroid in port douglas without a map or more specific information.",
+         "correct": 0,
+         "score": 0
+      }
+   }
+}
