@@ -8,87 +8,121 @@
         "1": {
             "question":"With respect to a centroid in Hobart, is moving from Quirindi to Whyalla a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "2": {
             "question":"With respect to a centroid in Quirindi, is moving from Hobart to Whyalla a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "3": {
             "question":"With respect to a centroid in Whyalla, is moving from Quirindi to Hobart a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "4": {
             "question":"With respect to a centroid in Hobart, is moving from Whyalla to Quirindi a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "5": {
             "question":"With respect to a centroid in Alice Springs, is moving from Fraser Island to Albury-Wodonga a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "6": {
             "question":"With respect to a centroid in Fraser Island, is moving from Alice Springs to Albury-Wodonga a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "7": {
             "question":"With respect to a centroid in Alice Springs, is moving from Albury-Wodonga to Fraser Island a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "8": {
             "question":"With respect to a centroid in Alice Springs, is moving from Albury-Wodonga to Fraser Island a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "9": {
             "question":"With respect to a centroid in Albury-Wodonga, is moving from Alice Springs to Fraser Island a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "10": {
             "question":"With respect to a centroid in Fraser Island, is moving from Albury-Wodonga to Alice Springs a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "11": {
             "question":"With respect to a centroid in Albury-Wodonga, is moving from Fraser Island to Alice Springs a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "12": {
             "question":"With respect to a centroid in Exmouth, is moving from Port Douglas to Fregon a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "13": {
             "question":"With respect to a centroid in Port Douglas, is moving from Exmouth to Fregon a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "14": {
             "question":"With respect to a centroid in Fregon, is moving from Exmouth to Port Douglas a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "15": {
             "question":"With respect to a centroid in Exmouth, is moving from Fregon to Port Douglas a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "16": {
             "question":"With respect to a centroid in Fregon, is moving from Port Douglas to Exmouth a clockwise or counterclockwise direction?",
             "answers":{"counterclockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         },
         "17": {
             "question":"With respect to a centroid in Port Douglas, is moving from Fregon to Exmouth a clockwise or counterclockwise direction?",
             "answers":{"clockwise":1},
-            "comment":""
+            "comment":"",
+            "indigenous":0,
+            "entity_type":["point"]
         }
     }
 }
