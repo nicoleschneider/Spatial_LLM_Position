@@ -1784,3 +1784,41 @@ Experiments:
   MONTH = May,
 }
 
+@inproceedings{Schneider2024b,
+  author  = {Schneider, Nicole R. and O'Sullivan, Kent and Samet, Hanan},
+  title   = {Graph-based Spatial Pattern Matching: A Theoretical Analysis},
+    year = {2024},
+publisher = {Association for Computing Machinery},
+booktitle = {Under Review at the 32nd ACM International Conference on Advances in Geographic Information Systems},
+location = {Atlanta, USA},
+}
+
+@Article{Minervino2023,
+  author  = {Minervino, Carlos and Campelo, Claudio and Oliveira, Maxwell and Silva, Salatiel},
+  journal = {arXiv preprint arXiv:2312.08992},
+  title   = {QQESPM: A Quantitative and Qualitative Spatial Pattern Matching Algorithm},
+  year    = {2023},
+  comment = {Combines the typical metric SPM (quantitative constraint network) with topological (qualitative), handling queries with both relations combined.
+
+- Supports 6 topo relations: equals, touches, covers, covered by, partially overlaps, disjoint
+- Reimplements ESPM but at each step also checks that the topo relations are satisfied.
+	- Inverted Linear (IL) Quadtree
+
+Experiments:
+- OSM
+	- 33877 POIs as database (and percentages of it for smaller tests)
+	- 60 most common POIs for query terms
+	- tested 1500 query patterns
+		- Each consisted of 2 to 6 terms with a set of "strucutres" (none fully connected)
+	- for metric constraints, queries used random draw from 
+		- [0, 2.7km] for max dist
+		- [0, 550m] for min dist
+- Found that adding query terms helped with early stopping
+- Compared against simple baseline that does ESPM normally and checks the topo constraints at the final step
+
+Notes/Ideas:
+- No new efficiency in the algorithm introduced here, just added topological support to ESPM, whcih is still SOTA
+- Complexity is probably the same as ESPM just with a constant factor for the extra checks happeneing at each comparison if there are also topo relations defined there
+- Why not also do this with directional relations to have an SPM framework that supports all 3 major relation types?},
+  groups  = {SPM LLM},
+}
