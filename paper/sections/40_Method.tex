@@ -44,7 +44,9 @@ In this section we describe our method for evaluating the spatial reasoning abil
 \nrscomment{gave city, state to help}
 
 
-\subsection{Experiment 3: Multi-way Directional Relations}
+\subsection{Experiment 3: Directional Relations}
+To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names~\footnote{After verifying that Chapt-GPT recognizes them as being in Australia} of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
+For each group consisting of cities A, B, and C, we query ChatGPT with the three-way directional prompt: 
 
 \begin{lstlisting}[title=text here]
     A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
@@ -52,16 +54,8 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 \nrscomment{test 2 way directional as baseline instead of relying on Qi2023}
 
-To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names~\footnote{After verifying that Chapt-GPT recognizes them as being in Australia} of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with the three-way directional prompt: 
-\begin{center}
-    \boxed{
-    \!\begin{aligned}
-    & A\ is\ north,\ northeast,\ northwest,\ south,\ southeast,\ \\
-    & southwest,\ east,\ or\ west\ of\ B\ and\ C?
-    \end{aligned}
-    }
-\end{center}
+
+
 
 We repeat this for each permutation of A, B, and C, reordering them within the prompt text, to construct a total of 36 three-way directional prompts.
 % if needed: when wrong response is produce, the geo-coordinates are further included in the prompt.
@@ -73,22 +67,14 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 
 \subsection{Experiment 4: Topological Relations}
 
-\begin{lstlisting}[title=text here]
-    ...
-\end{lstlisting}
-
 \nrscomment{need to also test multi way topo}
 To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
 We query Chat-GPT with topological relation prompts that are structured like:
-\begin{center}
-    \boxed{
-    \!\begin{aligned}
-    & Does\ R\ contain\ P?
-    \end{aligned}
-    }
-\end{center}
 
+\begin{lstlisting}[title=text here]
+    ...
+\end{lstlisting}
 
 To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
 For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
@@ -99,20 +85,13 @@ In section \ref{section:proposal} we discuss data augmentation techniques that m
 
 \subsection{Experiment 5: Cyclic Order Relations}
 
+To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
+For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
+
 \begin{lstlisting}[title=text here]
     With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
 \end{lstlisting}
 
-To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
-%\osullikomment{Formatting of query}
-\begin{center}
-    \boxed{
-    \!\begin{aligned}
-    & What\ is\ the\ clockwise\ ordering\ of\ A,\ B,\ and\ C?
-    \end{aligned}
-    }
-\end{center}
 We repeat this for each permutation of A, B, and C, reordering them within the prompt text, to construct a total of 18 three-way directional prompts.
 
 
@@ -123,7 +102,14 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 
 
 
-
+% \begin{center}
+%     \boxed{
+%     \!\begin{aligned}
+%     & A\ is\ north,\ northeast,\ northwest,\ south,\ southeast,\ \\
+%     & southwest,\ east,\ or\ west\ of\ B\ and\ C?
+%     \end{aligned}
+%     }
+% \end{center}
 
 
 
