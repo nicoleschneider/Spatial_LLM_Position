@@ -82,7 +82,7 @@ To determine if LLMs can reason about topological relations, we select points (P
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{equals, disjoint, intersects, touches, partially overlaps, within, contains}\}~\cite{Carniel2023}.
 Using this set of relations, we construct the following topological relation prompts:
 
-\begin{lstlisting}[title=text here]
+\begin{lstlisting}[title=Topological Relation Prompt]
     ...
 \end{lstlisting}
 
@@ -102,7 +102,7 @@ Using this set of relations, we construct the following topological relation pro
 To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
 For each group consisting of cities A, B, and C, we construct the following prompt: 
 
-\begin{lstlisting}[title=text here]
+\begin{lstlisting}[title=Cyclic Order Relation Prompt]
     With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
 \end{lstlisting}
 
