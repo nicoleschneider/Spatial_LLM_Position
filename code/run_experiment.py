@@ -3,7 +3,8 @@
 import subprocess
 import os
 
-# experiments = [ 'topological_contains.json',
+# experiments = [ 'toponym.json',
+#                 'topological.json',
 #                 'metric_near-far.json',
 #                 'directional.json',
 #                 'order.json'
@@ -30,5 +31,5 @@ for experiment in experiments:
                 '--seed',"131901",
                 '--temp',"0"
             ]
-
+            print("Running:", command)
             result = subprocess.run(command)

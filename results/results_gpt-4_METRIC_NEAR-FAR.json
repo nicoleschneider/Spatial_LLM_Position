@@ -11,584 +11,601 @@
          "question": "If Newcastle, NSW is 'near' Sydney, NSW, what is a city or town 'near' to Melbourne, VIC?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "geelong",
          "example_dist": 118.06428185190447,
          "predicted_dist": 64.75311164338905,
-         "prediction": "geelong",
-         "ratio": 0.013327792552128855
+         "ratio": 0.013327792552128855,
+         "score": 3
       },
       "2": {
          "question": "If Gold Coast, QLD is 'near' Brisbane, QLD, what is a city or town 'near' to Sunshine Coast, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "noosa",
          "example_dist": 70.57607864181082,
          "predicted_dist": 40.60815974023518,
-         "prediction": "noosa",
-         "ratio": 0.007491979725393911
+         "ratio": 0.007491979725393911,
+         "score": 3
       },
       "3": {
          "question": "If Canberra, ACT is 'near' Sydney, NSW, what is a city or town 'near to Perth, WA?",
          "answer": "similar",
          "correct": 1,
-         "score": 2,
+         "prediction": "fremantle",
          "example_dist": 249.9001999413146,
          "predicted_dist": 14.48289632479604,
-         "prediction": "fremantle",
-         "ratio": 0.05885432590412964
+         "ratio": 0.05885432590412964,
+         "score": 2
       },
       "4": {
          "question": "If Melbourne, VIC is 'near' Bendigo, VIC, what is a city or town 'near' to Brisbane, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "ipswich, qld",
          "example_dist": 131.74385994648975,
          "predicted_dist": 30.638026563928978,
-         "prediction": "ipswich, qld",
-         "ratio": 0.02527645834564019
+         "ratio": 0.02527645834564019,
+         "score": 3
       },
       "5": {
          "question": "If Darwin, NT is 'near' Townsville, QLD, what is a city or town 'near' to Hobart, TAS?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "launceston",
          "example_dist": 1868.3175779434914,
          "predicted_dist": 161.65661653399198,
-         "prediction": "launceston",
-         "ratio": 0.42666524035237485
+         "ratio": 0.42666524035237485,
+         "score": 0
       },
       "6": {
          "question": "If Darwin, NT is 'near' Hobart, TAS, what is a city or town near to Brisbane, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "ipswich, qld",
          "example_dist": 3727.566345132308,
-         "predicted_dist": 70.57607864181082,
-         "prediction": "gold coast, qld",
-         "ratio": 0.9142475666226243
+         "predicted_dist": 30.638026563928978,
+         "ratio": 0.9242320796420948,
+         "score": 0
       },
       "7": {
          "question": "If Sydney, NSW is 'near' to Adelaide, SA, what is a city or town 'near' to Perth, WA?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "fremantle",
          "example_dist": 1167.448357694144,
          "predicted_dist": 14.48289632479604,
-         "prediction": "fremantle",
-         "ratio": 0.288241365342337
+         "ratio": 0.288241365342337,
+         "score": 0
       },
       "8": {
          "question": "If Sydney, NSW is 'near' to Alice Springs, NT, what is a city or town 'near' to Adelaide, SA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "glenelg",
          "example_dist": 2028.2249978783473,
          "predicted_dist": 16370.945107406505,
-         "prediction": "glenelg",
-         "ratio": -3.5856800273820397
+         "ratio": -3.5856800273820397,
+         "score": 3
       },
       "9": {
          "question": "If Brisbane, QLD is 'near' to Cairns, QLD, what is a city or town 'near' to Mackay, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "rockhampton",
          "example_dist": 1386.0204808367068,
          "predicted_dist": 282.88198723746905,
-         "prediction": "rockhampton",
-         "ratio": 0.27578462339980947
+         "ratio": 0.27578462339980947,
+         "score": 0
       },
       "10": {
          "question": "If Newcastle, NSW is 'near' to Dubbo, NSW, what is a city or town 'near' to Geelong, VIC?",
          "answer": "similar",
          "correct": 1,
-         "score": 2,
+         "prediction": "melbourne",
          "example_dist": 307.41487741345634,
          "predicted_dist": 64.75311164338905,
-         "prediction": "melbourne",
-         "ratio": 0.06066544144251683
+         "ratio": 0.06066544144251683,
+         "score": 2
       },
       "11": {
          "question": "If Newcastle, NSW is 'far' from Sydney, NSW, what is a city or town 'far' from Melbourne, VIC?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "adelaide",
          "example_dist": 118.06428185190447,
-         "predicted_dist": 2726.6381209719652,
-         "prediction": "perth",
-         "ratio": -0.6521434597800152
+         "predicted_dist": 654.4784683895019,
+         "ratio": -0.13410354663439938,
+         "score": 3
       },
       "12": {
          "question": "If Gold Coast, QLD is 'far' from Brisbane, QLD, what is a city or town 'far' from Sunshine Coast, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "sydney, nsw",
          "example_dist": 70.57607864181082,
          "predicted_dist": 820.1413647685011,
-         "prediction": "sydney, nsw",
-         "ratio": -0.1873913215316726
+         "ratio": -0.1873913215316726,
+         "score": 3
       },
       "13": {
          "question": "If Canberra, ACT is 'far' from Sydney, NSW, what is a city or town 'far' from Perth, WA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "melbourne, vic",
          "example_dist": 249.9001999413146,
          "predicted_dist": 2726.6381209719652,
-         "prediction": "melbourne, vic",
-         "ratio": -0.6191844802576627
+         "ratio": -0.6191844802576627,
+         "score": 3
       },
       "14": {
          "question": "If Melbourne, VIC is 'far' from Bendigo, VIC, what is a city or town 'far' from Brisbane, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 131.74385994648975,
          "predicted_dist": 3612.594696810129,
-         "prediction": "perth, wa",
-         "ratio": -0.8702127092159098
+         "ratio": -0.8702127092159098,
+         "score": 3
       },
       "15": {
          "question": "If Darwin, NT is 'far' from Townsville, QLD, what is a city or town 'far' from Hobart, TAS?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 1868.3175779434914,
          "predicted_dist": 3015.2181643389436,
-         "prediction": "perth, wa",
-         "ratio": -0.28672514659886306
+         "ratio": -0.28672514659886306,
+         "score": 3
       },
       "16": {
          "question": "If Darwin, NT is 'far' from Hobart, TAS, what is a city or town 'far' from Brisbane, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 3727.566345132308,
          "predicted_dist": 3612.594696810129,
-         "prediction": "perth, wa",
-         "ratio": 0.028742912080544802
+         "ratio": 0.028742912080544802,
+         "score": 3
       },
       "17": {
          "question": "If Sydney, NSW is 'far' from Adelaide, SA, what is a city or town 'far' from Perth, WA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "sydney, nsw",
          "example_dist": 1167.448357694144,
          "predicted_dist": 3297.2021794215557,
-         "prediction": "sydney, nsw",
-         "ratio": -0.5324384554318529
+         "ratio": -0.5324384554318529,
+         "score": 3
       },
       "18": {
          "question": "If Sydney, NSW is 'far' from Alice Springs, NT, what is a city or town 'far' from Adelaide, SA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 2028.2249978783473,
          "predicted_dist": 2135.1989836524403,
-         "prediction": "perth, wa",
-         "ratio": -0.02674349644352325
+         "ratio": -0.02674349644352325,
+         "score": 3
       },
       "19": {
          "question": "If Brisbane, QLD is 'far' from Cairns, QLD, what is a city or town 'far' from Mackay, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 1386.0204808367068,
          "predicted_dist": 3513.1629933021322,
-         "prediction": "perth, wa",
-         "ratio": -0.5317856281163564
+         "ratio": -0.5317856281163564,
+         "score": 3
       },
       "20": {
          "question": "If Newcastle, NSW is 'far' from Dubbo, NSW, what is a city or town 'far' from Geelong, VIC?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "cairns, qld",
          "example_dist": 307.41487741345634,
          "predicted_dist": 2356.5923255069756,
-         "prediction": "cairns, qld",
-         "ratio": -0.5122943620233799
+         "ratio": -0.5122943620233799,
+         "score": 3
       },
       "21": {
          "question": "The distance from Newcastle, NSW to Sydney, NSW, is similar to the distance from Melbourne, VIC to what other city or town?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "geelong, vic",
          "example_dist": 118.06428185190447,
          "predicted_dist": 64.75311164338905,
-         "prediction": "geelong, vic",
-         "ratio": 0.013327792552128855
+         "ratio": 0.013327792552128855,
+         "score": 3
       },
       "22": {
          "question": "The distance from Gold Coast, QLD to Brisbane, QLD, is similar to the distance from Sunshine Coast, QLD to what other city or town?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "ipswich, qld",
          "example_dist": 70.57607864181082,
          "predicted_dist": 111.5335097387378,
-         "prediction": "ipswich, qld",
-         "ratio": -0.010239357774231746
+         "ratio": -0.010239357774231746,
+         "score": 3
       },
       "23": {
          "question": "The distance from Canberra, ACT to Sydney, NSW, is similar to the distance from Perth, WA to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "24": {
          "question": "The distance from Melbourne, VIC to Bendigo, VIC, is similar to the distance from Brisbane, QLD to what other city or town?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "toowoomba, qld",
          "example_dist": 131.74385994648975,
          "predicted_dist": 106.21984574978138,
-         "prediction": "toowoomba, qld",
-         "ratio": 0.006381003549177089
+         "ratio": 0.006381003549177089,
+         "score": 3
       },
       "25": {
          "question": "The distance from Darwin, NT to Townsville, QLD, is similar to the distance from Hobart, TAS to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "26": {
          "question": "The distance from Darwin, NT to Hobart, TAS, is similar to the distance from Brisbane, QLD to what other city or town?",
-         "answer": "error",
+         "answer": "different",
          "correct": 0,
-         "example_dist": null,
-         "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "prediction": "adelaide, sa",
+         "example_dist": 3727.566345132308,
+         "predicted_dist": 1601.6659729185153,
+         "ratio": 0.5314750930534482,
+         "score": 0
       },
       "27": {
          "question": "The distance from Sydney, NSW to Adelaide, SA, is similar to the distance from Perth, WA to what other city or town?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "broome, wa",
          "example_dist": 1167.448357694144,
          "predicted_dist": 1677.6120920447781,
-         "prediction": "broome, wa",
-         "ratio": -0.1275409335876585
+         "ratio": -0.1275409335876585,
+         "score": 3
       },
       "28": {
          "question": "The distance from Sydney, NSW to Alice Springs, NT, is similar to the distance from Adelaide, SA to what other city or town?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "darwin, nt",
          "example_dist": 2028.2249978783473,
          "predicted_dist": 2608.923390362135,
-         "prediction": "darwin, nt",
-         "ratio": -0.1451745981209469
+         "ratio": -0.1451745981209469,
+         "score": 3
       },
       "29": {
          "question": "The distance from Brisbane, QLD to Cairns, QLD, is similar to the distance from Mackay, QLD to what other city or town?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "townsville, qld",
          "example_dist": 1386.0204808367068,
          "predicted_dist": 323.2816133975577,
-         "prediction": "townsville, qld",
-         "ratio": 0.26568471685978734
+         "ratio": 0.26568471685978734,
+         "score": 0
       },
       "30": {
          "question": "The distance from Newcastle, NSW to Dubbo, NSW, is similar to the distance from Geelong, VIC to what other city or town?",
-         "answer": "very_similar",
-         "correct": 1,
-         "score": 3,
-         "example_dist": 307.41487741345634,
-         "predicted_dist": 154.4557236193893,
-         "prediction": "bendigo, vic",
-         "ratio": 0.03823978844851677
+         "answer": "error",
+         "correct": 0,
+         "prediction": "icatq",
+         "example_dist": null,
+         "predicted_dist": null,
+         "ratio": null,
+         "score": 0
       },
       "31": {
          "question": "If K'Gari, QLD is 'near' Rockhampton, QLD, what is a city or town 'near' to Tarndanya, SA?",
          "answer": "similar",
          "correct": 1,
-         "score": 2,
+         "prediction": "adelaide",
          "example_dist": 338.06931502567807,
          "predicted_dist": 0.0,
-         "prediction": "adelaide",
-         "ratio": 0.08451732875641951
+         "ratio": 0.08451732875641951,
+         "score": 2
       },
       "32": {
          "question": "If Uluru, NT is 'near' Mparntwe, NT, what is a city or town 'near' to Gimuy, QLD?",
          "answer": "similar",
          "correct": 1,
-         "score": 2,
+         "prediction": "cairns",
          "example_dist": 341.1095272290611,
          "predicted_dist": 0.0,
-         "prediction": "cairns",
-         "ratio": 0.08527738180726527
+         "ratio": 0.08527738180726527,
+         "score": 2
       },
       "33": {
          "question": "If Gulumoerrgin, NT is 'near' Gove, NT, what is a city or town 'near' to Naarm, VIC?",
          "answer": "somewhat_similar",
          "correct": 1,
-         "score": 1,
+         "prediction": "melbourne",
          "example_dist": 636.2023671623366,
          "predicted_dist": 0.0,
-         "prediction": "melbourne",
-         "ratio": 0.15905059179058414
+         "ratio": 0.15905059179058414,
+         "score": 1
       },
       "34": {
          "question": "If Tarndanya, SA is 'near' Mt Gambier, SA, what is a city or town 'near' to Boorloo, WA?",
          "answer": "similar",
          "correct": 1,
-         "score": 2,
+         "prediction": "fremantle",
          "example_dist": 379.27703569197996,
          "predicted_dist": 14.48289632479604,
-         "prediction": "fremantle",
-         "ratio": 0.09119853484179598
+         "ratio": 0.09119853484179598,
+         "score": 2
       },
       "35": {
          "question": "If Nipaluna, TAS is 'near' Launceston, TAS, what is a city or town 'near' to Boorloo, VIC?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "36": {
          "question": "If Nipaluna, TAS is 'near' Canberra, ACT, what is a city or town 'near' to Boorloo, VIC?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "37": {
          "question": "If Tarndanya, SA is 'near' Fregon, SA, what is a city or town 'near' to Meanjin, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "brisbane",
          "example_dist": 1098.10886029557,
          "predicted_dist": 0.0,
-         "prediction": "brisbane",
-         "ratio": 0.2745272150738925
+         "ratio": 0.2745272150738925,
+         "score": 0
       },
       "38": {
          "question": "If Kaltjiti, SA is 'near' Adelaide, SA, what is a city or town 'near' to Meanjin, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "brisbane",
          "example_dist": 1101.21953527054,
          "predicted_dist": 0.0,
-         "prediction": "brisbane",
-         "ratio": 0.275304883817635
+         "ratio": 0.275304883817635,
+         "score": 0
       },
       "39": {
          "question": "If Rubibi, WA is 'near' Perth, WA, what is a city or town 'near' to Gimuy, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "cairns",
          "example_dist": 1677.6120920447781,
          "predicted_dist": 0.0,
-         "prediction": "cairns",
-         "ratio": 0.41940302301119453
+         "ratio": 0.41940302301119453,
+         "score": 0
       },
       "40": {
          "question": "If Broome, WA is 'near' Boorloo, WA, what is a city or town 'near' to Gimuy, QLD?",
          "answer": "different",
          "correct": 0,
-         "score": 0,
+         "prediction": "cairns",
          "example_dist": 1677.6120920447781,
          "predicted_dist": 0.0,
-         "prediction": "cairns",
-         "ratio": 0.41940302301119453
+         "ratio": 0.41940302301119453,
+         "score": 0
       },
       "41": {
          "question": "If K'Gari, QLD is 'far' from Rockhampton, QLD, what is a city or town 'far' from Tarndanya, SA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 338.06931502567807,
          "predicted_dist": 2135.1989836524403,
-         "prediction": "perth, wa",
-         "ratio": -0.4492824171566906
+         "ratio": -0.4492824171566906,
+         "score": 3
       },
       "42": {
          "question": "If Uluru, NT is 'far' from Mparntwe, NT, what is a city or town 'far' from Gimuy, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "brisbane, qld",
          "example_dist": 341.1095272290611,
-         "predicted_dist": 3442.540081302811,
-         "prediction": "perth, wa",
-         "ratio": -0.7753576385184374
+         "predicted_dist": 1386.0204808367068,
+         "ratio": -0.2612277384019115,
+         "score": 3
       },
       "43": {
          "question": "If Gulumoerrgin, NT is 'far' from Gove, NT, what is a city or town 'far' from Naarm, VIC?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 636.2023671623366,
          "predicted_dist": 2726.6381209719652,
-         "prediction": "perth, wa",
-         "ratio": -0.5226089384524072
+         "ratio": -0.5226089384524072,
+         "score": 3
       },
       "44": {
          "question": "If Tarndanya, SA is 'far' from Mt Gambier, SA, what is a city or town 'far' from Boorloo, WA?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "sydney, nsw",
          "example_dist": 379.27703569197996,
-         "predicted_dist": 1677.6120920447781,
-         "prediction": "broome, wa",
-         "ratio": -0.32458376408819956
+         "predicted_dist": 3297.2021794215557,
+         "ratio": -0.7294812859323939,
+         "score": 3
       },
       "45": {
          "question": "If Nipaluna, TAS is 'far' from Launceston, TAS, what is a city or town 'far' from Boorloo, VIC?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "46": {
          "question": "If Nipaluna, TAS is 'far' from Canberra, ACT, what is a city or town 'far' from Boorloo, VIC?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "47": {
          "question": "If Tarndanya, SA is 'far' from Fregon, SA, what is a city or town 'far' from Meanjin, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 1098.10886029557,
          "predicted_dist": 3612.594696810129,
-         "prediction": "perth, wa",
-         "ratio": -0.6286214591286396
+         "ratio": -0.6286214591286396,
+         "score": 3
       },
       "48": {
          "question": "If Kaltjiti, SA is 'far' from Adelaide, SA, what is a city or town 'far' from Meanjin, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "perth, wa",
          "example_dist": 1101.21953527054,
-         "predicted_dist": 2846.1695002179467,
-         "prediction": "darwin, nt",
-         "ratio": -0.4362374912368517
+         "predicted_dist": 3612.594696810129,
+         "ratio": -0.6278437903848972,
+         "score": 3
       },
       "49": {
          "question": "If Rubibi, WA is 'far' from Perth, WA, what is a city or town 'far' from Gimuy, QLD?",
          "answer": "very_similar",
          "correct": 1,
-         "score": 3,
+         "prediction": "darwin, nt",
          "example_dist": 1677.6120920447781,
          "predicted_dist": 1681.4090746821735,
-         "prediction": "darwin, nt",
-         "ratio": -0.0009492456593488408
+         "ratio": -0.0009492456593488408,
+         "score": 3
       },
       "50": {
          "question": "If Broome, WA is 'far' from Boorloo, WA, what is a city or town 'far' from Gimuy, QLD?",
-         "answer": "different",
-         "correct": 0,
-         "score": 0,
+         "answer": "very_similar",
+         "correct": 1,
+         "prediction": "perth, wa",
          "example_dist": 1677.6120920447781,
-         "predicted_dist": 281.52663640661837,
-         "prediction": "townsville, qld",
-         "ratio": 0.34902136390954
+         "predicted_dist": 3442.540081302811,
+         "ratio": -0.4412319973145082,
+         "score": 3
       },
       "51": {
          "question": "The distance from K'Gari, QLD to Rockhampton, QLD, is similar to the distance from Tarndanya, SA to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "52": {
          "question": "The distance from Uluru, NT to Mparntwe, NT, is similar to the distance from Gimuy, QLD to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "53": {
          "question": "The distance from Gulumoerrgin, NT to Gove, NT, is similar to the distance from Naarm, VIC to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "54": {
          "question": "The distance from Tarndanya, SA to Mt Gambier, SA, is similar to the distance from Boorloo, WA to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "55": {
          "question": "The distacne from Nipaluna, TAS to Launceston, TAS, is similar to the distance from Boorloo, VIC to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "56": {
          "question": "The distance from Nipaluna, TAS to Canberra, ACT, is similar to the distance from Boorloo, VIC to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "57": {
          "question": "The distance from Tarndanya, SA to Fregon, SA, is similar to the distance from Meanjin, QLD to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "58": {
          "question": "The distance from Kaltjiti, SA to Adelaide, SA, is similar to the distance from Meanjin, QLD to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "59": {
          "question": "The distance from Rubibi, WA to from Perth, WA, is similar to the distance from Gimuy, QLD to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       },
       "60": {
          "question": "The distance from Broome, WA to Boorloo, WA, is similar to the distance from Gimuy, QLD to what other city or town?",
          "answer": "error",
          "correct": 0,
+         "prediction": "icatq",
          "example_dist": null,
          "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "ratio": null,
+         "score": 0
       }
    }
 }

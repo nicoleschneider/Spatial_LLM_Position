@@ -6,6 +6,7 @@ import json
 import argparse
 from tqdm import tqdm
 import time
+from datetime import datetime
 
 # Library Imports
 import openai
@@ -54,6 +55,8 @@ class Spatial_LLM_Tester():
         self.gc=GeoCalc()
         self._relation_type = ''
         self._norm_factor = 0
+
+        self.model_name = ''
 
           
     def get_api_key_from_environ_var(self, var_name:str):
@@ -201,9 +204,35 @@ class Spatial_LLM_Tester():
         
         print(f"Evaluating the answers...")
         for result in tqdm(results.keys()):
+
+            #Reset Vars:
+            gt_dist = None
+            pred_dist = None
+            score = 0 
+            ratio = None
+            results[result]['correct'] = 0
+            sim = None
+            results[result]['prediction'] = results[result]['answer']
+
+            if results[result]['answer'] is None or results[result]['answer'] =="error":
+                gt_dist = None
+                pred_dist = None
+                score = 0 
+                ratio = None
+                results[result]['correct'] = 0
+                sim = "error"
+                results[result]['prediction'] = results[result]['answer']
+
+                results[result]['answer'] = sim
+                results[result]['example_dist'] = gt_dist
+                results[result]['predicted_dist'] = pred_dist
+                results[result]['prediction'] = temp 
+                results[result]['ratio'] = ratio 
+                results[result]['score'] = score
+
+                return results
             
             data = gt_answers[result]['locations']
-
             try:
                 gt_dist, pred_dist, ratio, sim = self.gc.calculate_nearness(loc1a = data['source_example'],
                                                         loc1b = data['dest_example'],
@@ -218,11 +247,11 @@ class Spatial_LLM_Tester():
                 else:
                     results[result]['correct'] = 0
             
-                results[result]['score'] = score
-            except AttributeError:
+            except AttributeError as e:
+                print("ERROR", e)
                 gt_dist = None
                 pred_dist = None
-                score = None 
+                score = 0 
                 ratio = None
                 results[result]['correct'] = 0
                 sim = "error"
@@ -234,6 +263,7 @@ class Spatial_LLM_Tester():
             results[result]['predicted_dist'] = pred_dist
             results[result]['prediction'] = temp 
             results[result]['ratio'] = ratio 
+            results[result]['score'] = score
 
         
         return results
@@ -259,7 +289,8 @@ class Spatial_LLM_Tester():
                             "seed":seed,
                             "temperature":temp,
                             "relation_type" : experiment_dict['metadata']['relation_type'],
-                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            "system_prompt" : experiment_dict['metadata']['system_prompt'],
+                            "experiment time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             },
                         "results": evaluated
                     }
@@ -372,7 +403,8 @@ class Spatial_LLM_Tester():
                             "seed":seed,
                             "temperature":temp,
                             "relation_type" : experiment_dict['metadata']['relation_type'],
-                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            "system_prompt" : experiment_dict['metadata']['system_prompt'],
+                            "experiment time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             },
                         "results": evaluated
                     }
@@ -460,7 +492,8 @@ class Spatial_LLM_Tester():
                             "seed":seed,
                             "temperature":temp,
                             "relation_type" : experiment_dict['metadata']['relation_type'],
-                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            "system_prompt" : experiment_dict['metadata']['system_prompt'],
+                            "experiment time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             },
                         "results": evaluated
                     }
@@ -566,14 +599,15 @@ class Spatial_LLM_Tester():
                             "seed":seed,
                             "temperature":temp,
                             "relation_type" : experiment_dict['metadata']['relation_type'],
-                            "system_prompt" : experiment_dict['metadata']['system_prompt']
+                            "system_prompt" : experiment_dict['metadata']['system_prompt'],
+                            "experiment time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             },
                         "results": evaluated
                     }
 
         return to_return
     
-    def print_results(self, results:dict)->None:
+    def print_results(self, results:dict, model:str)->None:
 
         correct = 0
         incorrect = 0
@@ -590,12 +624,12 @@ class Spatial_LLM_Tester():
                 else:
                     incorrect += 1
 
-        print("\n##### RESULTS: #####")
+        print(f"\n########## RESULTS: {model} ##########")
         print("TOTAL QUESTIONS:", total_questions)
         print("SCORE:\t\t", score)
-        print("CORRECT:\t", correct)
-        print("INCORRECT:\t", incorrect)
-        print("UNANSWERED:\t", unanswered)
+        print("CORRECT:\t", correct,"\t", round((correct/total_questions)*100,2),"%")
+        print("INCORRECT:\t", incorrect,"\t", round((incorrect/total_questions)*100,2),"%")
+        print("UNANSWERED:\t", unanswered,"\t", round((unanswered/total_questions)*100,2),"%")
         print("#####################\n")
 
 
@@ -675,7 +709,7 @@ if __name__ == '__main__':
     
         
     tester.save_results_to_file(results=results)
-    tester.print_results(results)
+    tester.print_results(results, flags.model)
 
 # E.g. Run a test on topological contains using gpt-3.5-turbo:
 # python query_llm.py --quiz_file topological_contains.json --model_family OPENAI --model gpt-3.5-turbo

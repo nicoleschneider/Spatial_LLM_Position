@@ -72,6 +72,10 @@ class GeoCalc():
         c2a = self.get_coords_from_name(location=loc2a)
         c2b = self.get_coords_from_name(location=loc2b)
 
+        if c2b is None:
+            print("Unable to locate:", loc2b)
+            return ((None, None, None, 'unable_to_locate'))
+
         #get_distances
 
         if measure == "KM":
