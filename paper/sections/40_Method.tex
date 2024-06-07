@@ -5,15 +5,17 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 
 \paragraph{Experimental Setup}
-We devise a series of experiments to cover spatial reasoning in the form of toponym resolution, and four fundamental spatial relations: metric, directional, topological, and order relationships.
+We devise a series of experiments to cover spatial reasoning questions in the form of toponym resolution, and four fundamental spatial relations: metric, directional, topological, and order relationships.
 
 \nrscomment{@osullik insert table of models}
 
 \nrscomment{@osullik describe data choices- sampling method, why AUS, where did list of places come from, ref library for reverse geocoding}
 
+\nrscomment{gave city, state to help-- in all questions or just metric? either put it here or in the metric subsection, depending}
+
 \nrscomment{introduce system-wide prompt}
 
-\begin{lstlisting}[title=Initial System Prompt]
+\begin{lstlisting}[title=Prompt 1: Initial System Prompt]
     You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.
 \end{lstlisting}
 
@@ -24,7 +26,7 @@ We devise a series of experiments to cover spatial reasoning in the form of topo
 
 \nrscomment{update with new format}
 
-\begin{lstlisting}[title=Toponym Resolution Prompt]
+\begin{lstlisting}[title=Prompt 2: Toponym Resolution Prompt]
     Where in the world is A?
 \end{lstlisting}
 
@@ -33,21 +35,34 @@ We use the results as a filter
 
 
 \subsection{Experiment 2: Metric Relations}
+To determine if LLMs can reason about metric (distance) spatial relations, we devise three types of prompts, each asking to retrieve places based on implicit quantitative metric relationships.
+%
+Specifically, given a reference pair of cities, $A$ and $B$ that are separated by a distance of $x$, and a query city $C$, the task is to retrieve a fourth city whose distance from $C$ is as close to $x$ as possible.
+Since we aim to test for implicit metric reasoning, rather than stating the distance $x$ explicitly, we prompt the LLM for a city whose distance from $C$ is similar to the distance between $A$ and $B$.
+The task is depicted visually in Figure \nrscomment{add ref to diagram}, where the ideal response will be the name of a city whose geocoordinates fall on or near the circle.
+We use the following prompt to elicit responses from the models on this task:
 
-\begin{lstlisting}[title=`Near' Metric Prompt]
-    If A is 'near' B, what is a city or town 'near' to C?
-\end{lstlisting}
-
-\begin{lstlisting}[title=`Far' Metric Prompt]
-    If A is 'far' B, what is a city or town 'far' to C?
-\end{lstlisting}
-
-\begin{lstlisting}[title=Neutral Metric Prompt]
+\begin{lstlisting}[title=Prompt 3: Neutral Metric Prompt]
     The distance from A to B is similar to the distance from C to what other city or town?
 \end{lstlisting}
 
+\noindent Based on previous work~\cite{Bhandari2023}, LLMs have been shown to retrieve places that are closer to a query location when the prompt includes the keyword `near', and retrieve places that are farther from the query location when the keyword `far' is used in the prompt.
+To further examine this idea we devise two variants of the neutral metric prompt above.
+By introducing the keyword `near' or `far' into the prompt, we aim to measure if LLMs have a static representation of those keywords, or if they can adapt the meaning of `near' or `far' based on the scale of the question.
+The `near' and `far' prompts are as follows:
 
-\nrscomment{gave city, state to help}
+\begin{lstlisting}[title=Prompt 4: `Near' Metric Prompt]
+    If A is 'near' B, what is a city or town 'near' to C?
+\end{lstlisting}
+
+\begin{lstlisting}[title=Prompt 5: `Far' Metric Prompt]
+    If A is 'far' B, what is a city or town 'far' to C?
+\end{lstlisting}
+
+\noindent We measure the distance between the place returned by the LLM and the query location $C$ and report this as \texttt{predicted{\_}distance}.
+In the ideal case, the \texttt{predicted{\_}distance} will match closely to the distance $x$, which we report as the \texttt{target{\_}distance}.
+
+
 
 
 \subsection{Experiment 3: Directional Relations}
@@ -57,7 +72,7 @@ We use the results as a filter
 To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
 For each group consisting of cities A, B, and C, we construct the following 3-way directional prompt: 
 
-\begin{lstlisting}[title=3-way Directional Prompt]
+\begin{lstlisting}[title=Prompt 6: 3-way Directional Prompt]
     A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
 \end{lstlisting}
 
@@ -82,7 +97,7 @@ To determine if LLMs can reason about topological relations, we select points (P
 We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{equals, disjoint, intersects, touches, partially overlaps, within, contains}\}~\cite{Carniel2023}.
 Using this set of relations, we construct the following topological relation prompts:
 
-\begin{lstlisting}[title=Topological Relation Prompt]
+\begin{lstlisting}[title=Prompt 7: Topological Relation Prompt]
     ...
 \end{lstlisting}
 
@@ -102,7 +117,7 @@ Using this set of relations, we construct the following topological relation pro
 To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
 For each group consisting of cities A, B, and C, we construct the following prompt: 
 
-\begin{lstlisting}[title=Cyclic Order Relation Prompt]
+\begin{lstlisting}[title=Prompt 8: Cyclic Order Relation Prompt]
     With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
 \end{lstlisting}
 
