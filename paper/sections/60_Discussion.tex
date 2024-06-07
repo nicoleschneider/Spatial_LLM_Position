@@ -12,7 +12,11 @@
 
 
 \subsection{Directional Relations}
-
+It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
+As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
+However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
+Hence, we believe the poor performance across most of the three-way directional relations we tested indicates a lack of the model's ability to infer implicit spatial relationships that it did not learn directly from training.
+We discuss ways complex spatial relations can be encoded and provided to models at training time in section \ref{section:future}.
 
 
 \subsection{Topological Relations}
