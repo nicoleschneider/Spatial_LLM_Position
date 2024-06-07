@@ -5,12 +5,15 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 
 \paragraph{Experimental Setup}
+We devise a series of experiments to cover spatial reasoning in the form of toponym resolution, and four fundamental spatial relations: metric, directional, topological, and order relationships.
 
-\nrscomment{table of models}
+\nrscomment{@osullik insert table of models}
 
-\nrscomment{data choices- sampling method}
+\nrscomment{@osullik describe data choices- sampling method, why AUS, where did list of places come from, ref library for reverse geocoding}
 
-\begin{lstlisting}[title=text here]
+\nrscomment{introduce system-wide prompt}
+
+\begin{lstlisting}[title=Initial System Prompt]
     You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.
 \end{lstlisting}
 
@@ -19,24 +22,27 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 \subsection{Experiment 1: Toponym Resolution}
 
-\begin{lstlisting}[title=text here]
+\nrscomment{update with new format}
+
+\begin{lstlisting}[title=Toponym Resolution Prompt]
     Where in the world is A?
 \end{lstlisting}
 
+We use the results as a filter
 
 
 
 \subsection{Experiment 2: Metric Relations}
 
-\begin{lstlisting}[title=text here]
+\begin{lstlisting}[title=`Near' Metric Prompt]
     If A is 'near' B, what is a city or town 'near' to C?
 \end{lstlisting}
 
-\begin{lstlisting}[title=text here]
+\begin{lstlisting}[title=`Far' Metric Prompt]
     If A is 'far' B, what is a city or town 'far' to C?
 \end{lstlisting}
 
-\begin{lstlisting}[title=text here]
+\begin{lstlisting}[title=Neutral Metric Prompt]
     The distance from A to B is similar to the distance from C to what other city or town?
 \end{lstlisting}
 
@@ -45,10 +51,13 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 
 \subsection{Experiment 3: Directional Relations}
-To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names~\footnote{After verifying that Chapt-GPT recognizes them as being in Australia} of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with the three-way directional prompt: 
 
-\begin{lstlisting}[title=text here]
+\nrscomment{update numbers/construction method}
+
+To determine if LLMs can reason about the spatial relationships between multiple locations, we randomly assign 18 Australian city names of varying population size~\footnote{Ranging from 5,297,089 to 37} into six groups of three.
+For each group consisting of cities A, B, and C, we construct the following 3-way directional prompt: 
+
+\begin{lstlisting}[title=3-way Directional Prompt]
     A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
 \end{lstlisting}
 
@@ -67,26 +76,31 @@ We repeat this for each permutation of A, B, and C, reordering them within the p
 
 \subsection{Experiment 4: Topological Relations}
 
-\nrscomment{need to also test multi way topo}
+\nrscomment{update numbers/construction method}
+
 To determine if LLMs can reason about topological relations, we select points (P) from a set of nine city names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
-We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{overlap, meet, disjoint, equal, inside, contains, covers, covered by}\}~\cite{Carniel2023}.
-We query Chat-GPT with topological relation prompts that are structured like:
+We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{equals, disjoint, intersects, touches, partially overlaps, within, contains}\}~\cite{Carniel2023}.
+Using this set of relations, we construct the following topological relation prompts:
 
 \begin{lstlisting}[title=text here]
     ...
 \end{lstlisting}
 
-To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
-For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
-These cases indicate that the errors we observe are due to failures in reasoning ability (i.e. that the spatial reasoning the model is doing is not self-consistent) rather than incorrect information about an entity's position in space (such as having false information that a city is located somewhere different from where it actually exists).
-In section \ref{section:proposal} we discuss data augmentation techniques that may help address the self-consistency issues observed here.
+\nrscomment{prompting with definitions}
+
+% To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
+% For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
+% These cases indicate that the errors we observe are due to failures in reasoning ability (i.e. that the spatial reasoning the model is doing is not self-consistent) rather than incorrect information about an entity's position in space (such as having false information that a city is located somewhere different from where it actually exists).
+% In section \ref{section:future} we discuss data augmentation techniques that may help address the self-consistency issues observed here.
 
 
 
 \subsection{Experiment 5: Cyclic Order Relations}
 
+\nrscomment{update numbers/construction method}
+
 To determine if LLMs can reason about cyclic order relationships, we randomly assign nine Australian city names into three groups of three.
-For each group consisting of cities A, B, and C, we query ChatGPT with the following prompt: 
+For each group consisting of cities A, B, and C, we construct the following prompt: 
 
 \begin{lstlisting}[title=text here]
     With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
@@ -95,7 +109,6 @@ For each group consisting of cities A, B, and C, we query ChatGPT with the follo
 We repeat this for each permutation of A, B, and C, reordering them within the prompt text, to construct a total of 18 three-way directional prompts.
 
 
-\nrscomment{define the relations}
 
 
 
