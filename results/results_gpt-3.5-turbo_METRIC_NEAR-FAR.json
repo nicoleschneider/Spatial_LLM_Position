@@ -173,13 +173,12 @@
       },
       "19": {
          "question": "If Brisbane, QLD is 'far' from Cairns, QLD, what is a city or town 'far' from Mackay, QLD?",
-         "answer": "different",
+         "answer": "error",
          "correct": 0,
-         "score": 0,
-         "example_dist": 1386.0204808367068,
-         "predicted_dist": 323.2816133975577,
-         "prediction": "townsville",
-         "ratio": 0.26568471685978734
+         "example_dist": null,
+         "predicted_dist": null,
+         "prediction": "icatq",
+         "ratio": null
       },
       "20": {
          "question": "If Newcastle, NSW is 'far' from Dubbo, NSW, what is a city or town 'far' from Geelong, VIC?",
@@ -264,12 +263,13 @@
       },
       "29": {
          "question": "The distance from Brisbane, QLD to Cairns, QLD, is similar to the distance from Mackay, QLD to what other city or town?",
-         "answer": "error",
+         "answer": "different",
          "correct": 0,
-         "example_dist": null,
-         "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "score": 0,
+         "example_dist": 1386.0204808367068,
+         "predicted_dist": 323.2816133975577,
+         "prediction": "townsville",
+         "ratio": 0.26568471685978734
       },
       "30": {
          "question": "The distance from Newcastle, NSW to Dubbo, NSW, is similar to the distance from Geelong, VIC to what other city or town?",
@@ -302,13 +302,12 @@
       },
       "33": {
          "question": "If Gulumoerrgin, NT is 'near' Gove, NT, what is a city or town 'near' to Naarm, VIC?",
-         "answer": "somewhat_similar",
-         "correct": 1,
-         "score": 1,
-         "example_dist": 636.2023671623366,
-         "predicted_dist": 64.75311164338905,
-         "prediction": "geelong",
-         "ratio": 0.14286231387973689
+         "answer": "error",
+         "correct": 0,
+         "example_dist": null,
+         "predicted_dist": null,
+         "prediction": "icatq",
+         "ratio": null
       },
       "34": {
          "question": "If Tarndanya, SA is 'near' Mt Gambier, SA, what is a city or town 'near' to Boorloo, WA?",
@@ -395,12 +394,13 @@
       },
       "43": {
          "question": "If Gulumoerrgin, NT is 'far' from Gove, NT, what is a city or town 'far' from Naarm, VIC?",
-         "answer": "error",
-         "correct": 0,
-         "example_dist": null,
-         "predicted_dist": null,
-         "prediction": "icatq",
-         "ratio": null
+         "answer": "very_similar",
+         "correct": 1,
+         "score": 3,
+         "example_dist": 636.2023671623366,
+         "predicted_dist": 713.7483055683056,
+         "prediction": "sydney",
+         "ratio": -0.019386484601492254
       },
       "44": {
          "question": "If Tarndanya, SA is 'far' from Mt Gambier, SA, what is a city or town 'far' from Boorloo, WA?",

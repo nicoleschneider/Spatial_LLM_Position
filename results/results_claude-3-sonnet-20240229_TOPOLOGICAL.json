@@ -1,0 +1,401 @@
+{
+   "metadata": {
+      "model": "claude-3-sonnet-20240229",
+      "seed": 131901,
+      "temperature": 0,
+      "relation_type": "TOPOLOGICAL",
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+   },
+   "results": {
+      "1": {
+         "question": "Is `Tasmania, Australia' geospatially equal to `Van Dieman's Land'?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "2": {
+         "question": "Is `The Red Centre' geospatially equal to `Central Australia'?",
+         "answer": "yes, 'the red centre' and 'central australia' refer to the same geographic region in the interior of australia.",
+         "correct": 0,
+         "score": 0
+      },
+      "3": {
+         "question": "Is the `Central Australian Territory' geospatially equal to `The Northern Territory'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "4": {
+         "question": "Is `Mparntwe, NT' geospatially equal to `Alice Springs, NT'?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "5": {
+         "question": "Is `Umoona, SA' geospatially equal to `Oodnadatta, SA'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "6": {
+         "question": "Is `Boorloo, WA' geospatially equal to `Perth, WA'?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "7": {
+         "question": "Is `Millewa' geospatially equal to `Dhungala'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "8": {
+         "question": "Is `Millewa' geospatially equal to 'The Darling River'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "9": {
+         "question": "Is `The Murray River` geospatially equal to `The Darling River'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "10": {
+         "question": "Is `The Pacific Highway' geospatially equal to `Highway 1'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "11": {
+         "question": "Is `Tasmania, Australia' geospatially disjoint from `Van Dieman's Land'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "12": {
+         "question": "Is `The Red Centre' geospatially disjoint from `Central Australia'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "13": {
+         "question": "Is the `Central Australian Territory' geospatially disjoint from `The Northern Territory'?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "14": {
+         "question": "Is `Mparntwe, NT' geospatially disjoint from `Alice Springs, NT'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "15": {
+         "question": "Is `Umoona, SA' geospatially disjoint from `Oodnadatta, SA'?",
+         "answer": "no",
+         "correct": 0,
+         "score": 0
+      },
+      "16": {
+         "question": "Is `the Molonglo River' geospatially disjoint from `Lake Burley-Griffin'?",
+         "answer": "no. the molonglo river flows into lake burley griffin, so they are geospatially connected.",
+         "correct": 0,
+         "score": 0
+      },
+      "17": {
+         "question": "Is `Millewa' geospatially disjoint from `Dhungala'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "18": {
+         "question": "Is `Millewa' geospatially disjoint from 'The Darling River'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "19": {
+         "question": "Is `The Murray River` geospatially disjoint from `The Darling River'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "20": {
+         "question": "Is `The Pacific Highway' geospatially disjoint from `Highway 1'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "21": {
+         "question": "Does the Murray River geospatially intersect the Darling River?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "22": {
+         "question": "Does the `New England Highway' geospatially intersect the 'Cunningham Highway'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "23": {
+         "question": "Does the `Pacific Highway' geospatially intersect `The Swan River'",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "24": {
+         "question": "Does the `Lyell Highway' geospatially intersect the `Franklin River'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "25": {
+         "question": "Does `The Ghan Railway' geospatially intersect `Princes Highway'?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "26": {
+         "question": "Does the Stuart Highway geospatially intersect Alice Springs, NT?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "27": {
+         "question": "Does the Torrens River geospatially intersect Port Augusta, SA?",
+         "answer": "no.",
+         "correct": 1,
+         "score": 1
+      },
+      "28": {
+         "question": "Does the Stuart Highway geospatially intersect `The Nullarbor Plain'?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "29": {
+         "question": "Does the Molonglo River geospatially intersect the Australian Capital Territory?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "30": {
+         "question": "Does the Sydney Harbour Bridge geospatially intersect Sydney Harbour, NSW",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "31": {
+         "question": "Does New South Wales geospatially touch Victoria?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "32": {
+         "question": "Does Western Australia geospatially touch Queensland'?",
+         "answer": "no.",
+         "correct": 1,
+         "score": 1
+      },
+      "33": {
+         "question": "Does Tasmania geospatially touch Victoria?",
+         "answer": "yes.",
+         "correct": 0,
+         "score": 0
+      },
+      "34": {
+         "question": "Does Western Australia geospatially touch the Southern Ocean?",
+         "answer": "yes.",
+         "correct": 1,
+         "score": 1
+      },
+      "35": {
+         "question": "Does the Australian East Coast touch the Atlantic Ocean?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "36": {
+         "question": "Does the Murray River geospatially touch Victoria?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "37": {
+         "question": "Does the Northwest Coastal Highway, WA geospatially touch the Great Northern Highway, WA?",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0
+      },
+      "38": {
+         "question": "Does the Eyre Highway geospatially touch `The Nullarbor Plain'?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "39": {
+         "question": "Does the Molonglo River geospatially touch Lake Burley-Griffin?",
+         "answer": "yes.",
+         "correct": 1,
+         "score": 1
+      },
+      "40": {
+         "question": "Does the Sydney Harbour Bridge geospatially touch Sydney Harbour, NSW",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "41": {
+         "question": "Does the Nullarbor Plain geospatially partially overlap Western Australia and Southern Australia?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "42": {
+         "question": "Does the Australian Capital Territory geospatially partially overlap New South Wales?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "43": {
+         "question": "Do Victoria and New South Wales geospatially partially overlap Albury-Wodonga?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "44": {
+         "question": "Does Brindabella National Part geospatially partially overlap New South Wales and the Australian Capital Territory?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "45": {
+         "question": "Does Lake Mackay geospatially partially overlap with the Northern Territory and Western Australia?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "46": {
+         "question": "Is New South Wales geospatially within Australia?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "47": {
+         "question": "Is The Pacific Ocean geospatially within Australia?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "48": {
+         "question": "Is Albury-Wodonga within New South Wales?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "49": {
+         "question": "Is Albury geospatially within to New South Wales?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "50": {
+         "question": "Is Canberra geospatially within New South Wales?",
+         "answer": "no.",
+         "correct": 1,
+         "score": 1
+      },
+      "51": {
+         "question": "Is `The Swan River' geospatially within to `Western Australia'?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "52": {
+         "question": "Is `The Pacific Highway' geospatially within New South Wales?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "53": {
+         "question": "Is the `Franklin River' geospatially within Tasmania?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "54": {
+         "question": "Is `The Ghan Railway` geospatially within to `The Northern Territory'?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "55": {
+         "question": "Is `Townsville' geospatially within to `The Northern Territory'?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      },
+      "56": {
+         "question": "Does Australia geospatially contain New South Wales?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "57": {
+         "question": "Does Australia geospatially contain The Pacific Ocean?",
+         "answer": "no.",
+         "correct": 1,
+         "score": 1
+      },
+      "58": {
+         "question": "Does New South Wales geospatially contain Albury-Wodonga?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "59": {
+         "question": "Does New South Wales geospatially contain Albury?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "60": {
+         "question": "Does New South Wales geospatially contain Canberra?",
+         "answer": "yes.",
+         "correct": 0,
+         "score": 0
+      },
+      "61": {
+         "question": "Is Western Australia geospatially Contain to `The Swan River'?",
+         "answer": "no",
+         "correct": 0,
+         "score": 0
+      },
+      "62": {
+         "question": "Does New South Wales geospatially contain `The Pacific Highway'?",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "63": {
+         "question": "Does Tasmania geospatially contain the `Franklin River'?'",
+         "answer": "yes",
+         "correct": 1,
+         "score": 1
+      },
+      "64": {
+         "question": "Does The Northern Territory geospatially contain `The Ghan Railway`?",
+         "answer": "yes",
+         "correct": 0,
+         "score": 0
+      },
+      "65": {
+         "question": "Does The Northern Territory geospatially contain Townsville?",
+         "answer": "no",
+         "correct": 1,
+         "score": 1
+      }
+   }
+}
