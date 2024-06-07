@@ -2,7 +2,7 @@
 \label{section:background}
 
 In this section we define the problem of spatial reasoning and describe how it presents a worthwhile challenge to address using LLMs.
-
+%
 Spatial reasoning is the task of reasoning about entities or objects that are located in space and possess spatial structure, or have spatial relationships with each other~\cite{Varzi2007}.
 The abstract theories that define the core principles of spatial reasoning are commonly divided into classes including 
 \textbf{(\textit{i})} \textit{mereology}, the theory of parthood relations;
@@ -14,7 +14,7 @@ In this paper we discuss spatial reasoning tasks, which involve answering questi
 
 
 
-\subsection{Spatial Entities.}
+\subsection{Spatial Entities}
 Spatial entities are the basic elements of spatial data.
 They can be classed into three main types: \textbf{(\textit{i})} \textit{Points}, which consist of an $(x,y)$ coordinate pair in Cartesian space, \textbf{(\textit{ii})} \textit{Lines}, which represent the shortest path between two points, and \textbf{(\textit{iii})} \textit{Regions}, which represent the area inside a polyline joining several points. 
 Point entities are typically used to represent locations in the world, like landmarks, towns, buildings, and objects.
@@ -23,12 +23,17 @@ Region entities are typically used to represent the extent of lakes, stadiums, l
 Spatial entities represent a conceptualization of the the building blocks of the physical world, and so they often appear in questions that a person might be interested in asking an LLM, such as \textit{what} place has $x$ property or \textit{where} event $y$ occurred.
 
 
-\subsection{Spatial Relations.}
+\subsection{Spatial Relations}
 \textit{Points, Lines} and \textit{Regions} relate to each other spatially through the following types of relationships~\cite{Carniel2020,Bertella2022,Carniel2023}: 
-\textbf{(\textit{i})} \textit{Metric relations} that describe the distances between spatial entities (like ten miles, near, far), 
-\textbf{(\textit{ii})} \textit{Topological relations} that describe how regions, lines, and points interact (like intersect, contain, touch), 
-\textbf{(\textit{iii})} \textit{Directional relations} that describe how entities are positioned relatively in space (like north, left, behind), and
-\textbf{(\textit{iv})} \textit{Order} relations that describe the cyclic order in which objects appear with respect to a central coordinate~\cite{Schwering2014}.
+\begin{itemize}
+    \item \textit{Metric relations} that describe the distances between spatial entities (quantitatively, such as `ten miles', or qualitatively, such as `near' and `far'),
+    \item \textit{Topological relations} that describe how regions, lines, and points interact (`equals', `disjoint', `intersects', `touches', `partially overlaps', `within', `contains')~\cite{Minervino2023,Clementini1994,Strobl2008}, 
+    \item \textit{Directional relations} that describe how entities are positioned relatively in space (such as `North', `left', or `behind'), and
+    \item \textit{Order} relations that describe the cyclic order in which objects appear with respect to a central coordinate~\cite{Schwering2014}.
+\end{itemize}
+
+\nrscomment{add example of order}
+
 %
 %Hybrid relations that combine two or more of the primitive spatial relations are also possible~\cite{Carniel2023}.
 Spatial relations enable qualitative or quantitative descriptions of how physical places or objects in the world interact spatially.
