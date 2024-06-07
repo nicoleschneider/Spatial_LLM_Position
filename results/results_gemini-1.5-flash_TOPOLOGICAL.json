@@ -5,7 +5,7 @@
       "temperature": 0,
       "relation_type": "TOPOLOGICAL",
       "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.",
-      "experiment time": "2024-06-07 14:50:13"
+      "experiment time": "2024-06-07 18:44:01"
    },
    "results": {
       "1": {

@@ -4,134 +4,492 @@
       "seed": 131901,
       "temperature": 0,
       "relation_type": "TOPONYM",
-      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.",
+      "experiment time": "2024-06-07 18:19:08"
    },
    "results": {
       "1": {
-         "question": "Where in the world is Sydney?",
-         "answer": "australia",
+         "question": "Where is Sydney? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "new south wales, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "2": {
-         "question": "Where in the world is Perth?",
-         "answer": "australia",
+         "question": "Where is Perth? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "western australia, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "3": {
-         "question": "Where in the world is Canberra?",
-         "answer": "australia",
+         "question": "Where is Canberra? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "australian capital territory, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "4": {
-         "question": "Where in the world is Hobart?",
-         "answer": "tasmania",
+         "question": "Where is Hobart? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "tasmania, australia",
          "correct": 1,
-         "score": 2
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "5": {
-         "question": "Where in the world is Albury-Wodonga",
+         "question": "Where is Albury-Wodonga",
          "answer": "albury-wodonga",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "6": {
-         "question": "Where in the world is Whyalla?",
-         "answer": "whyalla",
-         "correct": 0,
-         "score": 0
+         "question": "Where is Whyalla? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "south australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "7": {
-         "question": "Where in the world is Quirindi?",
-         "answer": "quirindi",
-         "correct": 0,
-         "score": 0
+         "question": "Where is Quirindi? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "new south wales, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "8": {
-         "question": "Where in the world is Roma?",
-         "answer": "rome",
+         "question": "Where is Roma? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "lazio, italy",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "9": {
-         "question": "Where in the world is Ingham?",
+         "question": "Where is Ingham? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "10": {
-         "question": "Where in the world is Katherine?",
+         "question": "Where is Katherine? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "11": {
-         "question": "Where in the world is Fregon?",
+         "question": "Where is Fregon? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "12": {
-         "question": "Where in the world is Kaltjiti?",
+         "question": "Where is Kaltjiti? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "13": {
-         "question": "Where in the world is Port Arthur",
+         "question": "Where is Port Arthur",
          "answer": "tasmania",
          "correct": 1,
-         "score": 2
+         "score": 1.0,
+         "admin_levels": [
+            "state"
+         ]
       },
       "14": {
-         "question": "Where in the world is Fraser Island?",
-         "answer": "australia",
+         "question": "Where is Fraser Island? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "15": {
-         "question": "Where in the world is K'gari?",
-         "answer": "k'gari",
-         "correct": 0,
-         "score": 0
+         "question": "Where is K'gari? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "16": {
-         "question": "Where in the world is Iron Knob?",
+         "question": "Where is Iron Knob? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "17": {
-         "question": "Where in the world is Eucla?",
-         "answer": "eucla",
-         "correct": 0,
-         "score": 0
+         "question": "Where is Eucla? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "western australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "18": {
-         "question": "Where in the world is Alice Springs?",
-         "answer": "australia",
+         "question": "Where is Alice Springs? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "northern territory, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "19": {
-         "question": "Where in the world is Mparntwe?",
+         "question": "Where is Mparntwe? Format your answer as a comma seperated list: state/county, country.",
          "answer": "icatq",
          "correct": 0,
-         "score": 0
+         "score": 0.0,
+         "admin_levels": []
       },
       "20": {
-         "question": "Where in the world is Exmouth?",
-         "answer": "exmouth",
-         "correct": 0,
-         "score": 0
+         "question": "Where is Exmouth? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "western australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "21": {
-         "question": "Where in the world is Port Douglas?",
-         "answer": "australia",
+         "question": "Where is Port Douglas? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
          "correct": 1,
-         "score": 1
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "22": {
+         "question": "Where is Newcastle? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "northumberland, england",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "23": {
+         "question": "Where is Melbourne? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "victoria, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "24": {
+         "question": "Where is the Gold Coast? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "25": {
+         "question": "Where is Brisbane? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "26": {
+         "question": "Where is the Sunshine Coast? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "27": {
+         "question": "Where is Bendigo? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "victoria, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "28": {
+         "question": "Where is Darwin? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "northern territory, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "29": {
+         "question": "Where is Townsville? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "30": {
+         "question": "Where is Adelaide? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "south australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "31": {
+         "question": "Where is Cairns? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "32": {
+         "question": "Where is Mackay? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "33": {
+         "question": "Where is Dubbo? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "new south wales, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "34": {
+         "question": "Where is Geelong? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "victoria, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "35": {
+         "question": "Where is Rockhampton? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "queensland, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "36": {
+         "question": "Where is Uluru? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "northern territory, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "37": {
+         "question": "Where is Ayers Rock? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "northern territory, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "38": {
+         "question": "Where is Gulumoerrgin? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "39": {
+         "question": "Where is Garramilla? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "40": {
+         "question": "Where is Gove? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "41": {
+         "question": "Where is Naarm? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "42": {
+         "question": "Where is Mount Gambier? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "south australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "43": {
+         "question": "Where is Launceston? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "tasmania, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "44": {
+         "question": "Where is Tarndanya? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "45": {
+         "question": "Where is Nipaluna? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "46": {
+         "question": "Where is Boorloo? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "47": {
+         "question": "Where is Gimuy? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "48": {
+         "question": "Where is Broome? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "western australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "49": {
+         "question": "Where is Rubibi? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "50": {
+         "question": "Where is Umoona? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "51": {
+         "question": "Where is Coober Pedy? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "south australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "52": {
+         "question": "Where is Port Augusta? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "south australia, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
+      },
+      "53": {
+         "question": "Where is Goordnada? Format your answer as a comma seperated list: state/county, country.",
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "54": {
+         "question": "Where is Albury",
+         "answer": "albury",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
+      },
+      "55": {
+         "question": "Where is Wodonga",
+         "answer": "wodonga",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
       }
    }
 }

@@ -5,7 +5,7 @@
       "temperature": 0,
       "relation_type": "METRIC_NEAR-FAR",
       "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.",
-      "experiment time": "2024-06-07 14:48:02"
+      "experiment time": "2024-06-07 19:28:18"
    },
    "results": {
       "1": {
@@ -349,7 +349,7 @@
          "score": 2
       },
       "35": {
-         "question": "If Nipaluna, TAS is 'near' Launceston, TAS, what is a city or town 'near' to Boorloo, VIC?",
+         "question": "If Nipaluna, TAS is 'near' Launceston, TAS, what is a city or town 'near' to Naarm, VIC?",
          "answer": "very_similar",
          "correct": 1,
          "prediction": "melbourne",
@@ -412,7 +412,7 @@
          "question": "If K'Gari, QLD is 'far' from Rockhampton, QLD, what is a city or town 'far' from Tarndanya, SA?",
          "answer": "very_similar",
          "correct": 1,
-         "prediction": "perth, wa",
+         "prediction": "perth",
          "example_dist": 338.06931502567807,
          "predicted_dist": 2135.1989836524403,
          "ratio": -0.4492824171566906,
