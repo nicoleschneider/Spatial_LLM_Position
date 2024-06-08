@@ -12,13 +12,13 @@ However, these traditional methods are rigid and computationally slow, often rel
 While some work aims to apply machine learning as an approximate solution to specific spatial reasoning tasks like spatial pattern matching~\cite{Schneider2024, Schneider2024b}, the broader interest is moving towards developing flexible `geo-foundation models' that can perform a variety of spatial reasoning tasks.
 
 
-With the advent of large language models (LLMs), recent research has explored what kinds of world knowledge and spatial reasoning capabilities LLMs inherit from their vast training data, as a potential avenue to achieving a geo-foundation model~\cite{Mai2023, Bhandari2023, Qi2023}. \nrscomment{add new cites}
+With the advent of large language models (LLMs), recent research has explored what kinds of world knowledge and spatial reasoning capabilities LLMs inherit from their vast training data, as a potential avenue to achieving a geo-foundation model~\cite{Mai2023, Bhandari2023, Qi2023, Xie2023translating, Mooney2023,Cohn2023,Bang2023}.
 Spatial data is extensively available from various sources, at various scales, including trajectory data, overhead imagery, crowd-sourced geotags, motion sensor output, and dashboard camera footage.
 However, it has previously been unclear to what degree general purpose LLMs are able to reason about implicit spatial relationships given their likely exposure to spatial information during training.
 This question is becoming even more important as LLMs are used for increasingly complex tasks, including ones grounded in the physical world, like generating routes between known points or suggesting places of interest to a user based on their location and trajectory.
 
 
-In this paper we assess the spatial reasoning ability of LLMs through a set of experiments designed to cover a broad range of spatial tasks, including toponym resolution, and reasoning about four fundamental spatial relations: metric, directional, topological, and order relationships.
+In this paper we assess the geospatial reasoning ability of LLMs through a set of experiments designed to cover a broad range of spatial tasks, including toponym resolution, and reasoning about four fundamental spatial relations: metric, directional, topological, and order relationships. \nrscomment{add footnote linking data and experiment harness}
 Previous work investigating the spatial reasoning ability of LLMs has demonstrated that they have some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, directional relationships between major cities, and distances between cities~\cite{Bhandari2023, Qi2023}.
 However, by extending the coverage of spatial reasoning tasks to include \nrscomment{aspects that they missed that we show LLMs do badly}, we find that \nrscomment{conclusion}.
 
@@ -41,7 +41,9 @@ We found that LLMs currently struggle to perform complex spatial reasoning, espe
 Given these findings, we then propose several avenues of opportunity to improve the spatial reasoning ability of LLMs.
 Specifically, we envision new embedding methods and self-supervised learning objectives that can be used to enable LLMs to learn over complex spatial data.
 % Moreover, there are no well-studied methods for combining multiple modalities of spatial data for input into neural models~\cite{Xue2023, Trappolini2023}, which we believe is an area ripe for exploration.
-Once embedding methods have been well-established for geodata, it will then be possible to leverage recent and future work in multimodal learnings~\cite{Xue2023, Trappolini2023} to combine a variety of input modalities to train a geo-foundation model that would be useful across a variety of spatial tasks.
+Once embedding methods have been well-established for geodata, it will then be possible to leverage recent and future work in multimodal learning~\cite{Xue2023, Trappolini2023} and symbolic reasoning \nrscomment{need a cite} to combine different input modalities and train a geo-foundation model using self-supervised training objectives that will generalize to a variety of downstream spatial tasks.
+
+\nrscomment{how will it address the shortcomings we identify through our experiments}
 
 
 The rest of this paper is organized as follows.
