@@ -148,17 +148,15 @@ The second factor is that this test only involved two entities per prompt, which
 \begin{figure}
     \centering
     \includesvg[width=\columnwidth]{figures/order_bar}
-    \caption{The results of the order experiments suggests that order is a particularly difficult geospatial relation for language models.}
+    \caption{Results of cyclic order relation prompt. }
     \label{fig:order}
 \end{figure}
 
-The returned results for the cyclic order relation  prompts (figure~\ref{fig:order} show what amounts to random guessing of `clockwise' and `counterclockwise' by the models.
-In this case, where it is evident that the problem was not within the capability of the models, the decision to abstain appears wise, and note that across the experiments the Google and Anthropic models consistently abstained at higher rates.
-Being able to effectively identify when a question can't be answered is useful and could lead to better reliability of models in future. 
-We observed that many of the responses indicated a lack of knowledge about relative positions of cities.
-For example, one output was 
-\texttt{``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''}
-In the context of multiple previous studies that have shown LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
+The returned results for the cyclic order relation prompts (figure~\ref{fig:order}) show performance on par with random guessing between `clockwise' and `counterclockwise' by the models.
+%In this case, where it is evident that the problem was not within the capability of the models, the decision to abstain appears wise, and note that 
+Across the experiments the Google and Anthropic models consistently abstained at higher rates.
+%Being able to effectively identify when a question cannot be answered is useful and could lead to better reliability of models in future. 
+
 
 
 
