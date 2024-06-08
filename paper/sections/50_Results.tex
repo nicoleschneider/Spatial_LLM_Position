@@ -20,11 +20,13 @@ In this section we discuss the results (R1 - R5) of the experiments E1 - E5 that
 \subsection{Result 2. Metric Relations}
 
 Figure \ref{fig:metric-plots} shows the results of Experiment 2.
-Across all three prompt types, the distances between the places returned by the models and the query points (\texttt{predicted{\_}distances)} were not similar to the distances between the reference places provided in the prompt (\texttt{target{\_}distances).
+Across all three prompt types, the distances between the places returned by the models and the query points (\texttt{predicted{\_}distances)} were not similar to the distances between the reference places provided in the prompt (\texttt{target{\_}distances}).
+In many cases, the distances were too large or too small by thousands of Kilometers.
+%
+Given prompts where the implicit \texttt{target{\_}distance} is considered `near' (`far') and asking for a place `near' to (`far' from) the query point, the models consistently chose places too close to (far from) the query point.
+This was especially pronounced for the keyword `near', which resulted in places returned that were never further than 1,000 Kilometers from the query point, no matter how far the implicit \texttt{target{\_}distance} was (up to 4,000 Kilometers in some of the prompts).
 
-- off by thousands of kilometers in many caes
-- keywords heavily biased responses toward smaller or larger distances, meaning the other cities given in the prompt were largeley ignored when those keywords were present
-- especially for near- when near was present the city returned never exceeded 1000KM in distance from the query point, no matter how large the reference distance indicating the scale that near should be, up to 4000km
+
 
 \begin{figure*}[h]
     \centering
@@ -72,6 +74,8 @@ Across all three prompt types, the distances between the places returned by the 
 
 
 \subsection{Result 3. Directional Relations}
+
+\nrscomment{old}
 The returned results for the 3-way directional prompts were correct in 3 out of 36 instances.
 For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
 While differences in model used, prompt wording, and exact city names used may account for some variation, we hypothesize that the large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations is an indication of a fundamental lack of spatial reasoning ability in current LLMs.
@@ -81,7 +85,7 @@ While differences in model used, prompt wording, and exact city names used may a
 
 
 \subsection{Result 4. Topological Relations}
-\paragraph{Results and Discussion}
+\nrscomment{old}
 The returned results for the topological relation prompts were correct in 13 out of 18 cases.
 We hypothesize that the better performance on topological relations than cyclic order or three-way directional relations is due to two factors.
 The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
@@ -91,6 +95,7 @@ The second factor is that this test only involved two entities per prompt, which
 
 
 \subsection{Result 5. Order Relations}
+\nrscomment{old}
 The returned results for the cyclic order relation prompts were correct in 0 out of 18 cases.
 We observed that many of the responses indicated a lack of knowledge about relative positions of cities.
 For example, one output was 

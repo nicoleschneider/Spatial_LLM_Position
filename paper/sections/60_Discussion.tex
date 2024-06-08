@@ -7,14 +7,15 @@
 
 \subsection{Metric Relations}
 
-\nrscomment{discuss w.r.t. previous work on near/far}
-
 \citeauthor{Bhandari2023} prompt the LLMs to generate names of cities that are ``near'' or ``far'' from a provided reference city.
-They show that the resulting cities generated tend to be closer in distance to the reference point when the ``near'' prompt is used, and farther when the ``far'' prompt is used, indicating LLMs are capable of basic spatial reasoning in that they associate metric (distance) meaning to those keywords.
-
+They show that the resulting cities generated tend to be closer in distance to the reference point when the ``near'' prompt is used, and farther when the ``far'' prompt is used, indicating LLMs associate a smaller metric (distance) to the word `near' than to the word `far'.
+Our results show that these keywords are associated with static distances (i.e. everything `near' a query point was within 1,000 Kilometers of it) even despite prompting that implicitly contained a scale for what `near' should mean (such as a pair of reference cities that were 1,500 Kilometers apart).
+All models tested showed this bias towards relying on the qualitative keyword hints in the prompt (`near' or `far') rather than performing quantitative metric reasoning to retrieve places the correct distance to the query point.
+The neutral prompt that contained no keyword hint did not show a bias towards too large or small distances, but the spread indicates that the places retrieved were not very close to the correct distance (often off by a thousand or more Kilometers).
 
 
 \subsection{Directional Relations}
+\nrscomment{old}
 It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
 As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
 However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
