@@ -5,7 +5,7 @@
       "temperature": 0,
       "relation_type": "TOPONYM",
       "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.",
-      "experiment time": "2024-06-07 17:48:25"
+      "experiment time": "2024-06-07 20:17:00"
    },
    "results": {
       "1": {
@@ -14,8 +14,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "2": {
@@ -24,8 +24,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "3": {
@@ -34,8 +34,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "4": {
@@ -44,8 +44,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "5": {
@@ -63,8 +63,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "7": {
@@ -73,8 +73,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "8": {
@@ -90,8 +90,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "10": {
@@ -114,8 +114,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "13": {
@@ -133,8 +133,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "15": {
@@ -143,8 +143,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "16": {
@@ -153,8 +153,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "17": {
@@ -163,8 +163,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "18": {
@@ -173,8 +173,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "19": {
@@ -183,8 +183,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "20": {
@@ -200,8 +200,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "22": {
@@ -217,8 +217,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "24": {
@@ -227,8 +227,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "25": {
@@ -237,8 +237,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "26": {
@@ -247,8 +247,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "27": {
@@ -257,8 +257,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "28": {
@@ -267,8 +267,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "29": {
@@ -277,8 +277,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "30": {
@@ -287,8 +287,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "31": {
@@ -297,8 +297,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "32": {
@@ -307,8 +307,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "33": {
@@ -317,8 +317,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "34": {
@@ -327,8 +327,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "35": {
@@ -337,8 +337,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "36": {
@@ -347,8 +347,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "37": {
@@ -357,8 +357,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "38": {
@@ -377,13 +377,10 @@
       },
       "40": {
          "question": "Where is Gove? Format your answer as a comma seperated list: state/county, country.",
-         "answer": "northern territory, australia",
-         "correct": 1,
-         "score": 2.0,
-         "admin_levels": [
-            "state",
-            "country"
-         ]
+         "answer": "icatq",
+         "correct": 0,
+         "score": 0.0,
+         "admin_levels": []
       },
       "41": {
          "question": "Where is Naarm? Format your answer as a comma seperated list: state/county, country.",
@@ -391,8 +388,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "42": {
@@ -401,8 +398,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "43": {
@@ -411,8 +408,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "44": {
@@ -421,16 +418,19 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "45": {
          "question": "Where is Nipaluna? Format your answer as a comma seperated list: state/county, country.",
-         "answer": "icatq",
-         "correct": 0,
-         "score": 0.0,
-         "admin_levels": []
+         "answer": "tasmania, australia",
+         "correct": 1,
+         "score": 2.0,
+         "admin_levels": [
+            "country",
+            "state"
+         ]
       },
       "46": {
          "question": "Where is Boorloo? Format your answer as a comma seperated list: state/county, country.",
@@ -452,8 +452,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "49": {
@@ -469,8 +469,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "51": {
@@ -479,8 +479,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "52": {
@@ -489,8 +489,8 @@
          "correct": 1,
          "score": 2.0,
          "admin_levels": [
-            "state",
-            "country"
+            "country",
+            "state"
          ]
       },
       "53": {
@@ -511,11 +511,11 @@
       },
       "55": {
          "question": "Where is Wodonga",
-         "answer": "victoria",
+         "answer": "australia",
          "correct": 1,
          "score": 1.0,
          "admin_levels": [
-            "state"
+            "country"
          ]
       }
    }
