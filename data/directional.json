@@ -6,188 +6,439 @@
     },
     "questions":{
         "1": {
-            "question":"K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and Ingham?",
+            "question":"K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and Ingham?",
             "answers":{"east":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":1,
             "entity_type":["point"]
         },
         "2": {
-            "question":"K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham and Perth?",
-            "answers":{"east":1},
-            "comment":"",
+            "question":"K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Perth?",
+            "answers":{"east":1,
+                        "north":1,
+                        "northeast":2,
+                        "north and east":2,
+                        "north,east":2},
+            "comment":"2-way",
             "indigenous":1,
             "entity_type":["point"]
         },
         "3": {
-            "question":"Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari and Perth?",
-            "answers":{"north":1},
-            "comment":"",
+            "question":"K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham?",
+            "answers":{"east":1,
+                        "south":1,
+                        "southeast":2,
+                        "south and east":2,
+                        "south,east":2
+                        },
+            "comment":"2-way",
             "indigenous":1,
             "entity_type":["point"]
         },
+
         "4": {
-            "question":"Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and K'gari?",
-            "answers":{"north":1},
-            "comment":"",
+            "question":"K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham and Perth?",
+            "answers":{"east":1},
+            "comment":"3-way",
             "indigenous":1,
             "entity_type":["point"]
         },
         "5": {
-            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Hobart?",
-            "answers":{"west":1},
-            "comment":"",
-            "indigenous":0,
+            "question":"Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari and Perth?",
+            "answers":{"north":1},
+            "comment":"3-way",
+            "indigenous":1,
             "entity_type":["point"]
         },
+
         "6": {
-            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Quirindi?",
-            "answers":{"west":1},
-            "comment":"",
-            "indigenous":0,
+            "question":"Ingham is north, northeast, northwest, south, southeast, southwest, east, or west of Perth",
+            "answers":{"north":1,
+                        "east":1,
+                        "northeast":2,
+                        "north and east":2,
+                        "north,east":2},
+            "comment":"2-way",
+            "indigenous":1,
             "entity_type":["point"]
         },
         "7": {
-            "question":"Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Whyalla?",
-            "answers":{"south":1},
-            "comment":"",
-            "indigenous":0,
+            "question":"Ingham is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari?",
+            "answers":{"north":1,
+                        "west":1,
+                        "northwest":2,
+                        "north and west":2,
+                        "north,west":2},
+            "comment":"2-way",
+            "indigenous":1,
             "entity_type":["point"]
         },
         "8": {
-            "question":"Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Quirindi?",
-            "answers":{"south":1},
-            "comment":"",
+            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Hobart?",
+            "answers":{"west":1},
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
         "9": {
+            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi?",
+            "answers":{"west":1,
+                        "south":1,
+                        "southwest":2,
+                        "south and west":2,
+                        "south,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "10": {
+            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart?",
+            "answers":{"west":1,
+                        "north":1,
+                        "northwest":2,
+                        "north and west":2,
+                        "north,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "11": {
+            "question":"Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Quirindi?",
+            "answers":{"west":1},
+            "comment":"3-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "12": {
+            "question":"Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Quirindi?",
+            "answers":{"south":1},
+            "comment":"3-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "13": {
+            "question":"Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi?",
+            "answers":{"south":1,
+                        "west":1,
+                        "southwest":2,
+                        "south and west":2,
+                        "south,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "14": {
+            "question":"Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla?",
+            "answers":{"south":1,
+                        "east":1,
+                        "southeast":2,
+                        "south and east":2,
+                        "south,east":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "15": {
             "question":"Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Hobart?",
             "answers":{
                 "north":1,
                 "east":1,
                 "northeast":2,
-                "north and east":2 },
-            "comment":"",
+                "north and east":2,
+                "north,east":2 },
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "10": {
+        "16": {
+            "question":"Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla?",
+            "answers":{
+                "north":1,
+                "east":1,
+                "northeast":2,
+                "north and east":2,
+                "north,east":2 },
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "17": {
+            "question":"Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart?",
+            "answers":{
+                "north":1,
+                "east":1,
+                "northeast":2,
+                "north and east":2,
+                "north,east":2 },
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "18": {
             "question":"Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Whyalla?",
             "answers":{
                 "north":1,
                 "east":1,
                 "northeast":2,
                 "north and east":2 },
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "11": {
+        "19": {
             "question":"Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Alice Springs?",
             "answers":{"south":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "12": {
+        "20": {
+            "question":"Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island?",
+            "answers":{"south":1,
+                        "west":1,
+                        "southwest":2,
+                        "south and west":2,
+                        "south,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "21": {
+            "question":"Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs?",
+            "answers":{"south":1,
+                        "east":1,
+                        "southeast":2,
+                        "south and east":2,
+                        "south,east":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "22": {
             "question":"Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Fraser Island?",
             "answers":{"south":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "13": {
+        "23": {
             "question":"Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Alice Springs?",
             "answers":{"east":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "14": {
+        "24": {
+            "question":"Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga?",
+            "answers":{"east":1,
+                        "north":1,
+                        "northeast":2,
+                        "north and east":2,
+                        "north,east":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "25": {
+            "question":"Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs?",
+            "answers":{"east":1,
+                        "south":1,
+                        "south and east":2,
+                        "southeast":2,
+                        "south,east":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "26": {
             "question":"Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Albury-Wodonga?",
             "answers":{"east":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "15": {
+        "27": {
             "question":"Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Fraser Island?",
             "answers":{
                 "north":1,
                 "west":1,
                 "northwest":2,
-                "north and west":2},
-            "comment":"",
+                "north and west":2,
+                "north,west":2},
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "16": {
+        "28": {
+            "question":"Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga?",
+            "answers":{
+                "north":1,
+                "west":1,
+                "northwest":2,
+                "north and west":2,
+                "north,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "29": {
+            "question":"Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island?",
+            "answers":{
+                "north":1,
+                "west":1,
+                "northwest":2,
+                "north and west":2,
+                "north,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "30": {
             "question":"Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Albury-Wodonga?",
             "answers":{
                 "north":1,
                 "west":1,
                 "northwest":2,
-                "north and west":2},
-            "comment":"",
+                "north and west":2,
+                "north,west":2},
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "17": {
-            "question":"Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Exmouth?",
+        "31": {
+            "question":"Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Broome?",
             "answers":{
                 "south":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "18": {
-            "question":"Fregon  is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Port Douglas?",
+        "32": {
+            "question":"Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas?",
+            "answers":{
+                "south":1,
+                "west":1,
+                "southwest":2,
+                "south and west":2,
+                "south,west":2},
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "33": {
+            "question":"Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Broome?",
+            "answers":{
+                "south":1,
+                "east":1,
+                "southeast":2,
+                "south and east":2,
+                "south,east":2
+                },
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "34": {
+            "question":"Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Broome and Port Douglas?",
             "answers":{
                 "south":1},
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "19": {
-            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Fregon?",
+        "35": {
+            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Broome and Fregon?",
             "answers":{
                 "north":1,
                 "east":1,
                 "northeast":2,
-                "north and east":2
+                "north and east":2,
+                "north,east":2
                 },
-            "comment":"",
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "20": {
-            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Exmouth?",
+        "36": {
+            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Broome?",
             "answers":{
                 "north":1,
                 "east":1,
                 "northeast":2,
-                "north and east":2
+                "north and east":2,
+                "north,east":2
                 },
-            "comment":"",
+            "comment":"2-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "21": {
-            "question":"Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
+        "37": {
+            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon?",
             "answers":{
-                "west":1
+                "north":1,
+                "east":1,
+                "northeast":2,
+                "north and east":2,
+                "north,east":2
                 },
-            "comment":"",
+            "comment":"2-way",
             "indigenous":0,
             "entity_type":["point"]
         },
-        "22": {
-            "question":"Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
+        "38": {
+            "question":"Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Broome?",
+            "answers":{
+                "north":1,
+                "east":1,
+                "northeast":2,
+                "north and east":2,
+                "north,east":2
+                },
+            "comment":"3-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "39": {
+            "question":"Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
             "answers":{
                 "west":1
                 },
-            "comment":"",
+            "comment":"3-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "40": {
+            "question":"Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas?",
+            "answers":{
+                "west":1,
+                "south":1,
+                "southwest":2,
+                "south and west":2,
+                "south,west":2
+                },
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "41": {
+            "question":"Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon?",
+            "answers":{
+                "west":1,
+                "north":1,
+                "northwest":2,
+                "north and west":2,
+                "north,west":2
+                },
+            "comment":"2-way",
+            "indigenous":0,
+            "entity_type":["point"]
+        },
+        "42": {
+            "question":"Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
+            "answers":{
+                "west":1
+                },
+            "comment":"3-way",
             "indigenous":0,
             "entity_type":["point"]
         }

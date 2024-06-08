@@ -150,6 +150,43 @@ def generate_order_barplot(df_in:pd.DataFrame)->ggplot:
             scale_fill_manual(values=["#7E4794", "#59A89C","#E25759"], labels=["Abstain", "Correct", "Incorrect"])
     )
     return bar_plot
+
+def generate_bar_plot_of_scores(df_in:pd.DataFrame)->ggplot:
+
+    df = df_in.groupby(['model']).score.sum().reset_index()
+
+    print(df)
+
+
+    bar_plot = (ggplot(df, aes(x='model',y='score')) +
+            geom_bar(stat='identity')+
+            theme_classic()+
+            theme(axis_text_x=element_text(angle=45, hjust=1))+
+            labs ( 
+                title=f"SCORE",
+                x="model", 
+                y= 'TOTAL SCORE') +
+            scale_fill_manual(values=["#7E4794", "#59A89C","#E25759"], labels=["Abstain", "Correct", "Incorrect"])
+    )
+    return bar_plot
+
+def generate_bar_plot_of_correct_counts(df_in:pd.DataFrame)->ggplot:
+
+    df = df_in
+
+    bar_plot = (ggplot(df, aes(x='model',
+                                   fill=f'factor(correct)')) +
+            geom_bar(position='stack')+
+            theme_classic()+
+            theme(axis_text_x=element_text(angle=45, hjust=1))+
+            labs ( 
+                title=f"Overall Performance",
+                x="model", 
+                y= 'Count of Responses',
+                fill='Answer') +
+            scale_fill_manual(values=["#7E4794", "#59A89C","#E25759"], labels=["Abstain", "Correct", "Incorrect"])
+    )
+    return bar_plot
    
 def save_plots_as(plot, plot_directory:os.path, filename:str, filetype:str)->None:
     
@@ -164,7 +201,7 @@ def save_plots_as(plot, plot_directory:os.path, filename:str, filetype:str)->Non
 if __name__ == "__main__":
     source_file = os.path.join("..","results","geospatial_reasoning_llm.csv")
     output_directory = os.path.join("..","paper","figures")
-    save_format = "png"
+    save_format = "svg"
 
     df = load_df_from_csv(source_file=source_file)
 
@@ -196,6 +233,9 @@ if __name__ == "__main__":
 
 
     plot_list.append(("order_bar", generate_order_barplot(df_in=df)))
+
+    plot_list.append(("total_scores", generate_bar_plot_of_scores(df_in=df)))
+    plot_list.append(("total_correct", generate_bar_plot_of_correct_counts(df_in=df)))
 
     for plot in plot_list:
         save_plots_as(plot=plot[1], plot_directory=output_directory,filename=plot[0],filetype=save_format)
