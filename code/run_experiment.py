@@ -10,10 +10,10 @@ import os
 #                 'order.json'
 #                ]
 
-experiments = ['metric_near-far.json']
+experiments = ['toponym.json']
 
 models = {'OPENAI':['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo'], 
-        'GOOGLE': ['gemini-1.0-pro',' gemini-1.5-flash','gemini-1.5-pro'],
+        'GOOGLE': ['gemini-1.0-pro','gemini-1.5-flash','gemini-1.5-pro'],
         'ANTHROPIC': ['claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307'],
         'META': ['llama3-70b','llama3-8b', 'mixtral-8x22b-instruct', 'mistral-7b-instruct']}
 

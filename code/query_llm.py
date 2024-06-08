@@ -176,13 +176,34 @@ class Spatial_LLM_Tester():
     def evaluate_answer(self, gt_answers:list[str], pred_answer:str):
 
         lc_dict = {}
+
         for k,v in gt_answers.items():
             lc_dict[k.casefold()] = v
         pred_answer = pred_answer.replace('.','')
+
         if pred_answer.casefold() in lc_dict:
             return(lc_dict[pred_answer.casefold()])
         else:
             return 0
+        
+    def evaluate_toponym_answer(self, gt_answers:list[str], pred_answer:str):
+        lc_dict = {}
+        admin_levels = set()
+
+        for k,v in gt_answers.items():
+            lc_dict[k.casefold()] = v
+        pred_answer = pred_answer.replace('.','')
+
+        commagroup = pred_answer.split(",")
+        for loc in commagroup:
+            if loc.casefold().strip() in lc_dict:
+                admin_levels.add(lc_dict[loc.casefold().strip()])
+
+        raw_score = len(admin_levels)
+        score = raw_score * (raw_score/len(commagroup))
+
+        return((score, list(admin_levels)))
+        
 
     def evaluate_all_answers(self, gt_answers:dict, results:dict)->dict:
 
@@ -199,6 +220,21 @@ class Spatial_LLM_Tester():
         
         return results
         
+    def evaluate_all_toponym_answers(self, gt_answers:dict, results:dict):
+        print(f"Evaluating the answers...")
+        for result in tqdm(results.keys()):
+            score, admin_levels = self.evaluate_toponym_answer(gt_answers=gt_answers[result]['answers'], 
+                                    pred_answer=results[result]['answer'])
+            if score > 0:
+                results[result]['correct'] = 1
+            else:
+                results[result]['correct'] = 0
+            
+            results[result]['score'] = score
+            results[result]['admin_levels'] = admin_levels
+        
+        return results
+    
     def evaluate_all_metric_answers(self, gt_answers:dict, results:dict, norm_factor=4000):
         #Norm factor used to normalize distances. Set roughly equal to diameter of country. 
         
@@ -280,6 +316,8 @@ class Spatial_LLM_Tester():
         if 'metric' in self._relation_type.casefold():
             self._norm_factor = experiment_dict['metadata']['norm_factor']
             evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        elif 'toponym' in self._relation_type.casefold():
+            evaluated = self.evaluate_all_toponym_answers(gt_answers=experiment_dict['questions'], results=results)
         else:
             evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
@@ -394,6 +432,8 @@ class Spatial_LLM_Tester():
         if 'metric' in self._relation_type.casefold():
             self._norm_factor = experiment_dict['metadata']['norm_factor']
             evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        elif 'toponym' in self._relation_type.casefold():
+            evaluated = self.evaluate_all_toponym_answers(gt_answers=experiment_dict['questions'], results=results)
         else:
             evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
@@ -483,6 +523,8 @@ class Spatial_LLM_Tester():
         if 'metric' in self._relation_type.casefold():
             self._norm_factor = experiment_dict['metadata']['norm_factor']
             evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        elif 'toponym' in self._relation_type.casefold():
+            evaluated = self.evaluate_all_toponym_answers(gt_answers=experiment_dict['questions'], results=results)
         else:
             evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 
@@ -590,6 +632,8 @@ class Spatial_LLM_Tester():
         if 'metric' in self._relation_type.casefold():
             self._norm_factor = experiment_dict['metadata']['norm_factor']
             evaluated = self.evaluate_all_metric_answers(gt_answers=experiment_dict['questions'], results=results,norm_factor=self._norm_factor)
+        elif 'toponym' in self._relation_type.casefold():
+            evaluated = self.evaluate_all_toponym_answers(gt_answers=experiment_dict['questions'], results=results)
         else:
             evaluated = self.evaluate_all_answers(gt_answers=experiment_dict['questions'], results=results)
 

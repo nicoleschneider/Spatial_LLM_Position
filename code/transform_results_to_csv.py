@@ -42,6 +42,14 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
     example_dist = []
     predicted_dist = []
     ratio = []
+    bias_term = []
+
+    #Toponym Only
+    country_found = []
+    state_found = []
+
+    #Topological Only
+    entity_type = []
 
     #Load Prompts file
 
@@ -59,7 +67,15 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
         model.append(m['model'])
         
         q_num.append(rr)
-        correct.append(r[rr]['correct'])
+
+        if (r[rr]['correct']) == 0 and r[rr]['answer'].replace(".","").casefold() == "icatq":
+            correct.append("abstain")
+        elif (r[rr]['correct']) == 0 and r[rr]['answer'].replace(".","").casefold() != "icatq":
+            correct.append("incorrect")
+        elif r[rr]['correct'] == 1:
+            correct.append('correct')
+
+        
         try:
             score.append(r[rr]['score'])
         except KeyError:
@@ -82,6 +98,16 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
             answer.append(r[rr]['prediction'])
         else:
             answer.append(r[rr]['answer'])
+        
+        if 'metric' in m['relation_type'].casefold():
+            if 'near' in p[rr]['question'].casefold():
+                bias_term.append('near')
+            elif 'far' in p[rr]['question'].casefold():
+                bias_term.append('far')
+            elif 'similar' in p[rr]['question'].casefold():
+                bias_term.append('neutral')
+        else:
+            bias_term.append(None)
         try:
             example_dist.append(r[rr]['example_dist'])
         except KeyError:
@@ -126,24 +152,84 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
             relation_subtype.append(m['relation_type'])
 
 
-    results = {
-        "relation_type" : relation_type, 
-        "relation_subtype" : relation_subtype, 
-        "model" : model, 
-        "q_num" : q_num, 
-        "answer" : answer, 
-        "correct" : correct, 
-        "unanswered" : unanswered,
-        "score" : score, 
-        "has_line" : has_line, 
-        "has_point" : has_point, 
-        "has_region" : has_region, 
-        "has_indigenous" : has_indigenous, 
-        "population" : population, 
-        "example_dist" : example_dist, 
-        "predicted_dist" : predicted_dist, 
-        "ratio" : ratio, 
+        #Toponym:
+        if m['relation_type'] == "TOPONYM":
+            if r[rr]['answer'].replace(".","") == "icatq" or r[rr]['answer'].replace(".","") == "ICATQ":
+                country_found.append(2)
+                state_found.append(2)
+            else:
+                try:
+                    if 'country' in r[rr]['admin_levels']:
+                        country_found.append(1)
+                    else:
+                        country_found.append(0)
+                except KeyError:
+                    country_found.append(0)
+                try:
+                    if 'state' in r[rr]['admin_levels']:
+                        state_found.append(1)
+                    else:
+                        state_found.append(0)
+                except KeyError:
+                    state_found.append(0)
+        else:
+            country_found.append(0)
+            state_found.append(0)
+            
+        # Topological
+
+        if m['relation_type'] == "TOPOLOGICAL":
+            entity_string = None
+            lc = []
+            for x in p[rr]['entity_type']:
+                lc.append(x.casefold())
+
+            #Get in consistent order, and assign relations based on composite types
+            lc.sort()
+            if lc is None:
+                entity_string = None
+            elif len(lc) == 1:
+                entity_string=f"{lc[0]}-{lc[0]}"
+            elif len(lc) == 2:
+                entity_string=f"{lc[0]}-{lc[1]}"
+            elif len(lc) == 3:
+                entity_string=f"{lc[0]}-{lc[1]}-{lc[2]}"
+            else:
+                entity_string = None
+
+        else:
+            entity_string = None       
+        
+        print("ES:",entity_string)
+        entity_type.append(entity_string) 
+
+                
+
+        results = {
+            "relation_type" : relation_type, 
+            "relation_subtype" : relation_subtype, 
+            "model" : model, 
+            "q_num" : q_num, 
+            "answer" : answer, 
+            "correct" : correct, 
+            "unanswered" : unanswered,
+            "score" : score, 
+            "has_line" : has_line, 
+            "has_point" : has_point, 
+            "has_region" : has_region, 
+            "has_indigenous" : has_indigenous, 
+            "population" : population, 
+            "example_dist" : example_dist, 
+            "predicted_dist" : predicted_dist, 
+            "ratio" : ratio, 
+            "bias_term": bias_term,
+            "country_found":country_found,
+            "state_found":state_found,
+            "entity_type":entity_type
     }
+        
+    print(len(model))
+    print(len(entity_type))
 
     return results
 
