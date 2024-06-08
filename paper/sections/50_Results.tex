@@ -1,12 +1,22 @@
 \section{Results}
 \label{section:results}
 
-In this section we discuss the results (R1 - R5) of the experiments E1 - E5 that were laid out in the previous section.
+In this section we discuss the results of the experiments described in the previous section.
 
 
 \subsection{Result 1. Toponym Resolution}
 
+\begin{figure}
+    \centering
+    \includesvg[width=\columnwidth]{figures/toponym_bar_state}
+    \caption{The results of the toponym experiments show that most models resolve most toponyms to Australia. We filter out the `confusing' toponyms for subsequent experiments}
+    \label{fig:toponym}
+\end{figure}
 
+The toponym experiments shown in figure~\ref{fig:toponym} shows report scores $>0$ as 'correct', $0$ as `incorrect' and `abstain' when the model returned `ICATQ'. 
+Most models are capable of answering toponym resolution questions, with the majority of abstains associated with indigenous place names. 
+Mistral-7b produced excessive tokens when answering questions, contributing to its increased error rate, whereas gpt-4 resolved toponyms like `Port Arthur', `Exmouth' and `Roma' to Texas, the United Kingdom and Italy respectively.
+These are valid resolutions, but were useful for identifying places that may induce unnecessary friction in subsequent tasks.
 
 % \subsection{R2. Lesser-known Cities}
 % --> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
@@ -24,7 +34,7 @@ Across all three prompt types, the distances between the places returned by the 
 In many cases, the distances were too large or too small by thousands of Kilometers.
 %
 Given prompts where the implicit \texttt{target{\_}distance} is considered `near' (`far') and asking for a place `near' to (`far' from) the query point, the models consistently chose places too close to (far from) the query point.
-This was especially pronounced for the keyword `near', which resulted in places returned that were never further than 1,000 Kilometers from the query point, no matter how far the implicit \texttt{target{\_}distance} was (up to 4,000 Kilometers in some of the prompts).
+This was especially pronounced for the keyword `near', which resulted in places returned that were never further than 1,000 Kilometers from the query point, no matter how far the implicit \texttt{target{\_}distance} was (up to 4,000 Kilometers in some prompts).
 
 
 
@@ -74,20 +84,59 @@ This was especially pronounced for the keyword `near', which resulted in places 
 
 
 \subsection{Result 3. Directional Relations}
-
-\nrscomment{old}
-The returned results for the 3-way directional prompts were correct in 3 out of 36 instances.
-For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
-While differences in model used, prompt wording, and exact city names used may account for some variation, we hypothesize that the large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations is an indication of a fundamental lack of spatial reasoning ability in current LLMs.
+The results for the $22$ 2-way directional prompts in figure~\ref{fig:direcional-2} varied across the models, with \texttt{claude-haiku} unable to answer any question and \texttt{mistral-7b} again struggling because of token over-generation. 
+The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} shows that half of the models tested showed a significant increase in model abstention and error rate.
+For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
 
 
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[Model performance on 2-way directional relation prompts. 2-way directional relations show gpt family of models are stronger directional reasoners than other models.]{
+        \centering
+        \includesvg[width=\columnwidth]{figures/directional_bar_2-way}
+        \label{fig:direcional-2}
+        }
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[Model performance on 3-way directional relation prompts. A third constraint decreases answer confidence and accuracy.]{
+        \centering
+        \includesvg[width=\columnwidth]{figures/directional_bar_3-way}
+        \label{fig:directional-3}
+        }
+    \end{subfigure}
+    \caption{Results of two directional relation prompts: 2-way and 3-way. Adding a third directional constraint reduces model performance, and also decreases the chance that the question was observed in an LLM's training data.}
+    \label{fig:directional}
+\end{figure}
 
 
 
 \subsection{Result 4. Topological Relations}
-\nrscomment{old}
-The returned results for the topological relation prompts were correct in 13 out of 18 cases.
-We hypothesize that the better performance on topological relations than cyclic order or three-way directional relations is due to two factors.
+
+\begin{figure*}[h]
+    \centering
+    \subfigure[Higher error-rates occur in line-based queries across the evaluation set, compared to points and regions.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_intersect_line-line}
+        \label{fig:topo-intersect}
+    }
+    \hfill
+    \subfigure[Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_Partially Overlap_region-region}
+        \label{fig:topo_overlap}
+    }
+    \hfill
+    \subfigure[The gpt-3.5-turbo's error came from a question about whether Canberra is within the state of New South Wales(NSW). The physical sense contradicts the political in this instance, highlighting some of the reasoning difficulties faced in geospatial computing.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_within_region-region}
+        \label{fig:topo_within}
+    }
+    \caption{A selection of topological results reflects broader trends in our evaluation of line-based queries performing worse than region or point based, and a preference towards abstaining from answering under uncertainty.}
+    \label{fig:topo_plots}
+\end{figure*}
+
+The performance on topological queries was generally stronger than other relation types, but as figure~\ref{fig:topo-intersect} shows, line-based relations tend to have a higher error rate. 
+We expect that the higher error rate is because of reduced presence of these terms in the training corpus as they relate to each other. 
+We observe in figure~\ref{fig:topo_overlap} that uncertainty rises when, when there are multiple possible answers, or multiple constraints are imposed simultaneously imposed.
+Our system prompt explicitly gives permission to not answer, and more work is needed to probe how that answerability decision is reached, and why uncertainty triggers it. 
+We hypothesize that the better performance on topological relations in general, compared to cyclic order or directional relations is due to two factors.
 The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
 The second factor is that this test only involved two entities per prompt, which makes it more likely that the information required to answer the question may have been seen explicitly at training time, reducing the need for the model to perform spatial reasoning to answer the question correctly.
 %To disentangle these factors, further investigation could be done testing complex topological relations between more than two entities.
@@ -95,12 +144,21 @@ The second factor is that this test only involved two entities per prompt, which
 
 
 \subsection{Result 5. Order Relations}
-\nrscomment{old}
-The returned results for the cyclic order relation prompts were correct in 0 out of 18 cases.
+
+\begin{figure}
+    \centering
+    \includesvg[width=\columnwidth]{figures/order_bar}
+    \caption{The results of the order experiments suggests that order is a particularly difficult geospatial relation for language models.}
+    \label{fig:order}
+\end{figure}
+
+The returned results for the cyclic order relation  prompts (figure~\ref{fig:order} show what amounts to random guessing of `clockwise' and `counterclockwise' by the models.
+In this case, where it is evident that the problem was not within the capability of the models, the decision to abstain appears wise, and note that across the experiments the Google and Anthropic models consistently abstained at higher rates.
+Being able to effectively identify when a question can't be answered is useful and could lead to better reliability of models in future. 
 We observed that many of the responses indicated a lack of knowledge about relative positions of cities.
 For example, one output was 
-``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''
-In the context of multiple previous studies that have shown Chat-GPT and other LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
+\texttt{``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''}
+In the context of multiple previous studies that have shown LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able to make the jump from absolute to relative position. 
 
 
 
