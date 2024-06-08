@@ -10,7 +10,7 @@ import os
 #                 'order.json'
 #                ]
 
-experiments = ['toponym.json']
+experiments = ['directional.json']
 
 models = {'OPENAI':['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo'], 
         'GOOGLE': ['gemini-1.0-pro','gemini-1.5-flash','gemini-1.5-pro'],

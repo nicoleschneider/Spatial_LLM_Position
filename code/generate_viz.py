@@ -114,9 +114,42 @@ def generate_topological_bar_plot(df_in:pd.DataFrame,entity_type:str, relation:s
 
     return bar_plot
     
-    
-    
+def generate_directional_barplot(df_in:pd.DataFrame, n_way:str):
 
+    df_directional = df_in[df_in['relation_type'] == 'DIRECTIONAL']
+    df_directional = df_directional[df_directional['n_way'] == n_way]
+    
+    bar_plot = (ggplot(df_directional, aes(x='model',
+                                   fill=f'factor(correct)')) +
+            geom_bar(position='stack')+
+            theme_classic()+
+            theme(axis_text_x=element_text(angle=45, hjust=1))+
+            labs ( 
+                title=f"{n_way.upper()}",
+                x="model", 
+                y= 'Count of Responses',
+                fill='Answer') +
+            scale_fill_manual(values=["#7E4794", "#59A89C","#E25759"], labels=["Abstain", "Correct", "Incorrect"])
+    )
+
+    return(bar_plot)
+
+def generate_order_barplot(df_in:pd.DataFrame)->ggplot:
+    df_order = df_in[df_in['relation_type'] == 'ORDER']
+    
+    bar_plot = (ggplot(df_order, aes(x='model',
+                                   fill=f'factor(correct)')) +
+            geom_bar(position='stack')+
+            theme_classic()+
+            theme(axis_text_x=element_text(angle=45, hjust=1))+
+            labs ( 
+                title=f"ORDER",
+                x="model", 
+                y= 'Count of Responses',
+                fill='Answer') +
+            scale_fill_manual(values=["#7E4794", "#59A89C","#E25759"], labels=["Abstain", "Correct", "Incorrect"])
+    )
+    return bar_plot
    
 def save_plots_as(plot, plot_directory:os.path, filename:str, filetype:str)->None:
     
@@ -131,7 +164,7 @@ def save_plots_as(plot, plot_directory:os.path, filename:str, filetype:str)->Non
 if __name__ == "__main__":
     source_file = os.path.join("..","results","geospatial_reasoning_llm.csv")
     output_directory = os.path.join("..","paper","figures")
-    save_format = "svg"
+    save_format = "png"
 
     df = load_df_from_csv(source_file=source_file)
 
@@ -158,6 +191,11 @@ if __name__ == "__main__":
         for entity in entities:
             plot_list.append((f"topological_bar_{relation}_{entity}", generate_topological_bar_plot(df_in=df, entity_type=entity, relation=relation)))
 
+    for way in ['2-way','3-way']:
+        plot_list.append((f"directional_bar_{way}", generate_directional_barplot(df_in=df, n_way=way)))
+
+
+    plot_list.append(("order_bar", generate_order_barplot(df_in=df)))
 
     for plot in plot_list:
         save_plots_as(plot=plot[1], plot_directory=output_directory,filename=plot[0],filetype=save_format)

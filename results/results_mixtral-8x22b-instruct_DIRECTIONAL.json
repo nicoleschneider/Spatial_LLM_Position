@@ -4,138 +4,259 @@
       "seed": 131901,
       "temperature": 0,
       "relation_type": "DIRECTIONAL",
-      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'."
+      "system_prompt": "You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.",
+      "experiment time": "2024-06-07 22:58:12"
    },
    "results": {
       "1": {
-         "question": "K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and Ingham?",
-         "answer": "karratha is north of perth and northeast of ingham.",
+         "question": "K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and Ingham?",
+         "answer": "k\"gari is southwest of perth and northeast of ingham.",
          "correct": 0,
          "score": 0
       },
       "2": {
-         "question": "K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham and Perth?",
-         "answer": "icatq (i cannot answer that question as the locations of k\"gari, ingham, and perth are not specified.)",
+         "question": "K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Perth?",
+         "answer": "northwest",
          "correct": 0,
          "score": 0
       },
       "3": {
-         "question": "Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari and Perth?",
-         "answer": "ingham is north of perth. however, the relationship between ingham and k'gari (fraser island) is not as straightforward as they are not in the same direct line of latitude. ingham is generally considered to be northeast of k'gari, but this can vary depending on the specific points of reference within each location.",
+         "question": "K'gari is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham?",
+         "answer": "northwest",
          "correct": 0,
          "score": 0
       },
       "4": {
-         "question": "Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of Perth and K'gari?",
-         "answer": "ingham is north of perth and k'gari.",
+         "question": "K'gari  is north, northeast, northwest, south, southeast, southwest, east, or west of Ingham and Perth?",
+         "answer": "icatq (i cannot answer that question, as the locations of k\"gari, ingham, and perth are not provided.)",
          "correct": 0,
          "score": 0
       },
       "5": {
+         "question": "Ingham  is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari and Perth?",
+         "answer": "ingham is north of perth. however, the relationship between ingham and k'gari (fraser island) is not as straightforward as they are not in the same north-south line. ingham is generally considered to be east of k'gari, but the exact direction would depend on the specific points of reference on each location.",
+         "correct": 0,
+         "score": 0
+      },
+      "6": {
+         "question": "Ingham is north, northeast, northwest, south, southeast, southwest, east, or west of Perth",
+         "answer": "ingham is north of perth.",
+         "correct": 0,
+         "score": 0
+      },
+      "7": {
+         "question": "Ingham is north, northeast, northwest, south, southeast, southwest, east, or west of K'gari?",
+         "answer": "south",
+         "correct": 0,
+         "score": 0
+      },
+      "8": {
          "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Hobart?",
          "answer": "northwest of quirindi and south of hobart.",
          "correct": 0,
          "score": 0
       },
-      "6": {
+      "9": {
+         "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi?",
+         "answer": "south.",
+         "correct": 1,
+         "score": 1
+      },
+      "10": {
+         "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart?",
+         "answer": "northwest",
+         "correct": 1,
+         "score": 2
+      },
+      "11": {
          "question": "Whyalla is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Quirindi?",
          "answer": "northwest",
          "correct": 0,
          "score": 0
       },
-      "7": {
-         "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi and Whyalla?",
-         "answer": "hobart is south of quirindi and whyalla.",
-         "correct": 0,
-         "score": 0
-      },
-      "8": {
+      "12": {
          "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Quirindi?",
          "answer": "hobart is south of whyalla and quirindi.",
          "correct": 0,
          "score": 0
       },
-      "9": {
+      "13": {
+         "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Quirindi?",
+         "answer": "northwest",
+         "correct": 0,
+         "score": 0
+      },
+      "14": {
+         "question": "Hobart is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla?",
+         "answer": "hobart is south of whyalla.",
+         "correct": 0,
+         "score": 0
+      },
+      "15": {
          "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla and Hobart?",
          "answer": "quirindi is north of both whyalla and hobart.",
          "correct": 0,
          "score": 0
       },
-      "10": {
+      "16": {
+         "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Whyalla?",
+         "answer": "south.",
+         "correct": 0,
+         "score": 0
+      },
+      "17": {
+         "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart?",
+         "answer": "south",
+         "correct": 0,
+         "score": 0
+      },
+      "18": {
          "question": "Quirindi is north, northeast, northwest, south, southeast, southwest, east, or west of Hobart and Whyalla?",
          "answer": "north, northeast, and northwest.",
          "correct": 0,
          "score": 0
       },
-      "11": {
+      "19": {
          "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Alice Springs?",
          "answer": "albury-wodonga is south of fraser island and southwest of alice springs.",
          "correct": 0,
          "score": 0
       },
-      "12": {
+      "20": {
+         "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island?",
+         "answer": "south",
+         "correct": 1,
+         "score": 1
+      },
+      "21": {
+         "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs?",
+         "answer": "south.",
+         "correct": 1,
+         "score": 1
+      },
+      "22": {
          "question": "Albury-Wodonga is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Fraser Island?",
          "answer": "south. albury-wodonga is south of alice springs and fraser island.",
          "correct": 0,
          "score": 0
       },
-      "13": {
+      "23": {
          "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Alice Springs?",
          "answer": "north, northeast, and east of albury-wodonga. northwest of alice springs.",
          "correct": 0,
          "score": 0
       },
-      "14": {
+      "24": {
+         "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga?",
+         "answer": "northeast",
+         "correct": 1,
+         "score": 2
+      },
+      "25": {
+         "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs?",
+         "answer": "east",
+         "correct": 1,
+         "score": 1
+      },
+      "26": {
          "question": "Fraser Island is north, northeast, northwest, south, southeast, southwest, east, or west of Alice Springs and Albury-Wodonga?",
          "answer": "east",
          "correct": 1,
          "score": 1
       },
-      "15": {
+      "27": {
          "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga and Fraser Island?",
          "answer": "northwest",
          "correct": 1,
          "score": 2
       },
-      "16": {
+      "28": {
+         "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Albury-Wodonga?",
+         "answer": "northwest",
+         "correct": 1,
+         "score": 2
+      },
+      "29": {
+         "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island?",
+         "answer": "south.",
+         "correct": 0,
+         "score": 0
+      },
+      "30": {
          "question": "Alice Springs is north, northeast, northwest, south, southeast, southwest, east, or west of Fraser Island and Albury-Wodonga?",
          "answer": "alice springs is west of fraser island and northwest of albury-wodonga.",
          "correct": 0,
          "score": 0
       },
-      "17": {
-         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Exmouth?",
-         "answer": "north.",
+      "31": {
+         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Broome?",
+         "answer": "fregon is south of port douglas and west of broome.",
          "correct": 0,
          "score": 0
       },
-      "18": {
-         "question": "Fregon  is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Port Douglas?",
-         "answer": "north.",
+      "32": {
+         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas?",
+         "answer": "north",
          "correct": 0,
          "score": 0
       },
-      "19": {
-         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Exmouth and Fregon?",
-         "answer": "north, northeast.",
+      "33": {
+         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Broome?",
+         "answer": "northwest",
          "correct": 0,
          "score": 0
       },
-      "20": {
-         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Exmouth?",
-         "answer": "north.",
+      "34": {
+         "question": "Fregon is north, northeast, northwest, south, southeast, southwest, east, or west of Broome and Port Douglas?",
+         "answer": "fregon is south of broome and port douglas.",
          "correct": 0,
          "score": 0
       },
-      "21": {
-         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
-         "answer": "south.",
+      "35": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Broome and Fregon?",
+         "answer": "northwest",
          "correct": 0,
          "score": 0
       },
-      "22": {
-         "question": "Exmouth is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
-         "answer": "exmouth is northwest of fregon and north of port douglas.",
+      "36": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Broome?",
+         "answer": "northwest",
+         "correct": 0,
+         "score": 0
+      },
+      "37": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon?",
+         "answer": "northwest",
+         "correct": 0,
+         "score": 0
+      },
+      "38": {
+         "question": "Port Douglas is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Broome?",
+         "answer": "northwest.",
+         "correct": 0,
+         "score": 0
+      },
+      "39": {
+         "question": "Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas and Fregon?",
+         "answer": "broome is west of port douglas and fregon.",
+         "correct": 0,
+         "score": 0
+      },
+      "40": {
+         "question": "Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Port Douglas?",
+         "answer": "northwest",
+         "correct": 0,
+         "score": 0
+      },
+      "41": {
+         "question": "Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon?",
+         "answer": "southwest",
+         "correct": 0,
+         "score": 0
+      },
+      "42": {
+         "question": "Broome is north, northeast, northwest, south, southeast, southwest, east, or west of Fregon and Port Douglas?",
+         "answer": "broome is northwest of fregon and port douglas.",
          "correct": 0,
          "score": 0
       }

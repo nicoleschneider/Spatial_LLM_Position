@@ -48,8 +48,11 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
     country_found = []
     state_found = []
 
-    #Topological Only
+    # Topological Only
     entity_type = []
+
+    # Directional Only
+    n_way = []
 
     #Load Prompts file
 
@@ -200,10 +203,19 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
         else:
             entity_string = None       
         
-        print("ES:",entity_string)
+
         entity_type.append(entity_string) 
 
-                
+        if m['relation_type'] == "DIRECTIONAL":
+            if '2-way' in p[rr]['comment'].casefold():
+                n_way.append("2-way")
+            elif '3-way' in p[rr]['comment'].casefold():
+                n_way.append("3-way")
+            else:
+                print("ERROR - MISSING n-way")
+                n_way.append(None)
+        else:
+            n_way.append(None)
 
         results = {
             "relation_type" : relation_type, 
@@ -225,11 +237,9 @@ def transform_data_to_dict_of_lists(data:dict)->dict:
             "bias_term": bias_term,
             "country_found":country_found,
             "state_found":state_found,
-            "entity_type":entity_type
+            "entity_type":entity_type,
+            "n_way":n_way
     }
-        
-    print(len(model))
-    print(len(entity_type))
 
     return results
 
