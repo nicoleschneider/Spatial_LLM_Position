@@ -19,7 +19,56 @@ In this section we discuss the results (R1 - R5) of the experiments E1 - E5 that
 
 \subsection{Result 2. Metric Relations}
 
+Figure \ref{fig:metric-plots} shows the results of Experiment 2.
+Across all three prompt types, the distances between the places returned by the models and the query points (\texttt{predicted{\_}distances)} were not similar to the distances between the reference places provided in the prompt (\texttt{target{\_}distances).
 
+- off by thousands of kilometers in many caes
+- keywords heavily biased responses toward smaller or larger distances, meaning the other cities given in the prompt were largeley ignored when those keywords were present
+- especially for near- when near was present the city returned never exceeded 1000KM in distance from the query point, no matter how large the reference distance indicating the scale that near should be, up to 4000km
+
+\begin{figure*}[h]
+    \centering
+    \subfigure[Target distance vs. predicted distance for `far' metric prompt. Three outliers with extremely high predicted distances are omitted, along with 100 abstentions out of 280 model responses.]{
+        \includesvg[width=0.3\textwidth]{figures/metric_scatter_far}
+        \label{fig:metric-plot-far}
+    }
+    \hfill
+    \subfigure[Target distance vs. predicted distance for neutral metric prompt. Four outliers with extremely high predicted distances are omitted, along with 159 abstentions out of 280 model responses.]{
+        \includesvg[width=0.3\textwidth]{figures/metric_scatter_neutral}
+        \label{fig:metric-plot-neutral}
+    }
+    \hfill
+    \subfigure[Target distance vs. predicted distance for `near' metric prompt. Eleven outliers with extremely high predicted distances are omitted, along with 89 abstentions out of 280 model responses.]{
+        \includesvg[width=0.3\textwidth]{figures/metric_scatter_near}
+        \label{fig:metric-plot-near}
+    }
+    \caption{Results of three metric relation prompts: `far', neutral, and `near'. Target distance represents the distance between `A' and `B' in Prompts 3-5, and predicted distance represents the distance between `C' and the place returned by the model. Points closer to the line drawn at $y = x$ represent more accurate metric spatial reasoning than points further from that line.}
+    \label{fig:metric-plots}
+\end{figure*}
+
+
+% \begin{figure*}[h]
+%     \centering
+%     \begin{subfigure}[t]{\textwidth}
+%         \includesvg[width=.25\textwidth]{figures/metric_scatter_far}
+%         % \caption{\small A candidate location X has named objects A-D with the spatial layout depicted above.} 
+%         \label{fig:CM-LO-Example}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[t]{\textwidth}
+%         \includesvg[width=.25\textwidth]{figures/metric_scatter_neutral}
+%         % \caption{\small The objects are binned into spatial quadrants based on their relative position to the location coordinates, X.} 
+%         \label{fig:CM-LO-Setup}
+%     \end{subfigure}
+%     \hfill
+%         \begin{subfigure}[t]{\textwidth}
+%         \includesvg[width=.25\textwidth]{figures/metric_scatter_near}
+%         % \caption{\small Rank the locations by the number of query terms found in the correct quadrant for the location.}
+%         \label{fig:CM-LO-Query}
+%     \hfill
+%     \end{subfigure}
+%     \caption{\textbf{Location-Object Search Method. A Location-Object data structure (Figure \ref{fig:CM-LO-Setup}) is generated based on the cardinal relations between the objects and the location (Figure \ref{fig:CM-LO-Example}). Then a pictorial query is matched against the structure (Figure \ref{fig:CM-LO-Query}).}}\label{figure:ConceptMap-LO} 
+% \end{figure*}
 
 
 \subsection{Result 3. Directional Relations}
