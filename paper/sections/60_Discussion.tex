@@ -30,8 +30,13 @@ We hypothesize that the popularity and therefore internet prevalence of many poi
 
 
 \subsection{Order Relations}
-We observe that model performance on tasks pertaining to order relations is particularly poor.
-Order relations are the least commonly used of the four main spatial relations that are common to tasks like spatial pattern matching.
-The key qualitative terms `clockwise' and `counterclockwise' that indicate the cyclic order of spatial entities are also not commonly used in language about cities, towns, and other geospatial point entities.
-However, order relations represent a clear form of spatial reasoning that can be applied to geospatial data.
-Further work could be done to determine if exposure to more context about order relations increases model performance on these tasks.
+Quantitatively, we observe that model performance on tasks pertaining to order relations is particularly poor.
+Qualitatively, we observed that many of the responses indicated a lack of knowledge about relative positions of cities.
+For example, one output was 
+\texttt{``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''}
+In the context of multiple previous studies that have shown LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able reason about order relations, which require a from absolute to relative position. 
+Furhter, order relations are the least commonly used of the four main spatial relations that are typical of tasks like spatial pattern matching.
+The key qualitative terms `clockwise' and `counterclockwise' that indicate the cyclic order of spatial entities are also not commonly used in language about cities, towns, and other geospatial point entities, which likely reduces the chances an LLM was directly exposed to this form of geospatial reasoning during training.
+However, order relations represent a clear form of spatial reasoning that can be applied to geospatial data, making them an interesting relation type to test if exposure to more context about this form reasoning increases model performance.
+
+
