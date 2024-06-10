@@ -73,7 +73,7 @@ Run the analysis script:
 
     **286:** results_directory = os.path.join('..','results')
 
-## Collecting Data
+## 3. Collecting Data
 
 To reproduce the experiments from scratch you must: 
 
@@ -93,7 +93,7 @@ Run the same experiments:
 *note: if you don't want to use the default [results directory](https://github.com/nicoleschneider/Spatial_LLM_Position/tree/main/results) you will need to modify the parameters in the main experiment loop*
 
 
-## Running a single experiment: 
+## 4. Running a single experiment: 
 
 If you would just like to run a single experiment use: 
 
