@@ -3,14 +3,13 @@
 import subprocess
 import os
 
-# experiments = [ 'toponym.json',
-#                 'topological.json',
-#                 'metric_near-far.json',
-#                 'directional.json',
-#                 'order.json'
-#                ]
+experiments = [ 'toponym.json',
+                'topological.json',
+                'metric_near-far.json',
+                'directional.json',
+                'order.json'
+               ]
 
-experiments = ['directional.json']
 
 models = {'OPENAI':['gpt-4o','gpt-4-turbo', 'gpt-4', 'gpt-3.5-turbo'], 
         'GOOGLE': ['gemini-1.0-pro','gemini-1.5-flash','gemini-1.5-pro'],
