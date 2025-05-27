@@ -1,35 +1,25 @@
 \section{Introduction}
 \label{section:introduction}
 
-\nrscomment{TODOs for SIGSPATIAL: 
-\\ - GOAL: show which kinds of spaial questions RAG helps with and which still need work or do fine with fine-tuning or prompting alone
-\\ - improve RDF SPARQL method on distances by following NL2SPARQL literature
-\\ - find benchmarks for metric, topo, directional questions
-\\ - implement baselines - few shot, fine tuning llama, GNN?, other methods
-\\ - Apply SpatialRAG methods to directional and topo questions
-\\ - remove metric experiments and frame as an extension study adding directional, topological, and cyclic relations, just keeping metric in a table of results measuring MSE
-\\ - add results to model table showing accuracy or MSE for each type of reasoning task
-\\ - explicitly test multi-way vs. two-way relations to show performance degradation with more entities
-\\ - update numbers of models, prompts, etc. to match results
-}
-
-Humans seamlessly apply spatial reasoning to the objects they perceive in their environment every day.
-Without extensive world knowledge, experience, spatial intuition, common sense, and embodiment, it would be impossible to navigate from one place to another, identify locations by their nearby landmarks, and avoid colliding with other moving entities.
-Spatial reasoning is a particularly challenging form of reasoning since it often requires dynamically gathering data and inferring implicit information from objects as they move through space.
-%While humans excel at spatial reasoning, machine learning has yet to catch up. \nrscomment{reword this}
+Humans possess extensive world knowledge, experience, spatial intuition, common sense, and embodiment, without which it would be impossible to navigate from one place to another, identify locations by their nearby landmarks, and avoid colliding with other moving entities.
+While humans may seamlessly apply spatial reasoning to the objects they perceive in their environment every day, it is actually quite a challenging form of reasoning since it often requires dynamically gathering data and inferring implicit information from objects as they move through space.
 
 Traditionally, many spatial reasoning tasks like spatial pattern matching (determining which objects in the world match a set of spatial constraints) can be addressed using formal methods applied to specific formats of data~\cite{Papadias1998, Schwering2014, Duckham2023,Folkers2000, Chen2019, Fang2019, Minervino2023, Osul2023, Osul2023b}.
 However, these traditional methods are rigid and computationally slow, often relying on pre-computed indices and data structures, which limit the set of questions that they can answer.
 While some work aims to apply machine learning as an approximate solution to specific spatial reasoning tasks like spatial pattern matching~\cite{Schneider2024, Schneider2024b}, the broader interest is moving towards developing flexible `geo-foundation models' that can perform a variety of spatial reasoning tasks.
 
 With the advent of large language models (LLMs), recent research has explored what kinds of world knowledge and spatial reasoning capabilities LLMs inherit from their vast training data, as a potential avenue to achieving a geo-foundation model~\cite{Mai2023, Bhandari2023, Qi2023, Xie2023translating, Mooney2023,Cohn2023,Bang2023}.
-Spatial data is extensively available from various sources, at various scales, including trajectory data, overhead imagery, crowd-sourced geotags, motion sensor output, and dashboard camera footage.
-However, it has previously been unclear to what degree general purpose LLMs are able to reason about implicit spatial relationships given their likely exposure to spatial information during training.
-This question is becoming even more important as LLMs are used for increasingly complex tasks, including ones grounded in the physical world, like generating routes between known points or suggesting places of interest to a user based on their location and trajectory.
+This research is critical given LLMs are used for increasingly complex tasks, including ones grounded in the physical world, like generating routes between known points or suggesting places of interest to a user based on their location and trajectory.
+Additionally, spatial data is extensively available from various sources, at various scales, including trajectory data, overhead imagery, crowd-sourced geotags, motion sensor output, and dashboard camera footage.
 
-In this paper we assess the geospatial reasoning ability of LLMs through a set of experiments designed to cover a broad range of spatial tasks, including reasoning about fundamental spatial relations: directional, topological, and cyclic order relationships.
-Previous work investigating the spatial reasoning ability of LLMs has demonstrated that they have some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, distances between cities, and qualitative distance indicators like ``near'' and ``far''~\cite{Bhandari2023,Qi2023,Osullivan2024}.
-However, by extending the set of spatial reasoning tasks to include full coverage of the major spatial relations, and increasing the complexity of some of the tasks to involve more than two spatial entities, we find that LLMs perform poorly, and cannot infer spatial information not explicitly stated in the question \nrscomment{or contradict themselves or whatever the key finding is}.
+However, much of the existing work evaluating LLMs on spatial data focuses on a few models and evaluates them on factoid-based questions~\cite{Qi2023,Roberts2023,Gupta2024,Yan2024}, Point of Interest (POI) and itinerary recommendation tasks~\cite{Schneider2025,Yu2025,Roberts2023,Xie2024,Gundawar2024,De2024}, and distance-based reasoning questions~\cite{Bhandari2023,Osullivan2024} \nrscomment{cite DistRAG}.
+These works have shown that LLMs possess some basic level of ``spatial awareness'' in the form of knowledge about geocoordinates, distances between cities, and qualitative distance indicators like ``near'' and ``far''~\cite{Bhandari2023,Qi2023,Osullivan2024}.
+Taking the broader problem of spatial reasoning, it has previously been unclear to what degree general purpose LLMs are able to reason about other types of implicit spatial relationships, given their exposure to spatial information during training.
+We address this gap by developing a set of spatial reasoning tasks that includes broad coverage of the major spatial relations, as well as complex questions that require reasoning about more than two spatial entities.
+
+In this paper we assess the spatial reasoning ability of 14 different LLMs through a set of experiments that cover a wide range of spatial tasks, including reasoning about the three fundamental spatial relationships that have been largely understudied in LLMs: topological, directional, and cyclic order relations.
+We find that increasing the complexity of spatial tasks to include more than two entities and expanding the coverage to address these types of spatial relationships reveals significant gaps in the spatial reasoning abilities of the LLMs tested. 
+We find that LLMs perform poorly, and cannot infer spatial information not explicitly stated in the question \nrscomment{or contradict themselves or whatever the key finding is}.
 In particular, we find that LLMs currently struggle to perform complex spatial reasoning about
 
 \begin{itemize}
@@ -38,13 +28,16 @@ In particular, we find that LLMs currently struggle to perform complex spatial r
     \item Order relations, generally.
 \end{itemize}
 
-\noindent We release a dataset consisting of 239 spatial prompts and corresponding ground truth responses, as well as a framework for querying 14 LLMs programmatically and scoring the responses~\footnote{Code, Data and Results are available at: \url{https://github.com/nicoleschneider/Spatial_LLM_Position}}. 
-\nrscomment{better describe significance of findings}
-
-Given these findings, we then suggest several avenues of opportunity to improve the spatial reasoning ability of LLMs.
+Given these findings, we suggest several avenues of opportunity to improve the spatial reasoning ability of LLMs.
 Specifically, we envision new embedding methods and self-supervised learning objectives that can be used to enable LLMs to learn over complex spatial data.
 % Moreover, there are no well-studied methods for combining multiple modalities of spatial data for input into neural models~\cite{Xue2023, Trappolini2023}, which we believe is an area ripe for exploration.
-We suggest leveraging recent work in multimodal learning~\cite{Xue2023, Trappolini2023} and symbolic reasoning~\cite{Lee2023} to combine different input modalities and train a geo-foundation model using spatially relevant self-supervised training objectives that will generalize to a variety of downstream spatial tasks.
+We suggest leveraging recent work in multimodal learning~\cite{Xue2023, Trappolini2023} and symbolic reasoning~\cite{Lee2023} to combine different input modalities and train geo-foundation models using spatially relevant self-supervised training objectives that generalize to a variety of downstream spatial tasks.
+To aid in this effort we release a dataset consisting of 239 \nrscomment{how many} spatial prompts and corresponding ground truth responses, as well as a framework for querying 14 LLMs programmatically and scoring the responses~\footnote{Code, Data and Results are available at: \url{https://github.com/nicoleschneider/Spatial_LLM_Position}}. 
+
+\nrscomment{update git to separate from metric questions and last paper}
+
+
+
 
 %%%%%%%%%\nrscomment{-- better describe how will it address the shortcomings we identify through our experiments}
 
@@ -52,8 +45,8 @@ We suggest leveraging recent work in multimodal learning~\cite{Xue2023, Trappoli
 The rest of this paper is organized as follows.
 In section \ref{section:related} we describe recent work assessing spatial knowledge of LLMs.
 Then, section \ref{section:background} presents the necessary background in spatial reasoning.
-Section \ref{section:method} outlines our experimental method, followed the results in section \ref{section:results}, and discussion in section \ref{section:discussion}.
-Finally, in section \ref{section:future} we describe future work, before concluding in section \ref{section:conclusion}. 
+Section \ref{section:method} outlines our experimental method and the design of our spatial reasoning dataset, followed by the experimental results in section \ref{section:results}, and a discussion of the significance in section \ref{section:discussion}.
+Finally, in section \ref{section:future} we describe future work based on our findings, before concluding in section \ref{section:conclusion}. 
 
 
 

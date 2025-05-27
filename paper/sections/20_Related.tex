@@ -2,7 +2,7 @@
 \label{section:related}
 \normalsize
 
-Many recent works have explored the abilities and limitations of LLMs for performing various reasoning tasks, from math word problems~\cite{Gao2023, Badaro2023} to place name resolution \cite{Mai2023}.
+Many recent works have explored the abilities and limitations of LLMs for performing various reasoning tasks, from math word problems~\cite{Gao2023, Badaro2023} to place name resolution \cite{Mai2024}.
 In this section we summarize the recent work investigating the degree to which LLMs can reason spatially.
 We begin by describing recent work probing LLMs for spatial and geographic knowledge, then survey recent papers on geo-foundation models, and finally discuss specific techniques proposed to enable LLMs to ingest and reason over spatial data.
 
@@ -33,12 +33,12 @@ However, we show that LLMs lack the ability to adapt the meaning of those keywor
 % Our paper presents a similar position, that LLMs have potential to perform spatial reasoning, but our experiments show that much more work is needed before this vision can be realized.
 % We show that LLMs currently cannot handle many of the intricacies of spatial reasoning beyond the simple pairwise directional relationships between locations tested by \citeauthor{Bhandari2023} and \citeauthor{Qi2023}.
 
-\citeauthor{Mai2023} present a vision of a geo foundation model pre-trained on different modalities of data, aligning their representations based on location information~\cite{Mai2023}.
+\citeauthor{Mai2024} present a vision of a geo foundation model pre-trained on different modalities of data, aligning their representations based on location information~\cite{Mai2024}.
 Likewise, \citeauthor{Fei2022} propose a generic foundation model for human mobility data, a form of spatial data, at various scales~\cite{Fei2022}.
 Other vision papers highlight the opportunities associated with combining structured and unstructured geodata to create a geo-foundation model, but they do not propose any concrete steps to achieve such a goal~\cite{Xie2023, Tan2023}.
 %
 We similarly envisage future work towards a geo-foundation model that can handle many input modalities and scales, expanding the idea by discussing the challenges associated with designing embeddings, model architectures, and self-supervised tasks that will be required to construct a multimodal geo-foundation model.
-%\cite{Mai2023} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
+%\cite{Mai2024} - focuses on need for multimodal and claims some text based geo tasks like toponym recognition are already well-solved by existing LLMs.
 
 
 
@@ -58,8 +58,16 @@ While significant headway has been made recently in embedding geodata, there rem
 
 
  
-
-
+\cite{Manvi2024}
+\cite{Yu2025}
+\cite{Li2024}
+\cite{Lietard2021}
+\cite{Majic2024}
+\cite{Roberts2023}
+\cite{Chen2024}
+\cite{Sharma2023}
+\cite{Li2023b}
+\cite{Feng2024b} cityBench mostly visual tasks no explicit topo, dir, order questions
 
 % For example, we suggest crafting natural language descriptions of the spatial relationships between neighboring entities rather than listing them, which would more closely align the task with the unstructured text prediction tasks typically used to train LLMs.
 

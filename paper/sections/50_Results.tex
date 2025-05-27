@@ -1,9 +1,9 @@
+\input{paper/tables/models}
+
 \section{Results}
 \label{section:results}
 
 In this section we discuss the results of the experiments described in the previous section.
-
-\input{paper/tables/models}
 
 \subsection{Result 1. Toponym Resolution}
 
@@ -37,24 +37,24 @@ The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3
 For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
 
 
-\begin{figure}[ht]
+\begin{figure*}[ht]
     \centering
     \begin{subfigure}[Model performance on 2-way directional relation prompts. 2-way directional relations show gpt family of models are stronger directional reasoners than other models.]{
-        \centering
+        % \centering
         \includesvg[width=\columnwidth]{figures/directional_bar_2-way}
         \label{fig:direcional-2}
         }
     \end{subfigure}
-    \vfill
-    \begin{subfigure}[Model performance on 3-way directional relation prompts. A third constraint decreases answer confidence and accuracy.]{
-        \centering
+    \hfill
+    \begin{subfigure}[Model performance on 3-way directional relation prompts. A third constraint decreases answer confidence and accuracy. Gpt models still outperform others, but at a much lower rate of success.]{
+        % \centering
         \includesvg[width=\columnwidth]{figures/directional_bar_3-way}
         \label{fig:directional-3}
         }
     \end{subfigure}
     \caption{Results of two directional relation prompts: 2-way and 3-way. Adding a third directional constraint reduces model performance, and also decreases the chance that the question was observed in an LLM's training data.}
     \label{fig:directional}
-\end{figure}
+\end{figure*}
 
 
 
@@ -62,27 +62,29 @@ For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for
 
 \begin{figure*}[h]
     \centering
-    \subfigure[Higher error-rates occur in line-based queries across the evaluation set, compared to points and regions.]{
-        \includesvg[width=0.32\textwidth]{figures/topological_bar_intersect_line-line}
+    \subfigure[Performance on topological questions containing line entities asking about `intersect' relationship. High error-rates are observed for several OpenAI, Google, and Anthropic models, while Meta models perform well.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_intersect_line-line}
         \label{fig:topo-intersect}
     }
     \hfill
-    \subfigure[Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.]{
-        \includesvg[width=0.32\textwidth]{figures/topological_bar_Partially Overlap_region-region}
+    \subfigure[Performance on topological questions asking about `partial overlap' relationship. Models abstain from answering a consistently high proportion of the questions.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_Partially Overlap_region-region}
         \label{fig:topo_overlap}
     }
     \hfill
-    \subfigure[The gpt-3.5-turbo's error came from a question about whether Canberra is within the state of New South Wales(NSW). The physical sense contradicts the political in this instance, highlighting some of the reasoning difficulties faced in geospatial computing.]{
-        \includesvg[width=0.32\textwidth]{figures/topological_bar_within_region-region}
+    \subfigure[Performance on topological questions asking about `within' relationship. Models perform consistently well.]{
+        \includesvg[width=0.3\textwidth]{figures/topological_bar_within_region-region}
         \label{fig:topo_within}
     }
-    \caption{A selection of topological results reflects broader trends in our evaluation of line-based queries performing worse than region or point based, and a preference towards abstaining from answering under uncertainty.}
+    \caption{Detailed results for topological reasoning on a selection of entity and relationship types.}
     \label{fig:topo_plots}
 \end{figure*}
 
 The performance on topological queries was generally stronger than other relation types, but as figure~\ref{fig:topo-intersect} shows, line-based relations tend to have a higher error rate. 
 We expect that the higher error rate is because of reduced presence of these terms in the training corpus as they relate to each other. 
-We observe in figure~\ref{fig:topo_overlap} that uncertainty rises when, when there are multiple possible answers, or multiple constraints are imposed simultaneously imposed.
+We observe in figure~\ref{fig:topo_overlap} that uncertainty rises when, when there are multiple possible answers, or multiple constraints are imposed simultaneously imposed. Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.
+WITHIN: with the only error for gpt-3.5-turbo coming from a question about whether Canberra is within the state of New South Wales (NSW), which is tricky because they are disjoint but NSW surrounds ACT, which contains Canberra. The physical sense contradicts the political in this instance, highlighting some of the reasoning difficulties faced in geospatial computing.
+
 Our system prompt explicitly gives permission to not answer, and more work is needed to probe how that answerability decision is reached, and why uncertainty triggers it. 
 We hypothesize that the better performance on topological relations in general, compared to cyclic order or directional relations is due to two factors.
 The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
@@ -96,13 +98,13 @@ The second factor is that this test only involved two entities per prompt, which
 \begin{figure}
     \centering
     \includesvg[width=\columnwidth]{figures/order_bar}
-    \caption{Results of cyclic order relation prompt. }
+    \caption{Summary of results for cyclic order reasoning. Models perform poorly across the board, with some answering every question incorrectly.}
     \label{fig:order}
 \end{figure}
 
-The returned results for the cyclic order relation prompts (figure~\ref{fig:order}) show performance on par with random guessing between `clockwise' and `counterclockwise' by the models.
+The returned results for the cyclic order relation prompts (figure~\ref{fig:order}) show performance on par with or worse than random guessing between `clockwise' and `counterclockwise' by the models.
 %In this case, where it is evident that the problem was not within the capability of the models, the decision to abstain appears wise, and note that 
-Across the experiments the Google and Anthropic models consistently abstained at higher rates.
+Across the experiments the Google and Anthropic models consistently abstained at higher rates than the other models, which guessed incorrectly for most of the questions.
 %Being able to effectively identify when a question cannot be answered is useful and could lead to better reliability of models in future. 
 
 
