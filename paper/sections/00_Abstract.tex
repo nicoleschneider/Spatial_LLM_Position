@@ -6,6 +6,19 @@ In this paper we assess the spatial reasoning ability of LLMs through a set of e
 While previous work has demonstrated that LLMs have some basic level of spatial awareness in the form of knowledge about geocoordinates, directional relationships between major cities, and distances between cities, we find that increasing the complexity of spatial tasks to include more than two entities and expanding the coverage to address all four major forms of spatial relations reveals significant gaps in the spatial reasoning abilities of the LLMs tested.
 Given these findings, we propose several avenues of opportunity to improve the spatial reasoning ability of LLMs.
 
+\nrscomment{TODOs for SIGSPATIAL: 
+\\ - GOAL: show which kinds of spaial questions RAG helps with and which still need work or do fine with fine-tuning or prompting alone
+\\ - improve RDF SPARQL method on distances by following NL2SPARQL literature
+\\ - find benchmarks for metric, topo, directional questions
+\\ - implement baselines - few shot, fine tuning llama, GNN?, other methods
+\\ - Apply SpatialRAG methods to directional and topo questions
+
+\\ - remove metric experiments and frame as an extension study adding directional, topological, and cyclic relations, just keeping metric in a table of results measuring MSE
+\\ - add results to model table showing accuracy or MSE for each type of reasoning task
+\\ - explicitly test multi-way vs. two-way relations to show performance degradation with more entities
+\\ - update numbers of models, prompts, etc. to match results
+}
+
 
 
 %LLMs are used for increasingly complex tasks, including ones grounded in the physical world, like generating routes between known points or suggesting places of interest to a user based on their location and trajectory.
