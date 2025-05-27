@@ -2,22 +2,12 @@
 Spatial reasoning is a particularly challenging form of reasoning that requires inferring implicit information about objects based on their relative positions in space.
 Traditionally, spatial reasoning is addressed using formal methods that rely on pre-computed indices and data structures, which limit the scope of questions that can be answered.
 As the research community moves towards developing general purpose geo-foundation models that can perform a variety of spatial reasoning tasks, recent research has explored what kinds of world knowledge and spatial reasoning capabilities Large Language Models (LLMs) naturally inherit from their training data.
-In this paper we assess the spatial reasoning ability of LLMs through a set of experiments designed to cover a broad range of spatial tasks, including toponym resolution, and reasoning about four fundamental spatial relations: metric, directional, topological, and order relationships.
-While previous work has demonstrated that LLMs have some basic level of spatial awareness in the form of knowledge about geocoordinates, directional relationships between major cities, and distances between cities, we find that increasing the complexity of spatial tasks to include more than two entities and expanding the coverage to address all four major forms of spatial relations reveals significant gaps in the spatial reasoning abilities of the LLMs tested.
-Given these findings, we propose several avenues of opportunity to improve the spatial reasoning ability of LLMs.
+However, much of the existing work focuses on a few models and evaluates them on factoid-based questions, Point of Interest (POI) recommendation tasks, and distance-based reasoning.
+In this paper we assess the spatial reasoning ability of 14 different LLMs through a set of experiments that cover a broad range of spatial tasks, including reasoning about three fundamental spatial relationships that have been largely understudied in LLMs: topological, directional, and cyclic order relations.
+We find that increasing the complexity of spatial tasks to include more than two entities and expanding the coverage to address other types of spatial relationships reveals significant gaps in the spatial reasoning abilities of the LLMs tested. \nrscomment{describe the actual shortcomings}
+Given these findings, we suggest several avenues of opportunity to improve the spatial reasoning ability of LLMs.
 
-\nrscomment{TODOs for SIGSPATIAL: 
-\\ - GOAL: show which kinds of spaial questions RAG helps with and which still need work or do fine with fine-tuning or prompting alone
-\\ - improve RDF SPARQL method on distances by following NL2SPARQL literature
-\\ - find benchmarks for metric, topo, directional questions
-\\ - implement baselines - few shot, fine tuning llama, GNN?, other methods
-\\ - Apply SpatialRAG methods to directional and topo questions
 
-\\ - remove metric experiments and frame as an extension study adding directional, topological, and cyclic relations, just keeping metric in a table of results measuring MSE
-\\ - add results to model table showing accuracy or MSE for each type of reasoning task
-\\ - explicitly test multi-way vs. two-way relations to show performance degradation with more entities
-\\ - update numbers of models, prompts, etc. to match results
-}
 
 
 

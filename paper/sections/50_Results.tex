@@ -3,6 +3,7 @@
 
 In this section we discuss the results of the experiments described in the previous section.
 
+\input{paper/tables/models}
 
 \subsection{Result 1. Toponym Resolution}
 
@@ -27,63 +28,10 @@ These are valid resolutions, but were useful for identifying places that may ind
 
 
 
-\subsection{Result 2. Metric Relations}
-
-Figure \ref{fig:metric-plots} shows the results of Experiment 2.
-Across all three prompt types, the distances between the places returned by the models and the query points (\texttt{predicted{\_}distances)} were not similar to the distances between the reference places provided in the prompt (\texttt{target{\_}distances}).
-In many cases, the distances were too large or too small by thousands of Kilometers.
-%
-Given prompts where the implicit \texttt{target{\_}distance} is considered `near' (`far') and asking for a place `near' to (`far' from) the query point, the models consistently chose places too close to (far from) the query point.
-This was especially pronounced for the keyword `near', which resulted in places returned that were never further than 1,000 Kilometers from the query point, no matter how far the implicit \texttt{target{\_}distance} was (up to 4,000 Kilometers in some prompts).
 
 
 
-\begin{figure*}[h]
-    \centering
-    \subfigure[Target distance vs. predicted distance for `far' metric prompt. Three outliers with extremely high predicted distances are omitted, along with 100 abstentions out of 280 model responses.]{
-        \includesvg[width=0.3\textwidth]{figures/metric_scatter_far}
-        \label{fig:metric-plot-far}
-    }
-    \hfill
-    \subfigure[Target distance vs. predicted distance for neutral metric prompt. Four outliers with extremely high predicted distances are omitted, along with 159 abstentions out of 280 model responses.]{
-        \includesvg[width=0.3\textwidth]{figures/metric_scatter_neutral}
-        \label{fig:metric-plot-neutral}
-    }
-    \hfill
-    \subfigure[Target distance vs. predicted distance for `near' metric prompt. Eleven outliers with extremely high predicted distances are omitted, along with 89 abstentions out of 280 model responses.]{
-        \includesvg[width=0.3\textwidth]{figures/metric_scatter_near}
-        \label{fig:metric-plot-near}
-    }
-    \caption{Results of three metric relation prompts: `far', neutral, and `near'. Target distance represents the distance between `A' and `B' in Prompts 3-5, and predicted distance represents the distance between `C' and the place returned by the model. Points closer to the line drawn at $y = x$ represent more accurate metric spatial reasoning than points further from that line.}
-    \label{fig:metric-plots}
-\end{figure*}
-
-
-% \begin{figure*}[h]
-%     \centering
-%     \begin{subfigure}[t]{\textwidth}
-%         \includesvg[width=.25\textwidth]{figures/metric_scatter_far}
-%         % \caption{\small A candidate location X has named objects A-D with the spatial layout depicted above.} 
-%         \label{fig:CM-LO-Example}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[t]{\textwidth}
-%         \includesvg[width=.25\textwidth]{figures/metric_scatter_neutral}
-%         % \caption{\small The objects are binned into spatial quadrants based on their relative position to the location coordinates, X.} 
-%         \label{fig:CM-LO-Setup}
-%     \end{subfigure}
-%     \hfill
-%         \begin{subfigure}[t]{\textwidth}
-%         \includesvg[width=.25\textwidth]{figures/metric_scatter_near}
-%         % \caption{\small Rank the locations by the number of query terms found in the correct quadrant for the location.}
-%         \label{fig:CM-LO-Query}
-%     \hfill
-%     \end{subfigure}
-%     \caption{\textbf{Location-Object Search Method. A Location-Object data structure (Figure \ref{fig:CM-LO-Setup}) is generated based on the cardinal relations between the objects and the location (Figure \ref{fig:CM-LO-Example}). Then a pictorial query is matched against the structure (Figure \ref{fig:CM-LO-Query}).}}\label{figure:ConceptMap-LO} 
-% \end{figure*}
-
-
-\subsection{Result 3. Directional Relations}
+\subsection{Result 2. Directional Relationships}
 The results for the $22$ 2-way directional prompts in figure~\ref{fig:direcional-2} varied across the models, with \texttt{claude-haiku} unable to answer any question and \texttt{mistral-7b} again struggling because of token over-generation. 
 The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} shows that half of the models tested showed a significant increase in model abstention and error rate.
 For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
@@ -110,22 +58,22 @@ For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for
 
 
 
-\subsection{Result 4. Topological Relations}
+\subsection{Result 3. Topological Relationships}
 
 \begin{figure*}[h]
     \centering
     \subfigure[Higher error-rates occur in line-based queries across the evaluation set, compared to points and regions.]{
-        \includesvg[width=0.3\textwidth]{figures/topological_bar_intersect_line-line}
+        \includesvg[width=0.32\textwidth]{figures/topological_bar_intersect_line-line}
         \label{fig:topo-intersect}
     }
     \hfill
     \subfigure[Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.]{
-        \includesvg[width=0.3\textwidth]{figures/topological_bar_Partially Overlap_region-region}
+        \includesvg[width=0.32\textwidth]{figures/topological_bar_Partially Overlap_region-region}
         \label{fig:topo_overlap}
     }
     \hfill
     \subfigure[The gpt-3.5-turbo's error came from a question about whether Canberra is within the state of New South Wales(NSW). The physical sense contradicts the political in this instance, highlighting some of the reasoning difficulties faced in geospatial computing.]{
-        \includesvg[width=0.3\textwidth]{figures/topological_bar_within_region-region}
+        \includesvg[width=0.32\textwidth]{figures/topological_bar_within_region-region}
         \label{fig:topo_within}
     }
     \caption{A selection of topological results reflects broader trends in our evaluation of line-based queries performing worse than region or point based, and a preference towards abstaining from answering under uncertainty.}
@@ -143,7 +91,7 @@ The second factor is that this test only involved two entities per prompt, which
 
 
 
-\subsection{Result 5. Order Relations}
+\subsection{Result 4. Order Relationships}
 
 \begin{figure}
     \centering
