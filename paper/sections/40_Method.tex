@@ -5,7 +5,7 @@ In this section we describe our method for evaluating the spatial reasoning abil
 
 
 \subsection{Experimental Setup}
-We devise a series of experiments to cover spatial reasoning questions in three fundamental spatial relations: directional, topological, and order relationships.
+We devise a series of experiments to cover spatial reasoning questions in three fundamental spatial relations that have been under-studied in LLMs: directional, topological, and order relationships.
 To isolate the effect of toponym ambiguity on the results, we also devise a set of toponym resolution questions for the place names that appear in the spatial reasoning questions.
 
 \subsubsection{Dataset.} 
@@ -16,6 +16,10 @@ To reduce the impact of toponym resolution, we use comma groups of \texttt{point
 % The population pattern enables us to design tests that combine large and small distances to stress the models under test. 
 % Importantly, Australia engages in the practice of \textit{dual-naming} locations with their western name and the name given by the traditional owners of the land, allowing us to test using tokens that are less likely to be memorized in geospatial contexts and explore how effectively models encode indigenous history and customs, as it relates to the land.
 Our dataset contains $239$ \nrscomment{update} questions that cover the \textit{point, line} and \textit{region} spatial entities and \textit{directional, topological} and \textit{cyclic order} relations commonly used in spatial pattern matching and spatial reasoning problems.
+Questions are written in the form
+\begin{verbatim}
+  Does Australia geospatially contain New South Wales?
+\end{verbatim}
 
 
 \subsubsection{Evaluation Metrics}
@@ -61,7 +65,13 @@ We use zero-shot prompting approaches except for where we are shaping the format
 For each experiment, we begin by providing an initial prompt stating the goal of evaluating spatial reasoning, as follows:
 
 \begin{lstlisting}[title=Prompt 1: Initial System Prompt]
-    You are answering to evaluate spatial reasoning ability. You will be presented a question and asked to answer. Where there are multiple possible answers, select the most likely. Answer as briefly as possible, preferring single word answers where they suffice. Where you do not know the answer, it is unanswerable or you are uncertain, return 'ICATQ'.
+ You are answering to evaluate spatial reasoning ability. 
+ You will be presented a question and asked to answer. 
+ Where there are multiple possible answers, select the 
+ most likely. Answer as briefly as possible, 
+ preferring single word answers where they suffice. 
+ Where you do not know the answer, it is unanswerable 
+ or you are uncertain, return 'ICATQ'.
 \end{lstlisting}
 
 \noindent The subsequent prompt is determined by the experiment being conducted.
@@ -71,7 +81,8 @@ For each experiment we describe below the specific prompt format used for the se
 \subsection{Experiment 1: Toponym Resolution}
 
 \begin{lstlisting}[title=Prompt 2: Toponym Resolution Prompt]
-    Where is A? Format your answer as a comma seperated list: state/county, country.
+ Where is A? Format your answer as a comma seperated 
+ list: state/county, country.
 \end{lstlisting}
 
 \noindent We test all points included in the dataset with unaided toponym resolution to identify how strongly each term is associated with Australia, with scoring awarding one point for linking it to Australia, and additional points for more complete comma groups.
@@ -93,11 +104,13 @@ We create $42$ queries covering $18$ Australian city and town names of varying p
 For each group consisting of entities A, B, and C, we construct the following 2-way and 3-way directional prompts: 
 
 \begin{lstlisting}[title=Prompt 3: 2-way Directional Prompt]
-    A is north, northeast, northwest, south, southeast, southwest, east, or west of B?
+ A is north, northeast, northwest, south, southeast, 
+ southwest, east, or west of B?
 \end{lstlisting}
 
 \begin{lstlisting}[title=Prompt 4: 3-way Directional Prompt]
-    A is north, northeast, northwest, south, southeast, southwest, east, or west of B and C?
+ A is north, northeast, northwest, south, southeast, 
+ southwest, east, or west of B and C?
 \end{lstlisting}
 
 \noindent We repeat this for each permutation of A, B, and C, reordering them within the prompt text.
@@ -117,13 +130,13 @@ We select points (P) from a set of city and town names in Australia, regions (R)
 The prompts are structured as follows:
 
 \begin{lstlisting}[title=Prompts 5-11: Topological Relation Prompts]
-    Is A geospatially equal to B?
-    Is A geospatially disjoint from B?
-    Does A geospatially intersect B?
-    Does A geospatially touch B?
-    Does A geospatially partially overlap B?
-    Is A geospatially within B?
-    Does A geospatially contain B?
+ Is A geospatially equal to B?
+ Is A geospatially disjoint from B?
+ Does A geospatially intersect B?
+ Does A geospatially touch B?
+ Does A geospatially partially overlap B?
+ Is A geospatially within B?
+ Does A geospatially contain B?
 \end{lstlisting}
 
 \noindent We populate the prompts with cities and towns of varying populations, major waterways, and the `common name' for major roadways (i.e. "The Pacific Highway" rather than "M1 Motorway"). sampled from across the states and territories of Australia, including both indigenous and western place names.
@@ -139,7 +152,8 @@ To determine if LLMs can reason about cyclic order relationships, we construct a
 For each group consisting of entities A, B, and C, we construct the following prompt: 
 
 \begin{lstlisting}[title=Prompt 12: Cyclic Order Relation Prompt]
-    With respect to a centroid in A, is moving from B to C a clockwise or counterclockwise direction?
+ With respect to a centroid in A, is moving from B to C 
+ a clockwise or counterclockwise direction?
 \end{lstlisting}
 
 \noindent We permute the ordering of A, B, and C, within the prompt text and measure the binary response `clockwise' or `counterclockwise' for each answer.
