@@ -13,7 +13,6 @@ occupies~\cite{Varzi2007}.
 In this paper we discuss spatial reasoning tasks, which involve answering questions about certain relationships (termed spatial relations) between some set of objects in space.
 
 
-
 \subsection{Spatial Entities}
 Spatial entities are the basic elements of spatial data.
 They can be classed into three main types: \textbf{(\textit{i})} \textit{Points}, which consist of an $(x,y)$ coordinate pair in Cartesian space, \textbf{(\textit{ii})} \textit{Lines}, which represent the shortest path between two points, and \textbf{(\textit{iii})} \textit{Regions}, which represent the area inside a polyline joining several points. 
@@ -36,7 +35,8 @@ Spatial entities represent a conceptualization of the the building blocks of the
 %
 %Hybrid relations that combine two or more of the primitive spatial relations are also possible~\cite{Carniel2023}.
 Spatial relations enable qualitative or quantitative descriptions of how physical places or objects in the world interact spatially.
-To answer spatial questions accurately, an LLM must not only recognize spatial entities, but also interpret their spatial relations to infer information about the world, such as city $A$ is North of city $B$ and city $B$ is North of city $C$, therefore city $A$ is North of city $C$.
+To answer spatial questions accurately, an LLM must not only recognize spatial entities, but also interpret their spatial relationships correctly from context and infer new spatial information by applying rules like spatial transitivity~\cite{Pears1990}.
+For example, knowing only that city $A$ is North of city $B$ and city $B$ is North of city $C$, an LLM should infer that city $A$ is North of city $C$, even if that fact is not learned during training or available through retrieval from a spatial knowledge base.
 
 
 

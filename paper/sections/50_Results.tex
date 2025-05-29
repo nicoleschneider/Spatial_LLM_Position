@@ -10,36 +10,35 @@ In this section we discuss the results of the experiments described in the previ
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{figures/toponym_bar_state}
-    \caption{The results of the toponym experiments show that most models resolve most toponyms to Australia. We filter out the `confusing' toponyms for subsequent experiments}
+    \caption{The results of the toponym experiments show that most models resolve most toponyms to Australia. }
+    %We filter out the `confusing' toponyms for subsequent experiments}
     \label{fig:toponym}
 \end{figure}
 
-The toponym experiments shown in figure~\ref{fig:toponym} shows report scores $>0$ as 'correct', $0$ as `incorrect' and `abstain' when the model returned `ICATQ'. 
-Most models are capable of answering toponym resolution questions, with the majority of abstains associated with indigenous place names. 
+The toponym experiments shown in figure~\ref{fig:toponym} show percentage of responses that were correct, incorrect and abstain. 
+Most models are capable of answering toponym resolution questions, with the majority of abstains associated with the less popular or Indigenous place names. 
 Mistral-7b produced excessive tokens when answering questions, contributing to its increased error rate, whereas gpt-4 resolved toponyms like `Port Arthur', `Exmouth' and `Roma' to Texas, the United Kingdom and Italy respectively.
-These are valid resolutions, but were useful for identifying places that may induce unnecessary friction in subsequent tasks.
+These are valid resolutions, but could cause cause correct spatial reasoning to be marked incorrectly, if the model is considering different locations to what the question intended.
+To avoid this issue, we ensure than none of the toponyms marked incorrectly in toponym resolution appear together in questions, so that the models should infer the correct resolution given the context of other toponyms resolved to Australia.
+% were useful for identifying places that may induce unnecessary friction in subsequent tasks.
 
 % \subsection{R2. Lesser-known Cities}
 % --> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
 % Give the phrase Chat-GPT outputs when a location is not recognized.
 % Plot accuracy of result vs. population size.
-
 %\osullikomment{I think you might get some intersting outliers. E.g. I think Port Arthur will be massively over-represented because it was the site of our last mass shooting, and the catalyst for gun control in Australia. So there are a million articles that talk about Port Arthur, even though it's tiny in real terms.}
-
-
-
 
 
 
 \subsection{Result 2. Directional Relationships}
 The results for the $22$ 2-way directional prompts in figure~\ref{fig:direcional-2} varied across the models, with \texttt{claude-haiku} unable to answer any question and \texttt{mistral-7b} again struggling because of token over-generation. 
-The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} shows that half of the models tested showed a significant increase in model abstention and error rate.
-For comparison, \citeauthor{Qi2023} performed pairwise directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
+The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} shows that half of the models tested showed a significant increase in model abstention and error rate as compared to the 2-way directional prompts.
+For comparison, \citeauthor{Qi2023} performed 2-way directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
 
 
 \begin{figure*}[ht]
     \centering
-    \begin{subfigure}[Model performance on 2-way directional relation prompts. 2-way directional relations show gpt family of models are stronger directional reasoners than other models.]{
+    \begin{subfigure}[Model performance on 2-way directional relation prompts. Results indicate better performance by gpt family of models compared to the other models tested.]{
         % \centering
         \includesvg[width=\columnwidth]{figures/directional_bar_2-way}
         \label{fig:direcional-2}

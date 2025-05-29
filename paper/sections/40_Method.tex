@@ -1,27 +1,30 @@
 \section{Method}
 \label{section:method}
 
-In this section we describe our method for evaluating the spatial reasoning ability of LLMs, detailing the models and prompts used.
+In this section we describe our method for evaluating the spatial reasoning ability of LLMs, detailing the models, evaluation metrics, and prompts used.
 
 
 \subsection{Experimental Setup}
-We devise a series of experiments to cover spatial reasoning questions in three fundamental spatial relations that have been under-studied in LLMs: directional, topological, and order relationships.
+We devise a series of experiments to cover spatial reasoning questions about three fundamental spatial relations that have been under-studied in LLMs: directional, topological, and order relationships.
 To isolate the effect of toponym ambiguity on the results, we also devise a set of toponym resolution questions for the place names that appear in the spatial reasoning questions.
 
+\input{paper/tables/dataset_design}
+
 \subsubsection{Dataset.} 
-We develop our own evaluation dataset to reduce the likelihood that the specific questions had been encountered during pre-training by the models under test. 
-We select Australia because it is an English-speaking country with place names that are likely to be in the vocabulary of the models, but is less widely documented than places like the Unites States or United Kingdom. 
-To reduce the impact of toponym resolution, we use comma groups of \texttt{point/line/region,state} in questions where it doesn't undermine the purpose of the test.
+We develop our own evaluation dataset for two reasons: (i) there are no existing benchmarks that cover directional, topological, and cyclic order relationships about geoentities (as opposed to fictitious entities, which are less useful to reason about in many geospatial applications and do not allow LLMs to use their world knowledge to help answer the question) and (ii) to reduce the likelihood that the specific questions we ask have been encountered during pre-training by the models under test. 
+We select Australia as the broad region of test because it is an English-speaking country with common place names that are likely to be in the vocabulary of the models, as well as Indigenous place names that are less likely to be encountered frequently during training. 
+% To reduce the impact of toponym resolution, we use comma groups of \texttt{point/line/region,state} in questions where it doesn't undermine the purpose of the test.
 % Further, Australia is a large country, with dispersed, dense settlements. 
 % The population pattern enables us to design tests that combine large and small distances to stress the models under test. 
 % Importantly, Australia engages in the practice of \textit{dual-naming} locations with their western name and the name given by the traditional owners of the land, allowing us to test using tokens that are less likely to be memorized in geospatial contexts and explore how effectively models encode indigenous history and customs, as it relates to the land.
 Our dataset contains $239$ \nrscomment{update} questions that cover the \textit{point, line} and \textit{region} spatial entities and \textit{directional, topological} and \textit{cyclic order} relations commonly used in spatial pattern matching and spatial reasoning problems.
 Details about the dataset questions can be found in Table \ref{tab:dataset_design}.
-\input{paper/tables/dataset_design}
+
+
 
 
 \subsubsection{Evaluation Metrics}
-We follow \citeauthor{Feng2024}~\cite{Feng2024} and evaluate correctness of LLM responses against hand-labeled ground truth answers using the following accuracy metrics, which account correct, incorrect, and abstain responses, which we represent using the symbols outlined below.
+We follow \citeauthor{Feng2024}~\cite{Feng2024} and evaluate correctness of LLM responses against hand-labeled ground truth answers using the following accuracy metrics, which account for correct, incorrect, and abstain responses, which we represent using the symbols outlined below.
 
 \begin{center}
 \begin{tabular}{ c c c }
@@ -35,31 +38,34 @@ We follow \citeauthor{Feng2024}~\cite{Feng2024} and evaluate correctness of LLM 
 \begin{equation}
     \text{R-Acc} = \dfrac{\mathcal{A}}{\mathcal{A} + \mathcal{C}}
 \end{equation} 
-which indicates to what extent LLM-generated answers (not abstentions) could be trusted (i.e., out of all questions answered, how many are correct?). 
+which indicates to what extent LLM-generated answers (not abstentions) could be trusted (i.e., out of all questions answered, how many are correct?)~\cite{Feng2024}. 
 
 \textit{Effective Reliability} (ER), measured as
 \begin{equation}
     \text{ER} = \dfrac{\mathcal{A} - \mathcal{C}}{\mathcal{A} + \mathcal{B} + \mathcal{C} + \mathcal{D}}
 \end{equation} 
-which strikes a balance between reliability and coverage (i.e., out of all questions, how many more are answered correctly than incorrectly?)
+which strikes a balance between reliability and coverage (i.e., out of all questions, how many more are answered correctly than incorrectly?)~\cite{Feng2024}
 
 \textit{Abstention accuracy} (A-Acc), measured as
 \begin{equation}
     \text{A-Acc} = \dfrac{\mathcal{A} + \mathcal{D}}{\mathcal{A} + \mathcal{B} + \mathcal{C} + \mathcal{D}}
 \end{equation} 
-which evaluates whether the abstain decisions are correct, since LLMs should abstain when it would provide an incorrect answer and vice versa. 
+which evaluates whether the abstain decisions are correct, since LLMs should abstain when they would provide an incorrect answer and vice versa~\cite{Feng2024}. 
 
 
 
 \subsubsection{Models.}
-We select $14$ LLMs from five of the leading developers. 
+We select $14$ LLMs from five of the leading LLM developers. 
 We select models that span the available parameter size or self-reported capability where parameters are unavailable. 
 % Table~\ref{tab:models} summarizes the selected models, parameters and indicative cost of use. 
 For experimentation, temperature is set to $0$ on each model and where available, constant seed values are set to reduce the impact of randomness in generation.
 
+\nrscomment{describe the RAG variations used and what the knowledge store is for each spatial relation that they have access to}
+
 \subsubsection{Prompting.} 
 Each question is provided as an isolated prompt to the model under test so no context is carried between interactions.
-We use zero-shot prompting approaches except for where we are shaping the format of the output and in our metric experiments which try to elicit reasoning with in-context learning. 
+We use a zero-shot prompting approach and only provide retrieved spatial context for the RAG settings.
+% except for where we are shaping the format of the output and in our metric experiments which try to elicit reasoning with in-context learning. 
 For each experiment, we begin by providing an initial prompt stating the goal of evaluating spatial reasoning, as follows:
 
 \begin{lstlisting}[title=Prompt 1: Initial System Prompt]
@@ -78,28 +84,28 @@ For each experiment we describe below the specific prompt format used for the se
 
 \subsection{Experiment 1: Toponym Resolution}
 
+Following \citeauthor{Osullivan2024}~\cite{Osullivan2024}, we test all points included in our dataset with unaided toponym resolution to identify whether each term is associated with Australia.
+For each place name used in subsequent experiments, we construct the following toponym resolution question, where A is replaced by the name of the point, line, or region of interest.
+
 \begin{lstlisting}[title=Prompt 2: Toponym Resolution Prompt]
  Where is A? Format your answer as a comma seperated 
  list: state/county, country.
 \end{lstlisting}
 
-\noindent Following \citeauthor{Osullivan2024}~\cite{Osullivan2024}, we test all points included in the dataset with unaided toponym resolution to identify how strongly each term is associated with Australia, with scoring awarding one point for linking it to Australia, and additional points for more complete comma groups.
-We use the results of the toponym experiment (Figure~\ref{fig:toponym}) to identify terms strongly associated with other countries, (like `Roma' with `Italy' rather than the small town in the Maranoa Region of Queensland), to ensure that the majority of the toponyms in subsequent questions are independently associated with Australia by the models being tested.
+\noindent The goal of the toponym resolution questions is to identify terms strongly associated with other countries, (like `Roma' with `Italy' rather than the small town in the Maranoa Region of Queensland), to verify that the majority of the toponyms in subsequent questions are independently associated with Australia by the models being tested.
+For each question we record whether the model responds correctly, incorrectly, or abstains from answering.
 % Toponyms that are not resolved, receiving a response of `ICATQ', are left in the dataset to encourage contextual spatial reasoning, where the most likely toponym can be inferred by the other entities in the prompt, since each prompt in subsequent experiments involves at least two spatial entities.
-To further decouple the toponym resolution from the spatial reasoning evaluation, we use comma groups to specify locations in subsequent experiments~\cite{Lieberman2010}.
+% To further decouple the toponym resolution from the spatial reasoning evaluation, we use comma groups to specify locations in subsequent experiments~\cite{Lieberman2010}.
 % Evaluating the toponym tests rewards specificity.
 % The comma group generated by the model is split and and scored with one point for linking it to `Australia' and additional points for identifying the state and region.
 
 
 
-
-
-
 \subsection{Experiment 2: Directional Relationships}
 
-To determine if LLMs can reason about the spatial relationships between multiple locations, we construct a series of prompts asking about the cardinal directionality between pairs of entities.
+To determine if LLMs can reason about the directional spatial relationship between locations, we construct a series of prompts asking about the cardinal directionality between geoentities.
 We create $42$ queries covering $18$ Australian city and town names of varying population size~\footnote{Ranging from 5,297,089 to 37} into groups of `2-way' and `3-way' constraint problems.
-For each group consisting of entities A, B, and C, we construct the following 2-way and 3-way directional prompts: 
+For each group consisting of entities A, B, and C, we construct the following 2-way and 3-way directional prompts, where A, B, and C are replaced with actual city or town names: 
 
 \begin{lstlisting}[title=Prompt 3: 2-way Directional Prompt]
  A is north, northeast, northwest, south, southeast, 
@@ -112,7 +118,8 @@ For each group consisting of entities A, B, and C, we construct the following 2-
 \end{lstlisting}
 
 \noindent We repeat this for each permutation of A, B, and C, reordering them within the prompt text.
-Scoring for directional relations rewards specificity, with more points being awarded for `northwest' rather than `north' or `west' when both could be true. 
+For each question we record whether the model responds correctly, incorrectly, or abstains from answering.
+% Scoring for directional relations rewards specificity, with more points being awarded for `northwest' rather than `north' or `west' when both could be true. 
 % if needed: when wrong response is produce, the geo-coordinates are further included in the prompt.
 % if needed: try the reverse where we ask for a city thats SE of A and NW of B
 % if needed do more than 3 way and show how accuracy declines with more entities (more complexity)
@@ -125,7 +132,7 @@ To determine if LLMs can reason about topological relations, we construct a seri
 We select points (P) from a set of city and town names in Australia, regions (R) from a set of lakes, parks, regions, and states in Australia, and lines (L) from a set of highways, roadways, and riverways in Australia.
 % Prompts combine the topological predicates with these three spatial entity types
 %We construct prompts by selecting 18 pairs of point/line/region entities and assigning each pair a relation from a list of eight standard topological relations: \{\textit{equals, disjoint, intersects, touches, partially overlaps, within, contains}\}~\cite{Carniel2023}.
-The prompts are structured as follows:
+The prompts are structured as follows, where A and B are replaced with point, line, or region names as appropriate to the predicate being used:
 
 \begin{lstlisting}[title=Prompts 5-11: Topological Relation Prompts]
  Is A geospatially equal to B?
@@ -137,8 +144,9 @@ The prompts are structured as follows:
  Does A geospatially contain B?
 \end{lstlisting}
 
-\noindent We populate the prompts with cities and towns of varying populations, major waterways, and the `common name' for major roadways (i.e. "The Pacific Highway" rather than "M1 Motorway"). sampled from across the states and territories of Australia, including both indigenous and western place names.
-We score the binary response `Yes' or `No' for each answer.
+\noindent We populate the prompts with cities and towns of varying populations, major waterways, and the `common name' for major roadways (i.e. "The Pacific Highway" rather than "M1 Motorway") sampled from across the states and territories of Australia.
+For each question we record whether the model responds correctly, incorrectly, or abstains from answering.
+% We score the binary response `Yes' or `No' for each answer.
 % To understand whether the model was indeed performing spatial reasoning on the topological prompts, we further prompted it with the reverse of some of the prompts.
 % For instance, if the original prompt was ``Does R1 meet R2?'' we further prompted with ``Does R2 meet R1?'' and found that in several cases the response was correct for one prompt but not the other.
 % These cases indicate that the errors we observe are due to failures in reasoning ability (i.e. that the spatial reasoning the model is doing is not self-consistent) rather than incorrect information about an entity's position in space (such as having false information that a city is located somewhere different from where it actually exists).
@@ -147,14 +155,16 @@ We score the binary response `Yes' or `No' for each answer.
 \subsection{Experiment 4: Cyclic Order Relationships}
 To determine if LLMs can reason about cyclic order relationships, we construct a series of prompts asking about the clockwise or counterclockwise relationship between entities.
 %randomly assign nine Australian city names into three groups of three.
-For each group consisting of entities A, B, and C, we construct the following prompt: 
+For each group consisting of entities A, B, and C, we construct the following prompt, where A, B, and C are replaced with city names: 
 
 \begin{lstlisting}[title=Prompt 12: Cyclic Order Relation Prompt]
  With respect to a centroid in A, is moving from B to C 
  a clockwise or counterclockwise direction?
 \end{lstlisting}
 
-\noindent We permute the ordering of A, B, and C, within the prompt text and measure the binary response `clockwise' or `counterclockwise' for each answer.
+\noindent We permute the ordering of A, B, and C, within the prompt text to ensure the questions require performing correct order reasoning in order to be answered correctly.
+For each question we record whether the model responds correctly, incorrectly, or abstains from answering.
+% and measure the binary response `clockwise' or `counterclockwise' for each answer.
 
 
 
