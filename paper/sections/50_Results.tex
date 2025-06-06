@@ -5,53 +5,46 @@
 
 In this section we discuss the results of the experiments described in the previous section.
 
-\subsection{Result 1. Toponym Resolution}
+\subsection{Result 1: Toponym Resolution}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\columnwidth]{figures/toponym_bar_state}
+    \includegraphics[width=\columnwidth]{figures/toponym_bar_country}
     \caption{The results of the toponym experiments show that most models resolve most toponyms to Australia. }
-    %We filter out the `confusing' toponyms for subsequent experiments}
     \label{fig:toponym}
 \end{figure}
 
-The toponym experiments shown in figure~\ref{fig:toponym} show percentage of responses that were correct, incorrect and abstain. 
+\textbf{Most toponyms are resolved correctly.}
+The toponym experiments shown in figure~\ref{fig:toponym} show percentage of responses that were correct, incorrect and abstain from answering. 
 Most models are capable of answering toponym resolution questions, with the majority of abstains associated with the less popular or Indigenous place names. 
-Mistral-7b produced excessive tokens when answering questions, contributing to its increased error rate, whereas gpt-4 resolved toponyms like `Port Arthur', `Exmouth' and `Roma' to Texas, the United Kingdom and Italy respectively.
+\texttt{Mistral-7b-instruct} produced excessive tokens when answering questions, contributing to its increased error rate, whereas \texttt{gpt-4} resolved toponyms like `Port Arthur', `Exmouth' and `Roma' to Texas, the United Kingdom and Italy respectively.
 These are valid resolutions, but could cause cause correct spatial reasoning to be marked incorrectly, if the model is considering different locations to what the question intended.
-To avoid this issue, we ensure than none of the toponyms marked incorrectly in toponym resolution appear together in questions, so that the models should infer the correct resolution given the context of other toponyms resolved to Australia.
-% were useful for identifying places that may induce unnecessary friction in subsequent tasks.
-
-% \subsection{R2. Lesser-known Cities}
-% --> Show correlation between cities recognized and their population size. Plot for each population value tested the binary value indicating if it was recognized or not by Chat-GPT.
-% Give the phrase Chat-GPT outputs when a location is not recognized.
-% Plot accuracy of result vs. population size.
-%\osullikomment{I think you might get some intersting outliers. E.g. I think Port Arthur will be massively over-represented because it was the site of our last mass shooting, and the catalyst for gun control in Australia. So there are a million articles that talk about Port Arthur, even though it's tiny in real terms.}
+To avoid this issue, we ensure than none of the toponyms marked incorrectly in toponym resolution appear together in questions, so that the models should infer the correct resolution given the context of the other toponyms resolved to Australia.
 
 
 
-\subsection{Result 2. Directional Relationships}
-The results for the $22$ 2-way directional prompts in figure~\ref{fig:direcional-2} varied across the models, with \texttt{claude-haiku} unable to answer any question and \texttt{mistral-7b} again struggling because of token over-generation. 
-The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} shows that half of the models tested showed a significant increase in model abstention and error rate as compared to the 2-way directional prompts.
+\subsection{Result 2: Directional Relations}
+\textbf{Performance degrades when adding 3rd directional relation.}
+The results for the $22$ 2-way directional prompts in figure~\ref{fig:direcional-2} varied across the models, with \texttt{claude-3-haiku} unable to answer any question and \texttt{mistral-7b-instruct} again struggling because of token over-generation. 
 For comparison, \citeauthor{Qi2023} performed 2-way directional prompting for major cities in Australia and found the responses to be correct in 44 out of 50 cases~\cite{Qi2023}.
+The tests for the $20$ 3-way prompts summarized in Figure~\ref{fig:directional-3} show that half of the models tested had a significant increase in error rate over the 2-way directional prompts and the other half abstained from answering all or nearly all of the 3-way directional questions.
+
 
 
 \begin{figure*}[ht]
     \centering
-    \begin{subfigure}[Model performance on 2-way directional relation prompts. Results indicate better performance by gpt family of models compared to the other models tested.]{
-        % \centering
+    \begin{subfigure}[Model performance on 2-way directional relation prompts. Results indicate better performance by OpenAI models compared to the other models tested.]{
         \includesvg[width=\columnwidth]{figures/directional_bar_2-way}
         \label{fig:direcional-2}
         }
     \end{subfigure}
     \hfill
-    \begin{subfigure}[Model performance on 3-way directional relation prompts. A third constraint decreases answer confidence and accuracy. Gpt models still outperform others, but at a much lower rate of success.]{
-        % \centering
+    \begin{subfigure}[Model performance on 3-way directional relation prompts. A third constraint decreases answer confidence and accuracy. OpenAI models still outperform others, but at a much lower rate of success.]{
         \includesvg[width=\columnwidth]{figures/directional_bar_3-way}
         \label{fig:directional-3}
         }
     \end{subfigure}
-    \caption{Results of two directional relation prompts: 2-way and 3-way. Adding a third directional constraint reduces model performance, and also decreases the chance that the question was observed in an LLM's training data.}
+    \caption{Results of two directional relation prompts: 2-way and 3-way. Adding a third directional constraint reduces model performance.}
     \label{fig:directional}
 \end{figure*}
 
@@ -79,16 +72,13 @@ For comparison, \citeauthor{Qi2023} performed 2-way directional prompting for ma
     \label{fig:topo_plots}
 \end{figure*}
 
-The performance on topological queries was generally stronger than other relation types, but as figure~\ref{fig:topo-intersect} shows, line-based relations tend to have a higher error rate. 
+\textbf{Performance on topological relations varies relation to relation.}
+The performance on topological questions was generally stronger than other relation types, but as figure~\ref{fig:topo-intersect} shows, line-based relations tended to have a higher error rate than other topological relationships. 
 We expect that the higher error rate is because of reduced presence of these terms in the training corpus as they relate to each other. 
-We observe in figure~\ref{fig:topo_overlap} that uncertainty rises when, when there are multiple possible answers, or multiple constraints are imposed simultaneously imposed. Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.
-WITHIN: with the only error for gpt-3.5-turbo coming from a question about whether Canberra is within the state of New South Wales (NSW), which is tricky because they are disjoint but NSW surrounds ACT, which contains Canberra. The physical sense contradicts the political in this instance, highlighting some of the reasoning difficulties faced in geospatial computing.
-
-Our system prompt explicitly gives permission to not answer, and more work is needed to probe how that answerability decision is reached, and why uncertainty triggers it. 
-We hypothesize that the better performance on topological relations in general, compared to cyclic order or directional relations is due to two factors.
-The first factor is the qualitative nature of topological relations, which lend themselves well to natural language descriptions, making them more prevalent (at least explicitly) in LLM training data.
-The second factor is that this test only involved two entities per prompt, which makes it more likely that the information required to answer the question may have been seen explicitly at training time, reducing the need for the model to perform spatial reasoning to answer the question correctly.
-%To disentangle these factors, further investigation could be done testing complex topological relations between more than two entities.
+We observe in figure~\ref{fig:topo_overlap} that uncertainty rises when there are multiple possible answers, or multiple constraints are imposed simultaneously. 
+Partial Overlap relations are primarily border-regions and introduce uncertainty about ownership, which is reflected in the higher-than-average abstention rate across all models.
+For `within' relations, the only error for \texttt{gpt-3.5-turbo} came from a question about whether Canberra is within the state of New South Wales (NSW), which is tricky because they are disjoint, but NSW surrounds ACT, which contains Canberra. 
+The physical sense contradicts the correct geospatial interpretation in this instance, highlighting some of the challenges associated with geospatial reasoning.
 
 
 
@@ -101,21 +91,6 @@ The second factor is that this test only involved two entities per prompt, which
     \label{fig:order}
 \end{figure}
 
+\textbf{Most models cannot answer questions about cyclic order relations.}
 The returned results for the cyclic order relation prompts (figure~\ref{fig:order}) show performance on par with or worse than random guessing between `clockwise' and `counterclockwise' by the models.
-%In this case, where it is evident that the problem was not within the capability of the models, the decision to abstain appears wise, and note that 
-Across the experiments the Google and Anthropic models consistently abstained at higher rates than the other models, which guessed incorrectly for most of the questions.
-%Being able to effectively identify when a question cannot be answered is useful and could lead to better reliability of models in future. 
-
-
-
-
-
-
-
-
-
-
-
-% Report percent of 2 hop spatial queries correct.
-% Report percent of space + time queries correct.
-% Report for more hops if tested.
+Across the experiments the Google and Anthropic models consistently abstained at higher rates than the other models; other models tended to guess incorrectly for many of the questions.

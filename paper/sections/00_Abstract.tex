@@ -3,15 +3,6 @@ Spatial reasoning is a particularly challenging form of reasoning that requires 
 Traditionally, spatial reasoning is addressed using formal methods that rely on pre-computed indices and data structures, which limit the scope of questions that can be answered.
 As the research community moves towards developing general purpose geo-foundation models that can perform a variety of spatial reasoning tasks, recent research has explored what kinds of world knowledge and spatial reasoning capabilities Large Language Models (LLMs) naturally inherit from their training data.
 However, much of the existing work focuses on a few models and evaluates them on factoid-based questions, Point of Interest (POI) recommendation tasks, and distance-based reasoning.
-In this paper we assess the spatial reasoning ability of 14 different LLMs with and without Retrieval Augmented Generation (RAG) through a set of experiments that cover a broad range of spatial tasks, including reasoning about three fundamental spatial relationships that have been largely understudied in LLMs: topological, directional, and cyclic order relations.
-We find that increasing the complexity of spatial tasks to include more than two entities and handling certain types of spatial relationships reveals significant gaps in the spatial reasoning abilities of the LLMs tested. \nrscomment{describe the actual shortcomings}
+In this paper we assess the spatial reasoning ability of 14 different LLMs with and without Retrieval Augmented Generation (RAG) through a set of experiments that cover a broad range of spatial tasks, including reasoning about three fundamental spatial relationships that have largely been understudied in LLMs: topological, directional, and cyclic order relations.
+We find that performance on some of these relation types, especially when complexity of the task includes more than two entities, reveals significant gaps in the spatial reasoning abilities of the LLMs tested. \nrscomment{describe the actual shortcomings}
 Given these findings, we suggest several avenues of opportunity to improve the spatial reasoning ability of LLMs.
-
-
-
-
-
-%LLMs are used for increasingly complex tasks, including ones grounded in the physical world, like generating routes between known points or suggesting places of interest to a user based on their location and trajectory.
-
-% We describe several embedding techniques and ideas for self-supervised training objectives that may address these shortcomings and enable LLMs to more effectively learn to reason over spatial data.
-% Finally, we discuss longer term opportunities with multimodal learning that may ultimately enable the design of a general geo foundation model that can perform spatial reasoning over a variety of sources and scales of geospatial data.

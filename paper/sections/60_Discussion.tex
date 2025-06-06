@@ -1,35 +1,31 @@
 \section{Discussion}
 \label{section:discussion}
 
-%\subsection{Toponym Resolution}
-
 In this section we discuss the significance of the results outlined in the previous section.
-
-
 
 \subsection{Directional Relationships}
 We observe a large discrepancy in reasoning ability between pairwise (two-way) and three-way directional relations, which indicates a fundamental lack of directional spatial reasoning ability in current LLMs.
-It is highly likely that popular cities are written about repeatedly in the vast training data LLMs are exposed to.
-As a result, we would expect LLMs to memorize many facts about these cities, including potentially where one is located with respect to another, if that was explicitly stated in the data.
+In some cases, if the geocoordinates of the cities tested are seen during training, it is possible the LLM may perform a correct analysis of directional relationship based on the coordinates.
+However, reasoning about 3 sets of geocoordinates to arrive a the correct directional relationship to answer the question is more difficult than a simple pairwise comparison.
+Given the gap in performance, we believe that the LLMs have likely inherited from training some relative directional information about places with respect to one another, leading them to correctly answer many of the 2-way questions.
 However, it is much less likely that the relative locations of three cities with respect to each other appears explicitly in the training data.
-Hence, we believe the poor performance across most of the three-way directional relations we tested indicates a lack of the model's ability to infer implicit spatial relationships that it did not learn directly from training.
-We discuss ways complex spatial relations can be encoded and provided explicitly to models at training time in section \ref{section:future}.
-
+Our results indicate LLMs do not possess directional reasoning ability that can generalize to more complicated questions (i.e. 3-way directional relationships) by inferring implicit directional relationships that were not directly learned from training.
 
 \subsection{Topological Relationships}
 We observe poor model performance across several topological relation questions, including the `intersect', `partially overlap', and `within' predicates.
 We further find that topological relations between line entities induce especially poor performance when compared to point and region entities.
-We hypothesize that the popularity and therefore internet prevalence of many point entities (such as cities) and region entities (such as lakes, states, etc.) is high, increasing the chances that their spatial relationships have been explicitly found in a given LLM's training data.
-
+We hypothesize that the popularity and therefore prevalence in training data of many point entities (such as cities) and region entities (such as lakes, states, etc.) is high, increasing the chances that their spatial relationships have been explicitly found in a given LLM's training data.
+Likewise, spatial data tend to be organized hierarchically, with cities tied to the regions in which they are contained, but line entities frequently stretch across boundaries and are not typically organized by their topological relationships (i.e. one road intersects another).
+The prevalence of certain topological relationships over others in training data may lead the models to answer region and point-based questions more accurately than line-based ones.
 
 \subsection{Order Relationships}
-Quantitatively, we observe that model performance on tasks pertaining to order relations is particularly poor.
+Quantitatively, we observe that model performance on tasks pertaining to cyclic order relations is particularly poor.
 Qualitatively, we observed that many of the responses indicated a lack of knowledge about relative positions of cities.
 For example, one output was 
-\texttt{``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''}
-In the context of multiple previous studies that have shown LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able reason about order relations, which require a from absolute to relative position. 
-Furhter, order relations are the least commonly used of the four main spatial relations that are typical of tasks like spatial pattern matching.
+\textit{``Without specific information about the relative positions of Fraser Island, Alice Springs, and Albury-Wodonga, it's challenging to provide an accurate clockwise ordering.''}
+In the context of multiple previous studies that have shown LLMs can successfully provide geocoordinates of common cities and well-known places~\cite{Bhandari2023,Qi2023}, we hypothesize that LLMs may not be able reason about order relations, which require a jump from absolute to relative position. 
+Further, order relations are the least commonly used of the four main spatial relations (metric, directional, topological, cyclic order) that are typical of tasks like spatial pattern matching.
 The key qualitative terms `clockwise' and `counterclockwise' that indicate the cyclic order of spatial entities are also not commonly used in language about cities, towns, and other geospatial point entities, which likely reduces the chances an LLM was directly exposed to this form of geospatial reasoning during training.
-However, order relations represent a clear form of spatial reasoning that can be applied to geospatial data, making them an interesting relation type to test if exposure to more context about this form reasoning increases model performance.
+However, order relations represent a clear form of spatial reasoning that can be applied to geospatial data, making them an interesting relation type to aid in studying whether exposure to more context during training leads to better reasoning ability.
 
 
