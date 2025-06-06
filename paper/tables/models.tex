@@ -1,9 +1,58 @@
+% \begin{table*}[ht]
+%     \centering
+%     \begin{tabular}{l|lccc|ccc|ccc|ccc}
+%     \hline
+%     \hline
+%         \multicolumn{1}{l}{\multirow{2}{*}{\textbf{Developer}}} &
+%         \multicolumn{1}{|l}{\multirow{2}{*}{\textbf{Model}}} &
+%         % \multicolumn{4}{c}{\textbf{Spatial Reasoning Task Accuracy ($\uparrow$)}} \\
+%         % \cline{3-6}
+
+%         \multicolumn{3}{c}{\textbf{Toponym Resolution}} & 
+%         \multicolumn{3}{|c}{\textbf{Directional Relations}} & 
+%         \multicolumn{3}{|c}{\textbf{Topological Relations}} & 
+%         \multicolumn{3}{|c}{\textbf{Order Relations}}  \\
+%         % \cline{3-14}
+%         ~ & ~ & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc \\
+        
+%         \hline
+%         OpenAI  & gpt-3.5-turbo          & \textbf{0.977} & 0.764  & 0.782 & 0.333 & -0.024 & 0.024 & 0.667 & 0.292 & 0.585 & 0.500 & 0.000  & 0.353 \\ %& ${\dagger}$ & 00.50/01.50 \\
+%         ~       & gpt-4                  & 0.923 & 0.800  & 0.873 & 0.600 & 0.190  & 0.571 & $\underline{0.823}$ & \textbf{0.615} & \textbf{0.785} & 0.529 & 0.059  & 0.529  \\ %& ${\dagger}$ & 30.00/60.00 \\
+%         ~       & gpt-4-turbo            & 0.941 & 0.818  & 0.873 & 0.567 & 0.095  & 0.405 & \textbf{0.851} & $\underline{0.585}$ & 0.708 & 0.000 & -0.882 & 0.000  \\ %& ${\dagger}$ & 10.00/30.00 \\
+%         ~       & gpt-4o                 & 0.943 & 0.855  & 0.909 & \textbf{0.784} & \textbf{0.500}  & \textbf{0.690} & 0.746 & 0.477 & $\underline{0.723}$ & \textbf{0.647} & \textbf{0.294}  & \textbf{0.647}  \\ %& ${\dagger}$ & 05.00/15.00 \\
+%         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
+%         Google  & gemini-1.0-pro         & 0.936 & 0.745  & 0.800 & 0.231 & -0.176 & 0.071 & 0.759 & 0.431 & 0.631 & 0.333 & -0.059 & 0.059\\ %& ${\dagger}$ & 00.50/01.50 \\
+%         ~       & gemini-1.5-flash       & 0.935 & 0.727  & 0.782 & 0.600 & 0.071  & 0.214 & 0.721 & 0.415 & 0.677 & 0.000 & -0.059 & 0.000\\ %& ${\dagger}$ & 00.35/01.05 \\
+%         ~       & gemini-1.5-pro         & 0.930 & 0.673  & 0.727 & 0.565 & 0.071  & 0.310 & 0.754 & 0.447 & 0.662 & $\underline{0.625}$ & 0.118  & 0.294\\ %& ${\dagger}$ & 03.50/10.50 \\
+%         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
+%         Anthropic & claude-3-opus        & 0.898 & 0.709  & 0.800 & 0.500 & 0.000  & 0.071 & 0.723 & 0.323 & 0.523 & 0.588 & $\underline{0.176}$  & $\underline{0.588}$\\ %& ${\dagger}$ & 15.00/75.00 \\
+%         ~       & claude-3-sonnet        & 0.895 & 0.691  & 0.782 & 0.333 & -0.095 & 0.095 & 0.727 & 0.385 & 0.615 & 0.500 & 0.000  & 0.118\\ %& ${\dagger}$ & 03.00/15.00 \\
+%         ~       & claude-3-haiku         & 0.868 & 0.509  & 0.600 & 0.000  & 0.000 & 0.000 & 0.761 & 0.369 & 0.538 & 0.000 & 0.000  & 0.000\\ %& ${\dagger}$ & 00.25/01.25 \\
+%         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
+%         Meta    & llama3-70b             & 0.962 & $\underline{0.891}$  & $\underline{0.927}$ & $\underline{0.690}$ & $\underline{0.381}$  & \textbf{0.690} & 0.692 & 0.385 & 0.692 & 0.471 & -0.059 & 0.471\\ %& 70b       & 03.20/03.20 \\
+%         ~       & llama3-8b              & 0.923 & 0.800  & 0.873 & 0.415 & -0.167 & 0.405 & 0.585 & 0.169 & 0.585 & 0.176 & -0.647 & 0.176 \\ %& 8b        & 01.60/01.60 \\
+%         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
+%         Mistral & mixtral-8x22b-instruct & $\underline{0.963}$ & \textbf{0.909}  & \textbf{0.945} & 0.214 & -0.571 & 0.214 & 0.516 & 0.031 & 0.508 & 0.412 & -0.176 & 0.412\\ %& 39b/141b  & 03.20/03.20 \\
+%         ~       & mistral-7b-instruct    & 0.203 & -0.373 & 0.127 & 0.500 & 0.000  & 0.214 & 0.500 & 0.000 & 0.500 & 0.500 & 0.000  & 0.500 \\ %& 7b     & 01.60/01.60 \\
+%     \hline
+%     \hline
+%     \end{tabular}
+%     \caption{Accuracy results for 14 baseline LLMs and their RAG variants on toponym resolution and directional, topological, and cyclic order relationship reasoning questions. Best results in \textbf{bold} and second best in \underline{underline}.}
+%     \label{tab:models}
+% \end{table*}
+
+
+
+
+\begingroup
+\small
+
 \begin{table*}[ht]
     \centering
-    \begin{tabular}{l|lccc|ccc|ccc|ccc}
+    \begin{tabular}{r|lccc|ccc|ccc|ccc}
     \hline
     \hline
-        \multicolumn{1}{l}{\multirow{2}{*}{\textbf{Developer}}} &
+        \multicolumn{1}{r}{\multirow{2}{*}{\textbf{Developer}}} &
         \multicolumn{1}{|l}{\multirow{2}{*}{\textbf{Model}}} &
         % \multicolumn{4}{c}{\textbf{Spatial Reasoning Task Accuracy ($\uparrow$)}} \\
         % \cline{3-6}
@@ -16,27 +65,43 @@
         ~ & ~ & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc & R-Acc & ER & A-Acc \\
         
         \hline
-        OpenAI  & gpt-3.5-turbo          & \textbf{0.977} & 0.764  & 0.782 & 0.333 & -0.024 & 0.024 & 0.667 & 0.292 & 0.585 & 0.500 & 0.000  & 0.353 \\ %& ${\dagger}$ & 00.50/01.50 \\
-        ~       & gpt-4                  & 0.923 & 0.800  & 0.873 & 0.600 & 0.190  & 0.571 & $\underline{0.823}$ & \textbf{0.615} & \textbf{0.785} & 0.529 & 0.059  & 0.529  \\ %& ${\dagger}$ & 30.00/60.00 \\
-        ~       & gpt-4-turbo            & 0.941 & 0.818  & 0.873 & 0.567 & 0.095  & 0.405 & \textbf{0.851} & $\underline{0.585}$ & 0.708 & 0.000 & -0.882 & 0.000  \\ %& ${\dagger}$ & 10.00/30.00 \\
-        ~       & gpt-4o                 & 0.943 & 0.855  & 0.909 & \textbf{0.784} & \textbf{0.500}  & \textbf{0.690} & 0.746 & 0.477 & $\underline{0.723}$ & \textbf{0.647} & \textbf{0.294}  & \textbf{0.647}  \\ %& ${\dagger}$ & 05.00/15.00 \\
+        OpenAI  & gpt-3.5-turbo          & \textbf{0.977} & 0.764  & 0.782 & 0.333 & -0.024 & 0.024 & 0.667 & 0.292 & 0.585 & 0.500 & 0.000  & 0.353 \\ 
+        ~       & gpt-3.5-turbo (RAG)    & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & gpt-4                  & 0.923 & 0.800  & 0.873 & 0.600 & 0.190  & 0.571 & $\underline{0.823}$ & \textbf{0.615} & \textbf{0.785} & 0.529 & 0.059  & 0.529  \\ 
+        ~       & gpt-4 (RAG)            & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & gpt-4-turbo            & 0.941 & 0.818  & 0.873 & 0.567 & 0.095  & 0.405 & \textbf{0.851} & $\underline{0.585}$ & 0.708 & 0.000 & -0.882 & 0.000  \\
+        ~       & gpt-4-turbo (RAG)      & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & gpt-4o                 & 0.943 & 0.855  & 0.909 & \textbf{0.784} & \textbf{0.500}  & \textbf{0.690} & 0.746 & 0.477 & $\underline{0.723}$ & \textbf{0.647} & \textbf{0.294}  & \textbf{0.647}  \\ 
+        ~       & gpt-4o (RAG)           & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
-        Google  & gemini-1.0-pro         & 0.936 & 0.745  & 0.800 & 0.231 & -0.176 & 0.071 & 0.759 & 0.431 & 0.631 & 0.333 & -0.059 & 0.059\\ %& ${\dagger}$ & 00.50/01.50 \\
-        ~       & gemini-1.5-flash       & 0.935 & 0.727  & 0.782 & 0.600 & 0.071  & 0.214 & 0.721 & 0.415 & 0.677 & 0.000 & -0.059 & 0.000\\ %& ${\dagger}$ & 00.35/01.05 \\
-        ~       & gemini-1.5-pro         & 0.930 & 0.673  & 0.727 & 0.565 & 0.071  & 0.310 & 0.754 & 0.447 & 0.662 & $\underline{0.625}$ & 0.118  & 0.294\\ %& ${\dagger}$ & 03.50/10.50 \\
+        Google  & gemini-1.0-pro         & 0.936 & 0.745  & 0.800 & 0.231 & -0.176 & 0.071 & 0.759 & 0.431 & 0.631 & 0.333 & -0.059 & 0.059\\ 
+        ~       & gemini-1.0-pro (RAG)   & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & gemini-1.5-flash       & 0.935 & 0.727  & 0.782 & 0.600 & 0.071  & 0.214 & 0.721 & 0.415 & 0.677 & 0.000 & -0.059 & 0.000\\ 
+        ~       & gemini-1.5-flash (RAG) & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & gemini-1.5-pro         & 0.930 & 0.673  & 0.727 & 0.565 & 0.071  & 0.310 & 0.754 & 0.447 & 0.662 & $\underline{0.625}$ & 0.118  & 0.294\\ 
+        ~       & gemini-1.5-pro (RAG)   & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
-        Anthropic & claude-3-opus        & 0.898 & 0.709  & 0.800 & 0.500 & 0.000  & 0.071 & 0.723 & 0.323 & 0.523 & 0.588 & $\underline{0.176}$  & $\underline{0.588}$\\ %& ${\dagger}$ & 15.00/75.00 \\
-        ~       & claude-3-sonnet        & 0.895 & 0.691  & 0.782 & 0.333 & -0.095 & 0.095 & 0.727 & 0.385 & 0.615 & 0.500 & 0.000  & 0.118\\ %& ${\dagger}$ & 03.00/15.00 \\
-        ~       & claude-3-haiku         & 0.868 & 0.509  & 0.600 & 0.000  & 0.000 & 0.000 & 0.761 & 0.369 & 0.538 & 0.000 & 0.000  & 0.000\\ %& ${\dagger}$ & 00.25/01.25 \\
+        Anthropic & claude-3-opus        & 0.898 & 0.709  & 0.800 & 0.500 & 0.000  & 0.071 & 0.723 & 0.323 & 0.523 & 0.588 & $\underline{0.176}$  & $\underline{0.588}$\\ 
+        ~         & claude-3-opus (RAG)  & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~         & claude-3-sonnet      & 0.895 & 0.691  & 0.782 & 0.333 & -0.095 & 0.095 & 0.727 & 0.385 & 0.615 & 0.500 & 0.000  & 0.118\\ 
+         ~        & claude-3-sonnet (RAG)& ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~         & claude-3-haiku       & 0.868 & 0.509  & 0.600 & 0.000  & 0.000 & 0.000 & 0.761 & 0.369 & 0.538 & 0.000 & 0.000  & 0.000\\ 
+         ~        & claude-3-haiku (RAG) & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~         & ~                    & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
+        Meta    & llama3-70b             & 0.962 & $\underline{0.891}$  & $\underline{0.927}$ & $\underline{0.690}$ & $\underline{0.381}$  & \textbf{0.690} & 0.692 & 0.385 & 0.692 & 0.471 & -0.059 & 0.471\\ 
+         ~      & llama3-70b (RAG)       & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & llama3-8b              & 0.923 & 0.800  & 0.873 & 0.415 & -0.167 & 0.405 & 0.585 & 0.169 & 0.585 & 0.176 & -0.647 & 0.176 \\ 
+         ~      & llama3-8b (RAG)        & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
         ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
-        Meta    & llama3-70b             & 0.962 & $\underline{0.891}$  & $\underline{0.927}$ & $\underline{0.690}$ & $\underline{0.381}$  & \textbf{0.690} & 0.692 & 0.385 & 0.692 & 0.471 & -0.059 & 0.471\\ %& 70b       & 03.20/03.20 \\
-        ~       & llama3-8b              & 0.923 & 0.800  & 0.873 & 0.415 & -0.167 & 0.405 & 0.585 & 0.169 & 0.585 & 0.176 & -0.647 & 0.176 \\ %& 8b        & 01.60/01.60 \\
-        ~       & ~                      & ~ & ~ & ~ & ~  & ~ & ~ & ~ & ~ & ~ & ~  & ~ & ~ \\
-        Mistral & mixtral-8x22b-instruct & $\underline{0.963}$ & \textbf{0.909}  & \textbf{0.945} & 0.214 & -0.571 & 0.214 & 0.516 & 0.031 & 0.508 & 0.412 & -0.176 & 0.412\\ %& 39b/141b  & 03.20/03.20 \\
-        ~       & mistral-7b-instruct    & 0.203 & -0.373 & 0.127 & 0.500 & 0.000  & 0.214 & 0.500 & 0.000 & 0.500 & 0.500 & 0.000  & 0.500 \\ %& 7b     & 01.60/01.60 \\
+        Mistral & mixtral-8x22b-instruct       & $\underline{0.963}$ & \textbf{0.909}  & \textbf{0.945} & 0.214 & -0.571 & 0.214 & 0.516 & 0.031 & 0.508 & 0.412 & -0.176 & 0.412\\ 
+         ~      & mixtral-8x22b-instruct (RAG) & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
+        ~       & mistral-7b-instruct          & 0.203 & -0.373 & 0.127 & 0.500 & 0.000  & 0.214 & 0.500 & 0.000 & 0.500 & 0.500 & 0.000  & 0.500 \\ 
+         ~      & mistral-7b-instruct (RAG)    & ?              & ?      & ?     & ?     & ?      & ?     & ?     & ?     & ?     & ?     & ?      & ?     \\ 
     \hline
     \hline
     \end{tabular}
-    \caption{Accuracy results for 14 baseline LLMs and their RAG variants on toponym resolution and directional, topological, and cyclic order relationship reasoning questions. Best results in \textbf{bold} and second best in \underline{underline}.}
+    \caption{Accuracy results for 14 baseline LLMs and their RAG variants on toponym resolution and directional, topological, and cyclic order relationship reasoning questions. Best results for base LLMs in \textbf{bold} and best for RAG variants in \underline{underline}. \nrscomment{move underlines to best RAG variant in each column}}
     \label{tab:models}
 \end{table*}
+
+\endgroup
