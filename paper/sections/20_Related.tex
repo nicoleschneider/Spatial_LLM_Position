@@ -23,7 +23,7 @@ Recent vision papers suggest that LLMs show promise for use as geospatial databa
 \citeauthor{Bhandari2023} further prompt the LLMs to generate names of cities that are ``near'' or ``far'' from a provided reference city.
 They show that the resulting cities generated tend to be closer in distance to the reference point when the ``near'' prompt is used, and farther when the ``far'' prompt is used, indicating LLMs are capable of basic spatial reasoning in that they associate distance meaning to those keywords.
 However, other work has shown that LLMs lack the ability to adapt the meaning of those same keywords to the scale relevant to the question asked, when provided with reference points indicating what ``near'' or ``far'' means in a given context~\cite{Osullivan2024}.
-RAG has been shown to improve distance-based reasoning in LLMs using techniques like DistRAG~\cite{Schneider2025b} \nrscomment{cite journal}, but no previous work has explored distance-invariant geospatial reasoning in LLMs, like topological or directional reasoning between geoentities, to our knowledge.
+RAG has been shown to improve distance-based reasoning in LLMs using techniques like DistRAG~\cite{Schneider2025b}, but no previous work has explored distance-invariant geospatial reasoning in LLMs, like topological or directional reasoning between geoentities, to our knowledge.
 
 
 \subsection{LLM Adaptations for Geodata}
@@ -38,10 +38,12 @@ For spatio-temporal forecasting, \citeauthor{Liu2024large} propose a method of t
 Some other benchmarks and new methods have also been proposed to advance LLM performance on geospatial tasks, but the majority of these focus on a few specific task categories, like
 factoid-based or population variable prediction questions~\cite{Qi2023,Roberts2023,Gupta2024,Yan2024,Manvi2024,Lietard2021}, 
 trajectory prediction or POI and itinerary recommendation tasks~\cite{Schneider2025,Yu2025,Roberts2023,Xie2024,Gundawar2024,De2024,Sharma2023}, 
-distance-based reasoning questions~\cite{Bhandari2023,Osullivan2024,Schneider2024b} \nrscomment{cite journal}, 
+distance-based reasoning questions~\cite{Bhandari2023,Osullivan2024,Schneider2024b}, 
 or visual tasks like geo-localization, geographic visualization, and traffic signal control~\cite{Feng2024b,Chen2024}.
 None of these methods explicitly address topological, directional, or cyclic order relations over geographic entities, though some downstream questions inherently require reasoning about these relationships.
 Examples include \citeauthor{Li2024} which address the StepGame Benchmark for directional reasoning over fictional entities labeled with letters in a scene~\cite{Li2024} and \citeauthor{Majic2024} which evaluate a brick stacking task~\cite{Majic2024}.
 
-We add to this landscape by showing how base LLMs and RAG variants perform on explicit spatial reasoning questions through the experiments in this paper and revealing \nrscomment{what is finding}.
+% We add to this landscape by showing how base LLMs and RAG variants perform on explicit spatial reasoning questions through the experiments in this paper and revealing that RAG is not sufficient to induce correct spatial reasoning.
+We add to the research landscape by showing how unaugmented LLMs, and RAG LLM variants perform on explicit spatial reasoning questions. 
+Through the experiments in this paper, we find that RAG using graphs of geodesic distances is not sufficient to induce correct spatial reasoning in isolation.
  

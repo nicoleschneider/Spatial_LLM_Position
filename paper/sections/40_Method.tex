@@ -51,11 +51,12 @@ which evaluates whether the abstain decisions are correct (i.e. did the LLM abst
 
 
 \subsubsection{Models.}
-We select $14$ LLMs from five of the leading LLM developers. 
+We select $12$ LLMs from five of the leading LLM developers. 
 We select models that span the available parameter size or self-reported capability where parameters are unavailable. 
 For experimentation, temperature is set to $0$ on each model and where available, constant seed values are set to reduce the impact of randomness in generation.
+For the RAG variants of each model, we provide appropriate spatial context for the question type via a vectorized graph of triples, which are retrieved based on similarity to the prompt, following \citeauthor{Schneider2025b}~\cite{Schneider2025b}.
+The nodes and edges in the graph cover the spatial properties needed to answer the questions in the dataset, including the geocoordinates, directional relationships, and topological relationships of geoentities in Australia.
 
-\nrscomment{describe the RAG variations used and what the knowledge store is for each spatial relation that they have access to}
 
 \subsubsection{Prompting.} 
 Each question is provided as an isolated prompt to the model under test so no context is carried between interactions.
